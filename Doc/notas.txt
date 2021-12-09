@@ -1,0 +1,48 @@
+piezas
+19 piezas
+establecer atributos de las piezas:
+  actitud:   neutra, vertical, horizontal
+ 
+ 
+Definir objetivos de estrategia:
+
+Completar fila o columna  MAS IMPORTANTE
+Emplear primero  la pieza mas grande.  Para completar fila o columna, preferir pieza mayor.
+
+
+Cuando no se completa,
+  en segunda version - preferir pieza que permita cerrar cobinando con proxima(s) pieza(s)
+  
+  preferir pieza mayor.
+  preferir pieza com mas vecinos
+  preferir pieza de actitud similar a las existentes
+  preferir ubicacion cerca de los bordes (mantener despejado el centro) asignar mas puntos a posiciones de las esquinas y menos a las del centro de los bordes
+  
+  Reducir al minimo espacios blanco
+  
+  Objetivo del sistema (goal)
+  Completar una fila o columna para eliminar las celdas y despejar el tablero.
+  
+  Parametros cuantificables de una solucion:
+  Completa:  Boolean.  Completa una fila o columna de N celdas.
+  Tamaño de la pieza:   Int. En igualdad de condiciones preferir pieza mayor.
+  Cantidad de vecinos:  Int. En igualdad de condiciones preferir pieza con mas vecinos. 
+                               Se entiende por vecinos celdas adyacentes (en direcion horizontal y vertical, fila-columna, NO usar diagonales) a las celdas de la pieza que esten ocupadas.
+  Cantidad de borde:	Int. Preferir ubicacion cerca de los bordes del tablero antes que el centro. 
+  
+  
+  Cada tablero tiene un maximo de 100 posibles ubicaciones, sacadas del caso extremo de tablero  vacio y pieza Uno. Mientras mas lleno este el tablero y mayor sea la pieza, menor cantidad de soluciones. Probar fuerza bruta y despues ir optimizando de ser necesario.
+  
+  empezar por un algoritmo de fuerza bruta, que calcule todas las soluciones posibles para cada una de las piezas existentes (tres default) de forma independiente y proponga la de mayor valor.
+  
+  Posteriormente implementar busqueda de soluciones combinando piezas, se calcularan soluciones para una pieza, se tomaran las n de mayor valor y se buscaran soluciones para la proxima pieza a partir de las anteriores.
+  
+  Posibles consideraciones heuristicas:
+  
+	Buscar completamiento por fila y columna:  Hacer lista de la secuencia de espacios en blanco por fila y columna. Buscar coincidencia en las dimensiones de las piezas.
+	 DEscripcion:  existe una fila con dos secuencias de espacios en blanco de 3 y 4 celdas. LAs piezas disponibles tienen dimensiones horizontales de 1, 3 y 4. Sin saber la forma exacta de las piezas, hay posibilidades de completar esa fila, que se pueden hallar mas rapido que calculando todas las posibles combinaciones.
+	 
+	 
+	 
+Implementar uso de class Solution en evz de move
+Implementar busqueda de  soluciones con mas de una movida (combinaciones)

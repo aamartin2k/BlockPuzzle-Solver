@@ -1,0 +1,28 @@
+
+
+continuar pruebas con archivo mgt.bmd
+  detectar cuando se completan varias filas o columnas y reflejar em staats de movida
+  
+
+Refactor de la comunicacion entre GUI y Solver
+
+ Cuando se cambia una NextPiece/ otros param no se usa funcionalidad de Solver, se almacenan hasta ser enviados a solver en un GameStatus
+ 
+ Cuando se inserta una pieza en el tablero
+  Se genera un GameStatus, se envia a a Solver y se recibe un GameStatus modificado
+    si la pieza no cabe, no cambia nada (dar notificacion por GUI)
+	si la pieza cabe, se actualiza el estado del tablero mediante comando Undoable
+	si se completa una Fila o Columna, se notifica (seleccion de cells, cambio de color, etc), 
+	 se actualiza (eliminacion) el estado del tablero mediante comando Undoable.
+	 
+	 
+---Refactor Eliminar clase SimpleBoard
+	Quitar SimpleBoard y pasar Cell List e indexer a GameSimpleStatus
+	
+ Comprobando accesos a solver desde Form
+  Crear dos unicos metodos de accesos
+   
+	void Analizar  Analizar combinaciones y crea soluciones
+	
+ 
+ 
