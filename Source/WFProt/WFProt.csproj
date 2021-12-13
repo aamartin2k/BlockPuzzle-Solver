@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF57A359-C0A7-415E-8403-7730E5AE3DC3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFProt</RootNamespace>
+    <AssemblyName>WFProt</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevAge.Windows.Forms">
+      <HintPath>..\..\..\Deps\SourceGrid\4.11\DevAge.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SourceGrid, Version=4.11.3119.22026, Culture=neutral, PublicKeyToken=df6f5e538749e85d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Deps\SourceGrid\4.11\SourceGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Command.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1GridController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1IO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Strat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Form1.Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Uno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dos Vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dos Hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres Hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres L 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres L 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres L 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres L 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco Hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco Vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco L 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco L 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco L 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cinco L 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nueve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlNine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlEight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlSeven.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlSix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlFive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlFour.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlThree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlOne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro L 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro L 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro L 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro L 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro K 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro K 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro K 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro K 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro T 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro T 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro T 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro T 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro Z 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro Z 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro S 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro S 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tres Vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro Hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuatro Vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BPSolver\BPSolver.csproj">
+      <Project>{a1409a62-2ebd-45b5-bde6-359dba552690}</Project>
+      <Name>BPSolver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDoc.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cerrar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
