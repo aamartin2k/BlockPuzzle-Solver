@@ -48,44 +48,8 @@ namespace WFProt
             }
         }
 
-        //
-        private void XClickOnCell(CellContext sender) 
-        {
-            Position pos = sender.Position;
-            Coord coord = new Coord(pos.Row, pos.Column);
-
-            label1.Text = string.Format("Row: {0} Col:{1}", pos.Row, pos.Column);
-            tslbCoordText.Text = string.Format("Row: {0} Col:{1}", pos.Row, pos.Column);
-
-            // new
-            switch (SelectedAction)
-            {
-                case CommandAction.None:
-                    if (SelectedPieceName != PieceName.None)
-                        PutPiece(coord, SelectedPieceName);
-                    break;
-
-                case CommandAction.Undo:
-                    break;
-
-                case CommandAction.Delete:
-                    DeleteCell(coord);
-                    break;
-
-                default:
-                    break;
-            }
-            // end new
-
-            if (SelectedPieceName == PieceName.None)
-            {
-                // Ejecutar Action Delete
-                if (SelectedAction == CommandAction.Delete)
-                return;
-            }
-               
-        }
-
+        // Se ejecuta cuando el mouse pasa sobre las celdas del grid,
+        // se emplea un grid controller que ejecuta este método
         private void MouseEnterCell(CellContext sender)
         {
             Position pos = sender.Position;

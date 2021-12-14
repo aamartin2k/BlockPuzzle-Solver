@@ -28,7 +28,7 @@ namespace WFProt
             form.Out_CloseFile = server.In_CloseFile;
             form.Out_LoadFile = server.In_LoadFile;
             form.Out_SaveFile = server.In_SaveFile;
-            form.Out_PutPiece = server.In_PutPiece;
+            form.Out_DrawPiece = server.In_PutPiece;
             form.Out_DeleteCell = server.In_DeleteCell;
             form.Out_SetNextPiece = server.In_SetNextPiece;
             form.Out_Undo = server.In_Undo;

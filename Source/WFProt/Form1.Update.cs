@@ -13,7 +13,7 @@ namespace WFProt
         public void In_UpdateBoard(GameSimpleStatus status)
         {
             //ICommand command;
-            PieceName name;
+            PieceName piece;
             Bitmap bitMap;
 
             // Drawing NextPieces
@@ -21,13 +21,13 @@ namespace WFProt
 
             for (int i = 0; i < Constants.NexPieces; i++)
             {
-                name = status.NextPieces[i];
-                bitMap = GetImage(name);
+                piece = status.NextPieces[i];
+                bitMap = GetImage(piece);
 
-                // simplificar al implementar command pattern
-                // en controller
+                // Actualizar imagen en control y
                 pbl[i].Image = bitMap;
-
+                // almacenar Piece en Tag
+                pbl[i].Tag = piece;
             }
 
             // Drawing Board

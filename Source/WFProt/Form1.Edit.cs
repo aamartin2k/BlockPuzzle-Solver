@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BPSolver.Objects;
 using BPSolver.Enums;
 
@@ -15,7 +12,7 @@ namespace WFProt
         public Action Out_Undo { get; set; }
 
         // Insert Pieza en board
-        public Action<Coord, PieceName> Out_PutPiece { get; set; }
+        public Action<Coord, PieceName> Out_DrawPiece { get; set; }
 
         
         // Poner NextPiece en Image
@@ -29,19 +26,6 @@ namespace WFProt
             Out_Undo();
         }
 
-        private void PutPiece(Coord coord, PieceName name)
-        {
-            Out_PutPiece(coord, name);
-        }
-
-        private void SetNextPiece(int index, PieceName name)
-        {
-            Out_SetNextPiece(index, name);
-        }
-
-        private void DeleteCell(Coord coord)
-        {
-            Out_DeleteCell(coord);
-        }
+       
     }
 }

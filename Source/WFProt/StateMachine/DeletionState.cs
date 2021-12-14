@@ -31,6 +31,10 @@ namespace WFProt
 
         }
 
+        public override void PieceButtonClicked(PieceName piece)
+        {  // override to do nothing 
+            Console.WriteLine("PieceButton Clicked in DeletionState, do nothing ");
+        }
     }
 
 }

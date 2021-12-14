@@ -7,8 +7,8 @@ namespace WFProt
 {
     class StContext
     {
-        //public IGuiState CurrentState
-        //{ get;  set; }
+        public Action<PieceName> Out_ShowCurrentPiece;
+        public Action<CommandAction> ShowCurrentAction;
 
         // For DEbug
         private IGuiState _currentSt;
@@ -25,9 +25,23 @@ namespace WFProt
                 Console.WriteLine(string.Format("Current State changed from: {0} to {1}", name, value));
 
                 _currentSt = value;
+
+                // reflejando cambios de estado
+                ShowStateChange(_currentSt);
             }
         }
 
+
+        private void ShowStateChange(IGuiState currentState)
+        {
+            CommandAction action = CommandAction.Select;
+
+            if (currentState.GetType().Equals(NextPiecePlayState.GetType()))
+                action = CommandAction.Play;
+
+            ShowCurrentAction?.Invoke(action);
+
+        }
 
         //public PieceName CurrentPiece
         //{ get;  set; }
@@ -48,6 +62,9 @@ namespace WFProt
                 Console.WriteLine(string.Format("Current Piece changed from: {0} to {1}", _currentPiece, value));
 
                 _currentPiece = value;
+
+                // reflejando cambios de pieza
+                Out_ShowCurrentPiece(_currentPiece);
             }
         }
 
@@ -100,7 +117,6 @@ namespace WFProt
 
             GridCellDeletionState = new GridCellDeletionState(this);
             NextPieceDeletionState = new NextPieceDeletionState(this);
-
 
             CurrentState = InitialState;
         }

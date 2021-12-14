@@ -21,11 +21,10 @@ namespace WFProt
             InitializeComponent();
 
             #region Piece Id
-            SelectedAction = CommandAction.None;
-
+            
 
             // Setting piece id on buttons tag
-            tsbArrow.Tag = CommandAction.None;
+            tsbArrow.Tag = CommandAction.Select;
             tsbDelete.Tag = CommandAction.Delete;
             tsbUndo.Tag = CommandAction.Undo;
             
@@ -78,18 +77,18 @@ namespace WFProt
             tsbNine.Tag = PieceName.Nine;
 
             // Wire up event handling methods
-            // GameStrat Event
-            //gGStrat.AnalysisReady += Gs_AnalysisReady;
-
-            // Piece buttons click handler
-            //tsbArrow.Click += TsbSetAction_Click;
-            //tsbDelete.Click += TsbSetAction_Click;
-            tsbDelete.Click += TsbDelete_Click;
+            // Action buttons click handler
+          
             tsbArrow.Click += TsbArrow_Click;
+            tsbArrow.Click += TsbShowAction_Click;
 
-            //tsbUndo.Click += TsbSetAction_Click;
+            tsbDelete.Click += TsbDelete_Click;
+            tsbDelete.Click += TsbShowAction_Click;
+
             tsbUndo.Click += tsbUndo_Click;
+            tsbUndo.Click += TsbShowAction_Click;
             //
+            // Piece buttons click handler
             tsbOne.Click += TsbSetPiece_Click;
             //
             tsbTwoHor.Click += TsbSetPiece_Click;
@@ -144,10 +143,13 @@ namespace WFProt
             pbNextPiece2.MouseDown += PbNextPiece_Click;
             pbNextPiece3.MouseDown += PbNextPiece_Click;
 
+            pbNextPiece1.Tag = PieceName.None;
+            pbNextPiece2.Tag = PieceName.None;
+            pbNextPiece3.Tag = PieceName.None;
             #endregion
 
             #region Grid
-            
+
             //  Grid Views
             vBackColor = new Views.Cell();
             vBackColor.BackColor = Color.DarkSlateBlue;
@@ -216,12 +218,27 @@ namespace WFProt
 
             #endregion
 
+            tssbTwo.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbThreeLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbThreeL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbT.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourJ.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourS.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourZ.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFiveLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFiveL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+
             newToolStripButton.Click += newToolStripButton_Click;
             saveToolStripButton.Click += saveToolStripButton_Click;
             openToolStripButton.Click += openToolStripButton_Click;
             closeToolStripButton.Click += closeToolStripButton_Click;
             // deshabilitar controles
             UserEnable = false;
+
+            // creando FSM
+            CreateStateMachine();
         }
 
        private bool UserEnable
@@ -265,14 +282,14 @@ namespace WFProt
         }
 
        
-        private void TsbSetAction_Click(object sender, EventArgs e)
+        private void TsbShowAction_Click(object sender, EventArgs e)
         {
             // Set selected piece
             // Casting sender back to button
             ToolStripItem itm = (ToolStripItem)sender;
 
             // new impl
-            SetCurrentAction((CommandAction)itm.Tag);
+            ShowCurrentAction((CommandAction)itm.Tag);
         }
 
        
@@ -383,6 +400,19 @@ namespace WFProt
             //    lvMoves.Items.Add(move);
             //}
 
+        }
+
+        private void TssbDefault_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+            ToolStripSplitButton tsb;
+            tsb = (ToolStripSplitButton)sender;
+
+            tsb.DefaultItem = e.ClickedItem;
+            tsb.Text= e.ClickedItem.Text;
+            tsb.Image = e.ClickedItem.Image;
+
+            
         }
     }
 }

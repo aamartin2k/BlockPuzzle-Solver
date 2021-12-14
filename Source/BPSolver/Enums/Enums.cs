@@ -3,7 +3,10 @@ using System;
 
 namespace BPSolver.Enums
 {
-   
+
+    public enum CommandAction
+    { Select, Undo, Delete, Play }
+
     public enum PieceAttitude
     { None, Horizontal, Vertical, Both }
 

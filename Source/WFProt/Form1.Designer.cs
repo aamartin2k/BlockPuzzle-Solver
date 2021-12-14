@@ -81,6 +81,8 @@
             this.tsbFiveLFour = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbNine = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbColumnPos = new System.Windows.Forms.Label();
+            this.lbRowPos = new System.Windows.Forms.Label();
             this.pbNextPiece3 = new System.Windows.Forms.PictureBox();
             this.sgBoard = new SourceGrid.Grid();
             this.pbNextPiece2 = new System.Windows.Forms.PictureBox();
@@ -130,8 +132,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.nUpdMoves = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.lbRowPos = new System.Windows.Forms.Label();
-            this.lbColumnPos = new System.Windows.Forms.Label();
             this.toolStripTask.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece3)).BeginInit();
@@ -169,7 +169,7 @@
             this.tsbNine});
             this.toolStripTask.Location = new System.Drawing.Point(1, 27);
             this.toolStripTask.Name = "toolStripTask";
-            this.toolStripTask.Size = new System.Drawing.Size(643, 32);
+            this.toolStripTask.Size = new System.Drawing.Size(674, 32);
             this.toolStripTask.TabIndex = 1;
             this.toolStripTask.Text = "toolStrip1";
             // 
@@ -230,14 +230,14 @@
             // 
             this.tsbTwoHor.Image = global::WFProt.Properties.Resources.TwoHor;
             this.tsbTwoHor.Name = "tsbTwoHor";
-            this.tsbTwoHor.Size = new System.Drawing.Size(117, 22);
+            this.tsbTwoHor.Size = new System.Drawing.Size(189, 32);
             this.tsbTwoHor.Text = "Dos Hor";
             // 
             // tsbTwoVert
             // 
             this.tsbTwoVert.Image = global::WFProt.Properties.Resources.TwoVert;
             this.tsbTwoVert.Name = "tsbTwoVert";
-            this.tsbTwoVert.Size = new System.Drawing.Size(117, 22);
+            this.tsbTwoVert.Size = new System.Drawing.Size(189, 32);
             this.tsbTwoVert.Text = "Dos Vert";
             // 
             // tssbThreeLine
@@ -256,14 +256,14 @@
             // 
             this.tsbThreeHor.Image = global::WFProt.Properties.Resources.ThreeHor;
             this.tsbThreeHor.Name = "tsbThreeHor";
-            this.tsbThreeHor.Size = new System.Drawing.Size(118, 22);
+            this.tsbThreeHor.Size = new System.Drawing.Size(189, 32);
             this.tsbThreeHor.Text = "Tres Hor";
             // 
             // tsbThreeVert
             // 
             this.tsbThreeVert.Image = ((System.Drawing.Image)(resources.GetObject("tsbThreeVert.Image")));
             this.tsbThreeVert.Name = "tsbThreeVert";
-            this.tsbThreeVert.Size = new System.Drawing.Size(118, 22);
+            this.tsbThreeVert.Size = new System.Drawing.Size(189, 32);
             this.tsbThreeVert.Text = "Tres Vert";
             // 
             // tssbThreeL
@@ -611,6 +611,26 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Game Status: ";
+            // 
+            // lbColumnPos
+            // 
+            this.lbColumnPos.AutoSize = true;
+            this.lbColumnPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbColumnPos.Location = new System.Drawing.Point(93, 267);
+            this.lbColumnPos.Name = "lbColumnPos";
+            this.lbColumnPos.Size = new System.Drawing.Size(48, 13);
+            this.lbColumnPos.TabIndex = 6;
+            this.lbColumnPos.Text = "label11";
+            // 
+            // lbRowPos
+            // 
+            this.lbRowPos.AutoSize = true;
+            this.lbRowPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRowPos.Location = new System.Drawing.Point(6, 267);
+            this.lbRowPos.Name = "lbRowPos";
+            this.lbRowPos.Size = new System.Drawing.Size(48, 13);
+            this.lbRowPos.TabIndex = 5;
+            this.lbRowPos.Text = "label11";
             // 
             // pbNextPiece3
             // 
@@ -1104,26 +1124,6 @@
             this.label9.Size = new System.Drawing.Size(136, 15);
             this.label9.TabIndex = 10;
             this.label9.Text = "Movidas a analizar: ";
-            // 
-            // lbRowPos
-            // 
-            this.lbRowPos.AutoSize = true;
-            this.lbRowPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRowPos.Location = new System.Drawing.Point(6, 267);
-            this.lbRowPos.Name = "lbRowPos";
-            this.lbRowPos.Size = new System.Drawing.Size(48, 13);
-            this.lbRowPos.TabIndex = 5;
-            this.lbRowPos.Text = "label11";
-            // 
-            // lbColumnPos
-            // 
-            this.lbColumnPos.AutoSize = true;
-            this.lbColumnPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbColumnPos.Location = new System.Drawing.Point(93, 267);
-            this.lbColumnPos.Name = "lbColumnPos";
-            this.lbColumnPos.Size = new System.Drawing.Size(48, 13);
-            this.lbColumnPos.TabIndex = 6;
-            this.lbColumnPos.Text = "label11";
             // 
             // Form1
             // 

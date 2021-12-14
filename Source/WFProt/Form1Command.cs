@@ -12,48 +12,41 @@ namespace WFProt
     public partial class Form1 : Form
     {
 
-        // Enums
-        enum CommandAction
-        {  None,  Undo, Delete  }
-
-        // Declarations
-        private PieceName SelectedPieceName;
-        private CommandAction SelectedAction;
-        private Bitmap SelectedImage;
-           
-
-        // Set current piece
-        private void SetCurrentPiece(PieceName name)
+        private void ShowCurrentPiece(PieceName name)
         {
-            SelectedPieceName = name;
-            //SelectedPiece = GetPiece(SelectedPieceName);
             label2.Text = name.ToString();
-
-            SelectedImage = GetImage(name);
+            Bitmap SelectedImage = GetImage(name);
             tslbPieceImage.Image = SelectedImage;
-
         }
 
-        private void SetCurrentAction(CommandAction action)
+        private void ShowCurrentAction(CommandAction action)
         {
-            SelectedAction = action;
-            label1.Text = SelectedAction.ToString();
-
-            //SelectedPieceName = PieceName.None;
+            label1.Text = action.ToString();
 
             Bitmap command;
 
             switch (action)
             {
-                case CommandAction.None:
+                case CommandAction.Select:
                     command = WFProt.Properties.Resources.Arrow;
+                    this.Cursor = Cursors.Arrow;
+                
                     break;
+
                 case CommandAction.Delete:
                     command = WFProt.Properties.Resources.Delete;
+                    this.Cursor = Cursors.Cross;
                     break;
+
                 case CommandAction.Undo:
                     command = WFProt.Properties.Resources.Undo;
                     break;
+
+                case CommandAction.Play:
+                    command = WFProt.Properties.Resources.Arrow;
+                    this.Cursor = Cursors.Hand;
+                    break;
+
                 default:
                     command = null;
                     break;
