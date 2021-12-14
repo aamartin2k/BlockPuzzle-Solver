@@ -10,7 +10,6 @@ namespace BPSolver
       
         private Stack<ICommand> _commandStack;
 
-    
         private void ResetStack()
         {
             _commandStack = new Stack<ICommand>();

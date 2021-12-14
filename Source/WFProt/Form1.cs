@@ -82,10 +82,12 @@ namespace WFProt
             //gGStrat.AnalysisReady += Gs_AnalysisReady;
 
             // Piece buttons click handler
-            tsbArrow.Click += TsbSetAction_Click;
-            tsbDelete.Click += TsbSetAction_Click;
-            
-            tsbUndo.Click += TsbSetAction_Click;
+            //tsbArrow.Click += TsbSetAction_Click;
+            //tsbDelete.Click += TsbSetAction_Click;
+            tsbDelete.Click += TsbDelete_Click;
+            tsbArrow.Click += TsbArrow_Click;
+
+            //tsbUndo.Click += TsbSetAction_Click;
             tsbUndo.Click += tsbUndo_Click;
             //
             tsbOne.Click += TsbSetPiece_Click;
@@ -93,26 +95,15 @@ namespace WFProt
             tsbTwoHor.Click += TsbSetPiece_Click;
             tsbTwoVert.Click += TsbSetPiece_Click;
             //
-            //tsbThreeHor.Click += TsbSetAction_Click;
             tsbThreeHor.Click += TsbSetPiece_Click;
-            //tsbThreeVert.Click += TsbSetAction_Click;
             tsbThreeVert.Click += TsbSetPiece_Click;
             //
-            //tsbThreeLOne.Click += TsbSetAction_Click;
             tsbThreeLOne.Click += TsbSetPiece_Click;
-
-            //tsbThreeLTwo.Click += TsbSetAction_Click;
             tsbThreeLTwo.Click += TsbSetPiece_Click;
-
-            //tsbThreeLThree.Click += TsbSetAction_Click;
             tsbThreeLThree.Click += TsbSetPiece_Click;
-
-            //tsbThreeLFour.Click += TsbSetAction_Click;
             tsbThreeLFour.Click += TsbSetPiece_Click;
             //
-            //tsbFour.Click += TsbSetAction_Click;
             tsbFour.Click += TsbSetPiece_Click;
-            //
             //
             tsbFourT1.Click += TsbSetPiece_Click;
             tsbFourT2.Click += TsbSetPiece_Click;
@@ -136,29 +127,16 @@ namespace WFProt
             tsbFourZ2.Click += TsbSetPiece_Click;
             //
             tsbFourHor.Click += TsbSetPiece_Click;
-
-            //tsbFourVert.Click += TsbSetAction_Click;
             tsbFourVert.Click += TsbSetPiece_Click;
             //
-            //tsbFiveHor.Click += TsbSetAction_Click;
             tsbFiveHor.Click += TsbSetPiece_Click;
-
-            //tsbFiveVert.Click += TsbSetAction_Click;
             tsbFiveVert.Click += TsbSetPiece_Click;
             //
-            //tsbFiveLOne.Click += TsbSetAction_Click;
             tsbFiveLOne.Click += TsbSetPiece_Click;
-
-            //tsbFiveLTwo.Click += TsbSetAction_Click;
             tsbFiveLTwo.Click += TsbSetPiece_Click;
-
-            //tsbFiveLThree.Click += TsbSetAction_Click;
             tsbFiveLThree.Click += TsbSetPiece_Click;
-
-            //tsbFiveLFour.Click += TsbSetAction_Click;
             tsbFiveLFour.Click += TsbSetPiece_Click;
             //
-            //tsbNine.Click += TsbSetAction_Click;
             tsbNine.Click += TsbSetPiece_Click;
 
             // Next Piece image
@@ -204,7 +182,7 @@ namespace WFProt
 
             // Grid Controller
             // Local handler passed as argument on the constructor
-            ClickController cCont = new ClickController(ClickOnCell);
+            ClickController cCont = new ClickController(ClickOnCell, MouseEnterCell);
             Cells.Cell xCell;
 
             for (int row = 0; row < Constants.Rank; row++)
@@ -297,45 +275,7 @@ namespace WFProt
             SetCurrentAction((CommandAction)itm.Tag);
         }
 
-        private void TsbSetPiece_Click(object sender, EventArgs e)
-        {
-            // Set selected piece
-            // Casting sender back to button
-            ToolStripItem itm = (ToolStripItem)sender;
-
-            SetCurrentPiece((PieceName)itm.Tag);
-        }
-
-        private void PbNextPiece_Click(object sender, MouseEventArgs e)
-        {
-            
-
-            // Ignore all but left button click and no current piece selected
-            if ((e.Button != MouseButtons.Left) || (SelectedPieceName == PieceName.None))
-                return;
-
-            // NUeva implementacion
-            // get target  picture box
-            PictureBox pb = (PictureBox)sender;
-            int index = 0;
-
-            // establecer indice para lista en dependencia del nombre de PictureBox
-            if (pb.Name == "pbNextPiece3")
-                index = 2;
-
-            if (pb.Name == "pbNextPiece2")
-                index = 1;
-
-            SetNextPiece(index, SelectedPieceName);
-            //
-            // Show image on selected picture box
-            // get target  picture box
-            //PictureBox pb = (PictureBox)sender;
-
-            // Create concrete command Draw 
-            //ICommand command = new DrawNextPiece(pb, SelectedImage, SelectedPieceName); 
-            // ExecuteCommandDo(command);
-        }
+       
 
         // private methods
 
@@ -436,12 +376,12 @@ namespace WFProt
         {
             lvMoves.Items.Clear();
 
-            Solution sol = (Solution) lvSolutions.SelectedItem;
+            //Solution sol = (Solution) lvSolutions.SelectedItem;
 
-            foreach (var move in sol.Moves)
-            {
-                lvMoves.Items.Add(move);
-            }
+            //foreach (var move in sol.Moves)
+            //{
+            //    lvMoves.Items.Add(move);
+            //}
 
         }
     }

@@ -70,11 +70,27 @@
     <Compile Include="Form1IO.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form1StateMach.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1Strat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateMachine\BaseState.cs" />
+    <Compile Include="StateMachine\DeletionState.cs" />
+    <Compile Include="StateMachine\GridCellDeletionState.cs" />
+    <Compile Include="StateMachine\GridCellDrawingState.cs" />
+    <Compile Include="StateMachine\IGuiState.cs" />
+    <Compile Include="StateMachine\InitialState.cs" />
+    <Compile Include="StateMachine\NextPieceDeletionState.cs" />
+    <Compile Include="StateMachine\NextPieceDrawingState.cs" />
+    <Compile Include="StateMachine\NextPiecePlayState.cs" />
+    <Compile Include="StateMachine\PieceSettingState.cs" />
+    <None Include="StateMachine\Program.cs" />
+    <Compile Include="StateMachine\SelectionState.cs" />
+    <Compile Include="StateMachine\StContext.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

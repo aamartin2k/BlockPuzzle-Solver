@@ -70,9 +70,9 @@
     <None Include="OldSolver\GameSolverTree.cs" />
     <Compile Include="Objects\GameSimpleStatus.cs" />
     <Compile Include="Objects\PieceSet.cs" />
-    <Compile Include="OldSolver\GameStatus.cs" />
-    <Compile Include="OldSolver\PieceMove.cs" />
-    <Compile Include="OldSolver\Solution.cs" />
+    <None Include="OldSolver\GameStatus.cs" />
+    <None Include="OldSolver\PieceMove.cs" />
+    <None Include="OldSolver\Solution.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

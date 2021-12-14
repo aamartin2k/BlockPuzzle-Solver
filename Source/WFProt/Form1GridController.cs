@@ -23,20 +23,33 @@ namespace WFProt
         // y se asigna a cada cell en su creacion
         private class ClickController : SourceGrid.Cells.Controllers.ControllerBase
         {
-            private Action<CellContext> _handler;
-            // constructor
-            public ClickController(Action<CellContext> handler)
-            { _handler = handler; }
+            private Action<CellContext> _clickHandler;
+            private Action<CellContext> _mouseEnterHandler;
 
+            // constructor
+            public ClickController(Action<CellContext> chandler, Action<CellContext> mehandler)
+            {
+                _clickHandler = chandler;
+                _mouseEnterHandler = mehandler;
+            }
+
+             // Reaccionar a click en cell
             public override void OnClick(CellContext sender, EventArgs e)
             {
                 base.OnClick(sender, e);
-                _handler(sender);
+                _clickHandler(sender);
+            }
+
+            // Reaccionar a Mouse Enter
+            public override void OnMouseEnter(CellContext sender, EventArgs e)
+            {
+                base.OnMouseEnter(sender, e);
+                _mouseEnterHandler(sender);
             }
         }
 
         //
-        private void ClickOnCell(CellContext sender)
+        private void XClickOnCell(CellContext sender) 
         {
             Position pos = sender.Position;
             Coord coord = new Coord(pos.Row, pos.Column);
@@ -71,10 +84,17 @@ namespace WFProt
                 return;
             }
                
-
-           
-            
         }
+
+        private void MouseEnterCell(CellContext sender)
+        {
+            Position pos = sender.Position;
+
+            lbRowPos.Text=string.Format("Row: {0}", pos.Row);
+            lbColumnPos.Text = string.Format("Column: {0}",  pos.Column);
+        }
+
+
 
     }
 }

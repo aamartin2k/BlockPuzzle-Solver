@@ -39,7 +39,7 @@ namespace WFProt
             SelectedAction = action;
             label1.Text = SelectedAction.ToString();
 
-            SelectedPieceName = PieceName.None;
+            //SelectedPieceName = PieceName.None;
 
             Bitmap command;
 
@@ -60,11 +60,8 @@ namespace WFProt
             }
 
             tlsbActionImage.Image = command;
-
-
         }
 
- 
         // Return image for piece by name
         private Bitmap GetImage(PieceName name)
         {
