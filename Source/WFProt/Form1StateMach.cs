@@ -114,10 +114,10 @@ namespace WFProt
             Out_DeleteNextPiece(index);
         }
         
-        void StmOut_DrawGridPlay(Coord pos, PieceName piece)
+        void StmOut_DrawGridPlay(Coord pos, PieceName piece, int index)
         {
             Console.WriteLine(string.Format("OUTPUT. PLAY. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
-            Out_DrawGridPlay(pos, piece); 
+            Out_DrawGridPlay(pos, piece, index); 
         }
 
 

@@ -10,15 +10,13 @@ namespace BPSolver.Objects
 { 
 
     [Serializable]
-    public class GameSimpleStatus
+    public class GameStatus
     {
         // Propiedades del juego que se van a guardar el archivo o enviar a Solver  
         //
         public int CantMoves;
 
         public bool AnyCompleted;
-        //public List<int> RowsCompletedIndex;
-        //public List<int> ColumnsCompletedIndex;
         public List<PieceName> NextPieces;
 
         // Stats

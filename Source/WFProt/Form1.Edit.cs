@@ -25,7 +25,7 @@ namespace WFProt
 
         // Poner Pieza seleccionada desde Image NextPiece en Board
         // Jugada 
-        public Action<Coord, PieceName> Out_DrawGridPlay { get; set; }
+        public Action<Coord, PieceName, int> Out_DrawGridPlay { get; set; }
 
         // Metodos Concretos
         private void Undo()

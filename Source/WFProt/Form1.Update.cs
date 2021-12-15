@@ -10,7 +10,7 @@ namespace WFProt
     public partial class Form1 : Form
 	{
         // Actualiza form con estado del juego
-        public void In_UpdateBoard(GameSimpleStatus status)
+        public void In_UpdateBoard(GameStatus status)
         {
             //ICommand command;
             PieceName piece;

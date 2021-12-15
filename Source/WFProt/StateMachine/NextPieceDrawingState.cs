@@ -10,7 +10,7 @@ namespace WFProt
 
         public Action<int, PieceName> Out_DrawNextPiece;
 
-        public NextPieceDrawingState(StContext context) : base(context)
+        public NextPieceDrawingState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("NextPieceDrawingState created");
         }
@@ -28,6 +28,13 @@ namespace WFProt
 
             // Set Current Piece
             Context.CurrentPiece = piece;
+        }
+
+        public override void GridCellClicked(Coord position)
+        {
+            Context.CurrentState = Context.GridCellDrawingState;
+            Context.CurrentState.GridCellClicked(position);
+
         }
     }
 

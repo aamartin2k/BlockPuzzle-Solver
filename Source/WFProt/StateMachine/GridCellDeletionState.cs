@@ -10,7 +10,7 @@ namespace WFProt
         public Action<Coord> Out_DeleteGridCell { get; set; }
         
 
-        public GridCellDeletionState(StContext context) : base(context)
+        public GridCellDeletionState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("GridCellDeletionState created");
         }
@@ -24,8 +24,18 @@ namespace WFProt
             Out_DeleteGridCell(position);
         }
 
+        public override void NextPieceImageClicked(int index, PieceName piece = PieceName.None)
+        {
+            Context.CurrentState = Context.NextPieceDeletionState;
+            Context.CurrentState.NextPieceImageClicked(index, piece);
+        }
 
-         
+        public override void PieceButtonClicked(PieceName piece)
+        {
+            // State changes
+            Context.CurrentState = Context.PieceSettingState;
+            Context.CurrentState.PieceButtonClicked(piece);
+        }
     }
 
 }

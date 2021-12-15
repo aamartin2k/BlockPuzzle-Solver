@@ -50,6 +50,8 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\ControllerCommand.cs" />
     <Compile Include="Controller\ControllerDeclarations.cs" />
+    <Compile Include="Controller\ControllerInput.cs" />
+    <Compile Include="Solver\NewSolverTreeHandler.cs" />
     <Compile Include="Solver\NewSolverCompletion.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interface\IBPServer.cs" />

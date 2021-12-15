@@ -13,9 +13,9 @@ namespace BPSolver.Command
 
         List<Coord> RealCoords;
         PieceColor NewColor, OldColor;
-        GameSimpleStatus Cells;
+        GameStatus Cells;
 
-        public DrawPieceCommand(List<Coord> realCoords, PieceColor color, GameSimpleStatus cells)
+        public DrawPieceCommand(List<Coord> realCoords, PieceColor color, GameStatus cells)
         {
             RealCoords = realCoords;
             NewColor = color;

@@ -13,10 +13,10 @@ namespace WFProt
         
 
         // Create GameStatus for Solver
-        private GameSimpleStatus CreateGameStatus()
+        private GameStatus CreateGameStatus()
         {
             //GameSimpleStatus st = new GameSimpleStatus(GameSolver.Rank);
-            GameSimpleStatus st = null;
+            GameStatus st = null;
 
             // Copying NextPieces
             PictureBox[] pbl = { pbNextPiece1, pbNextPiece2, pbNextPiece3 };

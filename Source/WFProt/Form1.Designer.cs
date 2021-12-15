@@ -132,6 +132,16 @@
             this.label7 = new System.Windows.Forms.Label();
             this.nUpdMoves = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTask.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece3)).BeginInit();
@@ -142,6 +152,7 @@
             this.toolStripMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUpdMoves)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripTask
@@ -169,7 +180,7 @@
             this.tsbNine});
             this.toolStripTask.Location = new System.Drawing.Point(1, 27);
             this.toolStripTask.Name = "toolStripTask";
-            this.toolStripTask.Size = new System.Drawing.Size(674, 32);
+            this.toolStripTask.Size = new System.Drawing.Size(643, 32);
             this.toolStripTask.TabIndex = 1;
             this.toolStripTask.Text = "toolStrip1";
             // 
@@ -230,14 +241,14 @@
             // 
             this.tsbTwoHor.Image = global::WFProt.Properties.Resources.TwoHor;
             this.tsbTwoHor.Name = "tsbTwoHor";
-            this.tsbTwoHor.Size = new System.Drawing.Size(189, 32);
+            this.tsbTwoHor.Size = new System.Drawing.Size(117, 22);
             this.tsbTwoHor.Text = "Dos Hor";
             // 
             // tsbTwoVert
             // 
             this.tsbTwoVert.Image = global::WFProt.Properties.Resources.TwoVert;
             this.tsbTwoVert.Name = "tsbTwoVert";
-            this.tsbTwoVert.Size = new System.Drawing.Size(189, 32);
+            this.tsbTwoVert.Size = new System.Drawing.Size(117, 22);
             this.tsbTwoVert.Text = "Dos Vert";
             // 
             // tssbThreeLine
@@ -256,14 +267,14 @@
             // 
             this.tsbThreeHor.Image = global::WFProt.Properties.Resources.ThreeHor;
             this.tsbThreeHor.Name = "tsbThreeHor";
-            this.tsbThreeHor.Size = new System.Drawing.Size(189, 32);
+            this.tsbThreeHor.Size = new System.Drawing.Size(118, 22);
             this.tsbThreeHor.Text = "Tres Hor";
             // 
             // tsbThreeVert
             // 
             this.tsbThreeVert.Image = ((System.Drawing.Image)(resources.GetObject("tsbThreeVert.Image")));
             this.tsbThreeVert.Name = "tsbThreeVert";
-            this.tsbThreeVert.Size = new System.Drawing.Size(189, 32);
+            this.tsbThreeVert.Size = new System.Drawing.Size(118, 22);
             this.tsbThreeVert.Text = "Tres Vert";
             // 
             // tssbThreeL
@@ -605,9 +616,9 @@
             this.groupBox1.Controls.Add(this.sgBoard);
             this.groupBox1.Controls.Add(this.pbNextPiece2);
             this.groupBox1.Controls.Add(this.pbNextPiece1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 62);
+            this.groupBox1.Location = new System.Drawing.Point(4, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(263, 372);
+            this.groupBox1.Size = new System.Drawing.Size(263, 373);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Game Status: ";
@@ -635,7 +646,7 @@
             // pbNextPiece3
             // 
             this.pbNextPiece3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbNextPiece3.Location = new System.Drawing.Point(181, 298);
+            this.pbNextPiece3.Location = new System.Drawing.Point(181, 291);
             this.pbNextPiece3.Name = "pbNextPiece3";
             this.pbNextPiece3.Size = new System.Drawing.Size(65, 65);
             this.pbNextPiece3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -656,7 +667,7 @@
             // pbNextPiece2
             // 
             this.pbNextPiece2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbNextPiece2.Location = new System.Drawing.Point(96, 298);
+            this.pbNextPiece2.Location = new System.Drawing.Point(96, 291);
             this.pbNextPiece2.Name = "pbNextPiece2";
             this.pbNextPiece2.Size = new System.Drawing.Size(65, 65);
             this.pbNextPiece2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -666,7 +677,7 @@
             // pbNextPiece1
             // 
             this.pbNextPiece1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbNextPiece1.Location = new System.Drawing.Point(6, 298);
+            this.pbNextPiece1.Location = new System.Drawing.Point(6, 291);
             this.pbNextPiece1.Name = "pbNextPiece1";
             this.pbNextPiece1.Size = new System.Drawing.Size(65, 65);
             this.pbNextPiece1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -683,9 +694,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(281, 62);
+            this.groupBox2.Location = new System.Drawing.Point(281, 87);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(472, 280);
+            this.groupBox2.Size = new System.Drawing.Size(406, 248);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Game Analysis:";
@@ -695,9 +706,9 @@
             this.lvMoves.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvMoves.FormattingEnabled = true;
-            this.lvMoves.Location = new System.Drawing.Point(12, 164);
+            this.lvMoves.Location = new System.Drawing.Point(12, 147);
             this.lvMoves.Name = "lvMoves";
-            this.lvMoves.Size = new System.Drawing.Size(445, 95);
+            this.lvMoves.Size = new System.Drawing.Size(379, 95);
             this.lvMoves.TabIndex = 5;
             // 
             // lvSolutions
@@ -707,7 +718,7 @@
             this.lvSolutions.FormattingEnabled = true;
             this.lvSolutions.Location = new System.Drawing.Point(12, 53);
             this.lvSolutions.Name = "lvSolutions";
-            this.lvSolutions.Size = new System.Drawing.Size(445, 95);
+            this.lvSolutions.Size = new System.Drawing.Size(379, 69);
             this.lvSolutions.TabIndex = 4;
             this.lvSolutions.SelectedIndexChanged += new System.EventHandler(this.lvSolutions_SelectedIndexChanged);
             // 
@@ -762,9 +773,9 @@
             this.tslbCoordText,
             this.tlsbModel,
             this.tlsbModelText});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 483);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 496);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(764, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(698, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -840,7 +851,7 @@
             this.helpToolStripButton});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(764, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(698, 25);
             this.toolStripMain.TabIndex = 7;
             this.toolStripMain.Text = "toolStrip2";
             // 
@@ -959,7 +970,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lbColComp, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbRowComp, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(287, 360);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(287, 357);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1094,7 +1105,7 @@
             // nUpdMoves
             // 
             this.nUpdMoves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nUpdMoves.Location = new System.Drawing.Point(159, 440);
+            this.nUpdMoves.Location = new System.Drawing.Point(159, 465);
             this.nUpdMoves.Maximum = new decimal(new int[] {
             3,
             0,
@@ -1118,17 +1129,111 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(17, 440);
+            this.label9.Location = new System.Drawing.Point(17, 465);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(136, 15);
             this.label9.TabIndex = 10;
             this.label9.Text = "Movidas a analizar: ";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripDropDownButton1,
+            this.toolStripButton5});
+            this.toolStrip1.Location = new System.Drawing.Point(1, 57);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(302, 25);
+            this.toolStrip1.TabIndex = 11;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButton1.Text = "Primero";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(54, 22);
+            this.toolStripButton2.Text = "Anterior";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(55, 22);
+            this.toolStripButton3.Text = "Proximo";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(47, 22);
+            this.toolStripButton4.Text = "Ultimo";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(47, 22);
+            this.toolStripDropDownButton1.Text = "Hijos";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "toolStripMenuItem3";
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.CheckOnClick = true;
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(34, 22);
+            this.toolStripButton5.Text = "Fork";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 505);
+            this.ClientSize = new System.Drawing.Size(698, 518);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.nUpdMoves);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -1155,6 +1260,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUpdMoves)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1265,6 +1372,16 @@
         private System.Windows.Forms.ToolStripButton closeToolStripButton;
         private System.Windows.Forms.Label lbColumnPos;
         private System.Windows.Forms.Label lbRowPos;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
 

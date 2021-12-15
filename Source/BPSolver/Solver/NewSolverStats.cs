@@ -10,7 +10,7 @@ namespace BPSolver.Solver
     internal partial class NewSolver
     {
 
-        public void UpdateGameStats(GameSimpleStatus status)
+        public void UpdateGameStats(GameStatus status)
         {
 
             status.CellsCount = CellsCount(status.Cells);

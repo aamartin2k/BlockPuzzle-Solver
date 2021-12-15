@@ -8,12 +8,10 @@ namespace WFProt
     {
         
 
-        public SelectionState(StContext context) : base(context)
+        public SelectionState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("SelectionState created");
         }
-
-
 
 
         public override void PieceButtonClicked(PieceName piece)
@@ -36,8 +34,8 @@ namespace WFProt
             Context.CurrentState = Context.NextPiecePlayState;
             // CurrentPiece changes
             Context.CurrentPiece = piece;
-
-
+            // Guardar indice 
+            Context.NextPieceIndex = index;
         }
 
        

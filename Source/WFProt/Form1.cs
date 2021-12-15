@@ -80,10 +80,10 @@ namespace WFProt
             // Action buttons click handler
 
             tsbArrow.Click += TsbArrow_Click;
-            tsbArrow.Click += TsbShowAction_Click;
+            //tsbArrow.Click += TsbShowAction_Click;
 
             tsbDelete.Click += TsbDelete_Click;
-            tsbDelete.Click += TsbShowAction_Click;
+            //tsbDelete.Click += TsbShowAction_Click;
 
             tsbUndo.Click += tsbUndo_Click;
             tsbUndo.Click += TsbShowAction_Click;
@@ -218,7 +218,7 @@ namespace WFProt
 
             #endregion
 
-            //establecer handler para actualizar default item
+            //establecer handler para actualizar default item en ToolStripButtons
             tssbTwo.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
             tssbThreeLine.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
             tssbThreeL.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);

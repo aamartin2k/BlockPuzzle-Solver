@@ -12,10 +12,10 @@ namespace BPSolver.Command
     {
 
         Coord Coord;
-        GameSimpleStatus Cells;
+        GameStatus Cells;
         PieceColor OldColor;
 
-        public DeleteCellCommand(Coord coord, GameSimpleStatus cells)
+        public DeleteCellCommand(Coord coord, GameStatus cells)
         {
             Coord = coord;
             Cells = cells;

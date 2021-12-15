@@ -8,7 +8,7 @@ namespace WFProt
     class PieceSettingState : BaseState, IGuiState
     {
   
-        public PieceSettingState(StContext context) : base(context)
+        public PieceSettingState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("PieceSettingState created");
         }
@@ -20,9 +20,6 @@ namespace WFProt
 
             // Set Current Piece
             Context.CurrentPiece = piece;
-            // State changes
-            //Context.CurrentState = Context.PieceSettingState;
-
         }
 
         public override void NextPieceImageClicked( int index, PieceName piece = PieceName.None)

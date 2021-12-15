@@ -83,7 +83,6 @@
     <Compile Include="StateMachine\GridCellDeletionState.cs" />
     <Compile Include="StateMachine\GridCellDrawingState.cs" />
     <Compile Include="StateMachine\IGuiState.cs" />
-    <Compile Include="StateMachine\InitialState.cs" />
     <Compile Include="StateMachine\NextPieceDeletionState.cs" />
     <Compile Include="StateMachine\NextPieceDrawingState.cs" />
     <Compile Include="StateMachine\NextPiecePlayState.cs" />

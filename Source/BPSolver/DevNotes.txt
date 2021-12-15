@@ -7,3 +7,15 @@
    --Establecer primer elem como default en tsbutoons piece
 
    --Impl Modo Gridcelldrawing _  click nextpiece 
+     chequear cambios de estado:
+	  Deleting a NextPiece, mantener Delete
+	  Deleting a ToolPiecde, cambiar a PieceSetting
+Controller
+Implementar Play, borrar nextPiece
+Modular opciones de chequeo
+eliminar chequeo de completamiento de Draw
+Implementar cloning de gameStatus
+Implementar descripcion del movimiento
+
+Analizar implicaciones de Jugada y Undo
+ al crearse nuevo estado por jugada no se puede deshacer

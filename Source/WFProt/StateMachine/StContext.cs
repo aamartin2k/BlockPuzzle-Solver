@@ -34,15 +34,8 @@ namespace WFProt
 
         private void ShowStateChange(IGuiState currentState)
         {
-            CommandAction action = CommandAction.Select;
-
-            if (currentState.GetType().Equals(NextPiecePlayState.GetType()))
-            {
-                action = CommandAction.Play;
-     
-                ShowCurrentAction?.Invoke(action);
-            }
-
+            //    ShowCurrentAction?.Invoke(action);
+            ShowCurrentAction?.Invoke((currentState as BaseState).Action);
         }
 
         //public PieceName CurrentPiece
@@ -70,7 +63,7 @@ namespace WFProt
             }
         }
 
-
+        internal int NextPieceIndex { get; set; }
 
         // Entradas, se corresponden a metodos de la interfase
        
@@ -106,24 +99,27 @@ namespace WFProt
         public void CreateStates()
         {
     
-            InitialState = new InitialState(this);
+           
+            SelectionState = new SelectionState(this, CommandAction.Select);
 
-            SelectionState = new SelectionState(this);
-            DeletionState = new DeletionState(this);
+            DeletionState = new DeletionState(this, CommandAction.Delete);
 
-            PieceSettingState = new PieceSettingState(this);
-            NextPiecePlayState = new NextPiecePlayState(this);
+            GridCellDeletionState = new GridCellDeletionState(this, CommandAction.Delete);
+            NextPieceDeletionState = new NextPieceDeletionState(this, CommandAction.Delete);
 
-            NextPieceDrawingState = new NextPieceDrawingState(this);
-            GridCellDrawingState = new GridCellDrawingState(this);
+            PieceSettingState = new PieceSettingState(this, CommandAction.Select);
 
-            GridCellDeletionState = new GridCellDeletionState(this);
-            NextPieceDeletionState = new NextPieceDeletionState(this);
+            NextPiecePlayState = new NextPiecePlayState(this, CommandAction.Play);
 
-            CurrentState = InitialState;
+            NextPieceDrawingState = new NextPieceDrawingState(this, CommandAction.Select);
+            GridCellDrawingState = new GridCellDrawingState(this, CommandAction.Select);
+
+           
+
+            CurrentState = SelectionState;
         }
 
-        public InitialState InitialState { get; private set; }
+        //public InitialState InitialState { get; private set; }
         public DeletionState DeletionState { get; private set; }
         public SelectionState SelectionState { get; private set; }
         public PieceSettingState PieceSettingState { get; private set; }

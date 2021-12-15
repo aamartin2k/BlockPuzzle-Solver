@@ -12,7 +12,7 @@ namespace BPSolver
     {
         // Declaraciones
         // estado del juegp
-        private GameSimpleStatus _gameStatus;
+        private GameStatus _gameStatus;
         //ref a resolvedor
         // crear mediante prop
         // eliminar ref de Form  
@@ -24,8 +24,10 @@ namespace BPSolver
         // Constructor Explicito NewSolver
         public Controller()
         {
+            // Crear deps
+            // Solver
             _gameSolver = new NewSolver();
-            //_gameSolver = new GameSolver();
+           
            
         }
 

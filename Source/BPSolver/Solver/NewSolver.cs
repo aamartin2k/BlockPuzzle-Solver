@@ -12,14 +12,15 @@ namespace BPSolver.Solver
     {
         // sustituir GameSolver
 
-        public bool TestPiece(Coord insertCoord, PieceName name, GameSimpleStatus gstat)
+        public bool TestPiece(Coord insertCoord, PieceName name, GameStatus gstat)
         {
             List<Coord> realCoords;
             // Get reference to piece
             Piece piece = GetPiece(name);
 
             // Create absolute coords list.
-            realCoords = GetRealCoords(insertCoord, piece.Matrix);
+            //realCoords = GetRealCoords(insertCoord, piece.Matrix);
+            realCoords = Piece.GetRealMatrix(piece, insertCoord);
 
             // Test if all coords are within limits.
             bool ret = TestRealCoords(realCoords);
@@ -63,7 +64,7 @@ namespace BPSolver.Solver
 
         // Comprobar que las celdas a ocupar por la pieza
         // están vacías.
-        private bool TestFreeCells(GameSimpleStatus game, List<Coord> realCoords)
+        private bool TestFreeCells(GameStatus game, List<Coord> realCoords)
         {
             var ex = realCoords.Select(c => game[c].IsFree).Where(x => x != true).Count();
             return ex == 0;

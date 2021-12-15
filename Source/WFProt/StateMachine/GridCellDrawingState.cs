@@ -8,7 +8,7 @@ namespace WFProt
     {
         public Action<Coord, PieceName> Out_DrawGrid;
        
-        public GridCellDrawingState(StContext context) : base(context)
+        public GridCellDrawingState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("GridCellDrawingState created");
         }
@@ -23,10 +23,10 @@ namespace WFProt
 
         public override void PieceButtonClicked(PieceName piece)
         {
-            base.PieceButtonClicked(piece);
+            // State changes
+            Context.CurrentState = Context.PieceSettingState;
+            Context.CurrentState.PieceButtonClicked(piece);
 
-            // Set Current Piece
-            Context.CurrentPiece = piece;
         }
 
         public override void NextPieceImageClicked(int index, PieceName piece = PieceName.None)

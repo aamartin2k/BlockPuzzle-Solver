@@ -36,10 +36,10 @@ namespace BPSolver
 
         // Insertar Pieza desde NextPiece en Tablero
         // Jugada
-        void In_DrawGridPlay(Coord coord, PieceName name);
+        void In_DrawGridPlay(Coord coord, PieceName name, int index);
 
         // Salidas
-        Action<GameSimpleStatus> Out_UpdateBoard { get; set; }
+        Action<GameStatus> Out_UpdateBoard { get; set; }
 
         // Notificaciones
         Action<bool> Out_UserEnable { get; set; }

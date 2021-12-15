@@ -1,6 +1,6 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Solver;
-using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Objects
 {
-    public class GameSimpleStatusFactory
+    public class GameStatusFactory
     {
-        static public GameSimpleStatus Create()
+        static public GameStatus Create()
         {
-            GameSimpleStatus onew = new GameSimpleStatus
+            GameStatus onew = new GameStatus
             {
                 NextPieces = new List<PieceName>(),
-                //RowsCompletedIndex = new List<int>(),
-                //ColumnsCompletedIndex = new List<int>(),
+
                 Cells = new  List<Cell>(),
                 CantMoves = 3
             };
@@ -36,6 +35,21 @@ namespace BPSolver.Objects
             }
 
             return onew;
+        }
+
+        static public GameStatus Clone(GameStatus item)
+        {
+            // create Memory Stream
+
+            GameStatus cloned;
+
+            using (MemoryStream tempStream = new MemoryStream())
+            {
+                Serializer.Serialize<GameStatus>(item, tempStream);
+                cloned = Serializer.Deserialize<GameStatus>(tempStream);
+            }
+
+            return cloned;
         }
     }
 }

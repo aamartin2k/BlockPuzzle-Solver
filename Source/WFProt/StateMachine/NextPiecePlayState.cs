@@ -8,9 +8,9 @@ namespace WFProt
     class NextPiecePlayState : BaseState, IGuiState
     {
         
-        public Action<Coord, PieceName> Out_DrawGridPlay;
+        public Action<Coord, PieceName,int> Out_DrawGridPlay;
 
-        public NextPiecePlayState(StContext context) : base(context)
+        public NextPiecePlayState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("NextPiecePlayState created");
         }
@@ -20,15 +20,24 @@ namespace WFProt
         {
             base.GridCellClicked(position);
 
-            
-            Out_DrawGridPlay(position, Context.CurrentPiece);
+            // Execute play
+            Out_DrawGridPlay(position, Context.CurrentPiece, Context.NextPieceIndex);
+
 
             // reset CurrentPiece
             Context.CurrentPiece = PieceName.None;
             // State changes
             Context.CurrentState = Context.SelectionState;
+            
         }
 
+        public override void NextPieceImageClicked(int index, PieceName piece = PieceName.None)
+        {
+            // CurrentPiece changes
+            Context.CurrentPiece = piece;
+            // Guardar indice 
+            Context.NextPieceIndex = index;
+        }
 
 
     }

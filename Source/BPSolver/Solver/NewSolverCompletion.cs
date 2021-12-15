@@ -12,7 +12,7 @@ namespace BPSolver.Solver
     {
 
         // Metodos publicos
-        public void ClearCompleted(GameSimpleStatus status)
+        public void ClearCompleted(GameStatus status)
         {
             int count;
 
@@ -70,12 +70,12 @@ namespace BPSolver.Solver
 
         // Metodos privados
 
-        private bool IsAnyCompleted(GameSimpleStatus game)
+        private bool IsAnyCompleted(GameStatus game)
         {
             return IsAnyRowCompleted(game) | IsAnyColumnCompleted(game);
         }
 
-        public bool IsAnyRowCompleted(GameSimpleStatus game)
+        public bool IsAnyRowCompleted(GameStatus game)
         {
 
             for (int i = 0; i < Constants.Rank; i++)
@@ -87,7 +87,7 @@ namespace BPSolver.Solver
             return false;
         }
 
-        public bool IsAnyColumnCompleted(GameSimpleStatus game)
+        public bool IsAnyColumnCompleted(GameStatus game)
         {
 
             for (int i = 0; i < Constants.Rank; i++)
@@ -100,7 +100,7 @@ namespace BPSolver.Solver
 
         }
 
-        private bool IsColumnCompleted(GameSimpleStatus game, int col)
+        private bool IsColumnCompleted(GameStatus game, int col)
         {
             var list = GetColumn(game, col);
             int cnt = list.Count(x => x.IsFree);
@@ -108,7 +108,7 @@ namespace BPSolver.Solver
             return cnt == 0;
         }
 
-        private bool IsRowCompleted(GameSimpleStatus game, int row)
+        private bool IsRowCompleted(GameStatus game, int row)
         {
             var list = GetRow(game, row);
             int cnt = list.Count(x => x.IsFree);
@@ -116,13 +116,13 @@ namespace BPSolver.Solver
             return cnt == 0;
         }
 
-        private List<Cell> GetRow(GameSimpleStatus game, int row)
+        private List<Cell> GetRow(GameStatus game, int row)
         {
             var list = game.Cells.Where(z => z.Row == row);
             return list.ToList();
         }
 
-        private List<Cell> GetColumn(GameSimpleStatus game, int col)
+        private List<Cell> GetColumn(GameStatus game, int col)
         {
             var list = game.Cells.Where(z => z.Col == col);
             return list.ToList();
@@ -130,7 +130,7 @@ namespace BPSolver.Solver
 
 
         // Contar Filas completas
-        private int CompletedRowsCount(GameSimpleStatus game)
+        private int CompletedRowsCount(GameStatus game)
         {
             int count = 0;
 
@@ -145,7 +145,7 @@ namespace BPSolver.Solver
         }
 
         // Contar Columnas completas
-        public int CompletedColumnsCount(GameSimpleStatus game)
+        public int CompletedColumnsCount(GameStatus game)
         {
             int count = 0;
 
@@ -159,7 +159,7 @@ namespace BPSolver.Solver
         }
 
         // Listar Indice de Filas completas
-        public int[] GetListRowsCompleted(GameSimpleStatus game)
+        public int[] GetListRowsCompleted(GameStatus game)
         {
             List<int> list = new List<int>();
 
@@ -172,7 +172,7 @@ namespace BPSolver.Solver
             return list.ToArray();
         }
 
-        private void ListRowsCompleted(GameSimpleStatus game, List<int> list)
+        private void ListRowsCompleted(GameStatus game, List<int> list)
         {
             for (int i = 0; i < Constants.Rank; i++)
             {
@@ -183,7 +183,7 @@ namespace BPSolver.Solver
 
 
         // Listar Indice de Columnas completas
-        private void ListColumnsCompleted(GameSimpleStatus game, List<int> list)
+        private void ListColumnsCompleted(GameStatus game, List<int> list)
         {
             for (int i = 0; i < Constants.Rank; i++)
             {
@@ -192,7 +192,7 @@ namespace BPSolver.Solver
             }
         }
 
-        public int[] GetListColumnsCompleted(GameSimpleStatus game)
+        public int[] GetListColumnsCompleted(GameStatus game)
         {
             List<int> list = new List<int>();
 
@@ -206,14 +206,14 @@ namespace BPSolver.Solver
         }
 
         // Eliminar
-        private void ClearColumn(GameSimpleStatus game, int index)
+        private void ClearColumn(GameStatus game, int index)
         {
             var list = GetColumn(game, index);
             list.Select(c => c.Color = PieceColor.None).ToList();
 
         }
 
-        private void ClearRow(GameSimpleStatus game, int index)
+        private void ClearRow(GameStatus game, int index)
         {
             var list = GetRow(game, index);
             list.Select(c => c.Color = PieceColor.None).ToList();

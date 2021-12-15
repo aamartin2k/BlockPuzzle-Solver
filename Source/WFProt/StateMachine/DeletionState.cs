@@ -6,7 +6,7 @@ namespace WFProt
     class DeletionState : BaseState, IGuiState
     {
        
-        public DeletionState(StContext context) : base(context)
+        public DeletionState(StContext context, CommandAction action) : base(context, action)
         {
             Console.WriteLine("DeletionState created");
         }
@@ -32,9 +32,14 @@ namespace WFProt
         }
 
         public override void PieceButtonClicked(PieceName piece)
-        {  // override to do nothing 
-            Console.WriteLine("PieceButton Clicked in DeletionState, do nothing ");
+        {
+            // State changes
+            Context.CurrentState = Context.PieceSettingState;
+            Context.CurrentState.PieceButtonClicked(piece);
+
         }
+
     }
+    
 
 }
