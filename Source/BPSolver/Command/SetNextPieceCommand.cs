@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace BPSolver.Command
 {
-    internal class SetNextPieceCommand : ICommand
+    internal class DrawNextPieceCommand : ICommand
     {
-        int Index;
+        int Index;  //DrawNextPieceCommand
         PieceName OldName, NewName;
         List<PieceName> NextPieces;
 
-        //In_SetNextPiece(int index, PieceName name)
-
-        public SetNextPieceCommand(int index, List<PieceName> nextPieces, PieceName name)
+        
+        public DrawNextPieceCommand(int index, List<PieceName> nextPieces, PieceName name)
         {
             Index = index;
             NewName = name;

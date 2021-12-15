@@ -37,9 +37,11 @@ namespace WFProt
             CommandAction action = CommandAction.Select;
 
             if (currentState.GetType().Equals(NextPiecePlayState.GetType()))
+            {
                 action = CommandAction.Play;
-
-            ShowCurrentAction?.Invoke(action);
+     
+                ShowCurrentAction?.Invoke(action);
+            }
 
         }
 

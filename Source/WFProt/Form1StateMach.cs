@@ -24,9 +24,9 @@ namespace WFProt
             context.GridCellDeletionState.Out_DeleteGridCell = StmOut_DeleteGridCell;
             context.NextPieceDeletionState.Out_DeleteNextPiece = StmOut_DeleteNextPiece;
 
-            context.NextPieceDrawingState.Out_DrawNextPiece = Out_DrawNextPiece;
-            context.GridCellDrawingState.Out_DrawGrid = Out_DrawGrid;
-            context.NextPiecePlayState.Out_DrawGridPlay = Out_DrawGridPlay;
+            context.NextPieceDrawingState.Out_DrawNextPiece = StmOut_DrawNextPiece;
+            context.GridCellDrawingState.Out_DrawGrid = StmOut_DrawPiece;
+            context.NextPiecePlayState.Out_DrawGridPlay = StmOut_DrawGridPlay;
 
             context.Out_ShowCurrentPiece = ShowCurrentPiece;
             context.ShowCurrentAction = ShowCurrentAction;
@@ -90,32 +90,34 @@ namespace WFProt
         #endregion
 
         #region "Salidas"
-        void StmOut_DeleteGridCell(Coord pos)
-        {
-            Console.WriteLine(string.Format("OUTPUT. Borrar Grid Cell Row: {0} Col: {1}", pos.Row, pos.Col));
-            Out_DeleteCell(pos);
-        }
-
-        void StmOut_DeleteNextPiece(int index)
-        {
-            Console.WriteLine(string.Format("OUTPUT. Borrar NextPieceImage index {0}", index));
-        }
-
-        void Out_DrawNextPiece(int index, PieceName piece)
-        {
-            Console.WriteLine(string.Format("OUTPUT. Dibujar NextPiece index: {0} Image: {1} ", index, piece));
-            Out_SetNextPiece(index, piece);
-        }
-
-        void Out_DrawGrid(Coord pos, PieceName piece)
+        void StmOut_DrawPiece(Coord pos, PieceName piece)
         {
             Console.WriteLine(string.Format("OUTPUT. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
             Out_DrawPiece(pos, piece);
         }
 
-        void Out_DrawGridPlay(Coord pos, PieceName piece)
+        void StmOut_DrawNextPiece(int index, PieceName piece)
+        {
+            Console.WriteLine(string.Format("OUTPUT. Dibujar NextPiece index: {0} Image: {1} ", index, piece));
+            Out_DrawNextPiece(index, piece);
+        }
+
+        void StmOut_DeleteGridCell(Coord pos)
+        {
+            Console.WriteLine(string.Format("OUTPUT. Borrar Grid Cell Row: {0} Col: {1}", pos.Row, pos.Col));
+            Out_DeleteGridCell(pos);
+        }
+
+        void StmOut_DeleteNextPiece(int index)
+        {
+            Console.WriteLine(string.Format("OUTPUT. Borrar NextPieceImage index {0}", index));
+            Out_DeleteNextPiece(index);
+        }
+        
+        void StmOut_DrawGridPlay(Coord pos, PieceName piece)
         {
             Console.WriteLine(string.Format("OUTPUT. PLAY. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
+            Out_DrawGridPlay(pos, piece); 
         }
 
 

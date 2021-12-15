@@ -24,14 +24,20 @@ namespace WFProt
 
             // Conexion
             // salidas de Form
+            //IO
             form.Out_NewFile = server.In_NewFile;
             form.Out_CloseFile = server.In_CloseFile;
             form.Out_LoadFile = server.In_LoadFile;
             form.Out_SaveFile = server.In_SaveFile;
-            form.Out_DrawPiece = server.In_PutPiece;
-            form.Out_DeleteCell = server.In_DeleteCell;
-            form.Out_SetNextPiece = server.In_SetNextPiece;
+            //Actions
             form.Out_Undo = server.In_Undo;
+
+            form.Out_DrawPiece = server.In_DrawPiece;
+            form.Out_DrawNextPiece = server.In_DrawNextPiece;
+            form.Out_DeleteGridCell = server.In_DeleteGridCell;
+
+            form.Out_DeleteNextPiece = server.In_DeleteNextPiece;
+            form.Out_DrawGridPlay = server.In_DrawGridPlay;
 
             // salidas de Controller
             server.Out_UpdateBoard = form.In_UpdateBoard;

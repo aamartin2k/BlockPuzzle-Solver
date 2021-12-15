@@ -11,14 +11,21 @@ namespace WFProt
         // Deshacer ultimo comando
         public Action Out_Undo { get; set; }
 
-        // Insert Pieza en board
+        // Dibujar Pieza Seleccionada en board
         public Action<Coord, PieceName> Out_DrawPiece { get; set; }
 
-        
-        // Poner NextPiece en Image
-        public Action<int, PieceName> Out_SetNextPiece { get; set; }
+        // Poner Pieza seleccionada en Image NextPiece
+        public Action<int, PieceName> Out_DrawNextPiece { get; set; }
 
-        public Action<Coord> Out_DeleteCell { get; set; }
+        // Borrar celda en Grid StmOut_DeleteGridCell
+        public Action<Coord> Out_DeleteGridCell { get; set; }
+
+        // Borrar Pieza  en Image NextPiece
+        public Action<int> Out_DeleteNextPiece { get; set; }
+
+        // Poner Pieza seleccionada desde Image NextPiece en Board
+        // Jugada 
+        public Action<Coord, PieceName> Out_DrawGridPlay { get; set; }
 
         // Metodos Concretos
         private void Undo()

@@ -1,0 +1,9 @@
+﻿Refactor:
+  Class Piece:
+   --Hacer Matrix propiedad private set;
+   --  Implica cambios en Factory NewSolver CreatePieceSet()
+   -- Hace instance method que devuelva coord reales en basea insert point (ins point)
+
+   --Establecer primer elem como default en tsbutoons piece
+
+   --Impl Modo Gridcelldrawing _  click nextpiece 

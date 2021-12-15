@@ -40,6 +40,7 @@ namespace WFProt
 
                 case CommandAction.Undo:
                     command = WFProt.Properties.Resources.Undo;
+                    this.Cursor = Cursors.Arrow;
                     break;
 
                 case CommandAction.Play:

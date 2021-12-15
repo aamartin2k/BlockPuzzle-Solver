@@ -21,6 +21,14 @@ namespace WFProt
 
             Out_DrawNextPiece(index, Context.CurrentPiece); 
         }
+
+        public override void PieceButtonClicked(PieceName piece)
+        {
+            base.PieceButtonClicked(piece);
+
+            // Set Current Piece
+            Context.CurrentPiece = piece;
+        }
     }
 
       

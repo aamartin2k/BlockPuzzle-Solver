@@ -15,19 +15,19 @@ namespace WFProt
     {
         // Declarations
         private const string extension = "Modelos | *.bmd";
-       
+
         public Form1()
         {
             InitializeComponent();
 
             #region Piece Id
-            
+
 
             // Setting piece id on buttons tag
             tsbArrow.Tag = CommandAction.Select;
             tsbDelete.Tag = CommandAction.Delete;
             tsbUndo.Tag = CommandAction.Undo;
-            
+
             tsbOne.Tag = PieceName.One;
             tsbTwoHor.Tag = PieceName.TwoHor;
             tsbTwoVert.Tag = PieceName.TwoVert;
@@ -78,7 +78,7 @@ namespace WFProt
 
             // Wire up event handling methods
             // Action buttons click handler
-          
+
             tsbArrow.Click += TsbArrow_Click;
             tsbArrow.Click += TsbShowAction_Click;
 
@@ -177,7 +177,7 @@ namespace WFProt
             //vColorNine.BackColor = ColorAdapter(PieceColor.Nine);
 
             // Grid Config
-            int dim = (sgBoard.Width  / 10) ;
+            int dim = (sgBoard.Width / 10);
 
             sgBoard.BorderStyle = BorderStyle.None;
             sgBoard.Redim(Constants.Rank, Constants.Rank);
@@ -193,7 +193,7 @@ namespace WFProt
                 {
                     xCell = new Cells.Cell();
                     xCell.View = vBackColor;
-                    
+
                     sgBoard[row, col] = xCell;
                     sgBoard[row, col].AddController(cCont);
                 }
@@ -205,7 +205,7 @@ namespace WFProt
                 sgBoard.Rows[row].Height = dim;
             }
 
-            
+
             sgBoard.AutoStretchColumnsToFitWidth = false;
             sgBoard.AutoStretchRowsToFitHeight = false;
 
@@ -218,17 +218,31 @@ namespace WFProt
 
             #endregion
 
-            tssbTwo.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbThreeLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbThreeL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbT.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFourJ.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFourL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFourS.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFourZ.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFourLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFiveLine.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
-            tssbFiveL.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            //establecer handler para actualizar default item
+            tssbTwo.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbThreeLine.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbThreeL.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbT.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourJ.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourL.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourS.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourZ.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFourLine.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFiveLine.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+            tssbFiveL.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
+
+            // ejecutando handler para poner como default el primer elemento 
+            TssbFirstDefault(tssbTwo);
+            TssbFirstDefault(tssbThreeLine);
+            TssbFirstDefault(tssbThreeL);
+            TssbFirstDefault(tssbT);
+            TssbFirstDefault(tssbFourJ);
+            TssbFirstDefault(tssbFourL);
+            TssbFirstDefault(tssbFourS);
+            TssbFirstDefault(tssbFourZ);
+            TssbFirstDefault(tssbFourLine);
+            TssbFirstDefault(tssbFiveLine);
+            TssbFirstDefault(tssbFiveL);
 
             newToolStripButton.Click += newToolStripButton_Click;
             saveToolStripButton.Click += saveToolStripButton_Click;
@@ -400,6 +414,13 @@ namespace WFProt
             //    lvMoves.Items.Add(move);
             //}
 
+        }
+        private void TssbFirstDefault(ToolStripSplitButton parent)
+        {
+            ToolStripItem item = parent.DropDownItems[0];
+            var eh = new ToolStripItemClickedEventArgs(item);
+
+            TssbDefault_DropDownItemClicked(parent, eh);
         }
 
         private void TssbDefault_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

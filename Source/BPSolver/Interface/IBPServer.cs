@@ -23,13 +23,20 @@ namespace BPSolver
         void In_Undo(); 
 
         // Insertar Pieza en Tablero
-        void In_PutPiece(Coord coord, PieceName name);
+        void In_DrawPiece(Coord coord, PieceName name);
 
         // Establecer Proxima Pieza
-        void In_SetNextPiece(int index, PieceName name);
+        void In_DrawNextPiece(int index, PieceName name);
 
-        // Borrar celda Out_DeleteCell
-        void In_DeleteCell(Coord coord);
+        // Borrar celda en Grid
+        void In_DeleteGridCell(Coord coord);
+
+        // Borrar Nextpiece
+        void In_DeleteNextPiece(int index);
+
+        // Insertar Pieza desde NextPiece en Tablero
+        // Jugada
+        void In_DrawGridPlay(Coord coord, PieceName name);
 
         // Salidas
         Action<GameSimpleStatus> Out_UpdateBoard { get; set; }

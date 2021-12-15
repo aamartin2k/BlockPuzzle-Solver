@@ -1093,7 +1093,6 @@
             // 
             // nUpdMoves
             // 
-            this.nUpdMoves.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nUpdMoves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nUpdMoves.Location = new System.Drawing.Point(159, 440);
             this.nUpdMoves.Maximum = new decimal(new int[] {

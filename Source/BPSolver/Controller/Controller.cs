@@ -108,21 +108,8 @@ namespace BPSolver
             Out_UpdateBoard(_gameStatus);
         }
 
-        // Establecer proxima pieza
-        public void In_SetNextPiece(int index, PieceName name)
-        {
-            ICommand command = new SetNextPieceCommand(index, 
-                                                      _gameStatus.NextPieces, 
-                                                      name);
-            ExecuteCommandDo(command);
-
-            // notificar form para update
-            Out_UpdateBoard(_gameStatus);
-        }
-
-
         //Insertar nueva pieza
-        public void In_PutPiece(Coord coord, PieceName name) 
+        public void In_DrawPiece(Coord coord, PieceName name)
         {
             // Chequear si cabe
             bool ret = _gameSolver.TestPiece(coord, name, _gameStatus);
@@ -130,14 +117,19 @@ namespace BPSolver
             if (ret)
             {
                 //ejecutar
-                List<Coord> RealCoords  ;
+                List<Coord> RealCoords;
                 // Get reference to piece
                 Piece piece = _gameSolver.GetPiece(name);
                 // Create absolute coords list.
                 RealCoords = _gameSolver.GetRealCoords(coord, piece.Matrix);
 
+                // Test
+                List<Coord> TestRealCoords;
+                TestRealCoords = Piece.GetRealMatrix(piece, coord);
+                // Test
+
                 // create command
-                ICommand command = new PutPieceCommand(RealCoords, piece.Color, _gameStatus);
+                ICommand command = new DrawPieceCommand(RealCoords, piece.Color, _gameStatus);
                 ExecuteCommandDo(command);
 
                 // Notificar para actualizacion, ver pieza insertada
@@ -159,7 +151,7 @@ namespace BPSolver
                 }
 
                 // Delete
-                _gameSolver.ClearCompleted(_gameStatus); 
+                _gameSolver.ClearCompleted(_gameStatus);
 
                 // Update Stats
                 _gameSolver.UpdateGameStats(_gameStatus);
@@ -169,7 +161,20 @@ namespace BPSolver
             }
         }
 
-        public void In_DeleteCell(Coord coord)
+        // Establecer proxima pieza
+        public void In_DrawNextPiece(int index, PieceName name)
+        {
+            ICommand command = new DrawNextPieceCommand(index, 
+                                                      _gameStatus.NextPieces, 
+                                                      name);
+            ExecuteCommandDo(command);
+
+            // notificar form para update
+            Out_UpdateBoard(_gameStatus);
+        }
+
+        // Borrar celda en Grid
+        public void In_DeleteGridCell(Coord coord)
         {
             // create command
             ICommand command = new DeleteCellCommand(coord, _gameStatus);
@@ -182,7 +187,20 @@ namespace BPSolver
             Out_UpdateBoard(_gameStatus);
         }
 
+        // Borrar proxima pieza
+        public void In_DeleteNextPiece(int index)
+        {
+            ICommand command = new DeleteNextPieceCommand(index,
+                                                      _gameStatus.NextPieces);
+            ExecuteCommandDo(command);
 
+            // notificar form para update
+            Out_UpdateBoard(_gameStatus);
+        }
+        public void In_DrawGridPlay(Coord coord, PieceName name)
+        {
+
+        }
 
         // Salidas
         public Action<GameSimpleStatus> Out_UpdateBoard { get; set; }

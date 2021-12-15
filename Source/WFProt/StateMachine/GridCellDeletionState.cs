@@ -15,8 +15,6 @@ namespace WFProt
             Console.WriteLine("GridCellDeletionState created");
         }
 
-       
-
         public override void GridCellClicked(Coord position)
         {
             base.GridCellClicked(position);
@@ -25,6 +23,9 @@ namespace WFProt
             //Console.WriteLine(string.Format("GridCell Borrar Cell Row: {0} Col: {1}", position.Row, position.Column));
             Out_DeleteGridCell(position);
         }
+
+
+         
     }
 
 }

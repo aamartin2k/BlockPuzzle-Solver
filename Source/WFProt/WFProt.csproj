@@ -88,7 +88,6 @@
     <Compile Include="StateMachine\NextPieceDrawingState.cs" />
     <Compile Include="StateMachine\NextPiecePlayState.cs" />
     <Compile Include="StateMachine\PieceSettingState.cs" />
-    <None Include="StateMachine\Program.cs" />
     <Compile Include="StateMachine\SelectionState.cs" />
     <Compile Include="StateMachine\StContext.cs" />
     <EmbeddedResource Include="Form1.resx">
