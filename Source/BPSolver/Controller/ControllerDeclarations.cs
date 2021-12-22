@@ -11,12 +11,7 @@ namespace BPSolver
     public partial class Controller : IBPServer
     {
         // Declaraciones
-        // estado del juegp
-        private GameStatus _gameStatus;
-        //ref a resolvedor
-        // crear mediante prop
-        // eliminar ref de Form  
-
+        
         //private GameSolver _gameSolver;
         private NewSolver _gameSolver;
 

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace BPSolver
 {
-    public partial class Controller : IBPServer
+    public partial class Controller 
     {
       
         private Stack<ICommand> _commandStack;
 
-        private void ResetStack()
+        private void ResetCommandStack()
         {
             _commandStack = new Stack<ICommand>();
             Out_EmptyCommandStack(true);

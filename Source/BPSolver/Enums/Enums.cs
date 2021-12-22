@@ -7,6 +7,9 @@ namespace BPSolver.Enums
     public enum CommandAction
     { Select, Undo, Delete, Play }
 
+    public enum SequenceAction
+    { First, Previous, Next, Last }
+
     public enum PieceAttitude
     { None, Horizontal, Vertical, Both }
 

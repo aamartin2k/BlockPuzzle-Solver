@@ -46,6 +46,31 @@ namespace WFProt
             context.ActionDeleteClicked();
         }
 
+        // Ejecutar Accion de secuencia
+        private void TsbSequence_Click(object sender, EventArgs e)
+        {
+            ToolStripItem itm = (ToolStripItem)sender;
+            SequenceAction action = (SequenceAction)itm.Tag;
+
+            switch (action)
+            {
+                case SequenceAction.First:
+                    Out_MoveFirst();
+                    break;
+                case SequenceAction.Previous:
+                    Out_MovePrevious();
+                    break;
+                case SequenceAction.Next:
+                    Out_MoveNext();
+                    break;
+                case SequenceAction.Last:
+                    Out_MoveLast();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void TsbSetPiece_Click(object sender, EventArgs e)
         {
             // Modo Seleccionar Pieza

@@ -39,6 +39,19 @@ namespace WFProt
             form.Out_DeleteNextPiece = server.In_DeleteNextPiece;
             form.Out_DrawGridPlay = server.In_DrawGridPlay;
 
+            // control de secuencia
+            // Browsing
+            form.Out_MoveFirst = server.In_MoveFirst;
+            form.Out_MovePrevious = server.In_MovePrevious;
+            form.Out_MoveNext = server.In_MoveNext;
+            form.Out_MoveLast = server.In_MoveLast;
+
+            // Childs
+            form.Out_AddChild = server.In_AddChild;
+            form.Out_AddChildStay = server.In_AddChildStay;
+            form.Out_MoveToChild = server.In_MoveToChild;
+            form.Out_Rename = server.In_Rename;
+
             // salidas de Controller
             server.Out_UpdateBoard = form.In_UpdateBoard;
             server.Out_UserEnable = form.In_UserEnable;
@@ -52,8 +65,13 @@ namespace WFProt
             server.Out_SelectRows = form.In_SelectRows;
             server.Out_SelectColumns = form.In_SelectColumns;
 
+            server.Out_MoveFirst_Result = form.In_MoveFirst_Result;
+            server.Out_MovePrevious_Result = form.In_MovePrevious_Result;
+            server.Out_MoveNext_Result = form.In_MoveNext_Result;
+            server.Out_MoveLast_Result = form.In_MoveLast_Result;
+            
+            
             //ejecutar Form
-
             Application.Run(form);
 
         }

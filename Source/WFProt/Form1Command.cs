@@ -14,14 +14,12 @@ namespace WFProt
 
         private void ShowCurrentPiece(PieceName name)
         {
-            label2.Text = name.ToString();
             Bitmap SelectedImage = GetImage(name);
             tslbPieceImage.Image = SelectedImage;
         }
 
         private void ShowCurrentAction(CommandAction action)
         {
-            label1.Text = action.ToString();
 
             Bitmap command;
 

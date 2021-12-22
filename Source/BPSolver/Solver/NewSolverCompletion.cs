@@ -70,7 +70,7 @@ namespace BPSolver.Solver
 
         // Metodos privados
 
-        private bool IsAnyCompleted(GameStatus game)
+        public bool IsAnyCompleted(GameStatus game)
         {
             return IsAnyRowCompleted(game) | IsAnyColumnCompleted(game);
         }

@@ -23,7 +23,12 @@ namespace WFProt
             #region Piece Id
 
 
-            // Setting piece id on buttons tag
+            // Setting action id on buttons tag
+            tsbMoveFirst.Tag = SequenceAction.First;
+            tsbMovePrevious.Tag = SequenceAction.Previous;
+            tsbMoveNext.Tag = SequenceAction.Next;
+            tsbMoveLast.Tag = SequenceAction.Last;
+
             tsbArrow.Tag = CommandAction.Select;
             tsbDelete.Tag = CommandAction.Delete;
             tsbUndo.Tag = CommandAction.Undo;
@@ -78,6 +83,11 @@ namespace WFProt
 
             // Wire up event handling methods
             // Action buttons click handler
+            tsbMoveFirst.Click += TsbSequence_Click;
+            tsbMovePrevious.Click += TsbSequence_Click;
+            tsbMoveNext.Click += TsbSequence_Click;
+            tsbMoveLast.Click += TsbSequence_Click;
+
 
             tsbArrow.Click += TsbArrow_Click;
             //tsbArrow.Click += TsbShowAction_Click;
@@ -218,6 +228,11 @@ namespace WFProt
 
             #endregion
 
+            // TreeView
+            cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.HorizontalDiagram;
+            //cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.LinearTree;
+            //cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.VerticalDiagram;
+
             //establecer handler para actualizar default item en ToolStripButtons
             tssbTwo.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
             tssbThreeLine.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);
@@ -263,37 +278,10 @@ namespace WFProt
                 sgBoard.Enabled = value;
             }
         }
-        private void Gs_AnalysisReady(object sender, EventArgs e)
-        {
-            // throw new NotImplementedException();
-             MessageBox.Show("Analysis Ready");
-            UpdateLabels();
-        }
+       
 
-        private void UpdateLabels()
-        {
-            
-            //lbFree.Text = gGStrat.Stats.FreeCells.ToString();
-            //lbOcupp.Text = gGStrat.Stats.OccupiedCells.ToString();
-            //lbCount.Text = gGStrat.Stats.CellsCount.ToString();
-            //lbColComp.Text = gGStrat.Stats.CompletedColumns.ToString();
-            //lbRowComp.Text = gGStrat.Stats.CompletedRows.ToString();
 
-            lvSolutions.Items.Clear();
-               
-            //foreach (var item in gGStrat.Solutions.OrderByDescending(s => s.CompleteRoC).ThenByDescending(s => s.Value).ThenByDescending(s => s.Preference)    )
-            //{
-            //    lvSolutions.Items.Add(item);
-            //}
-
-            //lbMoves.Text = gGStrat.Solutions.Count.ToString();
-        }
-
-        // private event handlers
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AnalizeGame();
-        }
+       
 
        
         private void TsbShowAction_Click(object sender, EventArgs e)
@@ -375,7 +363,7 @@ namespace WFProt
                 tlsbModelText.Text = saveFileDialog1.FileName;
                 tlsbActionImage.Image = saveToolStripButton.Image;
                 SaveFile(saveFileDialog1.FileName);
-                label1.Text = "Salvar";
+                
                 tlsbActionImage.Image = saveToolStripButton.Image;
                 
             }
@@ -391,7 +379,7 @@ namespace WFProt
                 tlsbModelText.Text = openFileDialog1.FileName;
                 tlsbActionImage.Image = openToolStripButton.Image;
                 LoadFile(openFileDialog1.FileName);
-                label1.Text = "Abrir";
+               
                
             }
 
@@ -405,7 +393,7 @@ namespace WFProt
 
         private void lvSolutions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lvMoves.Items.Clear();
+            //lvMoves.Items.Clear();
 
             //Solution sol = (Solution) lvSolutions.SelectedItem;
 

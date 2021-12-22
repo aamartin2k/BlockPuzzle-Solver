@@ -27,6 +27,20 @@ namespace WFProt
         // Jugada 
         public Action<Coord, PieceName, int> Out_DrawGridPlay { get; set; }
 
+        // Control de Secuencia
+        // Browsing
+        public Action Out_MoveFirst { get; set; }
+        public Action Out_MovePrevious { get; set; }
+        public Action Out_MoveNext { get; set; }
+        public Action Out_MoveLast { get; set; }
+        public Action<int> Out_MoveToChild { get; set; }
+        // Childs
+        public Action<GameStatus> Out_AddChild { get; set; }
+        public Action<GameStatus> Out_AddChildStay { get; set; }
+        public Action <int, string> Out_Rename { get; set; }
+        // 
+
+
         // Metodos Concretos
         private void Undo()
         {

@@ -14,8 +14,22 @@ Controller
 Implementar Play, borrar nextPiece
 Modular opciones de chequeo
 eliminar chequeo de completamiento de Draw
-Implementar cloning de gameStatus
+--Implementar cloning de gameStatus
+--Implementar actualizar lista de hijos
 Implementar descripcion del movimiento
+Mejorar impl de estadisticas, quitar de GameStatus y pasar a Meta
+
 
 Analizar implicaciones de Jugada y Undo
- al crearse nuevo estado por jugada no se puede deshacer
+ ?al crearse nuevo estado por jugada se resetea UndoStack
+
+ --en cada cambio de estado se resetea Stack
+
+ --al hacer jugada en ultimo nodo, por defecto se crea un estado hijo y se avanza,
+ 
+
+
+
+
+
+

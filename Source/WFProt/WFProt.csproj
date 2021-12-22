@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WFProt</RootNamespace>
     <AssemblyName>WFProt</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlTreeView">
+      <HintPath>..\..\..\..\..\04 CodeRefs Net\ControlTreeViewLibrary\Bin\net45\ControlTreeView.dll</HintPath>
+    </Reference>
     <Reference Include="DevAge.Windows.Forms">
       <HintPath>..\..\..\Deps\SourceGrid\4.11\DevAge.Windows.Forms.dll</HintPath>
     </Reference>
@@ -50,8 +53,15 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\04 CodeRefs Net\TreeCollections\Bin\net45\TreeCollections.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomNode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +86,9 @@
     <Compile Include="Form1Strat.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form1TreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateMachine\BaseState.cs" />
@@ -89,6 +102,9 @@
     <Compile Include="StateMachine\PieceSettingState.cs" />
     <Compile Include="StateMachine\SelectionState.cs" />
     <Compile Include="StateMachine\StContext.cs" />
+    <EmbeddedResource Include="CustomNode.resx">
+      <DependentUpon>CustomNode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +286,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.First.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.Fork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.Last.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buttons.Tree.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

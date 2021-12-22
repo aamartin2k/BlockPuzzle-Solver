@@ -13,31 +13,7 @@ namespace WFProt
         
 
         // Create GameStatus for Solver
-        private GameStatus CreateGameStatus()
-        {
-            //GameSimpleStatus st = new GameSimpleStatus(GameSolver.Rank);
-            GameStatus st = null;
-
-            // Copying NextPieces
-            PictureBox[] pbl = { pbNextPiece1, pbNextPiece2, pbNextPiece3 };
-
-            for (int i = 0; i < Constants.NexPieces; i++)
-            {
-                st.NextPieces.Add((pbl[i].Tag != null) ? (PieceName)pbl[i].Tag : PieceName.None);
-            }
-
-            // Copying Cells color
-            for (int row = 0; row < Constants.Rank; row++)
-            {
-                for (int col = 0; col < Constants.Rank; col++)
-                {
-                    st[row, col].Color = (PieceColor)sgBoard[row, col].Tag;
-                }
-            }
-
-            st.CantMoves = (int) nUpdMoves.Value;
-            return st;
-        }
+       
 
         // Call Solver AnalizeGame
         // Continuar refactor

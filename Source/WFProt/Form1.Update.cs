@@ -4,14 +4,25 @@ using BPSolver.Solver;
 using BPSolver.Objects;
 using BPSolver.Enums;
 using System.Drawing;
+using System;
+using BPSolver;
 
 namespace WFProt
 {
     public partial class Form1 : Form
 	{
         // Actualiza form con estado del juego
-        public void In_UpdateBoard(GameStatus status)
+        public void In_UpdateBoard(GameMetaStatus meta)
         {
+            Console.WriteLine(" In_UpdateBoard" );
+
+            //Separando decoraciones
+            GameStatus status = meta.Status;
+            GameSimpleNode dataRoot = meta.SimpleTree;
+
+            // Actualizando Control Tree
+            UpdateTreeView(dataRoot);
+
             //ICommand command;
             PieceName piece;
             Bitmap bitMap;
@@ -49,14 +60,45 @@ namespace WFProt
             sgBoard.Invalidate();
 
             // Update labels
-            nUpdMoves.Value = status.CantMoves;
+            //nUpdMoves.Value = status.CantMoves;
             lbFree.Text = status.FreeCells.ToString();
             lbOcupp.Text = status.OccupiedCells.ToString();
             lbCount.Text = status.CellsCount.ToString();
             lbColComp.Text = status.CompletedColumns.ToString();
             lbRowComp.Text = status.CompletedRows.ToString();
 
+            lbId.Text = status.Id.ToString();
+            lbNombre.Text = status.Nombre;
+
+            //actualizando lista de hijos en tsdbChildren
+            // analizar extraer proc
+            tsdbChildren.DropDownItems.Clear();
+
+            foreach (var item in meta.Childs)
+            {
+                // Construir nombre con Id - Nombre
+                // Asignar Click Handler
+                ToolStripMenuItem mItem = new ToolStripMenuItem(item.Nombre);
+                mItem.Tag = item.Id;
+
+                // registrando controlador para Click
+                mItem.Click += MItem_Click;    
+                tsdbChildren.DropDownItems.Add(mItem);
+            }
+
+            // actualizando permitir edicion 
+            //UserEnable = meta.IsLeaf;
         }
+
+        private void MItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item;
+            item = (ToolStripMenuItem)sender;
+            int index = Convert.ToInt32( item.Tag);
+
+            Out_MoveToChild(index);
+        }
+
 
         // Cambia color de filas/cols completas antes de borrarlas
         public void In_SelectRows(int[] indexList)
@@ -132,5 +174,22 @@ namespace WFProt
             tsbUndo.Enabled = !status;
         }
 
+        // Resultado de movimientos
+        public void In_MoveFirst_Result(bool status)
+        {
+            Console.WriteLine(string.Format("MoveFirst: {0}", status ));
+        }
+        public void In_MovePrevious_Result(bool status)
+        {
+            Console.WriteLine(string.Format("MovePrevious: {0}", status));
+        }
+        public void In_MoveNext_Result(bool status)
+        {
+            Console.WriteLine(string.Format("MoveNext: {0}", status));
+        }
+        public void In_MoveLast_Result(bool status)
+        {
+            Console.WriteLine(string.Format("MoveLast: {0}", status));
+        }
     }
 }

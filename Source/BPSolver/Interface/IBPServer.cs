@@ -38,8 +38,21 @@ namespace BPSolver
         // Jugada
         void In_DrawGridPlay(Coord coord, PieceName name, int index);
 
+        // Manejo de Secuencia
+        //void CreateRoot(GameStatus item);
+        void In_AddChild(GameStatus child);
+        void In_AddChildStay(GameStatus child);
+        void In_MoveFirst();
+        void In_MovePrevious();
+        void In_MoveNext();
+        void In_MoveLast();
+        void In_MoveToChild(int id);
+        void In_Rename(int id, string name);
+
+
+        // ***************************************************
         // Salidas
-        Action<GameStatus> Out_UpdateBoard { get; set; }
+        Action<GameMetaStatus> Out_UpdateBoard { get; set; }
 
         // Notificaciones
         Action<bool> Out_UserEnable { get; set; }
@@ -64,5 +77,10 @@ namespace BPSolver
         // Select Columns for deletion
         Action<int[]> Out_SelectColumns { get; set; }
 
+        // Resultado de Movimentos
+        Action<bool> Out_MoveFirst_Result { get; set; }
+        Action<bool> Out_MovePrevious_Result { get; set; }
+        Action<bool> Out_MoveNext_Result { get; set; }
+        Action<bool> Out_MoveLast_Result { get; set; }
     }
 }

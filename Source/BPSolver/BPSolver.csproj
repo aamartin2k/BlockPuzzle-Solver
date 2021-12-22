@@ -39,6 +39,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\04 CodeRefs Net\TreeCollections\Bin\net45\TreeCollections.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFormatter.cs" />
@@ -50,7 +54,12 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\ControllerCommand.cs" />
     <Compile Include="Controller\ControllerDeclarations.cs" />
+    <Compile Include="Controller\ControllerFactory.cs" />
     <Compile Include="Controller\ControllerInput.cs" />
+    <Compile Include="Controller\ControllerTreeHandler.cs" />
+    <Compile Include="Controller\GameSerialNode.cs" />
+    <Compile Include="Controller\GameTreeNode.cs" />
+    <Compile Include="Objects\GameMetaStatus.cs" />
     <Compile Include="Solver\NewSolverTreeHandler.cs" />
     <Compile Include="Solver\NewSolverCompletion.cs" />
     <Compile Include="Enums\Enums.cs" />
@@ -59,7 +68,7 @@
     <Compile Include="Solver\NewSolverDeclarations.cs" />
     <Compile Include="Solver\NewSolverPieceSet.cs" />
     <Compile Include="Solver\NewSolverStats.cs" />
-    <Compile Include="Objects\GameSimpleStatusFactory.cs" />
+    <None Include="OldSolver\GameStatusFactory.cs" />
     <None Include="OldSolver\GameSolverBoard.cs" />
     <None Include="OldSolver\GameSolverDeclarations.cs" />
     <Compile Include="Objects\Cell.cs" />
@@ -71,8 +80,8 @@
     <None Include="OldSolver\GameBoard.cs" />
     <None Include="OldSolver\GameSolver.cs" />
     <None Include="OldSolver\GameSolverTree.cs" />
-    <Compile Include="Objects\GameSimpleStatus.cs" />
-    <None Include="Objects\PieceSet.cs" />
+    <Compile Include="Objects\GameStatus.cs" />
+    <None Include="OldSolver\PieceSet.cs" />
     <None Include="OldSolver\GameStatus.cs" />
     <None Include="OldSolver\PieceMove.cs" />
     <None Include="OldSolver\Solution.cs" />
