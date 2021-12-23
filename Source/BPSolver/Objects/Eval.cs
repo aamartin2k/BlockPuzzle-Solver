@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BPSolver.Solver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +10,36 @@ namespace BPSolver.Objects
     [Serializable]
     public class Eval
     {
-        public int PieceSize ;
-        public int PieceSizeW = 1;
+        public int PieceSize { get; set; }
+        public int PieceSizeW { get; private set; }
 
-        public int Preference ;
-        public int PreferenceW = 1;
+        public int Preference { get; set; }
+        public int PreferenceW { get; private set; }
 
-        public int Neighbors ;
-        public int NeighborsW = 1;
+        public int Neighbors { get; set; }
+        public int NeighborsW { get; private set; }
 
-        public int CompleteRoC ;
-        public int CompleteRoCW = 1;
+        public int CompleteRoC { get; set; }
+        public int CompleteRoCW { get; private set; }
+
+        // Constructor privado
+        private Eval(int psw, int prfw, int ngbw, int crcw)
+        {
+            PieceSizeW = psw;
+            PreferenceW = prfw;
+            NeighborsW = ngbw;
+            CompleteRoCW = crcw;
+        }
+
+        // Metodo Factory
+        static public Eval GetNewEval()
+        {
+            Eval newEval = new Eval(Constants.PieceSizeW,
+                                    Constants.PreferenceW,
+                                    Constants.NeighborsW,
+                                    Constants.CompleteRoCW);
+            return newEval;
+        }
 
 
         public int Total

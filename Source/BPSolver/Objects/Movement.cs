@@ -11,7 +11,7 @@ namespace BPSolver.Objects
     /// Describe el movimiento de una pieza
     /// </summary>
     [Serializable]
-    public struct Movement
+    public class Movement
     {
         /// <summary>
         /// Clave de la pieza en el diccionario.

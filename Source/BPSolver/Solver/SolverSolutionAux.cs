@@ -91,7 +91,7 @@ namespace BPSolver.Solver
         // Calcula valor de Movimiento aplicado
         public Eval EvaluateMove(Movement move, GameStatus game)
         {
-            Eval eval = new Eval();
+            Eval eval =  Eval.GetNewEval();
 
             Piece piece = GetPiece(move.Name);
             // Tamanno de pieza
@@ -157,8 +157,7 @@ namespace BPSolver.Solver
             return ex;
         }
         
-
-
+        
 
     }
 }

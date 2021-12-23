@@ -10,5 +10,10 @@ namespace BPSolver.Solver
     {
         public const int Rank = 10;
         public const int NexPieces = 3;
+
+        public const int PieceSizeW = 2;
+        public const int  PreferenceW = 3;
+        public const int NeighborsW = 5;
+        public const int CompleteRoCW = 10;
     }
 }

@@ -28,6 +28,7 @@ namespace ManTest
             Test_FreeCells(Program.status);
 
             Test_Moves(Program.status);
+            //Program.status
 
             Test_Solution(Program.status);
         }
@@ -139,6 +140,8 @@ namespace ManTest
                 Console.WriteLine(gm.Evaluation);
                 Console.WriteLine();
             }
+
+            // Sumar evaluaciones Parciales
         }
     }
 }

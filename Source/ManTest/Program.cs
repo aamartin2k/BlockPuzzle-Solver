@@ -51,6 +51,10 @@ namespace ManTest
             GameStatus st = meta.Status;
             Console.WriteLine("GameStatus recibido: " + st.Nombre);
 
+            Console.WriteLine(st.Movement);
+            Console.WriteLine(st.Evaluation);
+            Console.WriteLine();
+
             status = st;
         }
 

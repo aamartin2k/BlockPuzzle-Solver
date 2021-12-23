@@ -17,17 +17,16 @@ namespace BPSolver.Solver
         {
             //Crear SolTree y RootNode con copia de GStIni
             //Añadir RootNode a ListNodeP.
-            //Ejecutar ProcList(ListNodeP)
 
             // Clon de Estado inicial para no modificarlo
             GameStatus GStIni = CloneGameStatus(game);
+            GStIni.Nombre = "Cloned Root";
+
             // Solution Tree
             _treeRoot = new GameTreeNode(GStIni);
 
             ProccessNode(_treeRoot);
 
-            Console.WriteLine("Fin Proceso");
-           
             return _treeRoot;
         }
 
