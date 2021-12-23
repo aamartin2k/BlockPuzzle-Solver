@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Solver
 {
-    internal partial class NewSolver
+    public partial class Solver
     {
         private Dictionary<PieceName, Piece> _pieceSet;
 

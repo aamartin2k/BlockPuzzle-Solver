@@ -1,6 +1,9 @@
 ﻿
+using System;
+
 namespace BPSolver.Objects
 {
+    [Serializable]
     public struct Coord
     {
         public int Row;

@@ -23,13 +23,13 @@ namespace BPSolver
             GameStatus onew = new GameStatus(id);
 
             onew.Nombre = name;
-            onew.NextPieces = new List<PieceName>();
+            onew.NextPieces = new Dictionary<int, PieceName>();
             onew.Cells = new List<Cell>();
 
             // llenar con nada
-            onew.NextPieces.Add(PieceName.None);
-            onew.NextPieces.Add(PieceName.None);
-            onew.NextPieces.Add(PieceName.None);
+            onew.NextPieces.Add(0, PieceName.None);
+            onew.NextPieces.Add(1, PieceName.None);
+            onew.NextPieces.Add(2, PieceName.None);
 
             for (int i = 0; i < Constants.Rank; i++)
             {
@@ -42,23 +42,6 @@ namespace BPSolver
             return onew;
         }
 
-
-        static private GameStatus Clone(GameStatus item)
-        {
-            // create Memory Stream
-
-            GameStatus cloned;
-
-            using (MemoryStream tempStream = new MemoryStream())
-            {
-                Serializer.Serialize<GameStatus>(item, tempStream);
-                tempStream.Position = 0;
-
-                cloned = Serializer.Deserialize<GameStatus>(tempStream);
-            }
-
-            return cloned;
-        }
 
 
     }

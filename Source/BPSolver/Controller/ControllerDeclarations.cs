@@ -13,7 +13,7 @@ namespace BPSolver
         // Declaraciones
         
         //private GameSolver _gameSolver;
-        private NewSolver _gameSolver;
+        private Solver.Solver _gameSolver;
 
 
         // Constructor Explicito NewSolver
@@ -21,7 +21,7 @@ namespace BPSolver
         {
             // Crear deps
             // Solver
-            _gameSolver = new NewSolver();
+            _gameSolver = new Solver.Solver();
            
            
         }

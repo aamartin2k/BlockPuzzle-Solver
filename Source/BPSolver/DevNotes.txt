@@ -24,9 +24,15 @@ Analizar implicaciones de Jugada y Undo
  ?al crearse nuevo estado por jugada se resetea UndoStack
 
  --en cada cambio de estado se resetea Stack
-
  --al hacer jugada en ultimo nodo, por defecto se crea un estado hijo y se avanza,
+
+ Implementacion de Soluciones
+  --Cambiar GameStatus, lista NextPieces por Diccionario
+  --Cambiar prop Id a public ser\t, eliminar metodo  SetId
+
+  Cambiar definit de CloneGameStatus de Controller a Solver
  
+ Analizar Convertir Controller/Solver a Static
 
 
 

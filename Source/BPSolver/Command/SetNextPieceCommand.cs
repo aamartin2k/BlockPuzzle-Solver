@@ -7,10 +7,12 @@ namespace BPSolver.Command
     {
         int Index;  //DrawNextPieceCommand
         PieceName OldName, NewName;
-        List<PieceName> NextPieces;
+        Dictionary<int, PieceName> NextPieces;
 
         
-        public DrawNextPieceCommand(int index, List<PieceName> nextPieces, PieceName name)
+        public DrawNextPieceCommand(int index, 
+                                    Dictionary<int, PieceName> nextPieces, 
+                                    PieceName name)
         {
             Index = index;
             NewName = name;

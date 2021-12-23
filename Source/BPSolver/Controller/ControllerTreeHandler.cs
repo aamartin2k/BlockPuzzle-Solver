@@ -208,13 +208,13 @@ namespace BPSolver
         // Crear clon de estado actual, incrementar Id y hace  current
         private void CreateCloneChild()
         {
-            GameStatus cloned = Clone(CurrentStatus);
+            GameStatus cloned = _gameSolver.CloneGameStatus(CurrentStatus);
 
             // Reset Id
-            cloned.SetId(Count());
+            cloned.Id = Count();
 
             // Reset Name
-            cloned.Nombre = string.Format("Cloned {0}", Count());
+            cloned.Nombre = string.Format("Cloned {0}", cloned.Id);
 
             AddChild(cloned);
         }

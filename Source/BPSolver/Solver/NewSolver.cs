@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Solver
 {
-    internal partial class NewSolver
+    public partial class Solver
     {
         // sustituir GameSolver
 
@@ -19,8 +19,7 @@ namespace BPSolver.Solver
             Piece piece = GetPiece(name);
 
             // Create absolute coords list.
-            //realCoords = GetRealCoords(insertCoord, piece.Matrix);
-            realCoords = Piece.GetRealMatrix(piece, insertCoord);
+            realCoords = Piece.GetRealCoords(piece, insertCoord);
 
             // Test if all coords are within limits.
             bool ret = TestRealCoords(realCoords);
@@ -34,7 +33,6 @@ namespace BPSolver.Solver
         }
 
 
-        
         // Crear coord absolutas a partir del pto de insercion y la lista de coord relativas de la pieza
         public List<Coord> GetRealCoords(Coord insertCoord, List<Coord> matrix)
         {

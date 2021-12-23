@@ -12,8 +12,8 @@ namespace BPSolver.Objects
     public class Cell
     {
        
-        // Eliminar TEST
-        //public int ID { get; set; }
+        // Declaraciones
+       
         // Row
         public int Row { get; set; }
         // Col
@@ -23,10 +23,6 @@ namespace BPSolver.Objects
             get
             {
                 return (Color == PieceColor.None);
-                //if (Color == PieceColor.None)
-                //    return true;
-                //else
-                //    return false;
             }
 
         }
@@ -46,5 +42,13 @@ namespace BPSolver.Objects
             Color = PieceColor.None;
         }
 
+        //Retorna una Coord con la posicion de la Cell
+        public Coord Coord
+        {
+            get
+            {
+                return new Coord(this.Row, this.Col);
+            }
+        }
     }
 }

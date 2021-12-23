@@ -8,10 +8,10 @@ namespace BPSolver.Command
     {
         int Index;
         PieceName OldName, NewName;
-        List<PieceName> NextPieces;
+        Dictionary<int, PieceName> NextPieces;
 
 
-        public DeleteNextPieceCommand(int index, List<PieceName> nextPieces)
+        public DeleteNextPieceCommand(int index, Dictionary<int, PieceName> nextPieces)
         {
             Index = index;
             NewName = PieceName.None;

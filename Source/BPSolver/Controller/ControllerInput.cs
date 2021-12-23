@@ -119,7 +119,7 @@ namespace BPSolver
                 // Get reference to piece
                 Piece piece = _gameSolver.GetPiece(name);
                 // Create absolute coords list.
-                RealCoords = Piece.GetRealMatrix(piece, coord);
+                RealCoords = Piece.GetRealCoords(piece, coord);
 
                 // create command
                 ICommand command = new DrawPieceCommand(RealCoords, piece.Color, CurrentStatus);
@@ -148,7 +148,7 @@ namespace BPSolver
                 // Get reference to piece
                 Piece piece = _gameSolver.GetPiece(name);
                 // Create absolute coords list.
-                RealCoords = Piece.GetRealMatrix(piece, coord);
+                RealCoords = Piece.GetRealCoords(piece, coord);
 
                 // create command
                 ICommand command = new DrawPieceCommand(RealCoords, piece.Color, CurrentStatus);

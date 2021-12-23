@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Solver
 {
-    internal partial class NewSolver
+    public partial class Solver
     {
 
         public void UpdateGameStats(GameStatus status)
@@ -28,7 +28,7 @@ namespace BPSolver.Solver
              return Cells.Count(); 
         }
 
-        private int FreeCellsCount(List<Cell> Cells)
+        public int FreeCellsCount(List<Cell> Cells)
         {
              return Cells.Count(x => x.IsFree); 
         }

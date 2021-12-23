@@ -39,9 +39,9 @@ namespace WFProt
             // lbText
             // 
             this.lbText.BackColor = System.Drawing.Color.Transparent;
-            this.lbText.Location = new System.Drawing.Point(3, 3);
+            this.lbText.Location = new System.Drawing.Point(6, 3);
             this.lbText.Name = "lbText";
-            this.lbText.Size = new System.Drawing.Size(80, 20);
+            this.lbText.Size = new System.Drawing.Size(70, 20);
             this.lbText.TabIndex = 0;
             this.lbText.Text = "lbText";
             this.lbText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,7 +51,7 @@ namespace WFProt
             // 
             this.tBox.Location = new System.Drawing.Point(3, 3);
             this.tBox.Name = "tBox";
-            this.tBox.Size = new System.Drawing.Size(75, 20);
+            this.tBox.Size = new System.Drawing.Size(70, 20);
             this.tBox.TabIndex = 1;
             this.tBox.Text = "tBox";
             this.tBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -72,7 +72,7 @@ namespace WFProt
             // BPNode
             // 
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button);
             this.Controls.Add(this.lbText);
             this.Controls.Add(this.tBox);

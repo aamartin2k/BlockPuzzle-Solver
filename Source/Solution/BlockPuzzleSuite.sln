@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFProt", "..\WFProt\WFProt.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPSolver", "..\BPSolver\BPSolver.csproj", "{A1409A62-2EBD-45B5-BDE6-359DBA552690}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManTest", "..\ManTest\ManTest.csproj", "{B044F1E5-C730-42EB-9F8C-D37D32E6B990}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A1409A62-2EBD-45B5-BDE6-359DBA552690}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1409A62-2EBD-45B5-BDE6-359DBA552690}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1409A62-2EBD-45B5-BDE6-359DBA552690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B044F1E5-C730-42EB-9F8C-D37D32E6B990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B044F1E5-C730-42EB-9F8C-D37D32E6B990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B044F1E5-C730-42EB-9F8C-D37D32E6B990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B044F1E5-C730-42EB-9F8C-D37D32E6B990}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

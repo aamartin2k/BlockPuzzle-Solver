@@ -232,6 +232,7 @@ namespace WFProt
             cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.HorizontalDiagram;
             //cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.LinearTree;
             //cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.VerticalDiagram;
+            cTreeStatus.SelectionMode = ControlTreeView.CTreeViewSelectionMode.Single;
 
             //establecer handler para actualizar default item en ToolStripButtons
             tssbTwo.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.TssbDefault_DropDownItemClicked);

@@ -60,7 +60,6 @@ namespace WFProt
             sgBoard.Invalidate();
 
             // Update labels
-            //nUpdMoves.Value = status.CantMoves;
             lbFree.Text = status.FreeCells.ToString();
             lbOcupp.Text = status.OccupiedCells.ToString();
             lbCount.Text = status.CellsCount.ToString();

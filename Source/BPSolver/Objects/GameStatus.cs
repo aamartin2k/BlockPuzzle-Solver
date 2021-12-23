@@ -1,30 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BPSolver.Enums;
 
 
 namespace BPSolver.Objects
-{ 
+{
 
     [Serializable]
     public class GameStatus
     {
         // Propiedades para TreeHandler
-        private int _Id;
-        public int Id
-        { get { return _Id; }
-          private set { _Id = value; }
-        }
-
-        // Resetear Id despues de clonar
-        public void SetId(int id)
-        {
-            _Id = id;
-        }
-
+        public int Id { get; set; }
+        
         public string Nombre { get; set; }
 
         // Constructor para asignar Id
@@ -36,12 +24,13 @@ namespace BPSolver.Objects
         // Propiedades del juego que se van a guardar el archivo o enviar a Solver  
         //
         // Lista de piezas para posibles movimientos
-        public List<PieceName> NextPieces { get; set; }
+        public List<PieceName> NextPiecesX { get; set; }
+
+        public Dictionary<int, PieceName> NextPieces  { get; set; }
 
 
-
-        // Stats
-        public int FreeCells { get; set; }
+    // Stats
+    public int FreeCells { get; set; }
         public int OccupiedCells { get; set; }
         public int CellsCount { get; set; }
         public int CompletedRows { get; set; }

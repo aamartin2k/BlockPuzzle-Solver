@@ -49,7 +49,7 @@
     <Compile Include="Command\DeleteCellCommand.cs" />
     <Compile Include="Command\DeleteNextPieceCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Command\PutPieceCommand.cs" />
+    <Compile Include="Command\DrawPieceCommand.cs" />
     <Compile Include="Command\SetNextPieceCommand.cs" />
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\ControllerCommand.cs" />
@@ -59,8 +59,10 @@
     <Compile Include="Controller\ControllerTreeHandler.cs" />
     <Compile Include="Controller\GameSerialNode.cs" />
     <Compile Include="Controller\GameTreeNode.cs" />
+    <Compile Include="Objects\Eval.cs" />
     <Compile Include="Objects\GameMetaStatus.cs" />
-    <Compile Include="Solver\NewSolverTreeHandler.cs" />
+    <Compile Include="Objects\Movement.cs" />
+    <Compile Include="Solver\NewSolverSolution.cs" />
     <Compile Include="Solver\NewSolverCompletion.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interface\IBPServer.cs" />

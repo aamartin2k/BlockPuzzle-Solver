@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Solver 
 {
-    internal partial class NewSolver
+    public partial class Solver
     {
 
         // Metodos publicos
@@ -68,7 +68,7 @@ namespace BPSolver.Solver
 
 
 
-        // Metodos privados
+        // Metodos auxiliares
 
         public bool IsAnyCompleted(GameStatus game)
         {
@@ -128,6 +128,12 @@ namespace BPSolver.Solver
             return list.ToList();
         }
 
+        // Contar completas
+        private int CompletedCount(GameStatus game)
+        {
+            return CompletedRowsCount(game) +
+                   CompletedColumnsCount(game);
+        }
 
         // Contar Filas completas
         private int CompletedRowsCount(GameStatus game)
