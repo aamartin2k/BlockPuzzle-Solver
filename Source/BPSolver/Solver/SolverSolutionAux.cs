@@ -1,5 +1,6 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Objects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -59,10 +60,13 @@ namespace BPSolver.Solver
 
         // Aplicar Movimiento a GameStatus
         // Se repite codigo de comandos para agilidad
-        public void MakeMove(Movement move, GameStatus game)
+        public Movement MakeMove(Movement move, GameStatus game)
         {
             // Comprobar que coincide el nombre de pieza
             bool ret = move.Name == game.NextPieces[move.Index];
+
+            if (!ret)
+                throw new Exception("No coincide el nombre de pieza de Move con Dictionary");
 
             // Acciones
             // Borrar pieza de Dict
@@ -80,6 +84,8 @@ namespace BPSolver.Solver
 
             // ejecutar
             var ex = realCoords.Select(c => game[c].Color = piece.Color).ToList();
+
+            return move;
         }
 
         // Calcula valor de Movimiento aplicado
@@ -109,10 +115,8 @@ namespace BPSolver.Solver
 
             eval.CompleteRoC = ccount;
 
-
             return eval;
         }
-
 
         public GameStatus CloneGameStatus(GameStatus item)
         {

@@ -10,7 +10,6 @@ namespace BPSolver
         // Secuencia de estados del juego: GameStatus
 
         // private 
-        //private GameTreeNode _currentNode;
         private GameTreeNode _treeRoot;
 
         // Public 

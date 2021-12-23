@@ -43,7 +43,7 @@ namespace ManTest
             Console.WriteLine("SolverTest Terminado");
 
             Console.WriteLine("ENTER to exit...");
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         static void In_UpdateBoard(GameMetaStatus meta) 

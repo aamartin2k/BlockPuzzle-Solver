@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Objects
 {
+    [Serializable]
     public class Eval
     {
         public int PieceSize ;

@@ -4,6 +4,7 @@ using System.Linq;
 using BPSolver.Solver;
 using BPSolver.Enums;
 using BPSolver.Objects;
+using BPSolver;
 
 namespace ManTest
 {
@@ -27,6 +28,8 @@ namespace ManTest
             Test_FreeCells(Program.status);
 
             Test_Moves(Program.status);
+
+            Test_Solution(Program.status);
         }
 
         // utileria
@@ -54,8 +57,16 @@ namespace ManTest
 
         static void Test_Moves(GameStatus status)
         {
-            Console.WriteLine("Movimientos posibles: PieceName.Four");
-            List<Movement> lmm = _solver.CreateMovements(1, PieceName.Four, status);
+            Test_OneMove(0, PieceName.Nine, status);
+            Test_OneMove(1, PieceName.Four, status);
+            Test_OneMove(2, PieceName.FourVert, status);
+        }
+
+        static void Test_OneMove(int index, PieceName pname, GameStatus status)
+        {
+            Console.WriteLine("Movimientos posibles: " + pname);
+
+            List<Movement> lmm = _solver.CreateMovements(index, pname, status);
 
             foreach (var item in lmm)
             {
@@ -81,6 +92,53 @@ namespace ManTest
                 Console.WriteLine();
             }
 
+        }
+
+        static void Test_Solution(GameStatus status)
+        {
+            Console.WriteLine("Soluciones posibles");
+
+            GameTreeNode treeRoot;
+            treeRoot = _solver.CreateSolutionTree(status);
+
+            Console.WriteLine(" Nodos: " + treeRoot.Count());
+
+            // obtener ramas
+            var ramas = treeRoot.SelectLeaves();
+            Console.WriteLine(" Soluciones: " + ramas.Count());
+
+            foreach (GameTreeNode item in ramas)
+            {
+                //Console.WriteLine(item.Item.Movement);
+
+                // Seleccionar todos hacia arriba e invertir
+                var invSol = item.SelectPathUpward().Reverse();
+
+                DisplaySolution(invSol);
+            }
+        }
+
+        static void DisplaySolution(IEnumerable<GameTreeNode> seq)
+        {
+
+            foreach (GameTreeNode nod in seq)
+            {
+                GameStatus gm = nod.Item;
+
+                //Console.WriteLine(string.Format(""));
+                Console.WriteLine(string.Format("Nombre: {0} Id: {1}", gm.Nombre, gm.Id));
+
+                foreach (var dkv in gm.NextPieces)
+                {
+                    int index = dkv.Key;
+                    PieceName piece = dkv.Value;
+                    Console.WriteLine(string.Format(" Piece {0} Index: {1}", piece, index));
+                }
+
+                Console.WriteLine(gm.Movement);
+                Console.WriteLine(gm.Evaluation);
+                Console.WriteLine();
+            }
         }
     }
 }
