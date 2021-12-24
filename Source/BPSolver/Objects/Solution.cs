@@ -18,6 +18,12 @@ namespace BPSolver.Objects
             TotalEval = eval;
             StatusList = list;
         }
-        
+
+        public override string ToString()
+        {
+            return string.Format("PSize: {0} Pref: {1} Neighb: {2} ComplRoC: {3}  Total: {4}",
+                TotalEval.PieceSize, TotalEval.Preference, TotalEval.Neighbors, TotalEval.CompleteRoC, TotalEval.Total);
+        }
+
     }
 }

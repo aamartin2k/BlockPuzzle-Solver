@@ -140,6 +140,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cTreeStatus = new ControlTreeView.CTreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbSoluciones = new System.Windows.Forms.ListBox();
             this.cTreeSolution = new ControlTreeView.CTreeView();
             this.pbNextPieceSol3 = new System.Windows.Forms.PictureBox();
             this.pbNextPieceSol2 = new System.Windows.Forms.PictureBox();
@@ -150,6 +152,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.solutionMetaStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lbEvals = new System.Windows.Forms.ListBox();
             this.toolStripTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece2)).BeginInit();
@@ -1186,6 +1189,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbEvals);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.lbSoluciones);
             this.tabPage2.Controls.Add(this.cTreeSolution);
             this.tabPage2.Controls.Add(this.pbNextPieceSol3);
             this.tabPage2.Controls.Add(this.pbNextPieceSol2);
@@ -1203,15 +1209,33 @@
             this.tabPage2.Text = "Soluciones";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(258, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Soluciones";
+            // 
+            // lbSoluciones
+            // 
+            this.lbSoluciones.FormattingEnabled = true;
+            this.lbSoluciones.Location = new System.Drawing.Point(260, 199);
+            this.lbSoluciones.Name = "lbSoluciones";
+            this.lbSoluciones.Size = new System.Drawing.Size(372, 95);
+            this.lbSoluciones.TabIndex = 18;
+            this.lbSoluciones.SelectedIndexChanged += new System.EventHandler(this.lbSoluciones_SelectedIndexChanged);
+            // 
             // cTreeSolution
             // 
-            this.cTreeSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.cTreeSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cTreeSolution.DrawStyle = ControlTreeView.CTreeViewDrawStyle.HorizontalDiagram;
             this.cTreeSolution.Location = new System.Drawing.Point(260, 6);
             this.cTreeSolution.Name = "cTreeSolution";
-            this.cTreeSolution.Size = new System.Drawing.Size(372, 263);
+            this.cTreeSolution.Size = new System.Drawing.Size(372, 165);
             this.cTreeSolution.TabIndex = 17;
             // 
             // pbNextPieceSol3
@@ -1298,6 +1322,14 @@
             // solutionMetaStatusBindingSource
             // 
             this.solutionMetaStatusBindingSource.DataSource = typeof(BPSolver.Objects.SolutionMetaStatus);
+            // 
+            // lbEvals
+            // 
+            this.lbEvals.FormattingEnabled = true;
+            this.lbEvals.Location = new System.Drawing.Point(261, 300);
+            this.lbEvals.Name = "lbEvals";
+            this.lbEvals.Size = new System.Drawing.Size(372, 82);
+            this.lbEvals.TabIndex = 20;
             // 
             // Form1
             // 
@@ -1460,6 +1492,9 @@
         private System.Windows.Forms.PictureBox pbNextPieceSol1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.BindingSource solutionMetaStatusBindingSource;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lbSoluciones;
+        private System.Windows.Forms.ListBox lbEvals;
     }
 }
 

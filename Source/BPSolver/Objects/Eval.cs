@@ -64,7 +64,7 @@ namespace BPSolver.Objects
 
         public override string ToString()
         {
-            return string.Format("PSize: {0} Pref: {1} Neighb: {2} ComplRoC: {3}\n  Total: {4}",
+            return string.Format("PSize: {0} Pref: {1} Neighb: {2} ComplRoC: {3}  Total: {4}",
                 PieceSize, Preference, Neighbors, CompleteRoC, Total);
         }
     }

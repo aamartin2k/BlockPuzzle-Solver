@@ -89,7 +89,9 @@ namespace WFProt
         {
             if (!this.tBox.Visible)
             {
-                MakeCurrent(Index);
+                //MakeCurrent(Index);
+                //ShowCurrentAction?.Invoke(action);
+                MakeCurrent?.Invoke(Index);
             }
         }
 
@@ -105,7 +107,8 @@ namespace WFProt
                 // update Text
                 this.lbText.Text = this.tBox.Text;
                 // Call out
-                Rename(Index, this.lbText.Text);
+                //Rename(Index, this.lbText.Text);
+                Rename?.Invoke(Index, this.lbText.Text);
             }
 
             Editing = false;

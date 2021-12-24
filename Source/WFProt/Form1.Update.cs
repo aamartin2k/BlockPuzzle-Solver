@@ -23,7 +23,6 @@ namespace WFProt
             // Actualizando Control Tree
             UpdateTreeView(dataRoot);
 
-            //ICommand command;
             PieceName piece;
             Bitmap bitMap;
 
