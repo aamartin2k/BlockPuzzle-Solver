@@ -30,8 +30,9 @@ namespace WFProt
             form.Out_LoadFile = server.In_LoadFile;
             form.Out_SaveFile = server.In_SaveFile;
             //Actions
+            form.Out_Solution = server.In_Solution;
             form.Out_Undo = server.In_Undo;
-
+       
             form.Out_DrawPiece = server.In_DrawPiece;
             form.Out_DrawNextPiece = server.In_DrawNextPiece;
             form.Out_DeleteGridCell = server.In_DeleteGridCell;
@@ -52,8 +53,10 @@ namespace WFProt
             form.Out_MoveToChild = server.In_MoveToChild;
             form.Out_Rename = server.In_Rename;
 
-            // salidas de Controller
-            server.Out_UpdateBoard = form.In_UpdateBoard;
+            // Entradas desde de Controller
+            server.Out_UpdateGameBoard = form.In_UpdateBoard;
+            server.Out_UpdateSolutionBoard = form.In_UpdateSolutionBoard;
+
             server.Out_UserEnable = form.In_UserEnable;
 
             server.Out_NewFileResult = form.In_NewFileResult;

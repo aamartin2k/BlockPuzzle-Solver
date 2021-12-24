@@ -24,7 +24,7 @@ namespace ManTest
             Out_LoadFile = server.In_LoadFile;
 
             // inputs
-            server.Out_UpdateBoard = In_UpdateBoard;
+            server.Out_UpdateGameBoard = In_UpdateBoard;
             server.Out_UserEnable = In_UserEnable;
             server.Out_LoadFileResult = In_LoadFileResult;
             server.Out_EmptyCommandStack = In_UserEnable;

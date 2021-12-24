@@ -13,7 +13,7 @@ namespace WFProt
     {
         // Declarations
         // Cell Views, background color.
-        Views.Cell vBackColor, vSelectColor;
+        private Views.Cell vBackColor, vSelectColor, vSolutionColor;
         //Views.Cell vBackColor, vColorOne, vColorTwo, vColorThree, vColorFour,
         //           vColorFive, vColorSix, vColorSeven, vColorEight, vColorNine;
 
@@ -50,15 +50,50 @@ namespace WFProt
 
         // Se ejecuta cuando el mouse pasa sobre las celdas del grid,
         // se emplea un grid controller que ejecuta este método
+        // Se comparte en los dos grids
+        // En dependencia del Sender se ejecuta la ccion concreta
         private void MouseEnterCell(CellContext sender)
         {
-            Position pos = sender.Position;
-
-            lbRowPos.Text=string.Format("Row: {0}", pos.Row);
-            lbColumnPos.Text = string.Format("Column: {0}",  pos.Column);
+            if (sender.Grid.Name == sgBoard.Name)
+                UpdateGamePosition(sender.Position);
+            else
+                UpdateSolutionPosition(sender.Position);
         }
 
+        private void UpdateGamePosition(Position pos)
+        {
+            lbRowPos.Text = string.Format("Row: {0}", pos.Row);
+            lbColumnPos.Text = string.Format("Column: {0}", pos.Column);
+        }
 
+        private void UpdateSolutionPosition(Position pos)
+        {
+            lbSolutionRowPos.Text = string.Format("Row: {0}", pos.Row);
+            lbSolutionColumnPos.Text = string.Format("Column: {0}", pos.Column);
+        }
+
+        // Se ejecuta cuando se hace click en una celda
+        // Se comparte en los dos grids
+        // En dependencia del Sender se ejecuta la accion concreta
+        private void ClickOnCell(CellContext sender)
+        {
+            if (sender.Grid.Name == sgBoard.Name)
+                ClickOnGameCell(sender.Position);
+            else
+                ClickOnSolutionCell(sender.Position);
+        }
+
+        private void ClickOnGameCell(Position pos)
+        {
+            Coord coord = new Coord(pos.Row, pos.Column);
+
+            context.GridCellClicked(coord);
+        }
+
+        private void ClickOnSolutionCell(Position pos)
+        {
+            // TBI
+        }
 
     }
 }

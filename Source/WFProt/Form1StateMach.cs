@@ -103,14 +103,7 @@ namespace WFProt
 
         }
 
-        private void ClickOnCell(CellContext sender)
-        {
-            Position pos = sender.Position;
-            Coord coord = new Coord(pos.Row, pos.Column);
-
-            context.GridCellClicked(coord);
-
-        }
+       
 
         #endregion
 

@@ -62,6 +62,8 @@
     <Compile Include="Objects\Eval.cs" />
     <Compile Include="Objects\GameMetaStatus.cs" />
     <Compile Include="Objects\Movement.cs" />
+    <Compile Include="Objects\Solution.cs" />
+    <Compile Include="Objects\SolutionMetaStatus.cs" />
     <Compile Include="Solver\SolverSolution.cs" />
     <Compile Include="Solver\SolverSolutionAux.cs" />
     <Compile Include="Solver\SolverCompletion.cs" />

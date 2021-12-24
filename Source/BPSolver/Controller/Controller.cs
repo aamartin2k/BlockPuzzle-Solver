@@ -11,7 +11,8 @@ namespace BPSolver
     {
         
         // Salidas
-        public Action<GameMetaStatus> Out_UpdateBoard { get; set; }
+        public Action<GameMetaStatus> Out_UpdateGameBoard { get; set; }
+        public Action<SolutionMetaStatus> Out_UpdateSolutionBoard { get; set; }
 
         public Action<bool> Out_UserEnable { get; set; }
         public Action<bool> Out_NewFileResult { get; set; }
@@ -46,8 +47,7 @@ namespace BPSolver
                                                      CurrentIsIsLeaf,
                                                      dataRoot);
             // create update Stats
-            // Out_UpdateBoard
-            Out_UpdateBoard(meta);
+            Out_UpdateGameBoard(meta);
         }
     }
 }

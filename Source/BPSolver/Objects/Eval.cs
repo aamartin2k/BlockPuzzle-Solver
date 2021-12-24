@@ -31,13 +31,22 @@ namespace BPSolver.Objects
             CompleteRoCW = crcw;
         }
 
-        // Metodo Factory
+        // Metodo Factory para Eval de GameStatus
         static public Eval GetNewEval()
         {
             Eval newEval = new Eval(Constants.PieceSizeW,
                                     Constants.PreferenceW,
                                     Constants.NeighborsW,
                                     Constants.CompleteRoCW);
+            return newEval;
+        }
+
+        // Metodo Factory para Eval de Solution
+        // los coeficientes se hacen igual a 1 para no alterar
+        // el resultado
+        static public Eval GetTotalEval()
+        {
+            Eval newEval = new Eval(1, 1, 1, 1);
             return newEval;
         }
 

@@ -34,8 +34,7 @@ Analizar implicaciones de Jugada y Undo
  
  Analizar Convertir Controller/Solver a Static
 
-
-
+ 
 
 
 

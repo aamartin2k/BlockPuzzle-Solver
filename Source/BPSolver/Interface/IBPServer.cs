@@ -17,6 +17,8 @@ namespace BPSolver
         // Operaciones IO
         void In_LoadFile(string file);
         void In_SaveFile(string file);
+        // Analizar soluciones a partir de estado actual
+        void In_Solution();
 
         // Editar Tablero
         // Deshacer ultimo
@@ -52,7 +54,9 @@ namespace BPSolver
 
         // ***************************************************
         // Salidas
-        Action<GameMetaStatus> Out_UpdateBoard { get; set; }
+        Action<GameMetaStatus> Out_UpdateGameBoard { get; set; }
+
+        Action<SolutionMetaStatus> Out_UpdateSolutionBoard { get; set; }
 
         // Notificaciones
         Action<bool> Out_UserEnable { get; set; }

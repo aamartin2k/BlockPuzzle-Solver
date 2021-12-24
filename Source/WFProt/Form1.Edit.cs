@@ -10,6 +10,7 @@ namespace WFProt
         // Acciones 
         // Deshacer ultimo comando
         public Action Out_Undo { get; set; }
+        public Action Out_Solution { get; set; }
 
         // Dibujar Pieza Seleccionada en board
         public Action<Coord, PieceName> Out_DrawPiece { get; set; }
@@ -47,6 +48,11 @@ namespace WFProt
             Out_Undo();
         }
 
-       
+        private void Solution()
+        {
+            Out_Solution();
+        }
+
+
     }
 }

@@ -300,7 +300,15 @@ namespace BPSolver
             //On_Out_UpdateBoard();
         }
 
+        public void In_Solution()
+        {
+            // Ejecuta soluciones a partir de estado actual
+            var ret = _gameSolver.CreateSolution(CurrentStatus);
 
+
+            // ejecut accion de modificacio de form similar a Out_UpdateBoard
+            Out_UpdateSolutionBoard(ret);
+        }
     }
 
 }

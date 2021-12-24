@@ -158,7 +158,7 @@ namespace WFProt
             pbNextPiece3.Tag = PieceName.None;
             #endregion
 
-            #region Grid
+            #region Grid Juego
 
             //  Grid Views
             vBackColor = new Views.Cell();
@@ -166,25 +166,7 @@ namespace WFProt
 
             vSelectColor = new Views.Cell();
             vSelectColor.BackColor = Color.AntiqueWhite;
-
-            //vColorTwo = new Views.Cell();
-            //vColorTwo.BackColor = ColorAdapter(PieceColor.Two);
-            //vColorThree = new Views.Cell();
-            //vColorThree.BackColor = ColorAdapter(PieceColor.Three);
-            //vColorFour = new Views.Cell();
-            //vColorFour.BackColor = ColorAdapter(PieceColor.Four);
-
-            //vColorFive = new Views.Cell();
-            //vColorFive.BackColor = ColorAdapter(PieceColor.Five);
-            //vColorSix = new Views.Cell();
-            //vColorSix.BackColor = ColorAdapter(PieceColor.Six);
-            //vColorSeven = new Views.Cell();
-            //vColorSeven.BackColor = ColorAdapter(PieceColor.Seven);
-
-            //vColorEight = new Views.Cell();
-            //vColorEight.BackColor = ColorAdapter(PieceColor.Eight);
-            //vColorNine = new Views.Cell();
-            //vColorNine.BackColor = ColorAdapter(PieceColor.Nine);
+             
 
             // Grid Config
             int dim = (sgBoard.Width / 10);
@@ -194,7 +176,7 @@ namespace WFProt
 
             // Grid Controller
             // Local handler passed as argument on the constructor
-            ClickController cCont = new ClickController(ClickOnCell, MouseEnterCell);
+            ClickController cellController = new ClickController(ClickOnCell, MouseEnterCell);
             Cells.Cell xCell;
 
             for (int row = 0; row < Constants.Rank; row++)
@@ -205,7 +187,7 @@ namespace WFProt
                     xCell.View = vBackColor;
 
                     sgBoard[row, col] = xCell;
-                    sgBoard[row, col].AddController(cCont);
+                    sgBoard[row, col].AddController(cellController);
                 }
 
                 sgBoard.Columns[row].AutoSizeMode = SourceGrid.AutoSizeMode.None;
@@ -218,13 +200,48 @@ namespace WFProt
 
             sgBoard.AutoStretchColumnsToFitWidth = false;
             sgBoard.AutoStretchRowsToFitHeight = false;
-
             sgBoard.VerticalScroll.Visible = false;
             sgBoard.HorizontalScroll.Visible = false;
 
             sgBoard.Invalidate();
 
-            // hook event handler
+           
+            #endregion
+
+            #region Grid Soluciones
+            //  Grid Views // sgSolution
+            vSolutionColor = new Views.Cell();
+            vSolutionColor.BackColor = Color.SlateBlue;
+
+            // Grid Config
+            dim = (sgSolution.Width / 10);
+            sgSolution.BorderStyle = BorderStyle.None;
+            sgSolution.Redim(Constants.Rank, Constants.Rank);
+
+            for (int row = 0; row < Constants.Rank; row++)
+            {
+                for (int col = 0; col < Constants.Rank; col++)
+                {
+                    xCell = new Cells.Cell();
+                    xCell.View = vSolutionColor;
+
+                    sgSolution[row, col] = xCell;
+                    sgSolution[row, col].AddController(cellController);
+                }
+
+                sgSolution.Columns[row].AutoSizeMode = SourceGrid.AutoSizeMode.None;
+                sgSolution.Columns[row].Width = dim;
+
+                sgSolution.Rows[row].AutoSizeMode = SourceGrid.AutoSizeMode.None;
+                sgSolution.Rows[row].Height = dim;
+            }
+            sgSolution.AutoStretchColumnsToFitWidth = false;
+            sgSolution.AutoStretchRowsToFitHeight = false;
+            sgSolution.VerticalScroll.Visible = false;
+            sgSolution.HorizontalScroll.Visible = false;
+
+            sgSolution.Invalidate();
+
 
             #endregion
 
@@ -275,8 +292,10 @@ namespace WFProt
         {
             set
             {
+                toolStripControls.Enabled = value;
                 toolStripTask.Enabled = value;
                 sgBoard.Enabled = value;
+                sgSolution.Enabled = value;
             }
         }
        
@@ -342,11 +361,16 @@ namespace WFProt
         //    return result;
         //}
 
-      
+    
         private void tsbUndo_Click(object sender, EventArgs e)
         {
             // ExecuteCommandUndo();
             Undo();
+        }
+
+        private void tsbSoluciones_Click(object sender, EventArgs e)
+        {
+            Solution();
         }
 
         //newToolStripButton_Click
@@ -424,5 +448,7 @@ namespace WFProt
 
             
         }
+
+        
     }
 }

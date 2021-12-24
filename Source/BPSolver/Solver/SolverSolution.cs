@@ -10,34 +10,83 @@ namespace BPSolver.Solver
     public partial class Solver
     {
         // Copia el comportamiento de Controller TreeHandler
-        private GameTreeNode _treeRoot;
+        // Eliminar field, pasar como argumento
+        private const string  RootName = "Cloned Root";
 
+        public SolutionMetaStatus CreateSolution(GameStatus game)
+        {
+            GameTreeNode treeRoot;
+
+            // crear arbol de games
+            treeRoot = CreateSolutionTree(game);
+
+            // crear resumen de soluciones
+            var ramas = treeRoot.SelectLeaves();
+
+            List<Solution> solutions = new List<Solution>();
+
+            foreach (GameTreeNode item in ramas)
+            {
+                // Seleccionar todos hacia arriba e invertir
+                var invSol = item.SelectPathUpward().Reverse();
+
+                solutions.Add(CreateSolution(invSol));
+            }
+
+            // crear inf de retorno
+            SolutionMetaStatus meta = new SolutionMetaStatus(solutions);
+
+            return meta;
+        }
+
+        private Solution CreateSolution(IEnumerable<GameTreeNode> seqNodes)
+        {
+            GameStatus game;
+
+            // crear total eval y dictionary
+            Eval TotalEval = Eval.GetTotalEval();
+            Dictionary<int, GameStatus> StatusList = new Dictionary<int, GameStatus>();
+
+            foreach (GameTreeNode nod in seqNodes)
+            {
+                game = nod.Item;
+                StatusList.Add(game.Id, game);
+
+                // saltando GameStatus inicial, que no tiene Eval
+                if (game.Nombre != RootName)
+                {
+                    TotalEval.PieceSize += game.Evaluation.PieceSize;
+                    TotalEval.Preference += game.Evaluation.Preference;
+                    TotalEval.Neighbors += game.Evaluation.Neighbors;
+                    TotalEval.CompleteRoC += game.Evaluation.CompleteRoC;
+                }
+            }
+
+            Solution sol = new Solution(TotalEval, StatusList);
+            return sol;
+        }
 
         public GameTreeNode CreateSolutionTree(GameStatus game)
         {
             //Crear SolTree y RootNode con copia de GStIni
-            //Añadir RootNode a ListNodeP.
+            GameTreeNode treeRoot;
 
             // Clon de Estado inicial para no modificarlo
             GameStatus GStIni = CloneGameStatus(game);
-            GStIni.Nombre = "Cloned Root";
+            GStIni.Nombre = RootName;
 
-            // Solution Tree
-            _treeRoot = new GameTreeNode(GStIni);
+            // Solution Tree Root
+            treeRoot = new GameTreeNode(GStIni);
 
-            ProccessNode(_treeRoot);
+            ProccessNode(treeRoot, treeRoot);
 
-            return _treeRoot;
+            return treeRoot;
         }
 
-
-        private void ProccessNode (GameTreeNode parent)
+        private void ProccessNode (GameTreeNode parent, GameTreeNode root)
         {
-            //Console.WriteLine("Inicio Proccess Node");
-            
             // Obtener GameStatus
             GameStatus gstatus = parent.Item;
-            //Console.WriteLine(" Gstatus " + gstatus.Nombre);
 
             // Para cada Pieza 
             foreach (var dkv in gstatus.NextPieces)
@@ -52,7 +101,7 @@ namespace BPSolver.Solver
                 foreach (var move in lmm)
                 {
                     //Procesar Movida (move, NodoParent, ListNodeTemp)
-                    ProcessMove(move, parent);
+                    ProcessMove(move, parent, root);
                 }
 
             }
@@ -60,7 +109,7 @@ namespace BPSolver.Solver
             //Para cada hijo de NodoParent
             foreach (var child in parent.Children)
             {
-                ProccessNode(child);
+                ProccessNode(child, root);
             } 
            
 
@@ -68,10 +117,10 @@ namespace BPSolver.Solver
 
         // Anidadas
         //Procesar Movida (move, NodoParent, ListNodeTemp)
-        private void ProcessMove(Movement move, GameTreeNode parent) //, List<GameTreeNode> listNodeTemp)
+        private void ProcessMove(Movement move, GameTreeNode parent, GameTreeNode root) 
         {
             // Obtener gameStatus de Parent y clonar
-            GameStatus cloned = CreateCloneChild(parent,  parent.Item);
+            GameStatus cloned = CreateCloneChild(root, parent,  parent.Item);
             // Aplicar Movimiento
             cloned.Movement = MakeMove(move, cloned);
             // Evaluar Movimiento
@@ -84,18 +133,15 @@ namespace BPSolver.Solver
 
 
         //  Auxiliares
-        private int Count()
-        {
-            return _treeRoot.Count();
-        }
+        
 
         // Crear clon de Nodetree
-        private GameStatus CreateCloneChild(GameTreeNode parent, GameStatus game)
+        private GameStatus CreateCloneChild(GameTreeNode root, GameTreeNode parent, GameStatus game)
         {
             GameStatus clonedGame = CloneGameStatus(game);
 
             // Reset Id
-            clonedGame.Id = Count();
+            clonedGame.Id = root.Count();
 
             // Reset Name
             clonedGame.Nombre = string.Format("Cloned {0}", clonedGame.Id);
