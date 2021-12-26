@@ -12,7 +12,7 @@ namespace BPSolver.Objects
     {
         public int PieceSize { get; set; }
         public int PieceSizeW { get; private set; }
-
+   
         public int Preference { get; set; }
         public int PreferenceW { get; private set; }
 
@@ -21,6 +21,12 @@ namespace BPSolver.Objects
 
         public int CompleteRoC { get; set; }
         public int CompleteRoCW { get; private set; }
+
+        // Totales
+        public int PieceSizeTotal { get { return PieceSize * PieceSizeW; } }
+        public int PreferenceTotal { get { return Preference * PreferenceW; } }
+        public int NeighborsTotal { get { return Neighbors * NeighborsW; } }
+        public int CompleteRoCTotal { get { return CompleteRoC * CompleteRoCW; } }
 
         // Constructor privado
         private Eval(int psw, int prfw, int ngbw, int crcw)
@@ -31,6 +37,25 @@ namespace BPSolver.Objects
             CompleteRoCW = crcw;
         }
 
+       
+        public int Total
+        {
+            get
+            {
+                return PieceSizeTotal +
+                       PreferenceTotal +
+                       NeighborsTotal +
+                       CompleteRoCTotal;
+            }  
+        }
+
+        public override string ToString()
+        {
+            return string.Format("PSize: {0} Pref: {1} Neighb: {2} ComplRoC: {3}  Total: {4}",
+                PieceSize, Preference, Neighbors, CompleteRoC, Total);
+        }
+
+        // Factory
         // Metodo Factory para Eval de GameStatus
         static public Eval GetNewEval()
         {
@@ -48,24 +73,6 @@ namespace BPSolver.Objects
         {
             Eval newEval = new Eval(1, 1, 1, 1);
             return newEval;
-        }
-
-
-        public int Total
-        {
-            get
-            {
-                return (PieceSize * PieceSizeW) +
-                       (Preference * PreferenceW) +
-                       (Neighbors * NeighborsW) +
-                       (CompleteRoC * CompleteRoCW);
-            }  
-        }
-
-        public override string ToString()
-        {
-            return string.Format("PSize: {0} Pref: {1} Neighb: {2} ComplRoC: {3}  Total: {4}",
-                PieceSize, Preference, Neighbors, CompleteRoC, Total);
         }
     }
 }

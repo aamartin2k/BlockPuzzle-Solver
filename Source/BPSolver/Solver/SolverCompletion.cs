@@ -15,55 +15,43 @@ namespace BPSolver.Solver
         public void ClearCompleted(GameStatus status)
         {
             int count;
+            bool ret;
+            int[] listRow = new int[] { };
+            int[] listCol = new int[] { };
 
-            // Si tiene alguno completado
-            bool ret = IsAnyCompleted(status);
-
+            // buscar filas
+            ret = IsAnyRowCompleted(status);
             if (ret)
             {
-                // buscar filas
-                ret = IsAnyRowCompleted(status);
-                if (ret)
-                {
-                    // contar
-                    count = CompletedRowsCount(status);
-                    status.CompletedRows += count;
+                // contar ANTES de Borrar
+                count = CompletedRowsCount(status);
+                status.CompletedRows += count;
 
-                    int[] list = GetListRowsCompleted(status);
-
-                    // eliminar
-                    foreach (var row in list)
-                    {
-                        ClearRow(status, row);
-                    }
-                }
-
-                // buscar columnas
-                ret = IsAnyColumnCompleted(status);
-                if (ret)
-                {
-                    // contar
-                    count = CompletedColumnsCount(status);
-                    status.CompletedColumns += count;
-
-                    // guardar indices en lista
-                    int[] list = GetListColumnsCompleted(status);
-
-                    // eliminar
-                    foreach (var col in list)
-                    {
-                        ClearColumn(status, col);
-                    }
-
-                }
+                listRow = GetListRowsCompleted(status);
             }
-            else
+
+            // buscar columnas
+            ret = IsAnyColumnCompleted(status);
+            if (ret)
             {
+                // contar
+                count = CompletedColumnsCount(status);
+                status.CompletedColumns += count;
 
+                // guardar indices en lista
+                listCol = GetListColumnsCompleted(status);
             }
-            // Actualizar board
 
-            // Actualizar estadistica (done in situ)
+            // eliminar filas y columnas con foreach
+            foreach (var row in listRow)
+            {
+                ClearRow(status, row);
+            }
+            
+            foreach (var col in listCol)
+            {
+                ClearColumn(status, col);
+            }
         }
 
 

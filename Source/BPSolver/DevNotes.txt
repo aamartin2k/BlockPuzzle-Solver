@@ -34,7 +34,15 @@ Analizar implicaciones de Jugada y Undo
  
  Analizar Convertir Controller/Solver a Static
 
- 
+ --Aplicar completamiento y eliminacion al final de cada moviminto, de lo 
+  --contrario se suma la cantidad de filas completadas.
+Analizar en Relacion con Preferencia que Param Vecinos debe contar como vecinos los bordes
+
+--Implementar eliminaciopn SIMULTANEA de filas y columnas. En caso de coincidencia, hay error
+
+Establecer limite de iteraciones en cmo
+
+Implemmentar NextPiece como Queue pra uso en Solver
 
 
 

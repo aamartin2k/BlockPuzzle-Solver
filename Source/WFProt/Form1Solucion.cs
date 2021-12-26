@@ -19,6 +19,7 @@ namespace WFProt
 
         public void In_UpdateSolutionBoard(SolutionMetaStatus meta)
         {
+            this.tabControl1.SelectedTab = this.tbpSolution;
             Console.WriteLine(" In_UpdateSolutionBoard");
 
             // Store 

@@ -29,13 +29,13 @@ namespace BPSolver.Objects
         // Propiedades del juego que se van a guardar el archivo o enviar a Solver  
         //
         // Lista de piezas para posibles movimientos
-        public List<PieceName> NextPiecesX { get; set; }
+        public Queue<PieceName> NextPiecesQ { get; set; }
 
         public Dictionary<int, PieceName> NextPieces  { get; set; }
 
 
-    // Stats
-    public int FreeCells { get; set; }
+        // Stats
+        public int FreeCells { get; set; }
         public int OccupiedCells { get; set; }
         public int CellsCount { get; set; }
         public int CompletedRows { get; set; }

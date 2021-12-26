@@ -303,7 +303,7 @@ namespace BPSolver
         public void In_Solution()
         {
             // Ejecuta soluciones a partir de estado actual
-            var ret = _gameSolver.CreateSolution(CurrentStatus);
+            var ret = _gameSolver.CreateMetaSolution(CurrentStatus);
 
 
             // ejecut accion de modificacio de form similar a Out_UpdateBoard
