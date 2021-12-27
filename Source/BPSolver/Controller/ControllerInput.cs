@@ -302,9 +302,15 @@ namespace BPSolver
 
         public void In_Solution()
         {
+            var sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
             // Ejecuta soluciones a partir de estado actual
+            //var ret = _gameSolver.CreateMetaSolutionX(CurrentStatus);
             var ret = _gameSolver.CreateMetaSolution(CurrentStatus);
 
+            sw.Stop();
+            Console.WriteLine("*** FINISHED DEMO : {0} ***", sw.Elapsed);
 
             // ejecut accion de modificacio de form similar a Out_UpdateBoard
             Out_UpdateSolutionBoard(ret);

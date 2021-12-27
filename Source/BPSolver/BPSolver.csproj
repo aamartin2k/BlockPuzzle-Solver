@@ -62,8 +62,15 @@
     <Compile Include="Objects\Eval.cs" />
     <Compile Include="Objects\GameMetaStatus.cs" />
     <Compile Include="Objects\Movement.cs" />
+    <Compile Include="Objects\SimpleCell.cs" />
+    <Compile Include="Objects\SimpleGameStatus.cs" />
     <Compile Include="Objects\Solution.cs" />
     <Compile Include="Objects\SolutionMetaStatus.cs" />
+    <Compile Include="Solver\SolverCompletionNuevo.cs" />
+    <Compile Include="Solver\SolverProcBasico.cs" />
+    <Compile Include="Solver\SolverProcPorPaso.cs" />
+    <Compile Include="Solver\SolverProcRecursivo.cs" />
+    <Compile Include="Solver\SolverSimpleStatus.cs" />
     <Compile Include="Solver\SolverSolution.cs" />
     <Compile Include="Solver\SolverSolutionAux.cs" />
     <Compile Include="Solver\SolverCompletion.cs" />

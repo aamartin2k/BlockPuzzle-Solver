@@ -42,6 +42,21 @@ namespace BPSolver.Objects
             Color = PieceColor.None;
         }
 
+        public Cell(Cell cell)
+        {
+            Row = cell.Row;
+            Col = cell.Col;
+
+            Color = cell.Color;
+        }
+
+        public Cell(SimpleCell cell)
+        {
+            Row = cell.Row;
+            Col = cell.Col;
+            Color = cell.Color;
+        }
+
         //Retorna una Coord con la posicion de la Cell
         public Coord Coord
         {

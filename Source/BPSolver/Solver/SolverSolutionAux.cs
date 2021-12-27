@@ -67,13 +67,6 @@ namespace BPSolver.Solver
 
             if (!ret)
                 throw new Exception("No coincide el nombre de pieza de Move con Dictionary");
-
-            // Acciones
-            // Borrar pieza de Dict
-            // El comando DeleteNextPieceCommand asigna PieceName.None
-            // aqui se borra realmente.
-            game.NextPieces.Remove(move.Index);
-
             // "Dibujar" pieza en board
             // Get reference to piece
             Piece piece = GetPiece(move.Name);
@@ -88,6 +81,13 @@ namespace BPSolver.Solver
             return move;
         }
 
+        private void DeleteMovedPiece(Movement move, GameStatus game)
+        {
+            // Borrar pieza de Dict
+            // El comando DeleteNextPieceCommand asigna PieceName.None
+            // aqui se borra realmente.
+            game.NextPieces.Remove(move.Index);
+        }
         // Calcula valor de Movimiento aplicado
         public Eval EvaluateMove(Movement move, GameStatus game)
         {

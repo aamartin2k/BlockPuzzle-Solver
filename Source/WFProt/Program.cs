@@ -74,8 +74,8 @@ namespace WFProt
             server.Out_MoveLast_Result = form.In_MoveLast_Result;
 
             // Manual Test con resultados en GUI
-            string file = "solver.bmd";
-            //string file = "juegoReal.bmd";
+            //string file = "solver.bmd";
+            string file = "juego4.bmd";
             form.Out_LoadFile(file);
             form.Out_Solution();
 

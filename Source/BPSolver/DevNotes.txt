@@ -44,5 +44,12 @@ Establecer limite de iteraciones en cmo
 
 Implemmentar NextPiece como Queue pra uso en Solver
 
+Implementar construccion completa del tree, modificr ProcessMoveNuevo
+ para hacr lista de movs, clon status com movimiento asignado
+  y dejar a posterior su aplicacion y evaluacions
+
+
+
+
 
 

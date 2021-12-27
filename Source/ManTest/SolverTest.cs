@@ -100,7 +100,7 @@ namespace ManTest
             Console.WriteLine("Soluciones posibles");
 
             GameTreeNode treeRoot;
-            treeRoot = _solver.CreateSolutionTree(status);
+            treeRoot = _solver.CreateSolutionTreePBasico(status);
 
             Console.WriteLine(" Nodos: " + treeRoot.Count());
 
