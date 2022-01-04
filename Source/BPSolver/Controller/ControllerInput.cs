@@ -310,8 +310,9 @@ namespace BPSolver
             var ret = _gameSolver.CreateMetaSolution(CurrentStatus);
 
             sw.Stop();
-            Console.WriteLine("*** FINISHED DEMO : {0} ***", sw.Elapsed);
+            Console.WriteLine("*** FINISHED TEST : {0} ***", sw.Elapsed);
 
+            ret.TiempoSolucion = sw.Elapsed.ToString();
             // ejecut accion de modificacio de form similar a Out_UpdateBoard
             Out_UpdateSolutionBoard(ret);
         }

@@ -12,7 +12,7 @@ namespace BPSolver.Solver
 
         public void UpdateGameStats(GameStatus status)
         {
-
+    
             status.CellsCount = CellsCount(status.Cells);
             status.FreeCells = FreeCellsCount(status.Cells); 
             status.OccupiedCells = OccupiedCellsCount(status.Cells);

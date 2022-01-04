@@ -43,13 +43,37 @@ Analizar en Relacion con Preferencia que Param Vecinos debe contar como vecinos 
 Establecer limite de iteraciones en cmo
 
 Implemmentar NextPiece como Queue pra uso en Solver
-
+--
 Implementar construccion completa del tree, modificr ProcessMoveNuevo
  para hacr lista de movs, clon status com movimiento asignado
   y dejar a posterior su aplicacion y evaluacions
 
+  Optimizar proc iterativo, retornar estadisticas *(tiempo y cant nodos)
 
+  Al preparar la solucion, sustituir Cloned Root por original y
+   reconstruir los estados de las soluciones aplicandop movs al original, para
+   recuperar inf color
+  Si existen soluciones con complet,  no retornar las otras
 
+  Eliminar de Interface e eimplement: 
+    Action<int[]> Out_SelectRows { get; set; }
+	Action<int[]> Out_SelectColumns { get; set; }
+	 la animacoin etc debe sr resuelta en GUI
 
+	  Terminado y comprobado impl de Cargar formato viejo y salvar en nuevo, para Mantest
+	  terminar, revisar cambios en UpdateBoard (None fallo), incorporar
+ nuevos datos del documento en Winform
+  Implementando cambios de Interface, con prueba manual
+  --void In_NewFile();
+  --void In_CloseFile();
+   void In_LoadFile(string file);
+   --void In_SaveFile();
+   --void In_SaveFileAs(string file);
 
+ 
+Revision y Prueba de comp func
+	-Document
+	-Tree 
+	-Game
+	-Solver
 

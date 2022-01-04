@@ -1,0 +1,38 @@
+﻿using System;
+using BPSolver.Objects;
+using BPSolver.Enums;
+
+namespace BPSolver
+{
+    public interface IDocument
+    {
+        #region Propiedades
+      
+        Document CurrentDocument { get; }
+
+        #endregion
+
+        #region Entradas
+        // Manejo Documento
+        void In_NewFile();
+        void In_CloseFile();
+
+        // Operaciones IO
+        void In_LoadFile(string file);
+        void In_SaveFile();
+        void In_SaveFileAs(string file);
+        #endregion
+
+        #region Salidas
+
+        Action<bool> Out_UserEnable { get; set; }
+
+        Action<bool, string> Out_NewFileResult { get; set; }
+        Action<bool, string> Out_CloseFileResult { get; set; }
+
+        Action<bool, string> Out_LoadFileResult { get; set; }
+
+        Action<bool, string> Out_SaveFileResult { get; set; }
+        #endregion
+    }
+}

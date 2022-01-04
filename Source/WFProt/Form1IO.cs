@@ -11,8 +11,8 @@ namespace WFProt
         public Action Out_NewFile { get; set; }
         public Action Out_CloseFile { get; set; }
         public Action<string> Out_LoadFile { get; set; }
-        public Action<string> Out_SaveFile { get; set; }
-
+        public Action Out_SaveFile { get; set; }
+        public Action<string> Out_SaveFileAs { get; set; }
 
         // Metodos Concretos
         private void NewFile()
@@ -20,9 +20,14 @@ namespace WFProt
             Out_NewFile();
         }
 
-        private void SaveFile(string file)
+        private void SaveFile()
         {
-            Out_SaveFile(file);
+            Out_SaveFile();
+        }
+
+        private void SaveFileAs(string file)
+        {
+            Out_SaveFileAs(file);
         }
 
         private void LoadFile(string file)

@@ -18,7 +18,7 @@ namespace BPSolver
             return CreateChildStatus(0, "Root");
         }
 
-        static public GameStatus CreateChildStatus(int id, string name)
+        static internal GameStatus CreateChildStatus(int id, string name)
         {
             GameStatus onew = new GameStatus(id);
 

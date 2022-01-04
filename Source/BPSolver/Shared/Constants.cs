@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BPSolver.Solver
+namespace BPSolver
 {
     public static class Constants
     {
@@ -15,5 +15,7 @@ namespace BPSolver.Solver
         public const int  PreferenceW = 1;
         public const int NeighborsW = 10;
         public const int CompleteRoCW = 1000;
+
+        public const string DocumentExtension = ".bmd";
     }
 }

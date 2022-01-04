@@ -1,0 +1,76 @@
+﻿using BPSolver.Objects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BPSolver
+{
+    internal partial class TreeHandler : ITree
+    {
+
+        private GameTreeNode _treeRoot;
+        public GameTreeNode TreeRoot
+        {
+            get { return _treeRoot; }
+            set
+            {
+                _treeRoot = value;
+                CurrentNode = value;
+            }
+        }
+
+        private GameTreeNode _currentNode;
+        public GameTreeNode CurrentNode
+        {
+            get { return _currentNode; }
+            set
+            {
+                _currentNode = value;
+                Console.WriteLine(string.Format("Current Node Id: {0} Status Id: {1} Status Nombre: {2}", _currentNode.Id, _currentNode.Item.Id, _currentNode.Item.Nombre));
+            }
+        }
+
+
+        public List<GameStatus> CurrentChilds
+        {
+            get
+            {
+                List<GameStatus> children = new List<GameStatus>();
+
+                foreach (var node in CurrentNode.Children)
+                {
+                    children.Add(node.Item);
+                }
+                return children;
+            }
+        }
+
+        public bool CurrentIsIsLeaf
+        {
+            get { return CurrentNode.IsLeaf; }
+        }
+
+        public void CreateRootNode(GameStatus item)
+        {
+            TreeRoot = new GameTreeNode(item);
+        }
+
+        public void CreateChildNode(GameStatus item)
+        {
+            // Set new Id
+            item.Id = TreeRoot.Count();
+
+            // Reset Name
+            item.Nombre = string.Format("Cloned {0}", item.Id);
+
+            //crear
+            GameTreeNode newNode = CurrentNode.AddChild(item);
+
+            // hacer current
+            CurrentNode = newNode;
+
+        }
+    }
+}

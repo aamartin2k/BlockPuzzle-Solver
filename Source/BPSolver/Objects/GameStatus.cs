@@ -10,6 +10,8 @@ namespace BPSolver.Objects
     [Serializable]
     public class GameStatus
     {
+        // Propiedades para Game Handler
+
         // Propiedades para Solver
         public Movement Movement { get; set; }
         public Eval Evaluation { get; set; }

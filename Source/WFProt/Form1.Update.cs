@@ -130,24 +130,23 @@ namespace WFProt
         }
 
         // Notifica resultado de operacion IO
-        public void In_NewFileResult(bool status)
+        public void In_NewFileResult(bool status, string text)
         {
-            string text ;
+            if (!status)
+                ShowErrorImage();
 
-            if (status)
-                text = "Nuevo archivo.";
-            else
-                text = "Error creando nuevo archivo. ";
 
             tlsbModelText.Text = text;
         }
 
         public void In_LoadFileResult(bool status, string file)
         {
-            string text = "Error cargando " + file;
+            string text = "Error: " + file;
 
             if (status)
                 text = file;
+            else
+                ShowErrorImage();
 
             tlsbModelText.Text = text;
         }
@@ -156,7 +155,9 @@ namespace WFProt
             string text = "Error salvando " + file;
 
             if (status)
-                text= file;
+                text = file;
+            else
+                ShowErrorImage();
 
             tlsbModelText.Text = text;
         }
@@ -170,6 +171,12 @@ namespace WFProt
         public void In_EmptyCommandStack(bool status)
         {
             tsbUndo.Enabled = !status;
+        }
+
+        // Mostrar imagen  de error en statusbar
+        private void ShowErrorImage()
+        {
+            tlsbActionImage.Image = WFProt.Properties.Resources.Error;
         }
 
         // Resultado de movimientos
@@ -188,6 +195,10 @@ namespace WFProt
         public void In_MoveLast_Result(bool status)
         {
             Console.WriteLine(string.Format("MoveLast: {0}", status));
+        }
+        public void In_MoveToChild_Result(bool status)
+        {
+            Console.WriteLine(string.Format("MoveToChild: {0}", status));
         }
     }
 }

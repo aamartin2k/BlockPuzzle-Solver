@@ -19,7 +19,10 @@ namespace WFProt
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Preparacion
-            IBPServer server = new Controller();
+            // IBPServer server = new Controller();
+            IController server = IOHandler.CreateServer();
+
+
             Form1 form = new Form1();
 
             // Conexion
@@ -29,6 +32,7 @@ namespace WFProt
             form.Out_CloseFile = server.In_CloseFile;
             form.Out_LoadFile = server.In_LoadFile;
             form.Out_SaveFile = server.In_SaveFile;
+            form.Out_SaveFileAs = server.In_SaveFileAs;
             //Actions
             form.Out_Solution = server.In_Solution;
             form.Out_Undo = server.In_Undo;
@@ -46,11 +50,8 @@ namespace WFProt
             form.Out_MovePrevious = server.In_MovePrevious;
             form.Out_MoveNext = server.In_MoveNext;
             form.Out_MoveLast = server.In_MoveLast;
-
-            // Childs
-            form.Out_AddChild = server.In_AddChild;
-            form.Out_AddChildStay = server.In_AddChildStay;
             form.Out_MoveToChild = server.In_MoveToChild;
+
             form.Out_Rename = server.In_Rename;
 
             // Entradas desde de Controller
@@ -65,19 +66,20 @@ namespace WFProt
 
             server.Out_EmptyCommandStack = form.In_EmptyCommandStack;
 
-            server.Out_SelectRows = form.In_SelectRows;
-            server.Out_SelectColumns = form.In_SelectColumns;
+            //server.Out_SelectRows = form.In_SelectRows;
+            //server.Out_SelectColumns = form.In_SelectColumns;
 
             server.Out_MoveFirst_Result = form.In_MoveFirst_Result;
             server.Out_MovePrevious_Result = form.In_MovePrevious_Result;
             server.Out_MoveNext_Result = form.In_MoveNext_Result;
             server.Out_MoveLast_Result = form.In_MoveLast_Result;
+            server.Out_MoveToChild_Result = form.In_MoveToChild_Result;
 
-            // Manual Test con resultados en GUI
-            //string file = "solver.bmd";
-            string file = "juego4.bmd";
-            form.Out_LoadFile(file);
-            form.Out_Solution();
+            //// Manual Test con resultados en GUI
+            ////string file = "solver.bmd";
+            //string file = "juego6.bmd";
+            //form.Out_LoadFile(file);
+            //form.Out_Solution();
 
             //ejecutar Form
             Application.Run(form);

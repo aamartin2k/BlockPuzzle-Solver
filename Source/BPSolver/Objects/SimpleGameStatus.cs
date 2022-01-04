@@ -22,11 +22,12 @@ namespace BPSolver.Objects
         public int CompletedColumns;
 
         public Dictionary<int, PieceName> NextPiecesA ;
-        //public SimpleCell[] CellsA;
-        public bool[,] CellsA;
-
         
-        public bool this[Coord coord]
+        //public bool[,] CellsA;
+        //PieceColor
+        public PieceColor[,] CellsA;
+
+        public PieceColor this[Coord coord]
         {
             get
             {
@@ -35,6 +36,18 @@ namespace BPSolver.Objects
             set
             {
                 CellsA[coord.Row, coord.Col] = value;
+            }
+        }
+
+        public PieceColor this[int row, int col]
+        {
+            get
+            {
+                return CellsA[row, col];
+            }
+            set
+            {
+                CellsA[row, col] = value;
             }
         }
 

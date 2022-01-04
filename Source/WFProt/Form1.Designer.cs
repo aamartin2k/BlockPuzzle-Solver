@@ -103,6 +103,7 @@
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.closeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveAsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -153,6 +154,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.solutionMetaStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lbProcTime = new System.Windows.Forms.Label();
             this.toolStripTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece2)).BeginInit();
@@ -784,6 +786,7 @@
             this.openToolStripButton,
             this.closeToolStripButton,
             this.saveToolStripButton,
+            this.saveAsToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator,
             this.cutToolStripButton,
@@ -835,6 +838,16 @@
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "&Save";
             this.saveToolStripButton.ToolTipText = "Salvar";
+            // 
+            // saveAsToolStripButton
+            // 
+            this.saveAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveAsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveAsToolStripButton.Image")));
+            this.saveAsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAsToolStripButton.Name = "saveAsToolStripButton";
+            this.saveAsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveAsToolStripButton.Text = "Save As";
+            this.saveAsToolStripButton.Click += new System.EventHandler(this.saveAsToolStripButton_Click);
             // 
             // printToolStripButton
             // 
@@ -1189,6 +1202,7 @@
             // 
             // tbpSolution
             // 
+            this.tbpSolution.Controls.Add(this.lbProcTime);
             this.tbpSolution.Controls.Add(this.lbEvals);
             this.tbpSolution.Controls.Add(this.label3);
             this.tbpSolution.Controls.Add(this.lbSoluciones);
@@ -1330,6 +1344,16 @@
             // solutionMetaStatusBindingSource
             // 
             this.solutionMetaStatusBindingSource.DataSource = typeof(BPSolver.Objects.SolutionMetaStatus);
+            // 
+            // lbProcTime
+            // 
+            this.lbProcTime.AutoSize = true;
+            this.lbProcTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProcTime.Location = new System.Drawing.Point(357, 180);
+            this.lbProcTime.Name = "lbProcTime";
+            this.lbProcTime.Size = new System.Drawing.Size(52, 13);
+            this.lbProcTime.TabIndex = 21;
+            this.lbProcTime.Text = "Tiempo:";
             // 
             // Form1
             // 
@@ -1495,6 +1519,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lbSoluciones;
         private System.Windows.Forms.ListBox lbEvals;
+        private System.Windows.Forms.ToolStripButton saveAsToolStripButton;
+        private System.Windows.Forms.Label lbProcTime;
     }
 }
 

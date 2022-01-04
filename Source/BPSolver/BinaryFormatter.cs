@@ -67,9 +67,9 @@ namespace BPSolver
                 BinaryFormatter formatter = new BinaryFormatter();
                 return formatter.Deserialize(serialStream);
             }
-            catch (SerializationException e)
+            catch (SerializationException )
             {
-                throw e;
+                throw ;
             }
 
         }
@@ -99,9 +99,9 @@ namespace BPSolver
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(serialStream, objToSerialize);
             }
-            catch (SerializationException e)
+            catch (SerializationException)
             {
-                throw e;
+                throw ;
             }
         }
 

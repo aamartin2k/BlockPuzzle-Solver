@@ -11,8 +11,7 @@ namespace BPSolver
     public partial class Controller : IBPServer
     {
         // Declaraciones
-        
-        //private GameSolver _gameSolver;
+       
         private Solver.Solver _gameSolver;
 
 

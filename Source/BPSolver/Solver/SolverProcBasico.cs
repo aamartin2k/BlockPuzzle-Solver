@@ -9,7 +9,7 @@ namespace BPSolver.Solver
     public partial class Solver
     {
 
-        public SolutionMetaStatus CreateMetaSolutionX(GameStatus game)
+        private SolutionMetaStatus CreateMetaSolutionX(GameStatus game)
         {
             GameTreeNode treeRoot;
 
@@ -63,7 +63,7 @@ namespace BPSolver.Solver
             return sol;
         }
 
-        public GameTreeNode CreateSolutionTreePBasico(GameStatus game)
+        private GameTreeNode CreateSolutionTreePBasico(GameStatus game)
         {
             //Crear SolTree y RootNode con copia de GStIni
             GameTreeNode treeRoot;
@@ -82,5 +82,38 @@ namespace BPSolver.Solver
 
             return treeRoot;
         }
+
+        // Realiza iteracion por lista de NextPieces y no emplea Queue
+        private void ProccessNodeB(GameTreeNode parent, GameTreeNode root)
+        {
+            GameStatus gstatus = parent.Item;
+
+            //PrintMsg(string.Format("Procesando {0}.", parent.Item.Nombre));
+            foreach (var dkv in gstatus.NextPieces)
+            {
+                int index = dkv.Key;
+                PieceName piece = dkv.Value;
+
+                //Generar lista de  movidas
+                List<Movement> lmm = CreateMovements(index, piece, gstatus);
+
+                //DMsg(string.Format("Procesando {0} movidas.", lmm.Count));
+                foreach (var move in lmm)
+                {
+                    ProcessMove(move, parent, root);
+                }
+            }
+
+            //Para cada hijo de NodoParent
+            //PrintMsg(string.Format("{0} tiene {1} hijos", parent.Item.Nombre, parent.Children.Count));
+            var idList = parent.Children.Select(n => n.Id).ToArray();
+            foreach (var id in idList)
+            {
+                ProccessNodeB(root[id], root);
+            }
+
+
+        }
+
     }
 }

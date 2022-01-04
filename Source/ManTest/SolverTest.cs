@@ -76,47 +76,47 @@ namespace ManTest
 
             Console.WriteLine("Aplicar Movimientos posibles");
 
-            GameStatus cloneg;
-            Eval eval;
+            //GameStatus cloneg;
+            //Eval eval;
 
             foreach (var item in lmm)
             {
                 // clonar status
-                cloneg = _solver.CloneGameStatus(status);
+                //cloneg = _solver.CloneGameStatus(status);
 
-                // aplicar move
-                _solver.MakeMove(item, cloneg);
+                //// aplicar move
+                //_solver.MakeMove(item, cloneg);
 
-                // evaluar
-                eval = _solver.EvaluateMove(item, cloneg);
-                Console.WriteLine(eval);
-                Console.WriteLine();
+                //// evaluar
+                //eval = _solver.EvaluateMove(item, cloneg);
+                //Console.WriteLine(eval);
+                //Console.WriteLine();
             }
 
         }
 
         static void Test_Solution(GameStatus status)
         {
-            Console.WriteLine("Soluciones posibles");
+            //Console.WriteLine("Soluciones posibles");
 
-            GameTreeNode treeRoot;
-            treeRoot = _solver.CreateSolutionTreePBasico(status);
+            //GameTreeNode treeRoot;
+            //treeRoot = _solver.CreateSolutionTreePBasico(status);
 
-            Console.WriteLine(" Nodos: " + treeRoot.Count());
+            //Console.WriteLine(" Nodos: " + treeRoot.Count());
 
-            // obtener ramas
-            var ramas = treeRoot.SelectLeaves();
-            Console.WriteLine(" Soluciones: " + ramas.Count());
+            //// obtener ramas
+            //var ramas = treeRoot.SelectLeaves();
+            //Console.WriteLine(" Soluciones: " + ramas.Count());
 
-            foreach (GameTreeNode item in ramas)
-            {
-                //Console.WriteLine(item.Item.Movement);
+            //foreach (GameTreeNode item in ramas)
+            //{
+            //    //Console.WriteLine(item.Item.Movement);
 
-                // Seleccionar todos hacia arriba e invertir
-                var invSol = item.SelectPathUpward().Reverse();
+            //    // Seleccionar todos hacia arriba e invertir
+            //    var invSol = item.SelectPathUpward().Reverse();
 
-                DisplaySolution(invSol);
-            }
+            //    DisplaySolution(invSol);
+            //}
         }
 
         static void DisplaySolution(IEnumerable<GameTreeNode> seq)

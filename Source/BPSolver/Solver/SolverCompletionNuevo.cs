@@ -47,8 +47,9 @@ namespace BPSolver.Solver
             //return cnt == 0;
             for (int i = 0; i < Constants.Rank; i++)
             {
-                if (!game.CellsA[i, col])
-                    return false;
+                //if (!game.CellsA[i, col])
+                if (game[i, col] == PieceColor.None)
+                        return false;  
             }
 
             return true;
@@ -61,7 +62,7 @@ namespace BPSolver.Solver
             //return cnt == 0;
             for (int i = 0; i < Constants.Rank; i++)
             {
-                if (!game.CellsA[row, i])
+                if (game[row, i] == PieceColor.None)
                     return false ;
             }
 
@@ -168,7 +169,7 @@ namespace BPSolver.Solver
             //list.Select(c => c.Color = PieceColor.None).ToList();
             for (int i = 0; i < Constants.Rank; i++)
             {
-                game.CellsA[i, index] = false;
+                game[i, index] = PieceColor.None;
             }
         }
 
@@ -178,7 +179,7 @@ namespace BPSolver.Solver
             //list.Select(c => c.Color = PieceColor.None).ToList();
             for (int i = 0; i < Constants.Rank; i++)
             {
-                game.CellsA[index, i] = false;
+                game[index, i] = PieceColor.None;
             }
         }
 

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using BPSolver.Objects;
-using System.Text;
-using System.Threading.Tasks;
 using BPSolver.Enums;
 
 namespace BPSolver
@@ -41,7 +38,6 @@ namespace BPSolver
         void In_DrawGridPlay(Coord coord, PieceName name, int index);
 
         // Manejo de Secuencia
-        //void CreateRoot(GameStatus item);
         void In_AddChild(GameStatus child);
         void In_AddChildStay(GameStatus child);
         void In_MoveFirst();

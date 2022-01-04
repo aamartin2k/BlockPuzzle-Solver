@@ -1,6 +1,6 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Objects;
-using BPSolver.Solver;
+using BPSolver;
 using ControlTreeView;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,10 @@ namespace WFProt
             //_solutions = meta.Solutions;
             // Update List
             UpdateSolutionList(meta.Solutions);
-          
+
+            lbProcTime.Text = meta.TiempoSolucion;
+
+
         }
         private void UpdateSolutionList(List<Solution>  solutions)
         {

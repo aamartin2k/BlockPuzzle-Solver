@@ -8,45 +8,11 @@ namespace BPSolver.Solver
 {
     public partial class Solver
     {
-        #region Solver Basico
+        #region Solver Recursivo
 
-        // Realiza iteracion por lista de NextPieces y no emplea Queue
-        private void ProccessNodeB(GameTreeNode parent, GameTreeNode root)
-        {
-            GameStatus gstatus = parent.Item;
-
-            //PrintMsg(string.Format("Procesando {0}.", parent.Item.Nombre));
-            foreach (var dkv in gstatus.NextPieces)
-            {
-                int index = dkv.Key;
-                PieceName piece = dkv.Value;
-
-                //Generar lista de  movidas
-                List<Movement> lmm = CreateMovements(index, piece, gstatus);
-
-                //DMsg(string.Format("Procesando {0} movidas.", lmm.Count));
-                foreach (var move in lmm)
-                {
-                    ProcessMove(move, parent, root);
-                }
-            }
-
-            //Para cada hijo de NodoParent
-            //PrintMsg(string.Format("{0} tiene {1} hijos", parent.Item.Nombre, parent.Children.Count));
-            var idList = parent.Children.Select(n => n.Id).ToArray();
-            foreach (var id in idList)
-            {
-                ProccessNodeB(root[id], root);
-            }
-
-
-        }
-
+       
         // Anidadas
-        private void DMsg(string msg)
-        {
-            Console.WriteLine(msg);
-        }
+        
 
         // Reducir movidas
         // aplicar "heuristicas"  para reducir movidas 
@@ -115,6 +81,69 @@ namespace BPSolver.Solver
         }
 
         //  Auxiliares
+
+
+        // Calcula valor de Movimiento aplicado
+        public Eval EvaluateMove(Movement move, GameStatus game)
+        {
+            Eval eval = Eval.GetNewEval();
+
+            Piece piece = GetPiece(move.Name);
+            // Tamanno de pieza
+            eval.PieceSize = piece.Count;
+
+            // Preference
+            List<Coord> realCoords;
+            realCoords = Piece.GetRealCoords(piece, move.InsertPoint);
+            eval.Preference = GetPreference(realCoords);
+
+            // Neighbors
+            eval.Neighbors = GetNeighborsCount(piece, move.InsertPoint, game);
+
+            // Completion
+            bool ret;
+            int ccount = 0;
+
+            ret = IsAnyCompleted(game);
+            if (ret)
+                ccount = CompletedCount(game);
+
+            eval.CompleteRoC = ccount;
+
+            return eval;
+        }
+
+
+        private void DeleteMovedPiece(Movement move, GameStatus game)
+        {
+            // Borrar pieza de Dict
+            // El comando DeleteNextPieceCommand asigna PieceName.None
+            // aqui se borra realmente.
+            game.NextPieces.Remove(move.Index);
+        }
+
+        // Aplicar Movimiento a GameStatus
+        // Se repite codigo de comandos para agilidad
+        public Movement MakeMove(Movement move, GameStatus game)
+        {
+            // Comprobar que coincide el nombre de pieza
+            bool ret = move.Name == game.NextPieces[move.Index];
+
+            if (!ret)
+                throw new Exception("No coincide el nombre de pieza de Move con Dictionary");
+            // "Dibujar" pieza en board
+            // Get reference to piece
+            Piece piece = GetPiece(move.Name);
+
+            // Obtener Real Coords
+            List<Coord> realCoords;
+            realCoords = Piece.GetRealCoords(piece, move.InsertPoint);
+
+            // ejecutar
+            var ex = realCoords.Select(c => game[c].Color = piece.Color).ToList();
+
+            return move;
+        }
 
         //  Chequear completamiento y eliminar completas
         private void CheckCompleteAndDelete(GameStatus game)

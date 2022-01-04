@@ -9,6 +9,10 @@ namespace BPSolver.Solver
 {
     public partial class Solver
     {
+        private void DMsg(string msg)
+        {
+            Console.WriteLine(msg);
+        }
 
         // Funciones Auxiliares
         // Crear lista de Movimientos
@@ -58,65 +62,8 @@ namespace BPSolver.Solver
             return qry.ToList();
         }
 
-        // Aplicar Movimiento a GameStatus
-        // Se repite codigo de comandos para agilidad
-        public Movement MakeMove(Movement move, GameStatus game)
-        {
-            // Comprobar que coincide el nombre de pieza
-            bool ret = move.Name == game.NextPieces[move.Index];
+       
 
-            if (!ret)
-                throw new Exception("No coincide el nombre de pieza de Move con Dictionary");
-            // "Dibujar" pieza en board
-            // Get reference to piece
-            Piece piece = GetPiece(move.Name);
-
-            // Obtener Real Coords
-            List<Coord> realCoords;
-            realCoords = Piece.GetRealCoords(piece, move.InsertPoint);
-
-            // ejecutar
-            var ex = realCoords.Select(c => game[c].Color = piece.Color).ToList();
-
-            return move;
-        }
-
-        private void DeleteMovedPiece(Movement move, GameStatus game)
-        {
-            // Borrar pieza de Dict
-            // El comando DeleteNextPieceCommand asigna PieceName.None
-            // aqui se borra realmente.
-            game.NextPieces.Remove(move.Index);
-        }
-        // Calcula valor de Movimiento aplicado
-        public Eval EvaluateMove(Movement move, GameStatus game)
-        {
-            Eval eval =  Eval.GetNewEval();
-
-            Piece piece = GetPiece(move.Name);
-            // Tamanno de pieza
-            eval.PieceSize = piece.Count;
-
-            // Preference
-            List<Coord> realCoords;
-            realCoords = Piece.GetRealCoords(piece, move.InsertPoint);
-            eval.Preference = GetPreference(realCoords);
-
-            // Neighbors
-            eval.Neighbors = GetNeighborsCount(piece, move.InsertPoint, game);
-
-            // Completion
-            bool ret;
-            int ccount = 0;
-
-            ret = IsAnyCompleted(game);
-            if (ret)
-                ccount = CompletedCount(game);
-
-            eval.CompleteRoC = ccount;
-
-            return eval;
-        }
 
         public GameStatus CloneGameStatus(GameStatus item)
         {

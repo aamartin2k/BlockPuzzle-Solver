@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using SourceGrid;
 using Cells = SourceGrid.Cells;
 using Views = SourceGrid.Cells.Views;
-using BPSolver.Solver;
+using BPSolver;
 using BPSolver.Enums;
 
 
@@ -211,7 +209,7 @@ namespace WFProt
             #region Grid Soluciones
             //  Grid Views // sgSolution
             vSolutionColor = new Views.Cell();
-            vSolutionColor.BackColor = Color.SlateBlue;
+            vSolutionColor.BackColor = Color.DarkGreen;
 
             // Grid Config
             dim = (sgSolution.Width / 10);
@@ -381,16 +379,17 @@ namespace WFProt
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            
+             SaveFile();
+        }
+        private void saveAsToolStripButton_Click(object sender, EventArgs e)
+        {
             saveFileDialog1.Filter = extension;
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 tlsbModelText.Text = saveFileDialog1.FileName;
                 tlsbActionImage.Image = saveToolStripButton.Image;
-                SaveFile(saveFileDialog1.FileName);
-                
-                tlsbActionImage.Image = saveToolStripButton.Image;
-                
+                SaveFileAs(saveFileDialog1.FileName);
+
             }
 
         }
@@ -404,8 +403,6 @@ namespace WFProt
                 tlsbModelText.Text = openFileDialog1.FileName;
                 tlsbActionImage.Image = openToolStripButton.Image;
                 LoadFile(openFileDialog1.FileName);
-               
-               
             }
 
         }

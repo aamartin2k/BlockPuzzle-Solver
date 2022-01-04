@@ -33,7 +33,14 @@ namespace BPSolver.Objects
         }
 
         // Constructor
-        //public Cell(int id, int row, int col)
+
+        public Cell(int row, int col, PieceColor color)
+        {
+            Row = row;
+            Col = col;
+            Color = color;
+        }
+
         public Cell(int row, int col)
         {
             Row = row;
@@ -50,12 +57,12 @@ namespace BPSolver.Objects
             Color = cell.Color;
         }
 
-        public Cell(SimpleCell cell)
-        {
-            Row = cell.Row;
-            Col = cell.Col;
-            Color = cell.Color;
-        }
+        //public Cell(SimpleCell cell)
+        //{
+        //    Row = cell.Row;
+        //    Col = cell.Col;
+        //    Color = cell.Color;
+        //}
 
         //Retorna una Coord con la posicion de la Cell
         public Coord Coord

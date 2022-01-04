@@ -59,17 +59,54 @@
     <Compile Include="Controller\ControllerTreeHandler.cs" />
     <Compile Include="Controller\GameSerialNode.cs" />
     <Compile Include="Controller\GameTreeNode.cs" />
+    <Compile Include="DocHandler\DocHandler.cs" />
+    <Compile Include="DocHandler\DocHandlerInput.cs" />
+    <Compile Include="DocHandler\DocHandlerOutput.cs" />
+    <Compile Include="Document\DocData.cs" />
+    <Compile Include="Document\GameData.cs" />
+    <Compile Include="Document\GameDocument.cs" />
+    <Compile Include="GameHandler\GameHandler.cs" />
+    <Compile Include="GameHandler\GameHandlerCommand.cs" />
+    <Compile Include="GameHandler\GameHandlerInput.cs" />
+    <Compile Include="GameHandler\GameHandlerOutput.cs" />
+    <Compile Include="IOHandler\ClientGame.cs" />
+    <Compile Include="IOHandler\ClientSol.cs" />
+    <Compile Include="IOHandler\ClientTree.cs" />
+    <Compile Include="IOHandler\IOHandlerGame.cs" />
+    <Compile Include="IOHandler\IOHandlerSol.cs" />
+    <Compile Include="IOHandler\IOHandlerTree.cs" />
+    <Compile Include="SolHandler\SolHandlerInput.cs" />
+    <Compile Include="SolHandler\SolHandlerOutput.cs" />
+    <Compile Include="SolHandler\SolHandlerPieceSet.cs" />
+    <Compile Include="SolHandler\SolHandlerSolutionProcess.cs" />
+    <Compile Include="SolHandler\SolHandlerUtils.cs" />
+    <Compile Include="TreeHandler\TreeHandler.cs" />
+    <Compile Include="Interface\IClient.cs" />
+    <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\IDocument.cs" />
+    <Compile Include="Interface\IGame.cs" />
+    <Compile Include="Interface\ISolver.cs" />
+    <Compile Include="Interface\ITree.cs" />
+    <Compile Include="IOHandler\ClientDocument.cs" />
+    <Compile Include="IOHandler\IOHandler.cs" />
+    <Compile Include="IOHandler\IOHandlerAux.cs" />
+    <Compile Include="IOHandler\IOHandlerDocument.cs" />
+    <Compile Include="IOHandler\IOHandlerInput.cs" />
+    <Compile Include="IOHandler\IOHandlerOutput.cs" />
     <Compile Include="Objects\Eval.cs" />
     <Compile Include="Objects\GameMetaStatus.cs" />
     <Compile Include="Objects\Movement.cs" />
-    <Compile Include="Objects\SimpleCell.cs" />
+    <Compile Include="TreeHandler\TreeHandlerInput.cs" />
+    <Compile Include="TreeHandler\TreeHandlerOutput.cs" />
+    <None Include="Objects\SimpleCell.cs" />
     <Compile Include="Objects\SimpleGameStatus.cs" />
     <Compile Include="Objects\Solution.cs" />
     <Compile Include="Objects\SolutionMetaStatus.cs" />
+    <Compile Include="SolHandler\SolHandler.cs" />
     <Compile Include="Solver\SolverCompletionNuevo.cs" />
-    <Compile Include="Solver\SolverProcBasico.cs" />
-    <Compile Include="Solver\SolverProcPorPaso.cs" />
-    <Compile Include="Solver\SolverProcRecursivo.cs" />
+    <None Include="Solver\SolverProcBasico.cs" />
+    <Compile Include="Solver\SolverOperations.cs" />
+    <None Include="Solver\SolverProcRecursivo.cs" />
     <Compile Include="Solver\SolverSimpleStatus.cs" />
     <Compile Include="Solver\SolverSolution.cs" />
     <Compile Include="Solver\SolverSolutionAux.cs" />
@@ -79,6 +116,7 @@
     <Compile Include="Solver\Solver.cs" />
     <Compile Include="Solver\SolverDeclarations.cs" />
     <Compile Include="Solver\SolverPieceSet.cs" />
+    <Compile Include="Solver\SolverSolutions.cs" />
     <Compile Include="Solver\SolverStats.cs" />
     <None Include="OldSolver\GameStatusFactory.cs" />
     <None Include="OldSolver\GameSolverBoard.cs" />
@@ -101,6 +139,7 @@
   <ItemGroup>
     <Content Include="DevNotes.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

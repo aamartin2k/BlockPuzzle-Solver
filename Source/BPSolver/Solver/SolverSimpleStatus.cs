@@ -11,60 +11,6 @@ namespace BPSolver.Solver
     public partial class Solver
     {
 
-        public SolutionMetaStatus CreateMetaSolution(GameStatus game)
-        {
-            GameTreeSimple treeRoot;
-
-            // crear arbol de games
-            treeRoot = CreateSolutionTreeNuevo(game);
-
-            // crear resumen de soluciones
-            var ramas = treeRoot.SelectLeaves();
-
-            List<Solution> solutions = new List<Solution>();
-
-            foreach (var item in ramas)
-            {
-                // Seleccionar todos hacia arriba e invertir
-                var invSol = item.SelectPathUpward().Reverse();
-
-                solutions.Add(CreateSolutionX(invSol));
-            }
-
-            // crear inf de retorno
-            SolutionMetaStatus meta = new SolutionMetaStatus(solutions);
-
-            Console.WriteLine("*** Cant Nodos: {0} ***", treeRoot.Count() );
-            return meta;
-        }
-
-        private Solution CreateSolutionX(IEnumerable<GameTreeSimple> seqNodes)
-        {
-            GameStatus game;
-            //  Crear objetos GameStatus para solucion
-            // crear total eval y dictionary
-            Eval TotalEval = Eval.GetTotalEval();
-            Dictionary<int, GameStatus> StatusList = new Dictionary<int, GameStatus>();
-
-            foreach (GameTreeSimple nod in seqNodes)
-            {
-                game = GetGameStatus( nod.Item) ;
-
-                StatusList.Add(game.Id, game);
-
-                // saltando GameStatus inicial, que no tiene Eval
-                if (game.Nombre != RootName)
-                {
-                    TotalEval.PieceSize += game.Evaluation.PieceSizeTotal;
-                    TotalEval.Preference += game.Evaluation.PreferenceTotal;
-                    TotalEval.Neighbors += game.Evaluation.NeighborsTotal;
-                    TotalEval.CompleteRoC += game.Evaluation.CompleteRoCTotal;
-                }
-            }
-
-            Solution sol = new Solution(TotalEval, StatusList);
-            return sol;
-        }
 
         private GameTreeSimple CreateSolutionTreeNuevo(GameStatus game)
         {
@@ -86,7 +32,6 @@ namespace BPSolver.Solver
 
             return treeRoot;
         }
-
 
         private void ProccessNodeNuevo(GameTreeSimple parent, GameTreeSimple root)
         {
@@ -211,7 +156,7 @@ namespace BPSolver.Solver
             List<Coord> realCoords;
             realCoords = Piece.GetNeighborsRealCoords(point, ngbMatrix);
 
-            var ex = realCoords.Select(c => true == game[c]).Where(x => x != true).Count();
+            var ex = realCoords.Select(c => PieceColor.None == game[c]).Where(x => x != true).Count();
             return ex;
         }
 
@@ -238,7 +183,7 @@ namespace BPSolver.Solver
             realCoords = Piece.GetRealCoords(piece, move.InsertPoint);
 
             // ejecutar para class SimpleCell
-            var ex = realCoords.Select(c => game[c] = true).ToList();
+            var ex = realCoords.Select(c => game[c] = piece.Color).ToList();
 
             
             return move;
@@ -259,6 +204,23 @@ namespace BPSolver.Solver
 
             return clonedGame;
         }
+
+        private GameTreeSimple CreateCloneNodeNuevo(GameTreeSimple root, GameTreeSimple parent, SimpleGameStatus game)
+        {
+            SimpleGameStatus clonedGame = CloneSimpleGameStatus(game);
+
+            // Reset Id
+            clonedGame.Id = root.Count();
+
+            // Reset Name
+            clonedGame.Nombre = string.Format("Cloned {0}", clonedGame.Id);
+
+            //crear
+            return parent.AddChild(clonedGame);
+
+   
+        }
+
 
 
         private List<Movement> CreateMovementsNuevo(int index, PieceName pname, SimpleGameStatus game)
@@ -319,7 +281,7 @@ namespace BPSolver.Solver
 
         private bool TestFreeCellsNuevo(SimpleGameStatus game, List<Coord> realCoords)
         {
-            var ex = realCoords.Select(c => true == game[c]).Where(x => x == true).Count();
+            var ex = realCoords.Select(c => PieceColor.None == game[c]).Where(x => x == true).Count();
             return ex == 0;
         }
 
@@ -332,7 +294,7 @@ namespace BPSolver.Solver
             {
                 for (int j = 0; j < Constants.Rank; j++)
                 {
-                    if (!game.CellsA[i, j])
+                    if (game.CellsA[i, j] == PieceColor.None)
                         freec.Add(new Coord(i, j));
                 }
             }
@@ -362,7 +324,7 @@ namespace BPSolver.Solver
             {
                 for (int j = 0; j < Constants.Rank; j++)
                 {
-                    sg[i, j].Color = game.CellsA[i, j] ? PieceColor.One : PieceColor.None    ;
+                    sg[i, j].Color = game[i, j]     ;
                 }
             }
 
@@ -386,13 +348,13 @@ namespace BPSolver.Solver
             sg.NextPiecesA.Add(1, game.NextPieces[1]);
             sg.NextPiecesA.Add(2, game.NextPieces[2]);
 
-            sg.CellsA = new bool[Constants.Rank,  Constants.Rank];
+            sg.CellsA = new PieceColor[Constants.Rank,  Constants.Rank];
          
             for (int i = 0; i < Constants.Rank; i++)
             {
                 for (int j = 0; j < Constants.Rank; j++)
                 {
-                    sg.CellsA[i, j] = !game[i, j].IsFree ;
+                    sg[i, j] = game[i, j].Color ;
                 }
             }
             return sg;
@@ -412,14 +374,14 @@ namespace BPSolver.Solver
                 sg.NextPiecesA.Add(dkv.Key, dkv.Value);
             }
 
-            sg.CellsA = new bool[Constants.Rank, Constants.Rank];
+            sg.CellsA = new PieceColor[Constants.Rank, Constants.Rank];
 
             
             for (int i = 0; i < Constants.Rank; i++)
             {
                 for (int j = 0; j < Constants.Rank; j++)
                 {
-                    sg.CellsA[i, j] = game.CellsA[i, j];
+                    sg[i, j] = game[i, j];
                 }
             }
 
