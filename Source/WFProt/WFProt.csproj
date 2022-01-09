@@ -43,29 +43,25 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ControlTreeView">
-      <HintPath>..\..\..\..\..\04 CodeRefs Net\ControlTreeViewLibrary\Bin\net45\ControlTreeView.dll</HintPath>
-    </Reference>
-    <Reference Include="DevAge.Windows.Forms">
-      <HintPath>..\..\..\Deps\SourceGrid\4.11\DevAge.Windows.Forms.dll</HintPath>
+    <Reference Include="ControlTreeView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Deps\ControlTreeView\ControlTreeView.dll</HintPath>
     </Reference>
     <Reference Include="SourceGrid, Version=4.11.3119.22026, Culture=neutral, PublicKeyToken=df6f5e538749e85d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Deps\SourceGrid\4.11\SourceGrid.dll</HintPath>
+      <HintPath>..\..\..\Deps\SourceGrid\4.4\SourceGrid.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\04 CodeRefs Net\TreeCollections\Bin\net45\TreeCollections.dll</HintPath>
+      <HintPath>..\..\..\Deps\TreeCollections\TreeCollections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -318,9 +314,7 @@
   <ItemGroup>
     <None Include="Resources\Buttons.Tree.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Stop1.ico" />
   </ItemGroup>

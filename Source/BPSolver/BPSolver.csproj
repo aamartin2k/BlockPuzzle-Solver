@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\04 CodeRefs Net\TreeCollections\Bin\net45\TreeCollections.dll</HintPath>
+      <HintPath>..\..\..\Deps\TreeCollections\TreeCollections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
