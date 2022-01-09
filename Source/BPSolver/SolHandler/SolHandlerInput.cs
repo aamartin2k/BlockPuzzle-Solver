@@ -13,18 +13,27 @@ namespace BPSolver
         {
             GameTreeSimple treeRoot;
 
-            // crear arbol de posibles movimientos
-            treeRoot = CreateSolutionTreePPaso(game);
+            // Timing
+            System.Diagnostics.Stopwatch _stopWatch = new System.Diagnostics.Stopwatch();
+            _stopWatch.Start();
+
+            // create tree of possible moves
+            // iterative procedure
+            treeRoot = CreateSolutionTree(game);
+            // recursive procedure
+            //treeRoot = CreateSolutionTreeRecursive(game);
+
+            _stopWatch.Stop();
 
             // crear resumen de soluciones
-            var ramas = treeRoot.SelectLeaves();
+            var leaves = treeRoot.SelectLeaves();
 
             List<Solution> solutions = new List<Solution>();
 
-            foreach (var item in ramas)
+            foreach (var node in leaves)
             {
                 // Seleccionar todos hacia arriba e invertir
-                var invSol = item.SelectPathUpward().Reverse();
+                var invSol = node.SelectPathUpward().Reverse();
 
                 // Crear estados de solucion a partir del original game
                 solutions.Add(CreateSolution(invSol, game));
@@ -32,6 +41,8 @@ namespace BPSolver
 
             // crear inf de retorno
             SolutionMetaStatus meta = new SolutionMetaStatus(solutions);
+            meta.ProcTime = _stopWatch.Elapsed.ToString();
+            meta.NodeCount = treeRoot.Count();
 
             OnOut_UpdateSolutionBoard(meta);
         }

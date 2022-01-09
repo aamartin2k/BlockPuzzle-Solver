@@ -5,32 +5,31 @@ using System.Linq;
 
 namespace BPSolver.Command
 {
-    internal class DrawPieceCommand : ICommand
+    internal class DrawPieceCommand : BaseCommand
     {
 
-        List<Coord> RealCoords;
-        PieceColor NewColor, OldColor;
-        GameStatus GameSt;
-
-        public DrawPieceCommand(List<Coord> realCoords, PieceColor color, GameStatus gamest)
+        private List<Coord> Coords;
+        private PieceColor NewColor, OldColor;
+    
+        public DrawPieceCommand(GameStatus game,
+                               List<Coord> coords, 
+                               PieceColor color) : base (game)
         {
-            RealCoords = realCoords;
+            Coords = coords;
             NewColor = color;
-            GameSt = gamest;
-
             OldColor = PieceColor.None;
         }
 
-        public void Do()
+        public override void Do()
         {
             // Inserting Piece on board
-            var ex = RealCoords.Select(c => GameSt[c].Color = NewColor).ToList();
+            var ex = Coords.Select(c => Context[c].Color = NewColor).ToList();
         }
 
-        public void Undo()
+        public override void Undo()
         {
             // restaurar estado previo, celdas vacias
-            var ex = RealCoords.Select(c => GameSt[c].Color = OldColor).ToList();
+            var ex = Coords.Select(c => Context[c].Color = OldColor).ToList();
         }
     }
 }

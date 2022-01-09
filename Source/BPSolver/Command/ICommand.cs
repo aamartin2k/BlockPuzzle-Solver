@@ -1,5 +1,9 @@
-﻿namespace BPSolver.Command
+﻿
+namespace BPSolver.Command
 {
+    /// <summary>
+    /// Defines behavior of commands
+    /// </summary>
     interface ICommand
     {
         void Do();

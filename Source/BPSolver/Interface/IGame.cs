@@ -4,6 +4,9 @@ using BPSolver.Enums;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Defines behavior of game status handling component (GameHandler)
+    /// </summary>
     public interface IGame
     {
         #region Propiedades
@@ -12,7 +15,6 @@ namespace BPSolver
         #endregion
 
         #region Entradas
-        // Editar Tablero
         // Deshacer ultimo
         void In_Undo();
 
@@ -30,7 +32,7 @@ namespace BPSolver
 
         // Insertar Pieza desde NextPiece en Tablero
         // Jugada
-        void In_DrawGridPlay(Coord coord, PieceName name, int index);
+        void In_DrawGridPlay(Coord coord, PieceName name, int index, int id);
         #endregion
 
         #region Salidas
@@ -41,9 +43,6 @@ namespace BPSolver
         Action<bool> Out_DeleteGridCell_Result { get; set; }
         Action<bool> Out_DeleteNextPiece_Result { get; set; }
         Action<bool> Out_DrawGridPlay_Result { get; set; }
-
-        // Se pasa a ITree
-        //Action<GameMetaStatus> Out_UpdateGameBoard { get; set; }
         Action<bool> Out_EmptyCommandStack { get; set; }
         #endregion
     }

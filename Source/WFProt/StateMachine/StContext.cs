@@ -101,20 +101,13 @@ namespace WFProt
     
            
             SelectionState = new SelectionState(this, CommandAction.Select);
-
             DeletionState = new DeletionState(this, CommandAction.Delete);
-
             GridCellDeletionState = new GridCellDeletionState(this, CommandAction.Delete);
             NextPieceDeletionState = new NextPieceDeletionState(this, CommandAction.Delete);
-
             PieceSettingState = new PieceSettingState(this, CommandAction.Select);
-
             NextPiecePlayState = new NextPiecePlayState(this, CommandAction.Play);
-
             NextPieceDrawingState = new NextPieceDrawingState(this, CommandAction.Select);
             GridCellDrawingState = new GridCellDrawingState(this, CommandAction.Select);
-
-           
 
             CurrentState = SelectionState;
         }

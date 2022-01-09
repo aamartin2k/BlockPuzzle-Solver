@@ -141,6 +141,10 @@
             this.tbpGame = new System.Windows.Forms.TabPage();
             this.cTreeStatus = new ControlTreeView.CTreeView();
             this.tbpSolution = new System.Windows.Forms.TabPage();
+            this.lbNodeCount = new System.Windows.Forms.Label();
+            this.lbProcTime = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.lbEvals = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbSoluciones = new System.Windows.Forms.ListBox();
@@ -154,7 +158,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.solutionMetaStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lbProcTime = new System.Windows.Forms.Label();
             this.toolStripTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNextPiece2)).BeginInit();
@@ -717,7 +720,7 @@
             this.tslbCoordText,
             this.tlsbModel,
             this.tlsbModelText});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 506);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(654, 22);
             this.statusStrip1.TabIndex = 6;
@@ -1166,7 +1169,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 85);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(653, 421);
+            this.tabControl1.Size = new System.Drawing.Size(653, 418);
             this.tabControl1.TabIndex = 12;
             // 
             // tbpGame
@@ -1202,7 +1205,10 @@
             // 
             // tbpSolution
             // 
+            this.tbpSolution.Controls.Add(this.lbNodeCount);
             this.tbpSolution.Controls.Add(this.lbProcTime);
+            this.tbpSolution.Controls.Add(this.label11);
+            this.tbpSolution.Controls.Add(this.label9);
             this.tbpSolution.Controls.Add(this.lbEvals);
             this.tbpSolution.Controls.Add(this.label3);
             this.tbpSolution.Controls.Add(this.lbSoluciones);
@@ -1218,24 +1224,70 @@
             this.tbpSolution.Location = new System.Drawing.Point(4, 22);
             this.tbpSolution.Name = "tbpSolution";
             this.tbpSolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpSolution.Size = new System.Drawing.Size(645, 395);
+            this.tbpSolution.Size = new System.Drawing.Size(645, 392);
             this.tbpSolution.TabIndex = 1;
             this.tbpSolution.Text = "Soluciones";
             this.tbpSolution.UseVisualStyleBackColor = true;
             // 
+            // lbNodeCount
+            // 
+            this.lbNodeCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbNodeCount.AutoSize = true;
+            this.lbNodeCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNodeCount.Location = new System.Drawing.Point(416, 213);
+            this.lbNodeCount.Name = "lbNodeCount";
+            this.lbNodeCount.Size = new System.Drawing.Size(43, 13);
+            this.lbNodeCount.TabIndex = 24;
+            this.lbNodeCount.Text = "Nodos";
+            // 
+            // lbProcTime
+            // 
+            this.lbProcTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbProcTime.AutoSize = true;
+            this.lbProcTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProcTime.Location = new System.Drawing.Point(386, 194);
+            this.lbProcTime.Name = "lbProcTime";
+            this.lbProcTime.Size = new System.Drawing.Size(52, 13);
+            this.lbProcTime.TabIndex = 21;
+            this.lbProcTime.Text = "Tiempo:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(340, 213);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Cant. Nodos:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(340, 194);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Tiempo:";
+            // 
             // lbEvals
             // 
+            this.lbEvals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbEvals.FormattingEnabled = true;
-            this.lbEvals.Location = new System.Drawing.Point(261, 300);
+            this.lbEvals.Location = new System.Drawing.Point(261, 330);
             this.lbEvals.Name = "lbEvals";
-            this.lbEvals.Size = new System.Drawing.Size(372, 82);
+            this.lbEvals.Size = new System.Drawing.Size(372, 56);
             this.lbEvals.TabIndex = 20;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(258, 180);
+            this.label3.Location = new System.Drawing.Point(258, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 19;
@@ -1243,8 +1295,9 @@
             // 
             // lbSoluciones
             // 
+            this.lbSoluciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbSoluciones.FormattingEnabled = true;
-            this.lbSoluciones.Location = new System.Drawing.Point(260, 199);
+            this.lbSoluciones.Location = new System.Drawing.Point(260, 229);
             this.lbSoluciones.Name = "lbSoluciones";
             this.lbSoluciones.Size = new System.Drawing.Size(372, 95);
             this.lbSoluciones.TabIndex = 18;
@@ -1252,12 +1305,13 @@
             // 
             // cTreeSolution
             // 
-            this.cTreeSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cTreeSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cTreeSolution.DrawStyle = ControlTreeView.CTreeViewDrawStyle.HorizontalDiagram;
             this.cTreeSolution.Location = new System.Drawing.Point(260, 6);
             this.cTreeSolution.Name = "cTreeSolution";
-            this.cTreeSolution.Size = new System.Drawing.Size(372, 165);
+            this.cTreeSolution.Size = new System.Drawing.Size(372, 181);
             this.cTreeSolution.TabIndex = 17;
             // 
             // pbNextPieceSol3
@@ -1345,21 +1399,11 @@
             // 
             this.solutionMetaStatusBindingSource.DataSource = typeof(BPSolver.Objects.SolutionMetaStatus);
             // 
-            // lbProcTime
-            // 
-            this.lbProcTime.AutoSize = true;
-            this.lbProcTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProcTime.Location = new System.Drawing.Point(357, 180);
-            this.lbProcTime.Name = "lbProcTime";
-            this.lbProcTime.Size = new System.Drawing.Size(52, 13);
-            this.lbProcTime.TabIndex = 21;
-            this.lbProcTime.Text = "Tiempo:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 531);
+            this.ClientSize = new System.Drawing.Size(654, 528);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStripControls);
             this.Controls.Add(this.toolStripMain);
@@ -1521,6 +1565,9 @@
         private System.Windows.Forms.ListBox lbEvals;
         private System.Windows.Forms.ToolStripButton saveAsToolStripButton;
         private System.Windows.Forms.Label lbProcTime;
+        private System.Windows.Forms.Label lbNodeCount;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
     }
 }
 

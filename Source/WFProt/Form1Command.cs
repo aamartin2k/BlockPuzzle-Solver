@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using BPSolver.Enums;
 using BPSolver.Objects;
-using BPSolver.Solver;
 
 namespace WFProt
 {

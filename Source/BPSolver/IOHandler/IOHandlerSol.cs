@@ -12,7 +12,7 @@ namespace BPSolver
     {
         // Comunicacion con el Componente SolHandler
 
-        private  Stopwatch _stopWatch  ;
+        //private  Stopwatch _stopWatch  ;
 
         #region Salidas
         #region Declaracion de Delegates
@@ -21,8 +21,8 @@ namespace BPSolver
         #region Invocacion de Delegates
         internal void OnOut_Solution( )
         {
-            _stopWatch = new System.Diagnostics.Stopwatch();
-            _stopWatch.Start();
+            //_stopWatch = new System.Diagnostics.Stopwatch();
+            //_stopWatch.Start();
 
             Out_Solution?.Invoke(_GameHandler.CurrentStatus);
         }
@@ -32,8 +32,8 @@ namespace BPSolver
         #region Entradas de Componente
         internal void In_UpdateSolutionBoard(SolutionMetaStatus result)
         {
-            _stopWatch.Stop();
-            result.TiempoSolucion = _stopWatch.Elapsed.ToString();
+            //_stopWatch.Stop();
+            //result.TiempoSolucion = _stopWatch.Elapsed.ToString();
 
             OnOut_UpdateSolutionBoard(result);
         }

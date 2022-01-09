@@ -2,8 +2,12 @@
 using BPSolver.Objects;
 using BPSolver.Enums;
 
+
 namespace BPSolver
 {
+    /// <summary>
+    /// Defines behavior of document handling component (DocHandler)
+    /// </summary>
     public interface IDocument
     {
         #region Propiedades

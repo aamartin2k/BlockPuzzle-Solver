@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
+
     internal partial class DocHandler : IDocument
     {
         #region Entradas de Controller
 
-       
+
         public void In_NewFile()
         {
             bool ret;
@@ -114,6 +115,9 @@ namespace BPSolver
         }
 
 
-        #endregion
+#endregion
+
+
+
     }
 }

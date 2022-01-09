@@ -12,15 +12,14 @@ namespace WFProt
 
         public GridCellDeletionState(StContext context, CommandAction action) : base(context, action)
         {
-            Console.WriteLine("GridCellDeletionState created");
+            //Console.WriteLine("GridCellDeletionState created");
         }
 
         public override void GridCellClicked(Coord position)
         {
-            base.GridCellClicked(position);
+            //base.GridCellClicked(position);
 
             // OUTPUT Delete Piece on Board[position]
-            //Console.WriteLine(string.Format("GridCell Borrar Cell Row: {0} Col: {1}", position.Row, position.Column));
             Out_DeleteGridCell(position);
         }
 

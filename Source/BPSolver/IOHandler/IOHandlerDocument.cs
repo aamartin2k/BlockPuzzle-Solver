@@ -1,4 +1,5 @@
-﻿using BPSolver.Objects;
+﻿
+using BPSolver.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,11 +101,22 @@ namespace BPSolver
         #region Operaciones
         private void UpdateGameTreeFromNewObject()
         {
-            GameStatus rootGame = CreateRootStatus();
+            GameStatus rootGame;
+            rootGame = Factory.CreateRootGameStatus();
+
             // actualizando Arbol de juego
             _TreeHandler.CreateRootNode(rootGame);
             // actualizando estado de juego
             _GameHandler.CurrentStatus = rootGame;
+        }
+
+        private void UpdateDocumentFromGameTree()
+        {
+            GameSerialNode sern;
+
+            sern = CreateSerialTreeFromRoot(_TreeHandler.TreeRoot);
+
+            _DocHandler.CurrentDocument.GameTree = sern;
         }
 
         private void UpdateGameTreeFromDocument()
@@ -121,8 +133,6 @@ namespace BPSolver
             // actualizando estado de juego
             _GameHandler.CurrentStatus = trn.Item;
 
-            // reset Command Stack
-            Console.WriteLine("UpdateGameTreeFromDocument");
         }
 
         // Para enviar Info a GUI

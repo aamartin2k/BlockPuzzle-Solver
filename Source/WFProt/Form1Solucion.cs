@@ -27,8 +27,8 @@ namespace WFProt
             // Update List
             UpdateSolutionList(meta.Solutions);
 
-            lbProcTime.Text = meta.TiempoSolucion;
-
+            lbProcTime.Text = meta.ProcTime;
+            lbNodeCount.Text = meta.NodeCount.ToString();
 
         }
         private void UpdateSolutionList(List<Solution>  solutions)

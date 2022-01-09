@@ -14,11 +14,11 @@ namespace WFProt
         {
             Action = action;
             Context = context;
-            Console.WriteLine("BaseState created, protected Context stored.");
+            //Console.WriteLine("BaseState created, protected Context stored.");
         }
 
         
-        // Non Virtual Members (Overridables)
+        // Non Virtual Members 
         public void ActionDeleteClicked()
         {
             Context.CurrentState = Context.DeletionState;
@@ -44,8 +44,6 @@ namespace WFProt
 
         public virtual void GridCellClicked(Coord position)
         {
-            //Console.WriteLine(string.Format("Grid Cell R: {0} C: {1} Clicked.", position.Row, position.Col));
-            //Context.NextPieceIndex
             Console.WriteLine(string.Format("Play: Piece: {0} on NPImage {1} move to Cell R: {2} C: {3}", Context.CurrentPiece, Context.NextPieceIndex, position.Row, position.Col));
         }
 

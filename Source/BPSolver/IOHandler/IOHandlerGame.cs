@@ -30,7 +30,7 @@ namespace BPSolver
 
         // Insertar Pieza desde NextPiece en Tablero
         // Jugada
-        internal Action<Coord, PieceName, int> Out_DrawGridPlay { get; set; }
+        internal Action<Coord, PieceName, int, int> Out_DrawGridPlay { get; set; }
 
         #endregion
         #region Invocacion de Delegates
@@ -55,9 +55,9 @@ namespace BPSolver
         {
             Out_DeleteNextPiece?.Invoke(index);
         }
-        private void OnOut_DrawGridPlay(Coord coord, PieceName name, int index)
+        private void OnOut_DrawGridPlay(Coord coord, PieceName name, int index, int clonId)
         {
-            Out_DrawGridPlay?.Invoke(coord, name, index);
+            Out_DrawGridPlay?.Invoke(coord, name, index, clonId);
         }
 
         #endregion
@@ -131,37 +131,5 @@ namespace BPSolver
         }
         #endregion
 
-        #region  GameStatus Factory
-        private GameStatus CreateRootStatus()
-        {
-            return CreateChildStatus(0, "Root");
-        }
-
-        private GameStatus CreateChildStatus(int id, string name)
-        {
-            GameStatus onew = new GameStatus(id);
-
-            onew.Nombre = name;
-            onew.NextPieces = new Dictionary<int, PieceName>();
-            onew.Cells = new List<Cell>();
-
-            // llenar con nada
-            onew.NextPieces.Add(0, PieceName.None);
-            onew.NextPieces.Add(1, PieceName.None);
-            onew.NextPieces.Add(2, PieceName.None);
-
-            for (int i = 0; i < Constants.Rank; i++)
-            {
-                for (int j = 0; j < Constants.Rank; j++)
-                {
-                    onew.Cells.Add(new Cell(j, i));
-                }
-            }
-
-            return onew;
-        }
-
-
-        #endregion
     }
 }

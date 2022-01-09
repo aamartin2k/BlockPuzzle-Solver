@@ -1,11 +1,6 @@
-﻿using BPSolver.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace BPSolver
+namespace BPSolver.Game
 {
     internal partial class GameHandler : IGame
     {
@@ -49,7 +44,6 @@ namespace BPSolver
         {
             Out_DeleteNextPiece_Result?.Invoke(result);
         }
-
         public void OnOut_EmptyCommandStack(bool result)
         {
             Out_EmptyCommandStack?.Invoke(result);

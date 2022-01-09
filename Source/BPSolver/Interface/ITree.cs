@@ -4,16 +4,19 @@ using System.Collections.Generic;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Defines behavior of data tree handling component (TreeHandler)
+    /// </summary>
     public interface ITree
     {
-        void CreateRootNode(GameStatus item);
-        void CreateChildNode(GameStatus item);
+       
 
         #region Propiedades
         GameTreeNode TreeRoot { get; set; }
         GameTreeNode CurrentNode { get; set; }
         List<GameStatus> CurrentChilds { get;  }
         bool CurrentIsIsLeaf { get; }
+        int TreeCount { get; }
         #endregion
 
         #region Entradas
@@ -25,6 +28,8 @@ namespace BPSolver
         void In_MoveToChild(int id);
         void In_Rename(int id, string name);
 
+        void CreateRootNode(GameStatus item);
+        void CreateChildNode(GameStatus item);
         #endregion
 
         #region Salidas

@@ -17,5 +17,6 @@ namespace BPSolver
         public const int CompleteRoCW = 1000;
 
         public const string DocumentExtension = ".bmd";
+        public const string NewDocumentName = "Nuevo";
     }
 }

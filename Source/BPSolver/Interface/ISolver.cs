@@ -3,6 +3,9 @@ using BPSolver.Objects;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Defines behavior of solution handling component (SolHandler)
+    /// </summary>
     public interface ISolver
     {
         #region Entradas

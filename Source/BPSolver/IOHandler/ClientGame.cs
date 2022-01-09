@@ -27,7 +27,8 @@ namespace BPSolver
 
         public void In_DrawGridPlay(Coord coord, PieceName name, int index)
         {
-            OnOut_DrawGridPlay(coord, name, index);
+            int clonId = _TreeHandler.TreeCount ;
+            OnOut_DrawGridPlay(coord, name, index, clonId);
         }
 
         public void In_DrawNextPiece(int index, PieceName name)

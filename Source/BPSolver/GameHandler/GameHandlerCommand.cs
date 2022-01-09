@@ -1,21 +1,13 @@
 ﻿using BPSolver.Command;
-using BPSolver.Enums;
-using BPSolver.Objects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BPSolver
+namespace BPSolver.Game
 {
     internal partial class GameHandler : IGame
     {
-        #region Gestion de Command Stack en cada GameStatus
+        
 
-        #endregion
-
-        #region Gestion de Command Stack Unico
+        #region Gestion de Command Stack 
         private Stack<ICommand> _commandStack; 
 
         private void ResetCommandStack()
@@ -32,17 +24,16 @@ namespace BPSolver
             OnOut_EmptyCommandStack(false);
         }
 
+        // Command Retrieval and Execution
         private void ExecuteCommandUndo()
         {
-            if (_commandStack.Count == 0)
+            if (_commandStack.Count > 0)
             {
-                OnOut_EmptyCommandStack(true);
-                return;
+                ICommand command = _commandStack.Pop();
+                command.Undo();
             }
-
-            ICommand command = _commandStack.Pop();
-            command.Undo();
         }
+
         #endregion
 
        

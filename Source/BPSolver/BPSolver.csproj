@@ -30,6 +30,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\Bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,25 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFormatter.cs" />
+    <Compile Include="Command\BaseCommand.cs" />
     <Compile Include="Command\DeleteCellCommand.cs" />
     <Compile Include="Command\DeleteNextPieceCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\DrawPieceCommand.cs" />
-    <Compile Include="Command\SetNextPieceCommand.cs" />
-    <Compile Include="Controller\Controller.cs" />
-    <Compile Include="Controller\ControllerCommand.cs" />
-    <Compile Include="Controller\ControllerDeclarations.cs" />
-    <Compile Include="Controller\ControllerFactory.cs" />
-    <Compile Include="Controller\ControllerInput.cs" />
-    <Compile Include="Controller\ControllerTreeHandler.cs" />
-    <Compile Include="Controller\GameSerialNode.cs" />
-    <Compile Include="Controller\GameTreeNode.cs" />
+    <Compile Include="Command\DrawNextPieceCommand.cs" />
     <Compile Include="DocHandler\DocHandler.cs" />
     <Compile Include="DocHandler\DocHandlerInput.cs" />
     <Compile Include="DocHandler\DocHandlerOutput.cs" />
+    <Compile Include="DocHandler\GameSerialNode.cs" />
     <Compile Include="Document\DocData.cs" />
     <Compile Include="Document\GameData.cs" />
     <Compile Include="Document\GameDocument.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="GameHandler\GameHandler.cs" />
     <Compile Include="GameHandler\GameHandlerCommand.cs" />
     <Compile Include="GameHandler\GameHandlerInput.cs" />
@@ -78,8 +82,11 @@
     <Compile Include="SolHandler\SolHandlerInput.cs" />
     <Compile Include="SolHandler\SolHandlerOutput.cs" />
     <Compile Include="SolHandler\SolHandlerPieceSet.cs" />
+    <Compile Include="SolHandler\SolHandlerProcessRecursive.cs" />
     <Compile Include="SolHandler\SolHandlerSolutionProcess.cs" />
     <Compile Include="SolHandler\SolHandlerUtils.cs" />
+    <Compile Include="TreeHandler\GameSimpleNode.cs" />
+    <Compile Include="TreeHandler\GameTreeNode.cs" />
     <Compile Include="TreeHandler\TreeHandler.cs" />
     <Compile Include="Interface\IClient.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -91,50 +98,23 @@
     <Compile Include="IOHandler\IOHandler.cs" />
     <Compile Include="IOHandler\IOHandlerAux.cs" />
     <Compile Include="IOHandler\IOHandlerDocument.cs" />
-    <Compile Include="IOHandler\IOHandlerInput.cs" />
     <Compile Include="IOHandler\IOHandlerOutput.cs" />
     <Compile Include="Objects\Eval.cs" />
     <Compile Include="Objects\GameMetaStatus.cs" />
     <Compile Include="Objects\Movement.cs" />
     <Compile Include="TreeHandler\TreeHandlerInput.cs" />
     <Compile Include="TreeHandler\TreeHandlerOutput.cs" />
-    <None Include="Objects\SimpleCell.cs" />
     <Compile Include="Objects\SimpleGameStatus.cs" />
     <Compile Include="Objects\Solution.cs" />
     <Compile Include="Objects\SolutionMetaStatus.cs" />
     <Compile Include="SolHandler\SolHandler.cs" />
-    <Compile Include="Solver\SolverCompletionNuevo.cs" />
-    <None Include="Solver\SolverProcBasico.cs" />
-    <Compile Include="Solver\SolverOperations.cs" />
-    <None Include="Solver\SolverProcRecursivo.cs" />
-    <Compile Include="Solver\SolverSimpleStatus.cs" />
-    <Compile Include="Solver\SolverSolution.cs" />
-    <Compile Include="Solver\SolverSolutionAux.cs" />
-    <Compile Include="Solver\SolverCompletion.cs" />
     <Compile Include="Enums\Enums.cs" />
-    <Compile Include="Interface\IBPServer.cs" />
-    <Compile Include="Solver\Solver.cs" />
-    <Compile Include="Solver\SolverDeclarations.cs" />
-    <Compile Include="Solver\SolverPieceSet.cs" />
-    <Compile Include="Solver\SolverSolutions.cs" />
-    <Compile Include="Solver\SolverStats.cs" />
-    <None Include="OldSolver\GameStatusFactory.cs" />
-    <None Include="OldSolver\GameSolverBoard.cs" />
-    <None Include="OldSolver\GameSolverDeclarations.cs" />
     <Compile Include="Objects\Cell.cs" />
     <Compile Include="Objects\Coords.cs" />
     <Compile Include="Objects\Piece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Constants.cs" />
-    <None Include="OldSolver\BoardStats.cs" />
-    <None Include="OldSolver\GameBoard.cs" />
-    <None Include="OldSolver\GameSolver.cs" />
-    <None Include="OldSolver\GameSolverTree.cs" />
     <Compile Include="Objects\GameStatus.cs" />
-    <None Include="OldSolver\PieceSet.cs" />
-    <None Include="OldSolver\GameStatus.cs" />
-    <None Include="OldSolver\PieceMove.cs" />
-    <None Include="OldSolver\Solution.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DevNotes.txt" />

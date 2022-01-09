@@ -17,16 +17,26 @@ namespace BPSolver.Objects
         public int Id;
         public string Nombre;
 
-        // Propiedades del juego
-        public int CompletedRows;
-        public int CompletedColumns;
+        // Lista de piezas para posibles movimientos
+        public Dictionary<int, PieceName> NextPiecesA;
 
-        public Dictionary<int, PieceName> NextPiecesA ;
-        
-        //public bool[,] CellsA;
-        //PieceColor
+        // Cells collection
         public PieceColor[,] CellsA;
 
+        // Cells Indexer
+        // Return Cell by row and column
+        public PieceColor this[int row, int col]
+        {
+            get
+            {
+                return CellsA[row, col];
+            }
+            set
+            {
+                CellsA[row, col] = value;
+            }
+        }
+        // Return Cell by Coord
         public PieceColor this[Coord coord]
         {
             get
@@ -39,17 +49,13 @@ namespace BPSolver.Objects
             }
         }
 
-        public PieceColor this[int row, int col]
-        {
-            get
-            {
-                return CellsA[row, col];
-            }
-            set
-            {
-                CellsA[row, col] = value;
-            }
-        }
+
+        // Stats
+        public int CompletedRows;
+        public int CompletedColumns;
+
+        public SimpleGameStatus()
+        { }
 
     }
 }

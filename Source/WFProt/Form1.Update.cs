@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
-using BPSolver.Solver;
+
 using BPSolver.Objects;
 using BPSolver.Enums;
 using System.Drawing;
@@ -14,9 +14,6 @@ namespace WFProt
         // Actualiza form con estado del juego
         public void In_UpdateBoard(GameMetaStatus meta)
         {
-            Console.WriteLine(" In_UpdateBoard" );
-
-            //Separando decoraciones
             GameStatus status = meta.Status;
             GameSimpleNode dataRoot = meta.SimpleTree;
 

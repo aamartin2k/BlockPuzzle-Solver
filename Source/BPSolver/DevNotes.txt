@@ -19,61 +19,24 @@ eliminar chequeo de completamiento de Draw
 Implementar descripcion del movimiento
 Mejorar impl de estadisticas, quitar de GameStatus y pasar a Meta
 
-
+*********
 Analizar implicaciones de Jugada y Undo
- ?al crearse nuevo estado por jugada se resetea UndoStack
+ ?al crearse nuevo estado por jugada se resetea UndoStack. Una vez que se
+ ha jugado sobre un status, forma parte de la secuencia de juego y no puede ser cambiado.
+ En un status jugado solo se puede incorporar la nextPiece borrada.
+ En un status jugado se puede jugar una nexpiece y da lugar a una bifurcacion
+ Solo se puede editar el grid en el estado actual (no jugado)
 
- --en cada cambio de estado se resetea Stack
+  --IMPLEMENTAR en cada cambio de estado se resetea Stack
  --al hacer jugada en ultimo nodo, por defecto se crea un estado hijo y se avanza,
+ ***************
+Revisar GUI state Machine
+ cambios sobre NextPiece}
+	
+--Revisar Comandos, unificr referencia a GameStatus
+--Implementar Factory para GameStatus, etc
+ --Al terminar, revisar/implementar GameStatus Id - private set
 
- Implementacion de Soluciones
-  --Cambiar GameStatus, lista NextPieces por Diccionario
-  --Cambiar prop Id a public ser\t, eliminar metodo  SetId
-
-  Cambiar definit de CloneGameStatus de Controller a Solver
- 
- Analizar Convertir Controller/Solver a Static
-
- --Aplicar completamiento y eliminacion al final de cada moviminto, de lo 
-  --contrario se suma la cantidad de filas completadas.
-Analizar en Relacion con Preferencia que Param Vecinos debe contar como vecinos los bordes
-
---Implementar eliminaciopn SIMULTANEA de filas y columnas. En caso de coincidencia, hay error
-
-Establecer limite de iteraciones en cmo
-
-Implemmentar NextPiece como Queue pra uso en Solver
---
-Implementar construccion completa del tree, modificr ProcessMoveNuevo
- para hacr lista de movs, clon status com movimiento asignado
-  y dejar a posterior su aplicacion y evaluacions
-
-  Optimizar proc iterativo, retornar estadisticas *(tiempo y cant nodos)
-
-  Al preparar la solucion, sustituir Cloned Root por original y
-   reconstruir los estados de las soluciones aplicandop movs al original, para
-   recuperar inf color
-  Si existen soluciones con complet,  no retornar las otras
-
-  Eliminar de Interface e eimplement: 
-    Action<int[]> Out_SelectRows { get; set; }
-	Action<int[]> Out_SelectColumns { get; set; }
-	 la animacoin etc debe sr resuelta en GUI
-
-	  Terminado y comprobado impl de Cargar formato viejo y salvar en nuevo, para Mantest
-	  terminar, revisar cambios en UpdateBoard (None fallo), incorporar
- nuevos datos del documento en Winform
-  Implementando cambios de Interface, con prueba manual
-  --void In_NewFile();
-  --void In_CloseFile();
-   void In_LoadFile(string file);
-   --void In_SaveFile();
-   --void In_SaveFileAs(string file);
-
- 
-Revision y Prueba de comp func
-	-Document
-	-Tree 
-	-Game
-	-Solver
-
+ Revisar Error null reference al abrir Nuevo1.bmd
+ Se creo como nuevo y salvar, revisar conmtenido de fiel y compara con otros, 
+ tiene poco tamaño, no se ha salvado el estado

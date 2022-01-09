@@ -64,10 +64,12 @@ namespace BPSolver
         */
         public void In_SaveFile()
         {
+            UpdateDocumentFromGameTree();
             OnOut_SaveFile();
         }
         public void In_SaveFileAs(string file)
         {
+            UpdateDocumentFromGameTree();
             OnOut_SaveFileAs(file);
         }
 

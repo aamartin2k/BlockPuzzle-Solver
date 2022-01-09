@@ -12,13 +12,13 @@ namespace WFProt
 
         public NextPiecePlayState(StContext context, CommandAction action) : base(context, action)
         {
-            Console.WriteLine("NextPiecePlayState created");
+            //Console.WriteLine("NextPiecePlayState created");
         }
 
        
         public override void GridCellClicked(Coord position)
         {
-            base.GridCellClicked(position);
+            //base.GridCellClicked(position);
 
             // Execute play
             Out_DrawGridPlay(position, Context.CurrentPiece, Context.NextPieceIndex);

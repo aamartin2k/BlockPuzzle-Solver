@@ -12,14 +12,14 @@ namespace WFProt
 
         public NextPieceDeletionState(StContext context, CommandAction action) : base(context, action)
         { 
-            Console.WriteLine("NextPieceDeletionState created");
+            //Console.WriteLine("NextPieceDeletionState created");
         }
 
 
 
         public override void NextPieceImageClicked(int index, PieceName piece = PieceName.None)
         {
-            base.NextPieceImageClicked(index);
+            //base.NextPieceImageClicked(index);
 
             // OUTPUT Delete Piece on Board[position]
             Out_DeleteNextPiece(index);

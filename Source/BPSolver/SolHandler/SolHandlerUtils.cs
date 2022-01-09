@@ -265,7 +265,7 @@ namespace BPSolver
         
         static private bool TestFreeCells(GameStatus game, List<Coord> realCoords)
         {
-            var ex = realCoords.Select(c => game[c].IsFree).Where(x => x == true).Count();
+            var ex = realCoords.Select(c => game[c].IsFree).Where(x => x == false).Count();
             return ex == 0;
         }
 

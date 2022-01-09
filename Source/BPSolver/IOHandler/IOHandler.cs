@@ -1,4 +1,7 @@
-﻿namespace BPSolver
+﻿
+using BPSolver.Game;
+
+namespace BPSolver
 {
     public partial class IOHandler : IController
     {
@@ -10,7 +13,6 @@
         private ISolver _SolHandler { get;  set; }
         private IGame _GameHandler { get;  set; }
         private ITree _TreeHandler { get; set; }
-
 
         // Constructor privado
         private IOHandler(IDocument docHandler, ISolver solver,
@@ -31,75 +33,74 @@
             ITree tree = new TreeHandler();
 
          
-            IOHandler cont = new IOHandler(docHandler, solver, game, tree);
+            IOHandler server = new IOHandler(docHandler, solver, game, tree);
 
             // Wiring Up
             #region Wiring Up
             #region Document
             // In
-            docHandler.Out_NewFileResult = cont.In_NewFileResult;
-            docHandler.Out_CloseFileResult = cont.In_CloseFileResult;
-            docHandler.Out_LoadFileResult = cont.In_LoadFileResult;
-            docHandler.Out_UserEnable = cont.In_UserEnableResult;
-            docHandler.Out_SaveFileResult = cont.In_SaveFileResult;
+            docHandler.Out_NewFileResult = server.In_NewFileResult;
+            docHandler.Out_CloseFileResult = server.In_CloseFileResult;
+            docHandler.Out_LoadFileResult = server.In_LoadFileResult;
+            docHandler.Out_UserEnable = server.In_UserEnableResult;
+            docHandler.Out_SaveFileResult = server.In_SaveFileResult;
 
             // Out
-            cont.Out_NewFile = docHandler.In_NewFile;
-            cont.Out_CloseFile = docHandler.In_CloseFile;
-            cont.Out_LoadFile = docHandler.In_LoadFile;
+            server.Out_NewFile = docHandler.In_NewFile;
+            server.Out_CloseFile = docHandler.In_CloseFile;
+            server.Out_LoadFile = docHandler.In_LoadFile;
 
-            cont.Out_SaveFile = docHandler.In_SaveFile;
-            cont.Out_SaveFileAs = docHandler.In_SaveFileAs;
+            server.Out_SaveFile = docHandler.In_SaveFile;
+            server.Out_SaveFileAs = docHandler.In_SaveFileAs;
             // End Document
             #endregion
 
             #region Tree
             // In
-            tree.Out_MoveFirst_Result = cont.In_MoveFirst_Result;
-            tree.Out_MoveLast_Result = cont.In_MoveLast_Result;
-            tree.Out_MoveNext_Result = cont.In_MoveNext_Result;
-            tree.Out_MovePrevious_Result = cont.In_MovePrevious_Result;
-            tree.Out_MoveToChild_Result = cont.In_MoveToChild_Result;
-            tree.Out_Rename_Result = cont.In_Rename_Result;
+            tree.Out_MoveFirst_Result = server.In_MoveFirst_Result;
+            tree.Out_MoveLast_Result = server.In_MoveLast_Result;
+            tree.Out_MoveNext_Result = server.In_MoveNext_Result;
+            tree.Out_MovePrevious_Result = server.In_MovePrevious_Result;
+            tree.Out_MoveToChild_Result = server.In_MoveToChild_Result;
+            tree.Out_Rename_Result = server.In_Rename_Result;
 
             // Out
-            cont.Out_MoveFirst = tree.In_MoveFirst;
-            cont.Out_MoveLast = tree.In_MoveLast;
-            cont.Out_MoveNext = tree.In_MoveNext;
-            cont.Out_MovePrevious = tree.In_MovePrevious;
-            cont.Out_MoveToChild = tree.In_MoveToChild;
-            cont.Out_Rename = tree.In_Rename;
+            server.Out_MoveFirst = tree.In_MoveFirst;
+            server.Out_MoveLast = tree.In_MoveLast;
+            server.Out_MoveNext = tree.In_MoveNext;
+            server.Out_MovePrevious = tree.In_MovePrevious;
+            server.Out_MoveToChild = tree.In_MoveToChild;
+            server.Out_Rename = tree.In_Rename;
             #endregion
 
             #region Game
             // In
-            game.Out_DeleteGridCell_Result = cont.In_DeleteGridCell_Result;
-            game.Out_DeleteNextPiece_Result = cont.In_DeleteNextPiece_Result;
-            game.Out_DrawGridPlay_Result = cont.In_DrawGridPlay_Result;
-            game.Out_DrawNextPiece_Result = cont.In_DrawNextPiece_Result;
-            game.Out_DrawPiece_Result = cont.In_DrawPiece_Result;
-            game.Out_Undo_Result = cont.In_Undo_Result;
-
+            game.Out_DeleteGridCell_Result = server.In_DeleteGridCell_Result;
+            game.Out_DeleteNextPiece_Result = server.In_DeleteNextPiece_Result;
+            game.Out_DrawGridPlay_Result = server.In_DrawGridPlay_Result;
+            game.Out_DrawNextPiece_Result = server.In_DrawNextPiece_Result;
+            game.Out_DrawPiece_Result = server.In_DrawPiece_Result;
+            game.Out_Undo_Result = server.In_Undo_Result;
+            game.Out_EmptyCommandStack = server.In_EmptyCommandStack;
             // Out
-            cont.Out_DeleteGridCell = game.In_DeleteGridCell;
-            cont.Out_DeleteNextPiece = game.In_DeleteNextPiece;
-            cont.Out_DrawGridPlay = game.In_DrawGridPlay;
-            cont.Out_DrawNextPiece = game.In_DrawNextPiece;
-            cont.Out_DrawPiece = game.In_DrawPiece;
-            cont.Out_Undo = game.In_Undo;
+            server.Out_DeleteGridCell = game.In_DeleteGridCell;
+            server.Out_DeleteNextPiece = game.In_DeleteNextPiece;
+            server.Out_DrawGridPlay = game.In_DrawGridPlay;
+            server.Out_DrawNextPiece = game.In_DrawNextPiece;
+            server.Out_DrawPiece = game.In_DrawPiece;
+            server.Out_Undo = game.In_Undo;
             #endregion
 
             #region Solver
             // In
-            solver.Out_UpdateSolutionBoard = cont.In_UpdateSolutionBoard;
+            solver.Out_UpdateSolutionBoard = server.In_UpdateSolutionBoard;
 
             // Out
+            server.Out_Solution = solver.In_Solution;
             #endregion
-            cont.Out_Solution = solver.In_Solution;
             #endregion
 
-
-            return cont;
+            return server;
         }
 
     }

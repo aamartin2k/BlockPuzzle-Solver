@@ -77,8 +77,6 @@ namespace WFProt
             ToolStripItem itm = (ToolStripItem)sender;
             PieceName piece = (PieceName)itm.Tag;
 
-            //ShowCurrentPiece(piece);
-
             context.PieceButtonClicked(piece);
         }
 
@@ -131,11 +129,26 @@ namespace WFProt
             Console.WriteLine(string.Format("OUTPUT. Borrar NextPieceImage index {0}", index));
             Out_DeleteNextPiece(index);
         }
-        
+
         void StmOut_DrawGridPlay(Coord pos, PieceName piece, int index)
         {
-            Console.WriteLine(string.Format("OUTPUT. PLAY. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
-            Out_DrawGridPlay(pos, piece, index); 
+            // All three next pieces must be present to make a play
+            bool ret = false;
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece1.Tag);
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece2.Tag);
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece3.Tag);
+
+            if (ret)
+            {
+                string text = "All three next pieces must be present to make a play";
+                
+                MessageBox.Show(this, text, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Console.WriteLine(string.Format("OUTPUT. PLAY. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
+                Out_DrawGridPlay(pos, piece, index);
+            }
         }
 
 

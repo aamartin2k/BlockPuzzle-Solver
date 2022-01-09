@@ -28,10 +28,14 @@ namespace BPSolver
             set
             {
                 _currentNode = value;
-                Console.WriteLine(string.Format("Current Node Id: {0} Status Id: {1} Status Nombre: {2}", _currentNode.Id, _currentNode.Item.Id, _currentNode.Item.Nombre));
+                //Console.WriteLine(string.Format("Current Node Id: {0} Status Id: {1} Status Nombre: {2}", _currentNode.Id, _currentNode.Item.Id, _currentNode.Item.Nombre));
             }
         }
 
+        public int TreeCount
+        {
+            get { return TreeRoot.Count(); }
+        }
 
         public List<GameStatus> CurrentChilds
         {
@@ -59,13 +63,7 @@ namespace BPSolver
 
         public void CreateChildNode(GameStatus item)
         {
-            // Set new Id
-            item.Id = TreeRoot.Count();
-
-            // Reset Name
-            item.Nombre = string.Format("Cloned {0}", item.Id);
-
-            //crear
+            //crear nuevo
             GameTreeNode newNode = CurrentNode.AddChild(item);
 
             // hacer current

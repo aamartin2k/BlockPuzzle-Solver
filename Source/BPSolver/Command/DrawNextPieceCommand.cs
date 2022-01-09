@@ -3,18 +3,19 @@ using BPSolver.Objects;
 
 namespace BPSolver.Command
 {
-    internal class DeleteNextPieceCommand : BaseCommand
+    internal class DrawNextPieceCommand : BaseCommand
     {
         private int Index;
         private PieceName OldName, NewName;
+        
 
-
-        public DeleteNextPieceCommand(GameStatus cells, int index) : base(cells)
+        public DrawNextPieceCommand(GameStatus cells, 
+                                    int index, 
+                                    PieceName name) : base (cells)
         {
             Index = index;
-            NewName = PieceName.None;
+            NewName = name;
         }
-
 
         public override void Do()
         {
@@ -30,5 +31,7 @@ namespace BPSolver.Command
             // restaurar estado previo
             Context.NextPieces[Index] = OldName;
         }
+
+
     }
 }

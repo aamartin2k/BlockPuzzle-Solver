@@ -8,7 +8,8 @@ namespace BPSolver.Objects
 {
     public class SolutionMetaStatus
     {
-        public string TiempoSolucion { get;  set; }
+        public string ProcTime { get;  set; }
+        public int NodeCount { get; set; }
 
         public List<Solution> Solutions { get; private set; }
 

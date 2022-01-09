@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System;
 using BPSolver.Objects;
-using BPSolver.Solver;
+
 using BPSolver.Enums;
 
 

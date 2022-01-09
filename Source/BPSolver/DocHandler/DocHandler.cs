@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TreeCollections;
+﻿using System.IO;
 
 namespace BPSolver
 {
     internal partial class DocHandler : IDocument
+
     {
         // Referencia al documento activo
         public Document CurrentDocument { get; private set; }
 
         // Ruta al documento activo
-        private string CurrentFilePath { get; set; }
-       
+        internal string CurrentFilePath { get; set; }
+
+
         #region Utils
         internal static bool FileExists(string filename)
         {
@@ -26,7 +22,7 @@ namespace BPSolver
         private static string NuevoNombre()
         {
          
-            string fileName = string.Format("Nuevo{0}{1}", NameCount, Constants.DocumentExtension);
+            string fileName = string.Format("{0}{1}{2}", Constants.NewDocumentName, NameCount, Constants.DocumentExtension);
             NameCount++;
 
             return fileName;

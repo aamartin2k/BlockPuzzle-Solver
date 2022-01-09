@@ -10,7 +10,7 @@ namespace BPSolver
 {
     internal partial class SolHandler : ISolver
     {
-        private GameTreeSimple CreateSolutionTreePPaso(GameStatus game)
+        private GameTreeSimple CreateSolutionTree(GameStatus game)
         {
             GameTreeSimple treeRoot;
 
@@ -30,7 +30,6 @@ namespace BPSolver
             {
                 ramas = CreateNewNodesP(ramas, treeRoot);
                 ProcessNewNodesP(ramas, treeRoot);
-
             }
 
             return treeRoot;
@@ -364,10 +363,8 @@ namespace BPSolver
 
         private GameStatus GetGameFromSimple(SimpleGameStatus sgame)
         {
-            GameStatus game = new GameStatus(0);
-
-            game.Id = sgame.Id;
-            game.Nombre = sgame.Nombre;
+            GameStatus game;
+            game = Factory.CreateGameStatus(sgame.Id, sgame.Nombre);
 
             game.Evaluation = sgame.Evaluation;
             game.Movement = sgame.Movement;

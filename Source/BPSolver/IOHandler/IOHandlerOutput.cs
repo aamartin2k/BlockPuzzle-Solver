@@ -16,9 +16,7 @@ namespace BPSolver
         
        
         public Action<bool> Out_EmptyCommandStack { get; set; }
-        //public Action<int[]> Out_SelectRows { get; set; }
-        //public Action<int[]> Out_SelectColumns { get; set; }
-        
+ 
         #endregion
 
         #region Invocacion de Delegates

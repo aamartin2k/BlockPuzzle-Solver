@@ -3,11 +3,8 @@ using BPSolver.Enums;
 using BPSolver.Objects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BPSolver
+namespace BPSolver.Game
 {
     internal partial class GameHandler : IGame
     {
@@ -31,7 +28,7 @@ namespace BPSolver
                     RealCoords = Piece.GetRealCoords(piece, coord);
 
                     // create command
-                    ICommand command = new DrawPieceCommand(RealCoords, piece.Color, CurrentStatus);
+                    ICommand command = new DrawPieceCommand(CurrentStatus, RealCoords, piece.Color);
                     ExecuteCommandDo(command);
                 }
             }
@@ -59,13 +56,16 @@ namespace BPSolver
                 ret = false;
                // throw;
             }
-            
             OnOut_Undo_Result(ret);
+
+            if (_commandStack.Count == 0)
+            {
+                OnOut_EmptyCommandStack(true);
+            }
+
         }
 
-        //Insertar nueva pieza jugada
-       
-        public void In_DrawGridPlay(Coord coord, PieceName name, int index)
+        public void In_DrawGridPlay(Coord coord, PieceName name, int index, int id)
         {
             bool ret;
 
@@ -77,7 +77,8 @@ namespace BPSolver
                 if (ret)
                 {
                     // Crear clon de estado actual
-                    GameStatus cloned = SolHandler.CloneGameStatus(CurrentStatus);
+                    GameStatus cloned; //= SolHandler.CloneGameStatus(CurrentStatus);
+                    cloned = Factory.CloneGameStatus(id, CurrentStatus);
 
                     List<Coord> RealCoords;
                     // Get reference to piece
@@ -85,14 +86,18 @@ namespace BPSolver
                     // Create absolute coords list.
                     RealCoords = Piece.GetRealCoords(piece, coord);
 
-                    ICommand command = new DrawPieceCommand(RealCoords, piece.Color, cloned);
+                    ICommand command = new DrawPieceCommand(cloned, RealCoords, piece.Color);
                     // execute command directly ,No Stack, Play have no Undo
                     command.Do();
 
-                    command = new DeleteNextPieceCommand(index, cloned.NextPieces);
+                    command = new DeleteNextPieceCommand(cloned, index);
                     command.Do();
 
                     CurrentStatus = cloned;
+
+                    // New Command Stack for new game status
+                    ResetCommandStack();
+
                     ret = true;
                 }
             }
@@ -104,13 +109,6 @@ namespace BPSolver
 
             // Notificar
             OnOut_DrawGridPlay_Result(ret);
-
-            
-
-            
-            
-
-            
         }
         // Establecer proxima pieza
         public void In_DrawNextPiece(int index, PieceName name)
@@ -118,9 +116,7 @@ namespace BPSolver
             bool ret;
             try
             {
-                ICommand command = new DrawNextPieceCommand(index,
-                                                          CurrentStatus.NextPieces,
-                                                          name);
+                ICommand command = new DrawNextPieceCommand(CurrentStatus, index, name);
                 ExecuteCommandDo(command);
                 ret = true;
             }
@@ -140,7 +136,7 @@ namespace BPSolver
             try
             {
                 // create command
-                ICommand command = new DeleteCellCommand(coord, CurrentStatus);
+                ICommand command = new DeleteCellCommand(CurrentStatus, coord);
                 ExecuteCommandDo(command);
                 ret = true;
             }
@@ -158,11 +154,18 @@ namespace BPSolver
         public void In_DeleteNextPiece(int index)
         {
             bool ret;
+
+            if ((index < 0) || (index > Constants.NexPieces - 1))
+            {
+                ret = false;
+                goto Notify;
+            }
+
+            
             try
             {
                 // create command
-                ICommand command = new DeleteNextPieceCommand(index,
-                                                          CurrentStatus.NextPieces);
+                ICommand command = new DeleteNextPieceCommand(CurrentStatus, index);
                 ExecuteCommandDo(command);
                 ret = true;
             }
@@ -171,7 +174,7 @@ namespace BPSolver
                 ret = false;
                 //throw;
             }
-
+Notify:
             ////notificar
             OnOut_DeleteNextPiece_Result(ret);
         }

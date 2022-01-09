@@ -10,13 +10,13 @@ namespace WFProt
   
         public PieceSettingState(StContext context, CommandAction action) : base(context, action)
         {
-            Console.WriteLine("PieceSettingState created");
+            //Console.WriteLine("PieceSettingState created");
         }
 
         public override void PieceButtonClicked(PieceName piece)
         {
             // Debug
-            base.PieceButtonClicked(piece);
+            //base.PieceButtonClicked(piece);
 
             // Set Current Piece
             Context.CurrentPiece = piece;
@@ -24,7 +24,7 @@ namespace WFProt
 
         public override void NextPieceImageClicked( int index, PieceName piece = PieceName.None)
         {
-            base.NextPieceImageClicked(index, piece);
+            //base.NextPieceImageClicked(index, piece);
 
             Context.CurrentState = Context.NextPieceDrawingState;
             Context.CurrentState.NextPieceImageClicked(index);
@@ -34,7 +34,7 @@ namespace WFProt
 
         public override void GridCellClicked(Coord position)
         {
-            base.GridCellClicked(position);
+            //base.GridCellClicked(position);
 
             Context.CurrentState = Context.GridCellDrawingState;
             Context.CurrentState.GridCellClicked(position);
