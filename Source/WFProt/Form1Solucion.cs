@@ -36,6 +36,7 @@ namespace WFProt
             lbSoluciones.Items.Clear();
 
             var qry = from sol in solutions
+                      where sol.TotalEval.CompleteRoCTotal >= 1000
                       orderby sol.TotalEval.Total descending
                       select sol;
 
@@ -57,7 +58,6 @@ namespace WFProt
 
                 if (null != sol)
                 {
-                    //Console.WriteLine("sol != null **");
                     UpdateSolutionTree(sol.StatusList);
                     _solution = sol;
                 }
@@ -135,9 +135,9 @@ namespace WFProt
             // Drawing Board
             PieceColor color;
 
-            for (int row = 0; row < Constants.Rank; row++)
+            for (int row = 0; row < Constants.BoardSize; row++)
             {
-                for (int col = 0; col < Constants.Rank; col++)
+                for (int col = 0; col < Constants.BoardSize; col++)
                 {
                     color = status[row, col].Color;
                     bitMap = GetBlockImage(color);
@@ -148,6 +148,8 @@ namespace WFProt
                    
                 }
             }
+            sgSolution.VerticalScroll.Visible = false;
+            sgSolution.HorizontalScroll.Visible = false;
             sgSolution.Invalidate();
 
         }

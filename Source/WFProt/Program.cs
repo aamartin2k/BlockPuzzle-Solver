@@ -19,7 +19,6 @@ namespace WFProt
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Preparacion
-            // IBPServer server = new Controller();
             IController server = IOHandler.CreateServer();
 
 
@@ -51,7 +50,6 @@ namespace WFProt
             form.Out_MoveNext = server.In_MoveNext;
             form.Out_MoveLast = server.In_MoveLast;
             form.Out_MoveToChild = server.In_MoveToChild;
-
             form.Out_Rename = server.In_Rename;
 
             // Entradas desde de Controller
@@ -65,9 +63,6 @@ namespace WFProt
             server.Out_SaveFileResult = form.In_SaveFileResult;
 
             server.Out_EmptyCommandStack = form.In_EmptyCommandStack;
-
-            //server.Out_SelectRows = form.In_SelectRows;
-            //server.Out_SelectColumns = form.In_SelectColumns;
 
             server.Out_MoveFirst_Result = form.In_MoveFirst_Result;
             server.Out_MovePrevious_Result = form.In_MovePrevious_Result;

@@ -11,6 +11,9 @@ namespace BPSolver
         #region Entradas
         // Analizar soluciones a partir de estado actual
         void In_Solution(GameStatus game);
+        // Switch on Solution process
+        void In_SelectRecursive();
+        void In_SelectIterative();
         #endregion
 
         #region Salidas

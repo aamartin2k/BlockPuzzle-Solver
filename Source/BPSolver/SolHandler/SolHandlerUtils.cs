@@ -13,23 +13,7 @@ namespace BPSolver
     {
         #region Funciones Utileria Compartidas
         #region Publicas
-        static internal GameStatus CloneGameStatus(GameStatus item)
-        {
-            // create Memory Stream
-
-            GameStatus cloned;
-
-            using (MemoryStream tempStream = new MemoryStream())
-            {
-                Serializer.Serialize<GameStatus>(item, tempStream);
-                tempStream.Position = 0;
-
-                cloned = Serializer.Deserialize<GameStatus>(tempStream);
-            }
-
-            return cloned;
-        }
-
+        
         static internal bool TestPiece(Coord insertCoord, PieceName name, GameStatus gstat)
         {
             List<Coord> realCoords;
@@ -80,7 +64,7 @@ namespace BPSolver
         static private bool IsAnyRowCompleted(GameStatus game)
         {
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompleted(game, i))
                     return true;
@@ -92,7 +76,7 @@ namespace BPSolver
         static private bool IsAnyColumnCompleted(GameStatus game)
         {
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompleted(game, i))
                     return true;
@@ -191,7 +175,7 @@ namespace BPSolver
         {
             List<int> list = new List<int>();
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompleted(game, i))
                     list.Add(i);
@@ -204,7 +188,7 @@ namespace BPSolver
         {
             List<int> list = new List<int>();
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompleted(game, i))
                     list.Add(i);
@@ -222,7 +206,7 @@ namespace BPSolver
             int count = 0;
 
             // Count how many rows
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompleted(game, i))
                     count++;
@@ -237,7 +221,7 @@ namespace BPSolver
             int count = 0;
 
             // Calculate how many rows
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompleted(game, i))
                     count++;
@@ -271,8 +255,8 @@ namespace BPSolver
 
         static private bool TestRealCoords(List<Coord> matrix)
         {
-            var outRange = matrix.Where(newCoord => (newCoord.Row < 0) || (newCoord.Row > Constants.Rank - 1) ||
-                                                    (newCoord.Col < 0) || (newCoord.Col > Constants.Rank - 1)).Count();
+            var outRange = matrix.Where(newCoord => (newCoord.Row < 0) || (newCoord.Row > Constants.BoardSize - 1) ||
+                                                    (newCoord.Col < 0) || (newCoord.Col > Constants.BoardSize - 1)).Count();
             return outRange == 0;
 
         }

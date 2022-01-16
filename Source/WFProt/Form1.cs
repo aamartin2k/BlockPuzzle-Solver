@@ -170,16 +170,16 @@ namespace WFProt
             int dim = (sgBoard.Width / 10);
 
             sgBoard.BorderStyle = BorderStyle.None;
-            sgBoard.Redim(Constants.Rank, Constants.Rank);
+            sgBoard.Redim(Constants.BoardSize, Constants.BoardSize);
 
             // Grid Controller
             // Local handler passed as argument on the constructor
             ClickController cellController = new ClickController(ClickOnCell, MouseEnterCell);
             Cells.Cell xCell;
 
-            for (int row = 0; row < Constants.Rank; row++)
+            for (int row = 0; row < Constants.BoardSize; row++)
             {
-                for (int col = 0; col < Constants.Rank; col++)
+                for (int col = 0; col < Constants.BoardSize; col++)
                 {
                     xCell = new Cells.Cell();
                     xCell.View = vBackColor;
@@ -194,7 +194,6 @@ namespace WFProt
                 sgBoard.Rows[row].AutoSizeMode = SourceGrid.AutoSizeMode.None;
                 sgBoard.Rows[row].Height = dim;
             }
-
 
             sgBoard.AutoStretchColumnsToFitWidth = false;
             sgBoard.AutoStretchRowsToFitHeight = false;
@@ -214,11 +213,11 @@ namespace WFProt
             // Grid Config
             dim = (sgSolution.Width / 10);
             sgSolution.BorderStyle = BorderStyle.None;
-            sgSolution.Redim(Constants.Rank, Constants.Rank);
+            sgSolution.Redim(Constants.BoardSize, Constants.BoardSize);
 
-            for (int row = 0; row < Constants.Rank; row++)
+            for (int row = 0; row < Constants.BoardSize; row++)
             {
-                for (int col = 0; col < Constants.Rank; col++)
+                for (int col = 0; col < Constants.BoardSize; col++)
                 {
                     xCell = new Cells.Cell();
                     xCell.View = vSolutionColor;

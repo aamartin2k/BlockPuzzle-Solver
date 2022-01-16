@@ -17,14 +17,22 @@ namespace BPSolver
         #region Salidas
         #region Declaracion de Delegates
         internal Action<GameStatus> Out_Solution { get; set; }
+        internal Action Out_SelectRecursive { get; set; }
+        internal Action Out_SelectIterative { get; set; }
+
         #endregion
         #region Invocacion de Delegates
         internal void OnOut_Solution( )
         {
-            //_stopWatch = new System.Diagnostics.Stopwatch();
-            //_stopWatch.Start();
-
             Out_Solution?.Invoke(_GameHandler.CurrentStatus);
+        }
+        internal void OnOut_SelectRecursive()
+        {
+            Out_SelectRecursive?.Invoke();
+        }
+        internal void OnOut_SelectIterative()
+        {
+            Out_SelectIterative?.Invoke();
         }
         #endregion
         #endregion
@@ -32,9 +40,6 @@ namespace BPSolver
         #region Entradas de Componente
         internal void In_UpdateSolutionBoard(SolutionMetaStatus result)
         {
-            //_stopWatch.Stop();
-            //result.TiempoSolucion = _stopWatch.Elapsed.ToString();
-
             OnOut_UpdateSolutionBoard(result);
         }
         #endregion

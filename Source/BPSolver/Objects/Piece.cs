@@ -74,13 +74,15 @@ namespace BPSolver.Objects
 
             foreach (Coord coord in matrix)
             {
+                // create real coord list
                 newCoord = insertCoord + coord;
                 realCoords.Add(newCoord);
             }
 
-            var outBoard = realCoords.Where(c => (c.Row < 0) || (c.Row > Constants.Rank - 1) ||
-                                                 (c.Col < 0) || (c.Col > Constants.Rank - 1));
-
+            // create list of coords outside board limits
+            var outBoard = realCoords.Where(c => (c.Row < 0) || (c.Row > Constants.BoardSize - 1) ||
+                                                 (c.Col < 0) || (c.Col > Constants.BoardSize - 1));
+            // remove invalid locations from list before return
             return realCoords.Except(outBoard).ToList();
         }
 

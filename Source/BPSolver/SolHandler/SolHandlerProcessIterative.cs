@@ -10,7 +10,7 @@ namespace BPSolver
 {
     internal partial class SolHandler : ISolver
     {
-        private GameTreeSimple CreateSolutionTree(GameStatus game)
+        private GameTreeSimple CreateSolutionTreeIterative(GameStatus game)
         {
             GameTreeSimple treeRoot;
 
@@ -127,7 +127,7 @@ namespace BPSolver
             int count = 0;
 
             // Count how many rows
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompletedNuevo(game, i))
                     count++;
@@ -142,7 +142,7 @@ namespace BPSolver
             int count = 0;
 
             // Calculate how many rows
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompletedNuevo(game, i))
                     count++;
@@ -206,7 +206,7 @@ namespace BPSolver
         {
             //var list = GetColumn(game, index);
             //list.Select(c => c.Color = PieceColor.None).ToList();
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 game[i, index] = PieceColor.None;
             }
@@ -216,7 +216,7 @@ namespace BPSolver
         {
             //var list = GetRow(game, index);
             //list.Select(c => c.Color = PieceColor.None).ToList();
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 game[index, i] = PieceColor.None;
             }
@@ -228,7 +228,7 @@ namespace BPSolver
         {
             List<int> list = new List<int>();
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompletedNuevo(game, i))
                     list.Add(i);
@@ -241,7 +241,7 @@ namespace BPSolver
         {
             List<int> list = new List<int>();
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompletedNuevo(game, i))
                     list.Add(i);
@@ -260,7 +260,7 @@ namespace BPSolver
         private bool IsAnyRowCompletedNuevo(SimpleGameStatus game)
         {
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsRowCompletedNuevo(game, i))
                     return true;
@@ -272,7 +272,7 @@ namespace BPSolver
         private bool IsAnyColumnCompletedNuevo(SimpleGameStatus game)
         {
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (IsColumnCompletedNuevo(game, i))
                     return true;
@@ -285,7 +285,7 @@ namespace BPSolver
         private bool IsColumnCompletedNuevo(SimpleGameStatus game, int col)
         {
     
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 //if (!game.CellsA[i, col])
                 if (game[i, col] == PieceColor.None)
@@ -298,7 +298,7 @@ namespace BPSolver
         private bool IsRowCompletedNuevo(SimpleGameStatus game, int row)
         {
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
                 if (game[row, i] == PieceColor.None)
                     return false;
@@ -380,9 +380,9 @@ namespace BPSolver
 
             game.Cells = new List<Cell>();
             
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     game.Cells.Add(new Cell(i, j, sgame[i, j]   ));
                 }
@@ -409,11 +409,11 @@ namespace BPSolver
             // Convertir List<Cell> en arreglo bidimensional de PieceColor
             // Se eliminan 100 referencias a class Cell
 
-            sg.CellsA = new PieceColor[Constants.Rank, Constants.Rank];
+            sg.CellsA = new PieceColor[Constants.BoardSize, Constants.BoardSize];
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     sg[i, j] = game[i, j].Color;
                 }
@@ -451,12 +451,12 @@ namespace BPSolver
                 sg.NextPiecesA.Add(dkv.Key, dkv.Value);
             }
 
-            sg.CellsA = new PieceColor[Constants.Rank, Constants.Rank];
+            sg.CellsA = new PieceColor[Constants.BoardSize, Constants.BoardSize];
 
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     sg[i, j] = game[i, j];
                 }
@@ -507,9 +507,9 @@ namespace BPSolver
         {
             List<Coord> freec = new List<Coord>();
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     if (game.CellsA[i, j] == PieceColor.None)
                         freec.Add(new Coord(i, j));

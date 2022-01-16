@@ -45,7 +45,6 @@ namespace BPSolver.Objects
         {
             Row = row;
             Col = col;
-
             Color = PieceColor.None;
         }
 
@@ -53,17 +52,9 @@ namespace BPSolver.Objects
         {
             Row = cell.Row;
             Col = cell.Col;
-
             Color = cell.Color;
         }
 
-        //Retorna una Coord con la posicion de la Cell
-        public Coord Coord
-        {
-            get
-            {
-                return new Coord(this.Row, this.Col);
-            }
-        }
+
     }
 }

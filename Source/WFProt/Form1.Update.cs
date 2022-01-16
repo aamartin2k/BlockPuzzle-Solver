@@ -40,9 +40,9 @@ namespace WFProt
             // Drawing Board
             PieceColor color;
 
-            for (int row = 0; row < Constants.Rank; row++)
+            for (int row = 0; row < Constants.BoardSize; row++)
             {
-                for (int col = 0; col < Constants.Rank; col++)
+                for (int col = 0; col < Constants.BoardSize; col++)
                 {
                     color = status[row, col].Color;
                     bitMap = GetBlockImage(color);
@@ -53,6 +53,8 @@ namespace WFProt
 
                 }
             }
+            sgBoard.VerticalScroll.Visible = false;
+            sgBoard.HorizontalScroll.Visible = false;
             sgBoard.Invalidate();
 
             // Update labels
@@ -63,7 +65,7 @@ namespace WFProt
             lbRowComp.Text = status.CompletedRows.ToString();
 
             lbId.Text = status.Id.ToString();
-            lbNombre.Text = status.Nombre;
+            lbName.Text = status.Nombre;
 
             //actualizando lista de hijos en tsdbChildren
             // analizar extraer proc
@@ -100,7 +102,7 @@ namespace WFProt
         {
             foreach (var row in indexList)
             {
-                for (int col = 0; col < Constants.Rank; col++)
+                for (int col = 0; col < Constants.BoardSize; col++)
                 {
                     sgBoard[row, col].View = vSelectColor;
                     //sgBoard.InvalidateCell(sgBoard[row, col]);                                     
@@ -116,7 +118,7 @@ namespace WFProt
         {
             foreach (var col in indexList)
             {
-                for (int row = 0; row < Constants.Rank; row++)
+                for (int row = 0; row < Constants.BoardSize; row++)
                 {
                     sgBoard[row, col].View = vSelectColor;
                 }

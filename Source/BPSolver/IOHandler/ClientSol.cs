@@ -17,6 +17,17 @@ namespace BPSolver
         {
             OnOut_Solution();
         }
+
+        // Switch on Solution process
+        public void In_SelectRecursive()
+        {
+            OnOut_SelectRecursive();
+        }
+        public void In_SelectIterative()
+        {
+            OnOut_SelectIterative();
+        }
+
         #endregion
 
         #region Salidas al Cliente

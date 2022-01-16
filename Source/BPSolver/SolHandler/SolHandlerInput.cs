@@ -9,6 +9,17 @@ namespace BPSolver
 {
     internal partial class SolHandler : ISolver
     {
+        // Switch on Solution process
+        public void In_SelectRecursive()
+        {
+            SelectRecursive();
+        }
+        public void In_SelectIterative()
+        {
+            SelectIterative();
+        }
+
+
         public void In_Solution(GameStatus game) 
         {
             GameTreeSimple treeRoot;
@@ -19,9 +30,12 @@ namespace BPSolver
 
             // create tree of possible moves
             // iterative procedure
-            treeRoot = CreateSolutionTree(game);
+            //treeRoot = CreateSolutionTreeIterative(game);
             // recursive procedure
             //treeRoot = CreateSolutionTreeRecursive(game);
+            // Switching procedures with dynamic late binding
+            // accessible by external client
+            treeRoot = FireCreateSolution(game);
 
             _stopWatch.Stop();
 

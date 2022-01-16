@@ -83,7 +83,8 @@
     <Compile Include="SolHandler\SolHandlerOutput.cs" />
     <Compile Include="SolHandler\SolHandlerPieceSet.cs" />
     <Compile Include="SolHandler\SolHandlerProcessRecursive.cs" />
-    <Compile Include="SolHandler\SolHandlerSolutionProcess.cs" />
+    <Compile Include="SolHandler\SolHandlerProcessIterative.cs" />
+    <Compile Include="SolHandler\SolHandlerSwitch.cs" />
     <Compile Include="SolHandler\SolHandlerUtils.cs" />
     <Compile Include="TreeHandler\GameSimpleNode.cs" />
     <Compile Include="TreeHandler\GameTreeNode.cs" />

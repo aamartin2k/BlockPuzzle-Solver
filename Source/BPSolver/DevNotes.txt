@@ -2,7 +2,7 @@
   Class Piece:
    --Hacer Matrix propiedad private set;
    --  Implica cambios en Factory NewSolver CreatePieceSet()
-   -- Hace instance method que devuelva coord reales en basea insert point (ins point)
+   -- Hace static method que devuelva coord reales en basea insert point (ins point)
 
    --Establecer primer elem como default en tsbutoons piece
 
@@ -10,14 +10,15 @@
      chequear cambios de estado:
 	  Deleting a NextPiece, mantener Delete
 	  Deleting a ToolPiecde, cambiar a PieceSetting
+
 Controller
-Implementar Play, borrar nextPiece
-Modular opciones de chequeo
-eliminar chequeo de completamiento de Draw
+--Implementar Play, borrar nextPiece
+--Modular opciones de chequeo
+--eliminar chequeo de completamiento de Draw
 --Implementar cloning de gameStatus
 --Implementar actualizar lista de hijos
-Implementar descripcion del movimiento
-Mejorar impl de estadisticas, quitar de GameStatus y pasar a Meta
+--Implementar descripcion del movimiento
+--Mejorar impl de estadisticas, quitar de GameStatus y pasar a Meta
 
 *********
 Analizar implicaciones de Jugada y Undo
@@ -26,6 +27,7 @@ Analizar implicaciones de Jugada y Undo
  En un status jugado solo se puede incorporar la nextPiece borrada.
  En un status jugado se puede jugar una nexpiece y da lugar a una bifurcacion
  Solo se puede editar el grid en el estado actual (no jugado)
+ *********
 
   --IMPLEMENTAR en cada cambio de estado se resetea Stack
  --al hacer jugada en ultimo nodo, por defecto se crea un estado hijo y se avanza,
@@ -37,6 +39,9 @@ Revisar GUI state Machine
 --Implementar Factory para GameStatus, etc
  --Al terminar, revisar/implementar GameStatus Id - private set
 
- Revisar Error null reference al abrir Nuevo1.bmd
- Se creo como nuevo y salvar, revisar conmtenido de fiel y compara con otros, 
- tiene poco tamaño, no se ha salvado el estado
+ --Revisar Error null reference al abrir Nuevo1.bmd
+   Se creo como nuevo y salvar, revisar conmtenido de fiel y compara con otros, 
+    tiene poco tamaño, no se ha salvado el estado
+
+ Implementar filtrado de soluciones en Form, solo mostrar  las que 
+ completan RoC.

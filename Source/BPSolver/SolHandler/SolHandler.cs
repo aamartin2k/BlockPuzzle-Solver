@@ -15,11 +15,13 @@ namespace BPSolver
         public SolHandler()
         {
             CreatePieceSet();
+            CreateDelegates();
+            SelectIterative();
         }
 
 
         // Matriz de Valores Preferencia
-        private int[,] Preferences = new int[Constants.Rank, Constants.Rank]
+        private int[,] Preferences = new int[Constants.BoardSize, Constants.BoardSize]
         {
             {
                 8,

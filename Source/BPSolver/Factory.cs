@@ -32,9 +32,9 @@ namespace BPSolver
             onew.NextPieces.Add(1, PieceName.None);
             onew.NextPieces.Add(2, PieceName.None);
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     onew.Cells.Add(new Cell(i, j));
                 }
@@ -63,9 +63,9 @@ namespace BPSolver
             onew.NextPieces.Add(1, game.NextPieces[1]);
             onew.NextPieces.Add(2, game.NextPieces[2]);
 
-            for (int i = 0; i < Constants.Rank; i++)
+            for (int i = 0; i < Constants.BoardSize; i++)
             {
-                for (int j = 0; j < Constants.Rank; j++)
+                for (int j = 0; j < Constants.BoardSize; j++)
                 {
                     onew.Cells.Add(new Cell(game[i, j]  ));
                 }

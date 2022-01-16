@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace ManTest
 {
-    class MultiSol
+    class MultiSolTest
     {
         // Output
         public Action Out_CloseFile { get; set; }
         public Action<string> Out_LoadFile { get; set; }
         public Action Out_Solution { get; set; }
+        public Action Out_SelectRecursiveProcess { get; set; }
+        public Action Out_SelectIterativeProcess { get; set; }
 
         static Queue<string> Files;
 
@@ -32,7 +34,15 @@ namespace ManTest
                     "tgame07.bmd"
                };
 
+            Console.WriteLine("-> Recursive Process" );
             Files = new Queue<string>(files);
+            Out_SelectRecursiveProcess();
+
+            LoadNextFile();
+
+            Console.WriteLine("-> Iterative Process");
+            Files = new Queue<string>(files);
+            Out_SelectIterativeProcess();
 
             LoadNextFile();
         }
@@ -46,7 +56,7 @@ namespace ManTest
                 Out_LoadFile(file);
             }
             else
-                Console.WriteLine("Done! ");
+                Console.WriteLine("Done!");
         }
 
         // Input
@@ -55,12 +65,9 @@ namespace ManTest
             Console.WriteLine("Close File Result: " + message);
         }
 
-
-
         public void In_LoadFileResult(bool status, string message)
         {
             
-        
             if (status)
             {
                 Console.WriteLine("  File loaded OK");
@@ -68,7 +75,7 @@ namespace ManTest
                 if (Files.Count > 0)
                 {
                     string file = Files.Dequeue();
-
+                    // Running solution on loaded file
                     Out_Solution();
                 }
 

@@ -10,11 +10,11 @@ namespace BPSolver.Objects
     [Serializable]
     public class GameStatus
     {
-        // Propiedades para Solver
+        // properties  for Solver
         public Movement Movement { get; set; }
         public Eval Evaluation { get; set; }
 
-        // Propiedades para TreeHandler
+        // properties  for TreeHandler
         public int Id { get; private set; }
         public string Nombre { get; set; }
 
@@ -24,7 +24,7 @@ namespace BPSolver.Objects
             Id = id;
         }
 
-        // Lista de piezas para posibles movimientos
+        // List of pieces to play (make moves)
          public Dictionary<int, PieceName> NextPieces  { get; set; }
 
         // Cells collection

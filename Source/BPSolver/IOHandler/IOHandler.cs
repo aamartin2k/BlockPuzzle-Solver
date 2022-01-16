@@ -25,6 +25,7 @@ namespace BPSolver
         }
 
         // Metodo estatico Factory
+        // Builder and Binder
         public static IController CreateServer()
         {
             IDocument docHandler = new DocHandler();
@@ -97,6 +98,8 @@ namespace BPSolver
 
             // Out
             server.Out_Solution = solver.In_Solution;
+            server.Out_SelectIterative = solver.In_SelectIterative;
+            server.Out_SelectRecursive = solver.In_SelectRecursive;
             #endregion
             #endregion
 
