@@ -43,5 +43,5 @@ Revisar GUI state Machine
    Se creo como nuevo y salvar, revisar conmtenido de fiel y compara con otros, 
     tiene poco tamaño, no se ha salvado el estado
 
- Implementar filtrado de soluciones en Form, solo mostrar  las que 
+ --Implementar filtrado de soluciones en Form, solo mostrar  las que 
  completan RoC.
