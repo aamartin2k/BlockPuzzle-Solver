@@ -108,7 +108,7 @@ namespace BPSolver
             if (ret)
             {
                 // Update GameStatus stats
-                SolHandler.UpdateGameStatsAfterDraw(_GameHandler.CurrentStatus);
+                Utils.UpdateGameStatsAfterDraw(_GameHandler.CurrentStatus);
                 OnOut_UpdateGameBoard();
             }
         }
@@ -123,8 +123,8 @@ namespace BPSolver
                 // Important. Order matter here.
                 // StatsAfterPlay must be called BEFORE StatsAfterDraw to account for
                 // deleted cells as free cells.
-                SolHandler.UpdateGameStatsAfterPlay(_GameHandler.CurrentStatus);
-                SolHandler.UpdateGameStatsAfterDraw(_GameHandler.CurrentStatus);
+                Utils.DeleteCompletedRoC(_GameHandler.CurrentStatus);
+                Utils.UpdateGameStatsAfterDraw(_GameHandler.CurrentStatus);
 
                 OnOut_UpdateGameBoard();
             }

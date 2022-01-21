@@ -17,13 +17,13 @@ namespace BPSolver.Command
 
         public override void Do()
         {
-            OldColor = Context[Coord].Color;
-            Context[Coord].Color = PieceColor.None;
+            OldColor = Context.Cells[Coord].Color;
+            Context.Cells[Coord].Color = PieceColor.None;
         }
 
         public override void Undo()
         {
-            Context[Coord].Color = OldColor;
+            Context.Cells[Coord].Color = OldColor;
         }
     }
 }

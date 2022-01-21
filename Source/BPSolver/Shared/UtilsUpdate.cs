@@ -1,42 +1,18 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BPSolver
 {
-    // To Be Deleted
-    internal partial class SolHandler : ISolver
+    public static partial class Utils
     {
-        #region Funciones Utileria Compartidas
-        #region Publicas
-        
-        static internal bool TestPiece(Coord insertCoord, PieceName name, GameStatus gstat)
-        {
-            List<Coord> realCoords;
-            // Get reference to piece
-            Piece piece = PieceSet.GetPiece(name);
-
-            // Create absolute coords list.
-            realCoords = Piece.GetRealCoords(piece, insertCoord);
-
-            // Test if all coords are within limits.
-            bool ret = TestRealCoords(realCoords);
-            if (!ret)
-                return false;
-
-            // Test if all coords are free
-            ret = TestFreeCells(gstat, realCoords);
-
-            return ret;
-        }
-        static internal void UpdateGameStatsAfterDraw(GameStatus status)
-        {
-            status.CellsCount = CellsCount(status.Cells);
-            status.FreeCells = FreeCellsCount(status.Cells);
-            status.OccupiedCells = OccupiedCellsCount(status.Cells);
-        }
-        static internal void UpdateGameStatsAfterPlay(GameStatus status)
+        // Modificaciones despues de jugar pieza
+        #region Updates after piece played
+        static internal void DeleteCompletedRoC(GameStatus status)
         {
             // check for completion, update stats and delete
             // Testing for Column or Row completion
@@ -46,17 +22,17 @@ namespace BPSolver
                 ClearCompleted(status);
             }
         }
-        
+        #region Public
+
         #endregion
-        #region Privadas
-        #region Completion
-        #region Completion Check
-        
+
+        #region Private
+        #region Check for Completion 
         static private bool IsAnyCompleted(GameStatus game)
         {
             return IsAnyRowCompleted(game) | IsAnyColumnCompleted(game);
         }
-        
+
         static private bool IsAnyRowCompleted(GameStatus game)
         {
 
@@ -98,21 +74,21 @@ namespace BPSolver
             return cnt == 0;
         }
 
-        static private List<Cell> GetRow(GameStatus game, int row)
+        static private List<SCell> GetRow(GameStatus game, int row)
         {
             var list = game.Cells.Where(z => z.Row == row);
             return list.ToList();
         }
 
-        static private List<Cell> GetColumn(GameStatus game, int col)
+        static private List<SCell> GetColumn(GameStatus game, int col)
         {
             var list = game.Cells.Where(z => z.Col == col);
             return list.ToList();
         }
 
         #endregion
-        #region Completion Delete
-        
+
+        #region Delete Completed
         static private void ClearCompleted(GameStatus status)
         {
             int count;
@@ -154,7 +130,7 @@ namespace BPSolver
                 ClearColumn(status, col);
             }
         }
-        
+
         static private void ClearColumn(GameStatus game, int index)
         {
             var list = GetColumn(game, index);
@@ -194,7 +170,7 @@ namespace BPSolver
             return list.ToArray();
         }
 
-        
+
 
 
         // Contar Filas completas
@@ -228,38 +204,41 @@ namespace BPSolver
 
         #endregion
         #endregion
-        #region Stats
-        static private int CellsCount(List<Cell> Cells)
+
+        #endregion
+
+        // Modificaciones despues de insertar pieza
+        #region Updates after piece insertion
+
+        #region Public
+        static internal void UpdateGameStatsAfterDraw(GameStatus status)
+        {
+            status.CellsCount = CellsCount(status.Cells.ToList());
+            status.FreeCells = FreeCellsCount(status.Cells.ToList());
+            status.OccupiedCells = OccupiedCellsCount(status.Cells.ToList());
+        }
+
+        #endregion
+
+        #region Private
+        static private int CellsCount(List<SCell> Cells)
         {
             return Cells.Count();
         }
 
-        static private int FreeCellsCount(List<Cell> Cells)
+        static private int FreeCellsCount(List<SCell> Cells)
         {
             return Cells.Count(x => x.IsFree);
         }
 
-        static private int OccupiedCellsCount(List<Cell> Cells)
+        static private int OccupiedCellsCount(List<SCell> Cells)
         {
             return Cells.Count(x => !x.IsFree);
         }
-        
-        static private bool TestFreeCells(GameStatus game, List<Coord> realCoords)
-        {
-            var ex = realCoords.Select(c => game[c].IsFree).Where(x => x == false).Count();
-            return ex == 0;
-        }
 
-        static private bool TestRealCoords(List<Coord> matrix)
-        {
-            var outRange = matrix.Where(newCoord => (newCoord.Row < 0) || (newCoord.Row > Constants.BoardSize - 1) ||
-                                                    (newCoord.Col < 0) || (newCoord.Col > Constants.BoardSize - 1)).Count();
-            return outRange == 0;
-
-        }
         #endregion
 
         #endregion
-        #endregion
+
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BPSolver.Objects
 {
@@ -11,8 +7,6 @@ namespace BPSolver.Objects
     public class GameMetaStatus
     {
        
-
-
         // Meta Constructor
         public GameMetaStatus(GameStatus status, 
                               List<GameStatus> childs,
@@ -40,12 +34,7 @@ namespace BPSolver.Objects
         public GameSimpleNode SimpleTree { get; private set; }
 
 
-        // Stats
-        public int FreeCells { get; set; }
-        public int OccupiedCells { get; set; }
-        public int CellsCount { get; set; }
-        public int CompletedRows { get; set; }
-        public int CompletedColumns { get; set; }
+        
 
     }
 }

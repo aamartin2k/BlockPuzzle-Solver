@@ -1,23 +1,19 @@
 ﻿using BPSolver.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver.Objects
 {
     public class SimpleGameStatus
     {
-        // Propiedades para Solver
+        // Properties  for Solver
         public Movement Movement;
         public Eval Evaluation;
 
-        // Propiedades para TreeHandler
+        // Properties  for TreeHandler
         public int Id;
         public string Nombre;
 
-        // Lista de piezas para posibles movimientos
+        // List of pieces to play (make moves)
         public Dictionary<int, PieceName> NextPiecesA;
 
         // Cells collection

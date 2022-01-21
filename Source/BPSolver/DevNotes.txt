@@ -45,3 +45,20 @@ Revisar GUI state Machine
 
  --Implementar filtrado de soluciones en Form, solo mostrar  las que 
  completan RoC.
+
+ Implementar interface y clase Board que exponga cells by class o by struct
+
+ Revisar pasar metodos de Solhandler que solo se llaman desd GameHandler 
+ pasar para Gamehandler o clase utileria
+
+ --Re implementado PieceSet
+   Pasando funciones comunes a clase utileria Shared.Utils
+	--SolHandler.UpdateGameStatsAfterPlay
+    --SolHandler.UpdateGameStatsAfterDraw
+
+   --Implementar nuevo Board
+   -Eliminar/Unificar funciones que actuan sobre GameStatus/GameSimpleStatus: TestPiece. TestPieceNuevo
+   -Unificar uso de GameStatus para Game y Solution
+   --Convertir Archivos
+
+   Borarr files: SolHandlerUtils.cs, SolHandlerPieceSet.cs

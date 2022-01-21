@@ -6,7 +6,6 @@ namespace BPSolver.Game
     internal partial class GameHandler : IGame
     {
         
-
         #region Gestion de Command Stack 
         private Stack<ICommand> _commandStack; 
 
@@ -36,6 +35,5 @@ namespace BPSolver.Game
 
         #endregion
 
-       
     }
 }

@@ -1,38 +1,29 @@
-﻿using System;
+﻿using BPSolver.Enums;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BPSolver.Enums;
 
 
 namespace BPSolver.Objects
 {
     public struct Piece
     {
-        public string Name { get; private set; }
+        public PieceName Name { get; private set; }
         public PieceColor Color { get; private set; }
-        // Block Count for the piece, implemented
         public int Count
         {   get  { return Matrix.Count ; }  }
-        public PieceAttitude Attitude { get; private set; }
-        // Geometric description, relative coords of cells
+        
+        // Relative coords of squares
         public List<Coord> Matrix { get;  private set; }
 
-        
         // Constructor
-        public Piece(string name, PieceColor color, PieceAttitude att, List<Coord> matrix)
+        public Piece(PieceName name, PieceColor color, List<Coord> matrix)
         {
             Name = name;
             Color = color;
-            Attitude = att;
             Matrix = matrix;
         }
 
-        //  Metodos publicos
-        // Static, comunes a toda la clase
-        // Coord Reales de la pieza insertada en board
-        //  combina (suma) Matrix y Pto de Insercion
+        //  Returns a list or real locations
         public static List<Coord> GetRealCoords(Piece instance, Coord point)
         {
             Coord newCoord;
@@ -48,7 +39,7 @@ namespace BPSolver.Objects
         }
 
 
-        //  Matriz de coord relativas de celdas vecinas
+        // Relative coords of neighbor cells
         public static List<Coord>  GetNeighborsMatrix(Piece instance)
         {
             List<Coord> allItems = new List<Coord>();
@@ -64,9 +55,7 @@ namespace BPSolver.Objects
             return allItems.Except(instance.Matrix).ToList();
         }
 
-        // Crear coord absolutasde celdas vecinas a partir del pto de insercion y la lista de coord relativas de la pieza
-        // Descarta las coord fuera del tablero.
-        // Combina NeighborsMatrix y Pto de Insercion
+        // Real location of neighbor cells, removes coords outside board limits
         public static List<Coord> GetNeighborsRealCoords(Coord insertCoord, List<Coord> matrix)
         {
             Coord newCoord;
@@ -82,7 +71,7 @@ namespace BPSolver.Objects
             // create list of coords outside board limits
             var outBoard = realCoords.Where(c => (c.Row < 0) || (c.Row > Constants.BoardSize - 1) ||
                                                  (c.Col < 0) || (c.Col > Constants.BoardSize - 1));
-            // remove invalid locations from list before return
+            // remove invalid locations from list
             return realCoords.Except(outBoard).ToList();
         }
 
@@ -91,7 +80,7 @@ namespace BPSolver.Objects
        
         public override string ToString()
         {
-            return Name;
+            return Name.ToString();
         }
 
     }

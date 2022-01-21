@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace BPSolver.Objects
 {
-
     [Serializable]
     public class GameStatus
     {
@@ -25,23 +23,12 @@ namespace BPSolver.Objects
         }
 
         // List of pieces to play (make moves)
-         public Dictionary<int, PieceName> NextPieces  { get; set; }
+        public Dictionary<int, PieceName> NextPieces { get; set; }
 
         // Cell collection
-        public List<Cell> Cells { get; set; }
+        public DenseSCellArray<SCell> Cells { get; set; }
 
-        // Cell Indexer
-        // Return Cell by row and column
-        public Cell this[int row, int col]
-        {
-            get { return Cells.First(z => z.Row == row && z.Col == col); }
-        }
-        // Return Cell by Coord
-        public Cell this[Coord coord]
-        {
-            get { return Cells.First(z => z.Row == coord.Row && z.Col == coord.Col); }
-        }
-
+  
         // Game Stats
         public int FreeCells { get; set; }
         public int OccupiedCells { get; set; }
@@ -49,5 +36,4 @@ namespace BPSolver.Objects
         public int CompletedRows { get; set; }
         public int CompletedColumns { get; set; }
     }
-
 }

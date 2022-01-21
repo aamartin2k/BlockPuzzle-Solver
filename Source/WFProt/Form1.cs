@@ -72,10 +72,10 @@ namespace WFProt
             tsbFiveHor.Tag = PieceName.FiveHor;
             tsbFiveVert.Tag = PieceName.FiveVert;
             //
-            tsbFiveLOne.Tag = PieceName.FiveLOne;
-            tsbFiveLTwo.Tag = PieceName.FiveLTwo;
-            tsbFiveLThree.Tag = PieceName.FiveLThree;
-            tsbFiveLFour.Tag = PieceName.FiveLFour;
+            tsbFiveLOne.Tag = PieceName.FiveL1;
+            tsbFiveLTwo.Tag = PieceName.FiveL2;
+            tsbFiveLThree.Tag = PieceName.FiveL3;
+            tsbFiveLFour.Tag = PieceName.FiveL4;
             //
             tsbNine.Tag = PieceName.Nine;
 

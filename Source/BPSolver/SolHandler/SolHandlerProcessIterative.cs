@@ -3,8 +3,6 @@ using BPSolver.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
@@ -65,7 +63,7 @@ namespace BPSolver
                 throw new Exception("No coincide el nombre de pieza de Move con Dictionary");
             // "Dibujar" pieza en board
             // Get reference to piece
-            Piece piece = GetPiece(move.Name);
+            Piece piece = PieceSet.GetPiece(move.Name);
 
             // Obtener Real Coords
             List<Coord> realCoords;
@@ -89,7 +87,7 @@ namespace BPSolver
         {
             Eval eval = Eval.GetNewEval();
 
-            Piece piece = GetPiece(move.Name);
+            Piece piece = PieceSet.GetPiece(move.Name);
             // Tamanno de pieza
             eval.PieceSize = piece.Count;
 
@@ -377,14 +375,19 @@ namespace BPSolver
             {
                 game.NextPieces.Add(dkv.Key, dkv.Value);
             }
-
-            game.Cells = new List<Cell>();
             
+            DenseSCellArray<SCell> _Cells;
+            _Cells = new DenseSCellArray<SCell>(Constants.BoardSize, Constants.BoardSize);
+            game.Cells = _Cells;
+
+          
+            SCell cell;
             for (int i = 0; i < Constants.BoardSize; i++)
             {
                 for (int j = 0; j < Constants.BoardSize; j++)
                 {
-                    game.Cells.Add(new Cell(i, j, sgame[i, j]   ));
+                    cell = new SCell(i, j, sgame[i, j]);
+                    _Cells[i, j] = cell;
                 }
             }
 
@@ -415,7 +418,7 @@ namespace BPSolver
             {
                 for (int j = 0; j < Constants.BoardSize; j++)
                 {
-                    sg[i, j] = game[i, j].Color;
+                    sg[i, j] = game.Cells[i, j].Color;
                 }
             }
             return sg;
@@ -522,13 +525,13 @@ namespace BPSolver
         {
             List<Coord> realCoords;
             // Get reference to piece
-            Piece piece = GetPiece(name);
+            Piece piece = PieceSet.GetPiece(name);
 
             // Create absolute coords list.
             realCoords = Piece.GetRealCoords(piece, insertCoord);
 
             // Test if all coords are within limits.
-            bool ret = TestRealCoords(realCoords);
+            bool ret = Utils.TestRealCoords(realCoords);
             if (!ret)
                 return false;
 

@@ -139,7 +139,7 @@ namespace WFProt
             {
                 for (int col = 0; col < Constants.BoardSize; col++)
                 {
-                    color = status[row, col].Color;
+                    color = status.Cells[row, col].Color;
                     bitMap = GetBlockImage(color);
 
                     // simplificar al implementar command pattern

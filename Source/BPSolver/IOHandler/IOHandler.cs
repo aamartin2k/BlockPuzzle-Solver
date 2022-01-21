@@ -1,5 +1,7 @@
 ﻿
+using BPSolver.Enums;
 using BPSolver.Game;
+using BPSolver.Objects;
 
 namespace BPSolver
 {
@@ -102,6 +104,9 @@ namespace BPSolver
             server.Out_SelectRecursive = solver.In_SelectRecursive;
             #endregion
             #endregion
+
+            // Forcing execution of static constructor
+            var piece = PieceSet.GetPiece(PieceName.One);
 
             return server;
         }

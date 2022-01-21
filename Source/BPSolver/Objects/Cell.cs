@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BPSolver.Enums;
+﻿using BPSolver.Enums;
+using System;
 
 
 namespace BPSolver.Objects
@@ -11,29 +7,19 @@ namespace BPSolver.Objects
     [Serializable]
     public class Cell
     {
-       
-        // Declaraciones
-       
-        // Row
         public int Row { get; set; }
-        // Col
         public int Col { get; set; }
+
         public bool IsFree
         {
             get
-            {
-                return (Color == PieceColor.None);
-            }
-
+            {   return (Color == PieceColor.None);  }
         }
 
         public PieceColor Color
-        {
-            get; set;
-        }
+        {   get; set;   }
 
-        // Constructor
-
+        // Constructors
         public Cell(int row, int col, PieceColor color)
         {
             Row = row;

@@ -17,13 +17,13 @@ namespace BPSolver.Game
             try
             {
                 // Chequear si hay espacio para la pieza y que este dentro del board
-                ret = SolHandler.TestPiece(coord, name, CurrentStatus);
+                ret = Utils.TestPiece(coord, name, CurrentStatus);
 
                 if (ret)
                 {
                     List<Coord> RealCoords;
                     // Get reference to piece
-                    Piece piece = SolHandler.GetPiece(name);
+                    Piece piece = PieceSet.GetPiece(name);
                     // Create absolute coords list.
                     RealCoords = Piece.GetRealCoords(piece, coord);
 
@@ -72,17 +72,17 @@ namespace BPSolver.Game
             try
             {
                 // Chequear si hay espacio para la pieza y que este dentro del board
-                ret = SolHandler.TestPiece(coord, name, CurrentStatus);
+                ret = Utils.TestPiece(coord, name, CurrentStatus);
 
                 if (ret)
                 {
                     // Crear clon de estado actual
-                    GameStatus cloned; //= SolHandler.CloneGameStatus(CurrentStatus);
+                    GameStatus cloned; 
                     cloned = Factory.CloneGameStatus(id, CurrentStatus);
 
                     List<Coord> RealCoords;
                     // Get reference to piece
-                    Piece piece = SolHandler.GetPiece(name);
+                    Piece piece = PieceSet.GetPiece(name);
                     // Create absolute coords list.
                     RealCoords = Piece.GetRealCoords(piece, coord);
 

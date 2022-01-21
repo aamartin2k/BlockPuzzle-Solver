@@ -158,16 +158,16 @@ namespace WFProt
                 case PieceName.FiveVert:
                     bmp = WFProt.Properties.Resources.FiveVert;
                     break;
-                case PieceName.FiveLOne:
+                case PieceName.FiveL1:
                     bmp = WFProt.Properties.Resources.FiveLOne;
                     break;
-                case PieceName.FiveLTwo:
+                case PieceName.FiveL2:
                     bmp = WFProt.Properties.Resources.FiveLTwo;
                     break;
-                case PieceName.FiveLThree:
+                case PieceName.FiveL3:
                     bmp = WFProt.Properties.Resources.FiveLThree;
                     break;
-                case PieceName.FiveLFour:
+                case PieceName.FiveL4:
                     bmp = WFProt.Properties.Resources.FiveLFour;
                     break;
                 case PieceName.Nine:

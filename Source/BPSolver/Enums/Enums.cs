@@ -32,7 +32,7 @@ namespace BPSolver.Enums
         FourZ1, FourZ2,
         FourHor, FourVert,
         FiveHor, FiveVert,
-        FiveLOne, FiveLTwo, FiveLThree, FiveLFour,
+        FiveL1, FiveL2, FiveL3, FiveL4,
         Nine
     }
 

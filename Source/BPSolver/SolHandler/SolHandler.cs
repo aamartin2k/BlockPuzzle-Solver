@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BPSolver.Enums;
-using BPSolver.Objects;
-
-namespace BPSolver
+﻿namespace BPSolver
 {
     internal partial class SolHandler : ISolver
     {
@@ -14,7 +6,6 @@ namespace BPSolver
 
         public SolHandler()
         {
-            CreatePieceSet();
             CreateDelegates();
             SelectIterative();
         }
