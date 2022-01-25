@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement handling .
+    /// </summary>
     internal partial class TreeHandler : ITree
     {
 
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         public Action<bool> Out_MoveFirst_Result { get; set; }
         public Action<bool> Out_MovePrevious_Result { get; set; }
         public Action<bool> Out_MoveNext_Result { get; set; }
@@ -20,7 +23,7 @@ namespace BPSolver
        
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         public void OnOut_MoveFirst_Result(bool result)
         {
             Out_MoveFirst_Result?.Invoke(result);

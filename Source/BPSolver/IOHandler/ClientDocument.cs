@@ -12,7 +12,7 @@ namespace BPSolver
         // Comunicacion con el cliente
         // para funciones de DocHandler
         //
-        #region Entradas de Cliente
+        #region Inputs from DocHandler
         public void In_NewFile()
         {
             // Llamada a Document
@@ -27,41 +27,9 @@ namespace BPSolver
         {
             // Llamada a Document
             OnOut_LoadFile(file);
-            // TEMP Cargando old files
-            //In_LoadOldFile(file);
+
         }
-        /*
-        private void In_LoadOldFile(string file)
-        {
-            string message;
-            bool ret;
-
-            try
-            {
-                GameSerialNode dataRoot = Serializer.Deserialize<GameSerialNode>(file);
-                //GameTreeNode newTree = new GameTreeNode(dataRoot.Status);
-                //newTree.Build(dataRoot, n => n.Status);
-
-                // process Doc
-                Document newDoc = new Document();
-                newDoc.GameTree = dataRoot;
-                // act DocHandler
-                //DocHandler.CurrentDocument = newDoc;
-
-                ret = true;
-                message = file + " File loaded OK";
-
-            }
-            catch (Exception ex)
-            {
-                //notify error
-                ret = false;
-                message = ex.Message;
-            }
-
-            Out_LoadFileResult(ret, message);
-        }
-        */
+      
         public void In_SaveFile()
         {
             UpdateDocumentFromGameTree();
@@ -76,7 +44,7 @@ namespace BPSolver
         #endregion
 
         #region Salidas a Cliente
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         public Action<bool> Out_UserEnable { get; set; }
         public Action<bool, string> Out_NewFileResult { get; set; }
         public Action<bool, string> Out_CloseFileResult { get; set; }
@@ -84,7 +52,7 @@ namespace BPSolver
         public Action<bool, string> Out_SaveFileResult { get; set; }
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         public void OnOut_UserEnable(bool result)
         {
             Out_UserEnable?.Invoke(result);

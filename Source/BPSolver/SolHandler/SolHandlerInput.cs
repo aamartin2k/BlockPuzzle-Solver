@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement finding solutions.
+    /// Services inputs from IOHandler.
+    /// </summary>
     internal partial class SolHandler : ISolver
     {
         // Switch on Solution process
@@ -24,17 +28,18 @@ namespace BPSolver
         {
             GameTreeSimple treeRoot;
 
-            // Timing
+            // Timing.
             System.Diagnostics.Stopwatch _stopWatch = new System.Diagnostics.Stopwatch();
             _stopWatch.Start();
 
-            // create tree of possible moves
-            // iterative procedure
+            // Create tree of possible moves.
+            // Using iterative procedure directly (before implement the switch).
             //treeRoot = CreateSolutionTreeIterative(game);
-            // recursive procedure
+            // Using recursive procedure.
             //treeRoot = CreateSolutionTreeRecursive(game);
+
             // Switching procedures with dynamic late binding
-            // accessible by external client
+            // accessible by external client code
             treeRoot = FireCreateSolution(game);
 
             _stopWatch.Stop();
@@ -70,7 +75,7 @@ namespace BPSolver
 
             Dictionary<int, GameStatus> StatusList;
 
-            StatusList = CreateGameStatusSolution(seqNodes, initial);
+            StatusList = CreateGameStatusSolution(seqNodes);
 
             foreach (var dkv in StatusList)
             {
@@ -90,7 +95,7 @@ namespace BPSolver
             return sol;
         }
 
-        private Dictionary<int, GameStatus> CreateGameStatusSolution(IEnumerable<GameTreeSimple> seqNodes, GameStatus initial)
+        private Dictionary<int, GameStatus> CreateGameStatusSolution(IEnumerable<GameTreeSimple> seqNodes)
         {
             
             Dictionary<int, GameStatus> StatusList = new Dictionary<int, GameStatus>();
@@ -99,7 +104,7 @@ namespace BPSolver
 
             foreach (GameTreeSimple nod in seqNodes)
             {
-                child = GetGameFromSimple(nod.Item);
+                child = nod.Item;
                 StatusList.Add(child.Id, child);
             }
             return StatusList;

@@ -12,7 +12,7 @@ namespace BPSolver
         // Comunicacion con el cliente
         // para funciones de SolHandler
         //
-        #region Entradas de Cliente
+        #region Inputs de Cliente
         public void In_Solution()
         {
             OnOut_Solution();
@@ -31,11 +31,11 @@ namespace BPSolver
         #endregion
 
         #region Salidas al Cliente
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         public Action<SolutionMetaStatus> Out_UpdateSolutionBoard { get; set; }
 
         #endregion
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         public void OnOut_UpdateSolutionBoard(SolutionMetaStatus status)
         {
             Out_UpdateSolutionBoard?.Invoke(status);

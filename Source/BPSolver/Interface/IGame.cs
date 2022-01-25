@@ -1,24 +1,27 @@
 ﻿using System;
 using BPSolver.Objects;
 using BPSolver.Enums;
+using System.Collections.Generic;
 
 namespace BPSolver
 {
     /// <summary>
-    /// Defines behavior of game status handling component (GameHandler)
+    /// Defines behavior of game status handling component (GameHandler).
     /// </summary>
     public interface IGame
     {
-        #region Propiedades
+        #region Properties
         GameStatus CurrentStatus { get; set; }
 
         #endregion
 
-        #region Entradas
+        #region Inputs
         // Deshacer ultimo
         void In_Undo();
 
         // Insertar Pieza en Tablero
+        void In_Draw(List<Coord> coords, PieceColor color);
+
         void In_DrawPiece(Coord coord, PieceName name);
 
         // Establecer Proxima Pieza
@@ -38,7 +41,7 @@ namespace BPSolver
         #region Salidas
         // Se incorporan notificacion de resultados para cada accion 
         Action<bool> Out_Undo_Result { get; set; }
-        Action<bool> Out_DrawPiece_Result { get; set; }
+        Action<bool> Out_Draw_Result { get; set; }
         Action<bool> Out_DrawNextPiece_Result { get; set; }
         Action<bool> Out_DeleteGridCell_Result { get; set; }
         Action<bool> Out_DeleteNextPiece_Result { get; set; }

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Supports serialization to disk of game information along with oher irrelevant boilerplate YAGNI stuff
+    /// </summary>
     [Serializable]
     public class DocData
     {

@@ -3,6 +3,9 @@ using BPSolver.Objects;
 
 namespace BPSolver.Command
 {
+    /// <summary>
+    /// Delete a playable piece based on its index
+    /// </summary>
     internal class DeleteNextPieceCommand : BaseCommand
     {
         private int Index;
@@ -18,16 +21,12 @@ namespace BPSolver.Command
 
         public override void Do()
         {
-            // guardar estado previo
             OldName = Context.NextPieces[Index];
-
-            // aplicar estado nuevo
             Context.NextPieces[Index] = NewName;
         }
 
         public override void Undo()
         {
-            // restaurar estado previo
             Context.NextPieces[Index] = OldName;
         }
     }

@@ -14,7 +14,7 @@ namespace BPSolver
         // Comunicacion con el Componente DocHandler
 
         #region Salidas 
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         internal Action Out_NewFile { get; set; }
         internal Action Out_CloseFile { get; set; }
         internal Action<string> Out_LoadFile { get; set; }
@@ -22,7 +22,7 @@ namespace BPSolver
         internal Action<string> Out_SaveFileAs { get; set; }
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         private void OnOut_NewFile()
         {
             Out_NewFile?.Invoke();
@@ -48,7 +48,7 @@ namespace BPSolver
         #endregion
         #endregion
 
-        #region Entradas de Document
+        #region Inputs de Document
         internal void In_UserEnableResult(bool result)
         {
             OnOut_UserEnable(result);
@@ -73,9 +73,17 @@ namespace BPSolver
         
         internal void In_CloseFileResult(bool result, string text)
         {
-            
+            if (result)
+            {
+                // Crear nuevo Game Status y Game Tree
+                UpdateGameTreeFromNewObject();
+
+                // Actualizar GUI con Game Status
+                OnOut_UpdateGameBoard();
+            }
             // Invocar salida a cliente
             OnOut_CloseFileResult(result, text);
+
             OnOut_UserEnable(!result);
         }
 

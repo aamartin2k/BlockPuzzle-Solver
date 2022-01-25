@@ -7,20 +7,23 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement finding solutions.
+    /// Outputs for notifying IOHandler.
+    /// </summary>
     internal partial class SolHandler : ISolver
     {
+        #region Declaration of Delegates
 
-
-        #region Salidas
-        #region Declaracion de Delegates
         public Action<SolutionMetaStatus> Out_UpdateSolutionBoard { get; set; }
         #endregion
-        #region Invocacion de Delegates
+
+        #region Invocation of Delegates
+
         private void OnOut_UpdateSolutionBoard(SolutionMetaStatus result)
         {
             Out_UpdateSolutionBoard?.Invoke(result);
         }
-        #endregion
         #endregion
 
     }

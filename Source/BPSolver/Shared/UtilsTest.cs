@@ -7,10 +7,23 @@ namespace BPSolver
 {
     public static partial class Utils
     {
-        
-        #region Test before piece insertion
+
+        #region Test before draw a piece
 
         #region Public
+        static internal bool TestCoords(List<Coord> coors,  GameStatus gstat)
+        {
+            // Test if all coords are within limits.
+            bool ret = TestRealCoords(coors);
+            if (!ret)
+                return false;
+
+            // Test if all coords are free
+            ret = TestFreeCells(gstat, coors);
+
+            return ret;
+        }
+
         static internal bool TestPiece(Coord insertCoord, PieceName name, GameStatus gstat)
         {
             List<Coord> realCoords;

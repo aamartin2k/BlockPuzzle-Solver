@@ -10,13 +10,13 @@ namespace BPSolver
     /// </summary>
     public interface IDocument
     {
-        #region Propiedades
+        #region Properties
       
         Document CurrentDocument { get; }
 
         #endregion
 
-        #region Entradas
+        #region Inputs
         // Manejo Documento
         void In_NewFile();
         void In_CloseFile();

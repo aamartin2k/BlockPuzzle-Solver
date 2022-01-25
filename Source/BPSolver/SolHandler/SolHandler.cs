@@ -1,5 +1,9 @@
 ﻿namespace BPSolver
 {
+    /// <summary>
+    /// Implement finding solutions.
+    /// Declarations.
+    /// </summary>
     internal partial class SolHandler : ISolver
     {
         private const string RootName = "Cloned Root";
@@ -10,8 +14,8 @@
             SelectIterative();
         }
 
-
         // Matriz de Valores Preferencia
+        #region Declaration and initialization of preference matrix 
         private int[,] Preferences = new int[Constants.BoardSize, Constants.BoardSize]
         {
             {
@@ -135,6 +139,6 @@
                 8
             }
         };
-
+        #endregion
     }
 }

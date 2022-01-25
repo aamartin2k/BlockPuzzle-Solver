@@ -5,13 +5,13 @@ using System.Collections.Generic;
 namespace BPSolver
 {
     /// <summary>
-    /// Defines behavior of data tree handling component (TreeHandler)
+    /// Defines behavior of data tree handling component (TreeHandler).
     /// </summary>
     public interface ITree
     {
        
 
-        #region Propiedades
+        #region Properties
         GameTreeNode TreeRoot { get; set; }
         GameTreeNode CurrentNode { get; set; }
         List<GameStatus> CurrentChilds { get;  }
@@ -19,7 +19,7 @@ namespace BPSolver
         int TreeCount { get; }
         #endregion
 
-        #region Entradas
+        #region Inputs
         // Manejo de Secuencia
         void In_MoveFirst();
         void In_MovePrevious();

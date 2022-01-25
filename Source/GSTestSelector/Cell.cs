@@ -1,17 +1,23 @@
-﻿using BPSolver.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BPSolver.Enums;
 
-namespace BPSolver.Objects
+namespace GSTestSelector
 {
-    [Serializable]
-    public struct SCell
+    class CCell : ICell
     {
         public int Row { get; set; }
         public int Col { get; set; }
+
+        public CCell(int row, int col)
+        {
+            Row = row;
+            Col = col;
+            Color = PieceColor.None;
+        }
 
         public bool IsFree
         {
@@ -21,14 +27,12 @@ namespace BPSolver.Objects
 
         public PieceColor Color
         { get; set; }
+    }
 
-        // Constructors
-        public SCell(int row, int col, PieceColor color)
-        {
-            Row = row;
-            Col = col;
-            Color = color;
-        }
+    struct SCell : ICell
+    {
+        public int Row { get; set; }
+        public int Col { get; set; }
 
         public SCell(int row, int col)
         {
@@ -37,13 +41,13 @@ namespace BPSolver.Objects
             Color = PieceColor.None;
         }
 
-        public SCell(SCell cell)
+        public bool IsFree
         {
-            Row = cell.Row;
-            Col = cell.Col;
-            Color = cell.Color;
+            get
+            { return (Color == PieceColor.None); }
         }
 
-
+        public PieceColor Color
+        { get; set; }
     }
 }

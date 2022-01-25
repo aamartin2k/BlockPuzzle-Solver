@@ -5,15 +5,17 @@ using System.Linq;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement finding solutions.
+    /// Find solution recursively.
+    /// </summary>
     internal partial class SolHandler : ISolver
     {
         private GameTreeSimple CreateSolutionTreeRecursive(GameStatus game)
         {
             GameTreeSimple treeRoot;
 
-            // Convertir Estado inicial GameStatus en GameTreeSimple por optimizacion
-            SimpleGameStatus GStIni = GetSimpleFromGameStatus(game);
-            GStIni.Nombre = RootName;
+            GameStatus GStIni = Factory.CloneGameStatus(0, RootName, game);
             // Solution Tree Root
             treeRoot = new GameTreeSimple(GStIni);
 
@@ -26,9 +28,9 @@ namespace BPSolver
         // Realiza iteracion por lista de NextPieces y no emplea Queue
         private void ProccessNodeRecursive(GameTreeSimple parent, GameTreeSimple root)
         {
-            SimpleGameStatus gstatus = parent.Item;
+            GameStatus gstatus = parent.Item;
 
-            foreach (var dkv in gstatus.NextPiecesA)
+            foreach (var dkv in gstatus.NextPieces)
             {
                 int index = dkv.Key;
                 PieceName piece = dkv.Value;
@@ -56,30 +58,30 @@ namespace BPSolver
         private void ProcessMoveNuevo(Movement move, GameTreeSimple parent, GameTreeSimple root)
         {
             // Obtener gameStatus de Parent y clonar
-            SimpleGameStatus cloned = CreateCloneChildNuevo(root, parent, parent.Item);
+            GameStatus cloned = CreateCloneChildNuevo(root, parent, parent.Item);
+
             // Aplicar Movimiento
-            cloned.Movement = MakeMoveNuevo(move, cloned);
+            cloned.Movement = move;
+            MakeMoveNuevo(cloned);
+
             // Borrar pieza de la lista
-            DeleteMovedPieceNuevo(move, cloned);
+            DeleteMovedPieceNuevo(cloned);
+
             // Evaluar Movimiento
-            cloned.Evaluation = EvaluateMoveNuevo(move, cloned);
+            cloned.Evaluation = EvaluateMoveNuevo(cloned);
+
             // Chequear por Completamiento
-            CheckCompleteAndDeleteNuevo(cloned);
+            Utils.DeleteCompletedRoC(cloned);
         }
 
-        private SimpleGameStatus CreateCloneChildNuevo(GameTreeSimple root, GameTreeSimple parent, SimpleGameStatus game)
-        {
-            SimpleGameStatus clonedGame = CloneSimpleGameStatus(game);
+        private GameStatus CreateCloneChildNuevo(GameTreeSimple root, GameTreeSimple parent, GameStatus game)
+        {      
+            int id = root.Count();
+            string nombre = string.Format("Cloned {0}", id);
 
-            // Reset Id
-            clonedGame.Id = root.Count();
+            GameStatus clonedGame = Factory.CloneGameStatus(id, nombre, game);
 
-            // Reset Name
-            clonedGame.Nombre = string.Format("Cloned {0}", clonedGame.Id);
-
-            //crear
             parent.AddChild(clonedGame);
-
             return clonedGame;
         }
 

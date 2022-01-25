@@ -10,7 +10,7 @@ namespace BPSolver
     public partial class IOHandler : IController
     {
         // Salidas a Cliente que no son Notificacion de Resultado concreto
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
 
         public Action<GameMetaStatus> Out_UpdateGameBoard { get; set; }
         
@@ -19,10 +19,10 @@ namespace BPSolver
  
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         public void OnOut_UpdateGameBoard()
         {
-            // Crear internamente GameMetaStatus status antes de invocar
+            // Crear internamente GameMetaStatus antes de invocar
             GameSimpleNode sern;
             sern = CreateSimpleTreeFromRoot(_TreeHandler.TreeRoot);
             GameStatus status;

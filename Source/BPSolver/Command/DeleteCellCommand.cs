@@ -3,6 +3,9 @@ using BPSolver.Objects;
 
 namespace BPSolver.Command
 {
+    /// <summary>
+    /// Delete a cell based on its location Coord
+    /// </summary>
     internal class DeleteCellCommand : BaseCommand
     {
 

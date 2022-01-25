@@ -13,7 +13,7 @@ namespace BPSolver
         // Comunicacion con el cliente
         // para funciones de GameHandler
         //
-        #region Entradas de Cliente
+        #region Inputs
 
         public void In_DeleteGridCell(Coord coord)
         {
@@ -36,9 +36,43 @@ namespace BPSolver
             OnOut_DrawNextPiece(index, name);
         }
 
+        public void In_Draw(List<Coord> coords, PieceColor color)
+        {
+            bool ret = Utils.TestCoords(coords, _GameHandler.CurrentStatus);
+
+            if (ret)
+            {
+                OnOut_Draw(coords, color);
+            }
+            else
+            {
+                OnOut_Draw_Result(false);
+            }
+        }
+
         public void In_DrawPiece(Coord coord, PieceName name)
         {
             OnOut_DrawPiece(coord, name);
+            // new impl
+            // get real coords
+            // test real coords
+            // if proceed, draw
+
+            // Get reference to piece
+            Piece piece = PieceSet.GetPiece(name);
+            // Create absolute coords list.
+            List<Coord> RealCoords = Piece.GetRealCoords(piece, coord);
+
+            bool ret = Utils.TestCoords( RealCoords, _GameHandler.CurrentStatus);
+
+            if (ret)
+            {
+                OnOut_Draw(RealCoords, piece.Color);
+            }
+            else
+            {
+                OnOut_Draw_Result(false);
+            }
         }
 
         public void In_Undo()
@@ -47,18 +81,18 @@ namespace BPSolver
         }
         #endregion
 
-        #region Salidas a Cliente
-        #region Declaracion de Delegates
+        #region Outputs
+        #region Declaration of Delegates
         public Action<bool> Out_Undo_Result { get; set; }
         public Action<bool> Out_DrawGridPlay_Result { get; set; }
-        public Action<bool> Out_DrawPiece_Result { get; set; }
+        public Action<bool> Out_Draw_Result { get; set; }
         public Action<bool> Out_DrawNextPiece_Result { get; set; }
         public Action<bool> Out_DeleteGridCell_Result { get; set; }
         public Action<bool> Out_DeleteNextPiece_Result { get; set; }
 
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
 
        
         public void OnOut_DrawGridPlay_Result(bool result)
@@ -70,9 +104,9 @@ namespace BPSolver
         {
             Out_Undo_Result?.Invoke(result);
         }
-        public void OnOut_DrawPiece_Result(bool result)
+        public void OnOut_Draw_Result(bool result)
         {
-            Out_DrawPiece_Result?.Invoke(result);
+            Out_Draw_Result?.Invoke(result);
         }
         public void OnOut_DrawNextPiece_Result(bool result)
         {

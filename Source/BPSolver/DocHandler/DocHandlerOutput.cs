@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement handling game and solution data as a document.
+    /// Outputs for notifying IOHandler.
+    /// </summary>
     internal partial class DocHandler : IDocument
     {
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
+
         public Action<bool> Out_UserEnable { get; set; }
-
         public Action<bool, string> Out_CloseFileResult { get; set; }
-        // NewResult
         public Action<bool, string> Out_NewFileResult { get; set; }
-
-        // LoadResult
         public Action<bool, string> Out_LoadFileResult { get; set; }
-
-        // SaveResult
         public Action<bool, string> Out_SaveFileResult { get; set; }
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
+
         public void OnOut_UserEnable(bool result)
         {
             Out_UserEnable?.Invoke(result);

@@ -56,11 +56,13 @@
   <ItemGroup>
     <Compile Include="BinaryFormatter.cs" />
     <Compile Include="Command\BaseCommand.cs" />
+    <Compile Include="Command\CommandStack.cs" />
     <Compile Include="Command\DeleteCellCommand.cs" />
     <Compile Include="Command\DeleteNextPieceCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\DrawPieceCommand.cs" />
     <Compile Include="Command\DrawNextPieceCommand.cs" />
+    <Compile Include="Command\ICommandStack.cs" />
     <Compile Include="DocHandler\DocHandler.cs" />
     <Compile Include="DocHandler\DocHandlerInput.cs" />
     <Compile Include="DocHandler\DocHandlerOutput.cs" />
@@ -68,7 +70,8 @@
     <Compile Include="Document\DocData.cs" />
     <Compile Include="Document\GameData.cs" />
     <Compile Include="Document\GameDocument.cs" />
-    <Compile Include="Factory.cs" />
+    <Compile Include="Objects\CellCollection.cs" />
+    <Compile Include="Objects\Factory.cs" />
     <Compile Include="GameHandler\GameHandler.cs" />
     <Compile Include="GameHandler\GameHandlerCommand.cs" />
     <Compile Include="GameHandler\GameHandlerInput.cs" />
@@ -79,23 +82,17 @@
     <Compile Include="IOHandler\IOHandlerGame.cs" />
     <Compile Include="IOHandler\IOHandlerSol.cs" />
     <Compile Include="IOHandler\IOHandlerTree.cs" />
-    <Compile Include="Objects\BoardArray.cs" />
-    <Compile Include="Objects\GmStatus.cs" />
     <Compile Include="Objects\PieceSet.cs" />
-    <Compile Include="Objects\SCell.cs" />
     <Compile Include="Shared\UtilsTest.cs" />
     <Compile Include="Shared\UtilsUpdate.cs" />
     <Compile Include="SolHandler\SolHandlerInput.cs" />
     <Compile Include="SolHandler\SolHandlerOutput.cs" />
-    <None Include="SolHandler\SolHandlerPieceSet.cs" />
     <Compile Include="SolHandler\SolHandlerProcessRecursive.cs" />
     <Compile Include="SolHandler\SolHandlerProcessIterative.cs" />
     <Compile Include="SolHandler\SolHandlerSwitch.cs" />
-    <None Include="SolHandler\SolHandlerUtils.cs" />
     <Compile Include="TreeHandler\GameSimpleNode.cs" />
     <Compile Include="TreeHandler\GameTreeNode.cs" />
     <Compile Include="TreeHandler\TreeHandler.cs" />
-    <Compile Include="Interface\IClient.cs" />
     <Compile Include="Interface\IController.cs" />
     <Compile Include="Interface\IDocument.cs" />
     <Compile Include="Interface\IGame.cs" />
@@ -111,17 +108,16 @@
     <Compile Include="Objects\Movement.cs" />
     <Compile Include="TreeHandler\TreeHandlerInput.cs" />
     <Compile Include="TreeHandler\TreeHandlerOutput.cs" />
-    <Compile Include="Objects\SimpleGameStatus.cs" />
     <Compile Include="Objects\Solution.cs" />
     <Compile Include="Objects\SolutionMetaStatus.cs" />
     <Compile Include="SolHandler\SolHandler.cs" />
     <Compile Include="Enums\Enums.cs" />
-    <None Include="Objects\Cell.cs" />
+    <Compile Include="Objects\Cell.cs" />
     <Compile Include="Objects\Coords.cs" />
     <Compile Include="Objects\Piece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Constants.cs" />
-    <None Include="Objects\GameStatus.cs" />
+    <Compile Include="Objects\GameStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DevNotes.txt" />

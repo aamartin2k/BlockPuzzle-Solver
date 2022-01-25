@@ -4,7 +4,9 @@ using TreeCollections;
 
 namespace BPSolver
 {
-    // Clase para serializar arbol de estados a disco
+    /// <summary>
+    /// Supports serialization to disk of the game's tree structure of gamestatus.
+    /// </summary>
     [Serializable]
     public class GameSerialNode : SerialTreeNode<GameSerialNode>
     {

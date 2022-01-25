@@ -6,9 +6,31 @@ using System.Collections.Generic;
 
 namespace BPSolver.Game
 {
+    /// <summary>
+    /// Implement editing functions for game status.
+    /// Services inputs from IOHandler.
+    /// </summary>
     internal partial class GameHandler : IGame
     {
-        #region Entradas de Controller
+       
+        public void In_Draw(List<Coord> coords, PieceColor color)
+        {
+            bool ret;
+
+            try
+            {
+                ICommand command = new DrawCommand(CurrentStatus, coords, color);
+                ExecuteCommandDo(command);
+                ret = true;
+            }
+            catch (Exception)
+            {
+                ret = false;
+                //throw;
+            }
+
+            OnOut_Draw_Result(ret);
+        }
 
         public void In_DrawPiece(Coord coord, PieceName name)
         {
@@ -16,19 +38,18 @@ namespace BPSolver.Game
 
             try
             {
-                // Chequear si hay espacio para la pieza y que este dentro del board
+                // Check if location is free and inside board limits.
                 ret = Utils.TestPiece(coord, name, CurrentStatus);
 
                 if (ret)
                 {
                     List<Coord> RealCoords;
-                    // Get reference to piece
+                    // Get reference to piece.
                     Piece piece = PieceSet.GetPiece(name);
                     // Create absolute coords list.
                     RealCoords = Piece.GetRealCoords(piece, coord);
 
-                    // create command
-                    ICommand command = new DrawPieceCommand(CurrentStatus, RealCoords, piece.Color);
+                    ICommand command = new DrawCommand(CurrentStatus, RealCoords, piece.Color);
                     ExecuteCommandDo(command);
                 }
             }
@@ -37,9 +58,8 @@ namespace BPSolver.Game
                 ret = false;
                 //throw;
             }
-
-            // Notificar para actualizacion, ver pieza insertada
-            OnOut_DrawPiece_Result(ret);
+            // Notify result.
+            OnOut_Draw_Result(ret);
 
         }
 
@@ -56,13 +76,8 @@ namespace BPSolver.Game
                 ret = false;
                // throw;
             }
+
             OnOut_Undo_Result(ret);
-
-            if (_commandStack.Count == 0)
-            {
-                OnOut_EmptyCommandStack(true);
-            }
-
         }
 
         public void In_DrawGridPlay(Coord coord, PieceName name, int index, int id)
@@ -86,8 +101,8 @@ namespace BPSolver.Game
                     // Create absolute coords list.
                     RealCoords = Piece.GetRealCoords(piece, coord);
 
-                    ICommand command = new DrawPieceCommand(cloned, RealCoords, piece.Color);
-                    // execute command directly ,No Stack, Play have no Undo
+                    ICommand command = new DrawCommand(cloned, RealCoords, piece.Color);
+                    // execute command directly, No Stack, Play have no Undo
                     command.Do();
 
                     command = new DeleteNextPieceCommand(cloned, index);
@@ -179,7 +194,5 @@ Notify:
             OnOut_DeleteNextPiece_Result(ret);
         }
 
-
-        #endregion
     }
 }

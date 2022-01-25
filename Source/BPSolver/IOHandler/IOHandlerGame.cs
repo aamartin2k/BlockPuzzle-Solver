@@ -13,10 +13,12 @@ namespace BPSolver
         // Comunicacion con el Componente GameHandler
 
         #region Salidas
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         internal Action Out_Undo { get; set; }
 
         // Insertar Pieza en Tablero
+        internal Action<List<Coord>, PieceColor> Out_Draw { get; set; }
+
         internal Action<Coord, PieceName> Out_DrawPiece { get; set; }
 
         // Establecer Proxima Pieza
@@ -33,10 +35,15 @@ namespace BPSolver
         internal Action<Coord, PieceName, int, int> Out_DrawGridPlay { get; set; }
 
         #endregion
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         private void OnOut_Undo()
         {
             Out_Undo?.Invoke();
+        }
+
+        private void OnOut_Draw(List<Coord> coords, PieceColor color)
+        {
+            Out_Draw?.Invoke(coords, color);
         }
 
         private void OnOut_DrawPiece(Coord coord, PieceName name)
@@ -63,7 +70,7 @@ namespace BPSolver
         #endregion
         #endregion
 
-        #region Entradas de Componente
+        #region Inputs de Componente
 
         internal void In_DrawGridPlay_Result(bool result)
         {
@@ -76,9 +83,9 @@ namespace BPSolver
             OnOut_Undo_Result(result);
             OnDraw_UpdateGameBoard(result);
         }
-        internal void In_DrawPiece_Result(bool result)
+        internal void In_Draw_Result(bool result)
         {
-            OnOut_DrawPiece_Result(result);
+            OnOut_Draw_Result(result);
             OnDraw_UpdateGameBoard(result);
         }
         internal void In_DrawNextPiece_Result(bool result)
@@ -96,8 +103,6 @@ namespace BPSolver
             OnOut_DeleteNextPiece_Result(result);
             OnOut_UpdateGameBoard();
         }
-
-        //Out_EmptyCommandStack es Entrada aunque no es Notificacion deResultado
         internal void In_EmptyCommandStack(bool result)
         {
             OnOut_EmptyCommandStack(result);
@@ -120,10 +125,11 @@ namespace BPSolver
                 _TreeHandler.CreateChildNode(_GameHandler.CurrentStatus);
 
                 // Update GameStatus stats
-                // Important. Order matter here.
-                // StatsAfterPlay must be called BEFORE StatsAfterDraw to account for
+                // Important!!. Order matters here.
+                // DeleteCompletedRoC must be called BEFORE UpdateGameStatsAfterDraw to account for
                 // deleted cells as free cells.
                 Utils.DeleteCompletedRoC(_GameHandler.CurrentStatus);
+                //
                 Utils.UpdateGameStatsAfterDraw(_GameHandler.CurrentStatus);
 
                 OnOut_UpdateGameBoard();

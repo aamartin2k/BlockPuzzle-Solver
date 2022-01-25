@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement handling .
+    /// </summary>
     internal partial class TreeHandler : ITree
     {
 

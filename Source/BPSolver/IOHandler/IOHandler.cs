@@ -1,4 +1,5 @@
 ﻿
+using BPSolver.Command;
 using BPSolver.Enums;
 using BPSolver.Game;
 using BPSolver.Objects;
@@ -7,16 +8,13 @@ namespace BPSolver
 {
     public partial class IOHandler : IController
     {
-        // Componentes
-        
-
-        //Acceso a Componentes
+        // Components
         private IDocument _DocHandler { get;  set; }
         private ISolver _SolHandler { get;  set; }
         private IGame _GameHandler { get;  set; }
         private ITree _TreeHandler { get; set; }
 
-        // Constructor privado
+        // Private Constructor 
         private IOHandler(IDocument docHandler, ISolver solver,
                           IGame game, ITree tree)
         {
@@ -26,16 +24,16 @@ namespace BPSolver
             _TreeHandler = tree;
         }
 
-        // Metodo estatico Factory
+        // Static method as Factory
         // Builder and Binder
         public static IController CreateServer()
         {
             IDocument docHandler = new DocHandler();
             ISolver solver = new SolHandler();
-            IGame game = new GameHandler();
+            ICommandStack commandStack = new CommandStack();
+            IGame game = new GameHandler(commandStack);
             ITree tree = new TreeHandler();
 
-         
             IOHandler server = new IOHandler(docHandler, solver, game, tree);
 
             // Wiring Up
@@ -52,7 +50,6 @@ namespace BPSolver
             server.Out_NewFile = docHandler.In_NewFile;
             server.Out_CloseFile = docHandler.In_CloseFile;
             server.Out_LoadFile = docHandler.In_LoadFile;
-
             server.Out_SaveFile = docHandler.In_SaveFile;
             server.Out_SaveFileAs = docHandler.In_SaveFileAs;
             // End Document
@@ -82,7 +79,7 @@ namespace BPSolver
             game.Out_DeleteNextPiece_Result = server.In_DeleteNextPiece_Result;
             game.Out_DrawGridPlay_Result = server.In_DrawGridPlay_Result;
             game.Out_DrawNextPiece_Result = server.In_DrawNextPiece_Result;
-            game.Out_DrawPiece_Result = server.In_DrawPiece_Result;
+            game.Out_Draw_Result = server.In_Draw_Result;
             game.Out_Undo_Result = server.In_Undo_Result;
             game.Out_EmptyCommandStack = server.In_EmptyCommandStack;
             // Out
@@ -90,6 +87,7 @@ namespace BPSolver
             server.Out_DeleteNextPiece = game.In_DeleteNextPiece;
             server.Out_DrawGridPlay = game.In_DrawGridPlay;
             server.Out_DrawNextPiece = game.In_DrawNextPiece;
+            server.Out_Draw = game.In_Draw;
             server.Out_DrawPiece = game.In_DrawPiece;
             server.Out_Undo = game.In_Undo;
             #endregion

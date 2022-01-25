@@ -28,19 +28,20 @@ namespace BPSolver.Objects
          public Dictionary<int, PieceName> NextPieces  { get; set; }
 
         // Cell collection
-        public List<Cell> Cells { get; set; }
+        //public List<Cell> Cells { get; set; }
+        public CellCollection Cells { get; set; }
 
         // Cell Indexer
         // Return Cell by row and column
-        public Cell this[int row, int col]
-        {
-            get { return Cells.First(z => z.Row == row && z.Col == col); }
-        }
+        //public Cell this[int row, int col]
+        //{
+        //    get { return Cells.First(z => z.Row == row && z.Col == col); }
+        //}
         // Return Cell by Coord
-        public Cell this[Coord coord]
-        {
-            get { return Cells.First(z => z.Row == coord.Row && z.Col == coord.Col); }
-        }
+        //public Cell this[Coord coord]
+        //{
+        //    get { return Cells.First(z => z.Row == coord.Row && z.Col == coord.Col); }
+        //}
 
         // Game Stats
         public int FreeCells { get; set; }

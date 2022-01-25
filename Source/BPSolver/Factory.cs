@@ -63,10 +63,11 @@ namespace BPSolver
 
             onew.Nombre = name;
             onew.NextPieces = new Dictionary<int, PieceName>();
-            
-            onew.NextPieces.Add(0, game.NextPieces[0]);
-            onew.NextPieces.Add(1, game.NextPieces[1]);
-            onew.NextPieces.Add(2, game.NextPieces[2]);
+
+            foreach (var dkv in game.NextPieces)
+            {
+                onew.NextPieces.Add(dkv.Key, dkv.Value);
+            }
 
             DenseSCellArray<SCell> _Cells;
             _Cells = new DenseSCellArray<SCell>(Constants.BoardSize, Constants.BoardSize);

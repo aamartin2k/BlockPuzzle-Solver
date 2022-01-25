@@ -9,9 +9,9 @@ namespace BPSolver
     public partial class IOHandler : IController
     {
         // Comunicacion con el Componente TreeHandler
-        #region Salidas a Componente
+        #region Outputs
        
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
 
 
         internal Action Out_MoveFirst { get; set; }
@@ -23,7 +23,7 @@ namespace BPSolver
 
         #endregion
 
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         private void OnOut_MoveFirst()
         {
             Out_MoveFirst?.Invoke();
@@ -51,7 +51,7 @@ namespace BPSolver
         #endregion
         #endregion
 
-        #region Entradas de Componente
+        #region Inputs 
         internal void In_MoveFirst_Result(bool result)
         {
             OnOut_MoveFirst_Result(result);

@@ -1,39 +1,33 @@
 ﻿using BPSolver.Command;
-using System.Collections.Generic;
 
 namespace BPSolver.Game
 {
+    /// <summary>
+    /// Implement editing functions for game status.
+    /// Command Stack features.
+    /// </summary>
     internal partial class GameHandler : IGame
     {
-        
-        #region Gestion de Command Stack 
-        private Stack<ICommand> _commandStack; 
 
         private void ResetCommandStack()
         {
-            _commandStack = new Stack<ICommand>();
+            _CommandStack.ResetCommandStack();
             OnOut_EmptyCommandStack(true);
         }
 
-        // Command Execution and Storage
         private void ExecuteCommandDo(ICommand command)
         {
-            _commandStack.Push(command);
-            command.Do();
+            _CommandStack.ExecuteCommandDo(command);
             OnOut_EmptyCommandStack(false);
         }
 
-        // Command Retrieval and Execution
         private void ExecuteCommandUndo()
         {
-            if (_commandStack.Count > 0)
-            {
-                ICommand command = _commandStack.Pop();
-                command.Undo();
-            }
-        }
+            bool ret;
+            ret = _CommandStack.ExecuteCommandUndo();
 
-        #endregion
+            OnOut_EmptyCommandStack(ret);
+        }
 
     }
 }

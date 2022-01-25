@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace BPSolver.Objects
 {
-    internal static class PieceSet
+    public static class PieceSet
     {
         static private Dictionary<PieceName, Piece> _pieceSet;
 
@@ -16,7 +16,7 @@ namespace BPSolver.Objects
         static PieceSet()
         { CreatePieceSet(); }
 
-        static internal Piece GetPiece(PieceName name)
+        static public Piece GetPiece(PieceName name)
         {
             return _pieceSet[name];
         }

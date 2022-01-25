@@ -12,36 +12,39 @@ namespace ManTest
     class MultiSolTest
     {
         // Output
-        public Action Out_CloseFile { get; set; }
-        public Action<string> Out_LoadFile { get; set; }
-        public Action Out_Solution { get; set; }
-        public Action Out_SelectRecursiveProcess { get; set; }
-        public Action Out_SelectIterativeProcess { get; set; }
+        internal Action Out_CloseFile { get; set; }
+        internal Action<string> Out_LoadFile { get; set; }
+        internal Action Out_Solution { get; set; }
+        internal Action Out_SelectRecursiveProcess { get; set; }
+        internal Action Out_SelectIterativeProcess { get; set; }
 
         static Queue<string> Files;
 
         // Start point
         public void Start()
         {
+            // list of files to solve in batch
             string[] files = new string[]
                {
-                    "tgame01.bmd",
-                    "tgame02.bmd",
-                    "tgame03.bmd",
-                    "tgame04.bmd",
-                    "tgame05.bmd",
-                    "tgame06.bmd",
-                    "tgame07.bmd"
+                    @"TestDocs\tgame01.bmd",
+                    @"TestDocs\tgame02.bmd",
+                    @"TestDocs\tgame03.bmd",
+                    @"TestDocs\tgame04.bmd",
+                    @"TestDocs\tgame05.bmd",
+                    @"TestDocs\tgame06.bmd",
+                    @"TestDocs\tgame07.bmd"
                };
 
             Console.WriteLine("-> Recursive Process" );
             Files = new Queue<string>(files);
+            // Switching procedure
             Out_SelectRecursiveProcess();
 
             LoadNextFile();
 
             Console.WriteLine("-> Iterative Process");
             Files = new Queue<string>(files);
+            // Switching procedure
             Out_SelectIterativeProcess();
 
             LoadNextFile();
@@ -91,8 +94,7 @@ namespace ManTest
             }
 
         }
-
-
+        
 
         public void In_UpdateSolution(SolutionMetaStatus meta)
         {

@@ -1,34 +1,36 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Objects;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
     public static partial class Utils
     {
-        // Modificaciones despues de jugar pieza
         #region Updates after piece played
+
         static internal void DeleteCompletedRoC(GameStatus status)
         {
-            // check for completion, update stats and delete
-            // Testing for Column or Row completion
+            // Testing for Column or Row completed.
             if (IsAnyCompleted(status))
             {
-                // Delete
                 ClearCompleted(status);
             }
         }
+
         #region Public
+
+        static internal int CompletedCount(GameStatus game)
+        {
+            return CompletedRowsCount(game) +
+                   CompletedColumnsCount(game);
+        }
 
         #endregion
 
         #region Private
         #region Check for Completion 
-        static private bool IsAnyCompleted(GameStatus game)
+        static internal bool IsAnyCompleted(GameStatus game)
         {
             return IsAnyRowCompleted(game) | IsAnyColumnCompleted(game);
         }
@@ -74,16 +76,46 @@ namespace BPSolver
             return cnt == 0;
         }
 
-        static private List<SCell> GetRow(GameStatus game, int row)
+        static private List<Cell> GetRow(GameStatus game, int row)
         {
             var list = game.Cells.Where(z => z.Row == row);
             return list.ToList();
         }
 
-        static private List<SCell> GetColumn(GameStatus game, int col)
+        static private List<Cell> GetColumn(GameStatus game, int col)
         {
             var list = game.Cells.Where(z => z.Col == col);
             return list.ToList();
+        }
+
+        static private List<Coord> GetRowCoord(GameStatus game, int row)
+        {
+            var list = game.Cells.Where(z => z.Row == row);
+
+            Coord coord;
+            List<Coord> Coords = new List<Coord>();
+
+            foreach (var cell in list)
+            {
+                coord = new Coord(cell.Row, cell.Col);
+                Coords.Add(coord);
+            }
+            return Coords;
+        }
+
+        static private List<Coord> GetColumnCoord(GameStatus game, int col)
+        {
+            var list = game.Cells.Where(z => z.Col == col);
+
+            Coord coord;
+            List<Coord> Coords = new List<Coord>();
+            
+            foreach (var cell in list)
+            {
+                coord = new Coord(cell.Row, cell.Col);
+                Coords.Add(coord);
+            }
+            return Coords;
         }
 
         #endregion
@@ -100,7 +132,6 @@ namespace BPSolver
             ret = IsAnyRowCompleted(status);
             if (ret)
             {
-                // contar ANTES de Borrar
                 count = CompletedRowsCount(status);
                 status.CompletedRows += count;
 
@@ -111,7 +142,6 @@ namespace BPSolver
             ret = IsAnyColumnCompleted(status);
             if (ret)
             {
-                // contar
                 count = CompletedColumnsCount(status);
                 status.CompletedColumns += count;
 
@@ -119,7 +149,7 @@ namespace BPSolver
                 listCol = GetListColumnsCompleted(status);
             }
 
-            // eliminar filas y columnas con foreach
+            // eliminar filas y columnas con foreach segun indice
             foreach (var row in listRow)
             {
                 ClearRow(status, row);
@@ -133,17 +163,25 @@ namespace BPSolver
 
         static private void ClearColumn(GameStatus game, int index)
         {
-            var list = GetColumn(game, index);
-            list.Select(c => c.Color = PieceColor.None).ToList();
-
+            var list = GetColumnCoord(game, index);
+            ClearCells(game, list);
         }
 
         static private void ClearRow(GameStatus game, int index)
         {
-            var list = GetRow(game, index);
-            list.Select(c => c.Color = PieceColor.None).ToList();
-
+            var list = GetRowCoord(game, index);
+            ClearCells(game, list);
         }
+
+        static private void ClearCells(GameStatus game, List<Coord> list)
+        {
+            foreach (var coord in list)
+            {
+                game.Cells[coord].Color = PieceColor.None;
+            }
+        }
+
+
         static private int[] GetListColumnsCompleted(GameStatus game)
         {
             List<int> list = new List<int>();
@@ -169,8 +207,6 @@ namespace BPSolver
 
             return list.ToArray();
         }
-
-
 
 
         // Contar Filas completas
@@ -207,8 +243,7 @@ namespace BPSolver
 
         #endregion
 
-        // Modificaciones despues de insertar pieza
-        #region Updates after piece insertion
+        #region Updates after piece inserted
 
         #region Public
         static internal void UpdateGameStatsAfterDraw(GameStatus status)
@@ -221,17 +256,17 @@ namespace BPSolver
         #endregion
 
         #region Private
-        static private int CellsCount(List<SCell> Cells)
+        static private int CellsCount(List<Cell> Cells)
         {
             return Cells.Count();
         }
 
-        static private int FreeCellsCount(List<SCell> Cells)
+        static private int FreeCellsCount(List<Cell> Cells)
         {
             return Cells.Count(x => x.IsFree);
         }
 
-        static private int OccupiedCellsCount(List<SCell> Cells)
+        static private int OccupiedCellsCount(List<Cell> Cells)
         {
             return Cells.Count(x => !x.IsFree);
         }

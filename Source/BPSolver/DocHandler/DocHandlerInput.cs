@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BPSolver
 {
-
+    /// <summary>
+    /// Implement handling game and solution data as a document.
+    /// Services inputs from IOHandler.
+    /// </summary>
     internal partial class DocHandler : IDocument
     {
-        #region Entradas de Controller
-
-
         public void In_NewFile()
         {
             bool ret;
@@ -113,11 +113,6 @@ namespace BPSolver
 
             OnOut_SaveFileResult(ret, message);
         }
-
-
-#endregion
-
-
 
     }
 }

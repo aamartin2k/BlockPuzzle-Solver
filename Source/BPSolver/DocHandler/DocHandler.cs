@@ -2,13 +2,16 @@
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement handling game and solution data as a document.
+    /// </summary>
     internal partial class DocHandler : IDocument
 
     {
-        // Referencia al documento activo
+        // Current document reference.
         public Document CurrentDocument { get; private set; }
 
-        // Ruta al documento activo
+        // Current document file path.
         internal string CurrentFilePath { get; set; }
 
 
@@ -30,29 +33,7 @@ namespace BPSolver
 
         #endregion
 
-        #region Serial Temporal 
-        /*
-        // Serialize to Disk
-        private void BinSerialize(string file, Document tree)
-        {
-            // Serializando con Binary Formatter
-            Serializer.Serialize(tree, file);
-
-        }
-
-        private GameTreeNode BinDeserialize(string file)
-        {
-            GameSerialNode dataRoot = Serializer.Deserialize<GameSerialNode>(file);
-
-            GameTreeNode newTree = new GameTreeNode(dataRoot.Status);
-
-            newTree.Build(dataRoot, n => n.Status);
-
-            return newTree;
-        }
-
-       */
-        #endregion
+        
 
     }
 }

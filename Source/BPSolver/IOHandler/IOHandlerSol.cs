@@ -15,13 +15,13 @@ namespace BPSolver
         //private  Stopwatch _stopWatch  ;
 
         #region Salidas
-        #region Declaracion de Delegates
+        #region Declaration of Delegates
         internal Action<GameStatus> Out_Solution { get; set; }
         internal Action Out_SelectRecursive { get; set; }
         internal Action Out_SelectIterative { get; set; }
 
         #endregion
-        #region Invocacion de Delegates
+        #region Invocation of Delegates
         internal void OnOut_Solution( )
         {
             Out_Solution?.Invoke(_GameHandler.CurrentStatus);
@@ -37,7 +37,7 @@ namespace BPSolver
         #endregion
         #endregion
 
-        #region Entradas de Componente
+        #region Inputs de Componente
         internal void In_UpdateSolutionBoard(SolutionMetaStatus result)
         {
             OnOut_UpdateSolutionBoard(result);
