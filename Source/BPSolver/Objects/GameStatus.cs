@@ -1,12 +1,14 @@
 ﻿using BPSolver.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 
 namespace BPSolver.Objects
 {
-
+    /// <summary>
+    /// Implement the storage of data describing a particular instance 
+    /// in game sequence.
+    /// </summary>
     [Serializable]
     public class GameStatus
     {
@@ -20,28 +22,13 @@ namespace BPSolver.Objects
 
         // Constructor
         public GameStatus(int id)
-        {
-            Id = id;
-        }
+        {   Id = id;    }
 
         // List of pieces to play (make moves)
          public Dictionary<int, PieceName> NextPieces  { get; set; }
 
         // Cell collection
-        //public List<Cell> Cells { get; set; }
-        public CellCollection Cells { get; set; }
-
-        // Cell Indexer
-        // Return Cell by row and column
-        //public Cell this[int row, int col]
-        //{
-        //    get { return Cells.First(z => z.Row == row && z.Col == col); }
-        //}
-        // Return Cell by Coord
-        //public Cell this[Coord coord]
-        //{
-        //    get { return Cells.First(z => z.Row == coord.Row && z.Col == coord.Col); }
-        //}
+        public Board Cells { get; set; }
 
         // Game Stats
         public int FreeCells { get; set; }

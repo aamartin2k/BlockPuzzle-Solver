@@ -4,7 +4,7 @@ using BPSolver.Objects;
 namespace BPSolver.Command
 {
     /// <summary>
-    /// Delete a playable piece based on its index
+    /// Delete a playable piece based on its index.
     /// </summary>
     internal class DeleteNextPieceCommand : BaseCommand
     {

@@ -58,7 +58,20 @@ Revisar GUI state Machine
 
    --Implementar nuevo Board
    -Eliminar/Unificar funciones que actuan sobre GameStatus/GameSimpleStatus: TestPiece. TestPieceNuevo
-   -Unificar uso de GameStatus para Game y Solution
+   -Unificar uso de GameStatus para Game *  y Solution
+     unificar uso de GameTreeNode en solution sustituyendo a GameTreeNode
    --Convertir Archivos
 
-   Borarr files: SolHandlerUtils.cs, SolHandlerPieceSet.cs
+   --Borarr files: IOHandlerAux.cs
+   Revisar metodos que terminan en Nuevo 
+   Revisar borrar en Form methods relacionados con animacion: In_SelectRows, In_SelectColumns
+
+   //TODO implement draw temp
+   buscar ref en archivos
+   implementar CellCollection para marcar desmarcar celdas
+   implementar _mouseLeaveHandler Sgrid controller para evento mouseleave en grid
+   implementar acceso desde form a TestPiece, parametro CellCollection en vez de GameStatus
+    test order events mouseEnter, mouseLeave en SGrid
+
+	IMplementar en class Cell metodo Property que retorne Coord
+	Implementando DrawPreview dentro de StateMachine

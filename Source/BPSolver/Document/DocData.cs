@@ -3,7 +3,7 @@
 namespace BPSolver
 {
     /// <summary>
-    /// Supports serialization to disk of game information along with oher irrelevant boilerplate YAGNI stuff
+    /// Supports serialization to disk of game information along with other irrelevant boilerplate YAGNI stuff.
     /// </summary>
     [Serializable]
     public class DocData

@@ -1,5 +1,8 @@
 ﻿namespace BPSolver.Command
 {
+    /// <summary>
+    /// Defines behavior of command stack.
+    /// </summary>
     internal interface ICommandStack
     {
         void ResetCommandStack();

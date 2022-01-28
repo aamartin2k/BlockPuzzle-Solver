@@ -4,10 +4,14 @@ using TreeCollections;
 
 namespace BPSolver
 {
-    #region Implementacion con GameStatus
-    // Definicion de Entidad Item
-    // Define como recuperar Id de la entidad Payload
-    //  y como comparar Id. 
+    /// <summary>
+    /// Implement how to access the entity id from the core entity object. 
+    /// </summary>
+    /// <typeparam name="TValue">Type of payload entity.</typeparam>
+    /// <remarks>Specifically, property GameStatus.Id of type int will be used as nodes id. 
+    ///  The other two EqualityComparers are set to the default equality comparers 
+    /// for types int and object. Further and better explanation in: https://github.com/davidwest/TreeCollections/wiki/Entity-Definitions 
+    /// </remarks>
     public class GameStatusEntityDefinition<TValue> : EntityDefinition<int, TValue>
        where TValue : GameStatus
     {
@@ -20,17 +24,21 @@ namespace BPSolver
         { }
     }
 
-    // Definicion de Nodo Mutable para el arbol
+   
+    /// <summary>
+    /// Implement a mutable tree node with a payload of type GameStatus, accessible through
+    /// the Item property.
+    /// </summary>
     public class GameTreeNode : MutableEntityTreeNode<GameTreeNode, int, GameStatus>
     {
 
-        // Constructors
-        // Root Node, requiere definicion de entidad
+        // Constructor.
+        // For Root Node, requires entity definition for base constructor.
         public GameTreeNode(GameStatus item)
              : base(GameStatusEntityDefinition<GameStatus>.Instance, item, ErrorCheckOptions.All)
         { }
 
-        //Child Node
+        // For Child Node, requires payload entity and parent node.
         public GameTreeNode(GameStatus item, GameTreeNode parent)
             : base(item, parent)
         { }
@@ -41,63 +49,6 @@ namespace BPSolver
         }
     }
 
-    #endregion
-
-    #region Implementacion con SimpleGameStatus
-
-    //public class SimpleGameStatusEntityDefinition<TValue> : EntityDefinition<int, TValue>
-    //  where TValue : SimpleGameStatus
-    //{
-    //    public static readonly SimpleGameStatusEntityDefinition<TValue> Instance = new SimpleGameStatusEntityDefinition<TValue>();
-
-    //    private SimpleGameStatusEntityDefinition()
-    //        : base(c => c.Id,
-    //               EqualityComparer<int>.Default,
-    //               EqualityComparer<SimpleGameStatus>.Default)
-    //    { }
-    //}
-
-    // Definicion de Nodo Mutable para el arbol
-    public class GameTreeSimple : MutableEntityTreeNode<GameTreeSimple, int, GameStatus>
-    {
-
-        // Constructors
-        // Root Node, requiere definicion de entidad
-        public GameTreeSimple(GameStatus item)
-             : base(GameStatusEntityDefinition<GameStatus>.Instance, item, ErrorCheckOptions.All)
-        { }
-
-        //Child Node
-        public GameTreeSimple(GameStatus item, GameTreeSimple parent)
-            : base(item, parent)
-        { }
-
-        protected override GameTreeSimple Create(GameStatus item, GameTreeSimple parent)
-        {
-            return new GameTreeSimple(item, parent);
-        }
-    }
-
-    //public class GameTreeSimple : MutableEntityTreeNode<GameTreeSimple, int, SimpleGameStatus>
-    //{
-
-    //    // Constructors
-    //    // Root Node, requiere definicion de entidad
-    //    public GameTreeSimple(SimpleGameStatus item)
-    //         : base(SimpleGameStatusEntityDefinition<SimpleGameStatus>.Instance, item, ErrorCheckOptions.All)
-    //    { }
-
-    //    //Child Node
-    //    public GameTreeSimple(SimpleGameStatus item, GameTreeSimple parent)
-    //        : base(item, parent)
-    //    { }
-
-    //    protected override GameTreeSimple Create(SimpleGameStatus item, GameTreeSimple parent)
-    //    {
-    //        return new GameTreeSimple(item, parent);
-    //    }
-    //}
-
-    #endregion
+    
 }
 

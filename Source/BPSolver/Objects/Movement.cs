@@ -1,14 +1,10 @@
 ﻿using BPSolver.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver.Objects
 {
     /// <summary>
-    /// Describe el movimiento de una pieza
+    /// Describe a single piece movement.
     /// </summary>
     [Serializable]
     public class Movement

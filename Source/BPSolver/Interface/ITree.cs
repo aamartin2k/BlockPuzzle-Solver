@@ -32,7 +32,7 @@ namespace BPSolver
         void CreateChildNode(GameStatus item);
         #endregion
 
-        #region Salidas
+        #region Outputs
         // Resultado de Movimentos
         Action<bool> Out_MoveFirst_Result { get; set; }
         Action<bool> Out_MovePrevious_Result { get; set; }

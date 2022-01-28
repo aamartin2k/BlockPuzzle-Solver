@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace BPSolver
 {
     /// <summary>
-    /// Implement handling .
+    /// Implement editing/navigating functions for the game's tree structure of gamestatus.
+    /// Declarations.
     /// </summary>
     internal partial class TreeHandler : ITree
     {
@@ -24,16 +25,18 @@ namespace BPSolver
             }
         }
 
-        private GameTreeNode _currentNode;
-        public GameTreeNode CurrentNode
-        {
-            get { return _currentNode; }
-            set
-            {
-                _currentNode = value;
-                //Console.WriteLine(string.Format("Current Node Id: {0} Status Id: {1} Status Nombre: {2}", _currentNode.Id, _currentNode.Item.Id, _currentNode.Item.Nombre));
-            }
-        }
+        public GameTreeNode CurrentNode { get; set; }
+        // For Debug
+        //private GameTreeNode _currentNode;
+        //public GameTreeNode CurrentNode
+        //{
+        //    get { return _currentNode; }
+        //    set
+        //    {
+        //        _currentNode = value;
+        //        Console.WriteLine(string.Format("Current Node Id: {0} Status Id: {1} Status Nombre: {2}", _currentNode.Id, _currentNode.Item.Id, _currentNode.Item.Nombre));
+        //    }
+        //}
 
         public int TreeCount
         {
@@ -66,12 +69,8 @@ namespace BPSolver
 
         public void CreateChildNode(GameStatus item)
         {
-            //crear nuevo
             GameTreeNode newNode = CurrentNode.AddChild(item);
-
-            // hacer current
             CurrentNode = newNode;
-
         }
     }
 }

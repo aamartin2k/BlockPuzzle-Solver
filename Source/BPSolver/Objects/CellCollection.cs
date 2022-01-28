@@ -1,34 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver.Objects
 {
+    /// <summary>
+    /// Implement a collection of Cell.
+    /// </summary>
+    /// <remarks>The traditional approach for a board (2D matrix) is
+    /// replaced with an IEnumerable collection to favor LINQ query.</remarks>
+    /// 
     [Serializable]
-    public class CellCollection : IEnumerable<Cell>
+    public class Board : IEnumerable<Cell>
     {
 
-        private List<Cell> _cells { get; set; }
+        //private List<Cell> _cells;
 
-        public CellCollection()
+        public List<Cell> Cells { get; private set; }
+
+        public Board()
         {
-            _cells = new List<Cell>();
+            Cells = new List<Cell>();
+        }
+        public Board(List<Cell> cells)
+        {
+            Cells = new List<Cell>();
+
+            foreach (var cell in cells)
+            {
+                Cells.Add(new Cell(cell));
+            }
         }
 
         public void Add(Cell cell)
         {
-            _cells.Add(cell);
+            Cells.Add(cell);
         }
 
         #region Indexer
-        // Implementacion standard
         public Cell this[int row, int column]
         {   
             get
             {
-                return _cells.First(z => z.Row == row && z.Col == column);
+                return Cells.First(z => z.Row == row && z.Col == column);
             }
         }
 
@@ -36,7 +50,7 @@ namespace BPSolver.Objects
         {
             get
             {
-                return _cells.First(z => z.Row == coord.Row && z.Col == coord.Col);
+                return Cells.First(z => z.Row == coord.Row && z.Col == coord.Col);
             }
         }
         #endregion
@@ -45,13 +59,13 @@ namespace BPSolver.Objects
 
         public IEnumerator<Cell> GetEnumerator()
         {
-            return ((IEnumerable<Cell>)_cells).GetEnumerator();
+            return ((IEnumerable<Cell>)Cells).GetEnumerator();
         }
 
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return _cells.GetEnumerator();
+            return Cells.GetEnumerator();
         }
 
         #endregion

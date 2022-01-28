@@ -6,11 +6,11 @@ namespace WFProt
 {
     class BaseState : IGuiState
     {
-        protected StContext Context;
+        protected StMachContext Context;
 
         public CommandAction Action { get; private set;  }
 
-        public BaseState(StContext context, CommandAction action)
+        public BaseState(StMachContext context, CommandAction action)
         {
             Action = action;
             Context = context;
@@ -47,6 +47,15 @@ namespace WFProt
             Console.WriteLine(string.Format("Play: Piece: {0} on NPImage {1} move to Cell R: {2} C: {3}", Context.CurrentPiece, Context.NextPieceIndex, position.Row, position.Col));
         }
 
+        public virtual void MouseEnterGameCell(Coord position)
+        {
+            Console.WriteLine(string.Format("Mouse Enter Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
+        }
+
+        public virtual void MouseLeaveGameCell(Coord position)
+        {
+            Console.WriteLine(string.Format("Mouse Leave Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
+        }
     }
 
 

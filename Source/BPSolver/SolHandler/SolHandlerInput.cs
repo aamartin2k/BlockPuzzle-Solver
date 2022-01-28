@@ -26,7 +26,7 @@ namespace BPSolver
 
         public void In_Solution(GameStatus game) 
         {
-            GameTreeSimple treeRoot;
+            GameTreeNode treeRoot;
 
             // Timing.
             System.Diagnostics.Stopwatch _stopWatch = new System.Diagnostics.Stopwatch();
@@ -66,7 +66,7 @@ namespace BPSolver
             OnOut_UpdateSolutionBoard(meta);
         }
 
-        private Solution CreateSolution(IEnumerable<GameTreeSimple> seqNodes, GameStatus initial)
+        private Solution CreateSolution(IEnumerable<GameTreeNode> seqNodes, GameStatus initial)
         {
 
             //  Crear objetos GameStatus para solucion
@@ -95,14 +95,14 @@ namespace BPSolver
             return sol;
         }
 
-        private Dictionary<int, GameStatus> CreateGameStatusSolution(IEnumerable<GameTreeSimple> seqNodes)
+        private Dictionary<int, GameStatus> CreateGameStatusSolution(IEnumerable<GameTreeNode> seqNodes)
         {
             
             Dictionary<int, GameStatus> StatusList = new Dictionary<int, GameStatus>();
 
             GameStatus child = null;
 
-            foreach (GameTreeSimple nod in seqNodes)
+            foreach (GameTreeNode nod in seqNodes)
             {
                 child = nod.Item;
                 StatusList.Add(child.Id, child);

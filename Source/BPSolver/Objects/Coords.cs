@@ -3,6 +3,9 @@ using System;
 
 namespace BPSolver.Objects
 {
+    /// <summary>
+    /// Describe a location in the board.
+    /// </summary>
     [Serializable]
     public struct Coord
     {

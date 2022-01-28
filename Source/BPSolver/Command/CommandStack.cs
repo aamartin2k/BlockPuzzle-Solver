@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BPSolver.Command
 {
+    /// <summary>
+    /// Implement functions of command stack.
+    /// </summary>
     internal class CommandStack : ICommandStack
     {
 

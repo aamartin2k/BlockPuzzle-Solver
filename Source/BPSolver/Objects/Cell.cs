@@ -4,6 +4,9 @@ using System;
 
 namespace BPSolver.Objects
 {
+    /// <summary>
+    /// Implement a cell in the board.
+    /// </summary>
     [Serializable]
     public class Cell
     {

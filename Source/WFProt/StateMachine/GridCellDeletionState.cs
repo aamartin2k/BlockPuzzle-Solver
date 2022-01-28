@@ -10,7 +10,7 @@ namespace WFProt
         public Action<Coord> Out_DeleteGridCell { get; set; }
         
 
-        public GridCellDeletionState(StContext context, CommandAction action) : base(context, action)
+        public GridCellDeletionState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("GridCellDeletionState created");
         }

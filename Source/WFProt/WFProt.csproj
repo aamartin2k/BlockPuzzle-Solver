@@ -56,12 +56,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Deps\TreeCollections\TreeCollections.dll</HintPath>
@@ -81,6 +79,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1Command.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1DrawPreview.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1GridController.cs">

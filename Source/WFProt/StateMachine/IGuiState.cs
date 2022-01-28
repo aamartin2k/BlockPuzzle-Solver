@@ -12,5 +12,8 @@ namespace WFProt
         void PieceButtonClicked(PieceName piece);
         void NextPieceImageClicked(int index, PieceName piece = PieceName.None);
         void GridCellClicked(Coord position);
+
+        void MouseEnterGameCell(Coord position);
+        void MouseLeaveGameCell(Coord position);
     }
 }

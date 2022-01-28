@@ -8,34 +8,34 @@ namespace BPSolver
 {
     /// <summary>
     /// Implement finding solutions.
-    /// Find solution  iteratively.
+    /// Find solution iteratively.
     /// </summary>
     internal partial class SolHandler : ISolver
     {
-        private GameTreeSimple CreateSolutionTreeIterative(GameStatus game)
+        private GameTreeNode CreateSolutionTreeIterative(GameStatus game)
         {
-            GameTreeSimple treeRoot;
+            GameTreeNode treeRoot;
 
             GameStatus GStIni = Factory.CloneGameStatus(0, RootName, game);
  
             // Solution Tree Root
-            treeRoot = new GameTreeSimple(GStIni);
+            treeRoot = new GameTreeNode(GStIni);
 
-            List<GameTreeSimple> ramas = treeRoot.SelectLeaves().ToList();
+            List<GameTreeNode> ramas = treeRoot.SelectLeaves().ToList();
 
             //Llamada a proceso basico por paso
             // Cada paso se ejecuta en un nivel inferior del arbol
             // sobre los hijos del nivel superior
             for (int i = 0; i < Constants.NexPieces; i++)
             {
-                ramas = CreateNewNodesP(ramas, treeRoot);
+                ramas = CreateNewNodes(ramas, treeRoot);
                 ProcessNewNodesP(ramas, treeRoot);
             }
 
             return treeRoot;
         }
 
-        private void ProcessNewNodesP(List<GameTreeSimple> padres, GameTreeSimple root)
+        private void ProcessNewNodesP(List<GameTreeNode> padres, GameTreeNode root)
         {
             GameStatus cloned;
 
@@ -44,12 +44,12 @@ namespace BPSolver
                 cloned = parent.Item;
 
                 // Aplicar Movimiento
-                MakeMoveNuevo(cloned);
+                MakeMove(cloned);
 
                 // Borrar pieza de la lista
-                DeleteMovedPieceNuevo(cloned);
+                DeleteMovedPiece(cloned);
                 // Evaluar Movimiento
-                cloned.Evaluation = EvaluateMoveNuevo(cloned);
+                cloned.Evaluation = EvaluateMove(cloned);
                 // Chequear por Completamiento
                 //CheckCompleteAndDeleteNuevo(cloned);
                 Utils.DeleteCompletedRoC(cloned);
@@ -57,7 +57,7 @@ namespace BPSolver
 
         }
 
-        private void MakeMoveNuevo( GameStatus game)
+        private void MakeMove( GameStatus game)
         {
             Movement move = game.Movement;
             // Comprobar que coincide el nombre de pieza
@@ -83,7 +83,7 @@ namespace BPSolver
             //return move;
         }
 
-        private void DeleteMovedPieceNuevo(GameStatus game)
+        private void DeleteMovedPiece(GameStatus game)
         {
             Movement move = game.Movement;
 
@@ -92,7 +92,7 @@ namespace BPSolver
 
         }
 
-        private Eval EvaluateMoveNuevo( GameStatus game)
+        private Eval EvaluateMove( GameStatus game)
         {
             Movement move = game.Movement;
 
@@ -108,7 +108,7 @@ namespace BPSolver
             eval.Preference = GetPreference(realCoords);
 
             // Neighbors
-            eval.Neighbors = GetNeighborsCountNuevo(piece, move.InsertPoint, game);
+            eval.Neighbors = GetNeighborsCount(piece, move.InsertPoint, game);
 
             // Completion
             bool ret;
@@ -124,221 +124,32 @@ namespace BPSolver
             return eval;
         }
 
-        //private int CompletedCountNuevo(SimpleGameStatus game)
-        //{
-        //    return CompletedRowsCount(game) +
-        //           CompletedColumnsCount(game);
-        //}
-
-        //// Contar Filas completas
-        //private int CompletedRowsCount(SimpleGameStatus game)
-        //{
-        //    int count = 0;
-
-        //    // Count how many rows
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsRowCompletedNuevo(game, i))
-        //            count++;
-        //    }
-
-        //    return count;
-        //}
-
-        //// Contar Columnas completas
-        //private int CompletedColumnsCount(SimpleGameStatus game)
-        //{
-        //    int count = 0;
-
-        //    // Calculate how many rows
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsColumnCompletedNuevo(game, i))
-        //            count++;
-        //    }
-        //    return count;
-        //}
-
-        //private void CheckCompleteAndDeleteNuevo(SimpleGameStatus game)
-        //{
-        //    if (IsAnyCompletedNuevo(game))
-        //    {
-        //        ClearCompletedNuevo(game);
-        //    }
-        //}
-
-        //private void ClearCompletedNuevo(SimpleGameStatus status)
-        //{
-        //    int count;
-        //    bool ret;
-        //    int[] listRow = new int[] { };
-        //    int[] listCol = new int[] { };
-
-        //    // buscar filas
-        //    ret = IsAnyRowCompletedNuevo(status);
-        //    if (ret)
-        //    {
-        //        // contar ANTES de Borrar
-        //        count = CompletedRowsCount(status);
-        //        status.CompletedRows += count;
-
-        //        listRow = GetListRowsCompleted(status);
-        //    }
-
-        //    // buscar columnas
-        //    ret = IsAnyColumnCompletedNuevo(status);
-        //    if (ret)
-        //    {
-        //        // contar
-        //        count = CompletedColumnsCount(status);
-        //        status.CompletedColumns += count;
-
-        //        // guardar indices en lista
-        //        listCol = GetListColumnsCompleted(status);
-        //    }
-
-        //    // eliminar filas y columnas con foreach
-        //    foreach (var row in listRow)
-        //    {
-        //        ClearRow(status, row);
-        //    }
-
-        //    foreach (var col in listCol)
-        //    {
-        //        ClearColumn(status, col);
-        //    }
-        //}
-
-
-        //// Eliminar
-        //private void ClearColumn(SimpleGameStatus game, int index)
-        //{
-        //    //var list = GetColumn(game, index);
-        //    //list.Select(c => c.Color = PieceColor.None).ToList();
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        game[i, index] = PieceColor.None;
-        //    }
-        //}
-
-        //private void ClearRow(SimpleGameStatus game, int index)
-        //{
-        //    //var list = GetRow(game, index);
-        //    //list.Select(c => c.Color = PieceColor.None).ToList();
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        game[index, i] = PieceColor.None;
-        //    }
-        //}
-
-
-        //// Listar Indice de Filas completas
-        //private int[] GetListRowsCompleted(SimpleGameStatus game)
-        //{
-        //    List<int> list = new List<int>();
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsRowCompletedNuevo(game, i))
-        //            list.Add(i);
-        //    }
-
-        //    return list.ToArray();
-        //}
-
-        //private int[] GetListColumnsCompleted(SimpleGameStatus game)
-        //{
-        //    List<int> list = new List<int>();
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsColumnCompletedNuevo(game, i))
-        //            list.Add(i);
-        //    }
-
-        //    return list.ToArray();
-        //}
-        
-        //private bool IsAnyCompletedNuevo(SimpleGameStatus game)
-        //{
-        //    return IsAnyRowCompletedNuevo(game) | IsAnyColumnCompletedNuevo(game);
-        //}
-
-        //private bool IsAnyRowCompletedNuevo(SimpleGameStatus game)
-        //{
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsRowCompletedNuevo(game, i))
-        //            return true;
-        //    }
-
-        //    return false;
-        //}
-
-        //private bool IsAnyColumnCompletedNuevo(SimpleGameStatus game)
-        //{
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (IsColumnCompletedNuevo(game, i))
-        //            return true;
-        //    }
-
-        //    return false;
-
-        //}
-
-        //private bool IsColumnCompletedNuevo(SimpleGameStatus game, int col)
-        //{
-    
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        //if (!game.CellsA[i, col])
-        //        if (game[i, col] == PieceColor.None)
-        //            return false;
-        //    }
-
-        //    return true;
-        //}
-
-        //private bool IsRowCompletedNuevo(SimpleGameStatus game, int row)
-        //{
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        if (game[row, i] == PieceColor.None)
-        //            return false;
-        //    }
-
-        //    return true;
-        //}
-
+      
         private int GetPreference(List<Coord> coords)
         {
             var ssum = coords.Select(c => Preferences[c.Row, c.Col]).Sum();
             return ssum;
         }
 
-        private int GetNeighborsCountNuevo(Piece piece, Coord point, GameStatus game)
+        private int GetNeighborsCount(Piece piece, Coord point, GameStatus game)
         {
-            // Matriz Coord vecinos
-            List<Coord> ngbMatrix;
-            ngbMatrix = Piece.GetNeighborsMatrix(piece);
+            //// Matriz Coord vecinos
+            //List<Coord> ngbMatrix;
+            //ngbMatrix = Piece.GetNeighborsMatrix(piece);
 
             // Coord Reales vecinos
             List<Coord> realCoords;
-            realCoords = Piece.GetNeighborsRealCoords(point, ngbMatrix);
+            realCoords = Piece.GetNeighborsRealCoords(piece, point);
 
-            //var ex = realCoords.Select(c => PieceColor.None == game.Cells[c].Color).Where(x => x != true).Count();
-            var ex = realCoords.Select(c => game.Cells[c].IsFree).Where(x => x != true).Count();
+            // contar celdas vecinas ocupadas (cell.IsFree == false)
+            var ex = realCoords.Select(c => game.Cells[c].IsFree).Where(x => x == false).Count();
 
             return ex;
         }
 
-        private List<GameTreeSimple> CreateNewNodesP(List<GameTreeSimple> padres, GameTreeSimple root)
+        private List<GameTreeNode> CreateNewNodes(List<GameTreeNode> padres, GameTreeNode root)
         {
-            List<GameTreeSimple> hijos = new List<GameTreeSimple>();
+            List<GameTreeNode> hijos = new List<GameTreeNode>();
             GameStatus gstatus;
 
             foreach (var parent in padres)
@@ -353,14 +164,14 @@ namespace BPSolver
                     PieceName piece = dkv.Value;
 
                     //Generar lista de  movidas
-                    lmm.AddRange(CreateMovementsNuevo(index, piece, gstatus));
+                    lmm.AddRange(CreateMovements(index, piece, gstatus));
                 }
 
-                //DMsg(string.Format("Procesando {0} movidas.", lmm.Count));
                 foreach (var move in lmm)
                 {
                     // Obtener gameStatus de Parent y clonar
-                    GameTreeSimple node = CloneSimpleStatus(root, parent, parent.Item);
+                    GameTreeNode node = CreateCloneChild(root, parent, parent.Item);
+
                     //SimpleGameStatus cloned = node.Item;
                     //cloned.Movement = move;
                     node.Item.Movement = move;
@@ -372,119 +183,23 @@ namespace BPSolver
             return hijos;
         }
 
-        //private GameStatus GetGameFromSimple(SimpleGameStatus sgame)
-        //{
-        //    GameStatus game;
-        //    game = Factory.CreateGameStatus(sgame.Id, sgame.Nombre);
-
-        //    game.Evaluation = sgame.Evaluation;
-        //    game.Movement = sgame.Movement;
-        //    game.CompletedRows = sgame.CompletedRows;
-        //    game.CompletedColumns = sgame.CompletedColumns;
-
-        //    game.NextPieces = new Dictionary<int, PieceName>();
-
-        //    foreach (var dkv in sgame.NextPiecesA)
-        //    {
-        //        game.NextPieces.Add(dkv.Key, dkv.Value);
-        //    }
-            
-        //    DenseSCellArray<SCell> _Cells;
-        //    _Cells = new DenseSCellArray<SCell>(Constants.BoardSize, Constants.BoardSize);
-        //    game.Cells = _Cells;
-
-          
-        //    SCell cell;
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        for (int j = 0; j < Constants.BoardSize; j++)
-        //        {
-        //            cell = new SCell(i, j, sgame[i, j]);
-        //            _Cells[i, j] = cell;
-        //        }
-        //    }
-
-        //    return game;
-        //}
-
-        //private SimpleGameStatus GetSimpleFromGameStatus(GameStatus game)
-        //{
-        //    SimpleGameStatus sg = new SimpleGameStatus();
-
-        //    // Copia de propiedades necesarias 
-
-        //    sg.Id = game.Id;
-        //    sg.Nombre = game.Nombre;
-
-        //    sg.NextPiecesA = new Dictionary<int, PieceName>();
-
-        //    sg.NextPiecesA.Add(0, game.NextPieces[0]);
-        //    sg.NextPiecesA.Add(1, game.NextPieces[1]);
-        //    sg.NextPiecesA.Add(2, game.NextPieces[2]);
-
-        //    // Convertir List<Cell> en arreglo bidimensional de PieceColor
-        //    // Se eliminan 100 referencias a class Cell
-
-        //    sg.CellsA = new PieceColor[Constants.BoardSize, Constants.BoardSize];
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        for (int j = 0; j < Constants.BoardSize; j++)
-        //        {
-        //            sg[i, j] = game.Cells[i, j].Color;
-        //        }
-        //    }
-        //    return sg;
-        //}
-
-        private GameTreeSimple CloneSimpleStatus(GameTreeSimple root, GameTreeSimple parent, GameStatus game)
+        private GameTreeNode CreateCloneChild(GameTreeNode root, GameTreeNode parent, GameStatus game)
         {
-            //SimpleGameStatus clonedGame = CloneSimpleGameStatus(game);
-
             int id = root.Count();
             string nombre = string.Format("Cloned {0}", id);
 
             GameStatus clonedGame = Factory.CloneGameStatus(id, nombre, game);
-           
-            //crear Nodo hijo
-           return parent.AddChild(clonedGame);
+
+            //crear y retornar Nodo hijo
+            return parent.AddChild(clonedGame);
         }
 
-        //private SimpleGameStatus CloneSimpleGameStatus(SimpleGameStatus game)
-        //{
-        //    SimpleGameStatus sg = new SimpleGameStatus();
 
-        //    sg.Id = game.Id;
-        //    sg.Nombre = game.Nombre;
-
-        //    sg.NextPiecesA = new Dictionary<int, PieceName>();
-
-        //    foreach (var dkv in game.NextPiecesA)
-        //    {
-        //        sg.NextPiecesA.Add(dkv.Key, dkv.Value);
-        //    }
-
-        //    sg.CellsA = new PieceColor[Constants.BoardSize, Constants.BoardSize];
-
-
-        //    for (int i = 0; i < Constants.BoardSize; i++)
-        //    {
-        //        for (int j = 0; j < Constants.BoardSize; j++)
-        //        {
-        //            sg[i, j] = game[i, j];
-        //        }
-        //    }
-
-        //    return sg;
-
-        //}
-
-
-        private List<Movement> CreateMovementsNuevo(int index, PieceName pname, GameStatus game)
+        private List<Movement> CreateMovements(int index, PieceName pname, GameStatus game)
         {
             List<Movement> mlist = new List<Movement>();
 
-            List<Coord> clist = CreateValidPositionListNuevo(game, pname);
+            List<Coord> clist = CreateValidPositionList(game, pname);
             Movement mov;
 
             foreach (var item in clist)
@@ -497,7 +212,7 @@ namespace BPSolver
         }
 
 
-        private List<Coord> CreateValidPositionListNuevo(GameStatus game, PieceName pname)
+        private List<Coord> CreateValidPositionList(GameStatus game, PieceName pname)
         {
 
             // obtener lista de coordenadas de celdas libres
@@ -520,15 +235,7 @@ namespace BPSolver
         {
             List<Coord> freec = new List<Coord>();
 
-            //for (int i = 0; i < Constants.BoardSize; i++)
-            //{
-            //    for (int j = 0; j < Constants.BoardSize; j++)
-            //    {
-            //        if (game.Cells[i, j].Color == PieceColor.None)
-            //            freec.Add(new Coord(i, j));
-            //    }
-            //}
-   
+           
             var fcells = game.Cells.Where(x => x.IsFree);
             foreach (var item in fcells)
             {

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BPSolver
 {
     /// <summary>
-    /// Implement handling .
+    /// Implement editing/navigating functions for the game's tree structure of gamestatus.
+    /// Services inputs from IOHandler.
     /// </summary>
     internal partial class TreeHandler : ITree
     {

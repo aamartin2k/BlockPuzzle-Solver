@@ -10,7 +10,7 @@ namespace WFProt
         
         public Action<Coord, PieceName,int> Out_DrawGridPlay;
 
-        public NextPiecePlayState(StContext context, CommandAction action) : base(context, action)
+        public NextPiecePlayState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("NextPiecePlayState created");
         }

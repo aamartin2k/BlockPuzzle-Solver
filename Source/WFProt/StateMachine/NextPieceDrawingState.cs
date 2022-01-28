@@ -10,7 +10,7 @@ namespace WFProt
 
         public Action<int, PieceName> Out_DrawNextPiece;
 
-        public NextPieceDrawingState(StContext context, CommandAction action) : base(context, action)
+        public NextPieceDrawingState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("NextPieceDrawingState created");
         }
@@ -19,7 +19,11 @@ namespace WFProt
         {
             //base.NextPieceImageClicked(index, piece);
 
-            Out_DrawNextPiece(index, Context.CurrentPiece); 
+            Out_DrawNextPiece(index, Context.CurrentPiece);
+            // reset CurrentPiece
+            Context.CurrentPiece = PieceName.None;
+            // State changes
+            Context.CurrentState = Context.SelectionState;
         }
 
         public override void PieceButtonClicked(PieceName piece)

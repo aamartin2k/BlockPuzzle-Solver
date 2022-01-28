@@ -12,7 +12,7 @@ namespace BPSolver.Objects
         public int Count
         {   get  { return Matrix.Count ; }  }
         
-        // Relative coords of squares
+        // Relative coords of squares forming the shape.
         public List<Coord> Matrix { get;  private set; }
 
         // Constructor
@@ -23,7 +23,14 @@ namespace BPSolver.Objects
             Matrix = matrix;
         }
 
-        //  Returns a list or real locations
+        //  Returns a list or real locations.
+        public static List<Coord> GetRealCoords(PieceName name, Coord point)
+        {
+            Piece instance = PieceSet.GetPiece(name);
+
+            return GetRealCoords(instance, point);
+        }
+
         public static List<Coord> GetRealCoords(Piece instance, Coord point)
         {
             Coord newCoord;
@@ -39,7 +46,7 @@ namespace BPSolver.Objects
         }
 
 
-        // Relative coords of neighbor cells
+        // Relative coords of neighbor cells.
         public static List<Coord>  GetNeighborsMatrix(Piece instance)
         {
             List<Coord> allItems = new List<Coord>();
@@ -55,23 +62,35 @@ namespace BPSolver.Objects
             return allItems.Except(instance.Matrix).ToList();
         }
 
-        // Real location of neighbor cells, removes coords outside board limits
-        public static List<Coord> GetNeighborsRealCoords(Coord insertCoord, List<Coord> matrix)
+        // Real location of neighbor cells, removes coords outside board limits.
+        public static List<Coord> GetNeighborsRealCoords(Piece instance, Coord point)
+        {
+            // Matriz Coord vecinos.
+            List<Coord> ngbMatrix;
+            ngbMatrix = Piece.GetNeighborsMatrix(instance);
+
+            // Coord Reales vecinos.
+            List<Coord> realCoords;
+            realCoords = Piece.GetNeighborsRealCoords(point, ngbMatrix);
+            return realCoords;
+        }
+
+        public static List<Coord> GetNeighborsRealCoords(Coord point, List<Coord> matrix)
         {
             Coord newCoord;
             List<Coord> realCoords = new List<Coord>();
 
             foreach (Coord coord in matrix)
             {
-                // create real coord list
-                newCoord = insertCoord + coord;
+                // Create real coord list.
+                newCoord = point + coord;
                 realCoords.Add(newCoord);
             }
 
-            // create list of coords outside board limits
+            // Create list of coords outside board limits.
             var outBoard = realCoords.Where(c => (c.Row < 0) || (c.Row > Constants.BoardSize - 1) ||
                                                  (c.Col < 0) || (c.Col > Constants.BoardSize - 1));
-            // remove invalid locations from list
+            // Remove invalid locations from list.
             return realCoords.Except(outBoard).ToList();
         }
 

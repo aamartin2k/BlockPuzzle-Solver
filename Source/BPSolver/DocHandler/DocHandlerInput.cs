@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
@@ -24,7 +20,7 @@ namespace BPSolver
 
                 // guardar ref
                 CurrentDocument = newDoc;
-                CurrentFilePath = DocHandler.NuevoNombre();
+                CurrentFilePath = DocHandler.NewName();
                 ret = true;
                 message = CurrentFilePath + " File created OK.";
             }

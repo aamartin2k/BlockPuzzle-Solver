@@ -17,6 +17,9 @@ namespace WFProt
             GameStatus status = meta.Status;
             GameSimpleNode dataRoot = meta.SimpleTree;
 
+            // Copiando Cells del board 
+            _previewCells = new Board(status.Cells.Cells);
+
             // Actualizando Control Tree
             UpdateTreeView(dataRoot);
 
@@ -48,9 +51,10 @@ namespace WFProt
                     bitMap = GetBlockImage(color);
 
                     // simplificar al implementar command pattern
-                    sgBoard[row, col].View = vBackColor;
+                    //sgBoard[row, col].View = vBackColor;
                     sgBoard[row, col].Image = bitMap;
-
+                    //TODO implement draw temp piece on grid
+                    // posible uso
                 }
             }
             sgBoard.VerticalScroll.Visible = false;
@@ -97,36 +101,36 @@ namespace WFProt
         }
 
 
-        // Cambia color de filas/cols completas antes de borrarlas
-        public void In_SelectRows(int[] indexList)
-        {
-            foreach (var row in indexList)
-            {
-                for (int col = 0; col < Constants.BoardSize; col++)
-                {
-                    sgBoard[row, col].View = vSelectColor;
-                    //sgBoard.InvalidateCell(sgBoard[row, col]);                                     
-                }
-            }
+        //// Cambia color de filas/cols completas antes de borrarlas
+        //public void In_SelectRows(int[] indexList)
+        //{
+        //    foreach (var row in indexList)
+        //    {
+        //        for (int col = 0; col < Constants.BoardSize; col++)
+        //        {
+        //            sgBoard[row, col].View = vSelectColor;
+        //            //sgBoard.InvalidateCell(sgBoard[row, col]);                                     
+        //        }
+        //    }
 
-            sgBoard.Invalidate();
-            Application.DoEvents();
-            System.Threading.Thread.Sleep(500);
-        }
+        //    sgBoard.Invalidate();
+        //    Application.DoEvents();
+        //    System.Threading.Thread.Sleep(500);
+        //}
 
-        public void In_SelectColumns(int[] indexList)
-        {
-            foreach (var col in indexList)
-            {
-                for (int row = 0; row < Constants.BoardSize; row++)
-                {
-                    sgBoard[row, col].View = vSelectColor;
-                }
-            }
-            sgBoard.Invalidate();
-            Application.DoEvents();
-            System.Threading.Thread.Sleep(500);
-        }
+        //public void In_SelectColumns(int[] indexList)
+        //{
+        //    foreach (var col in indexList)
+        //    {
+        //        for (int row = 0; row < Constants.BoardSize; row++)
+        //        {
+        //            sgBoard[row, col].View = vSelectColor;
+        //        }
+        //    }
+        //    sgBoard.Invalidate();
+        //    Application.DoEvents();
+        //    System.Threading.Thread.Sleep(500);
+        //}
 
         // Notifica resultado de operacion IO
         public void In_NewFileResult(bool status, string text)

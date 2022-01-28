@@ -10,7 +10,7 @@ namespace BPSolver
     /// Ted Faison, 'Even-Based Programming' 2006 </remarks>
     internal partial class SolHandler : ISolver
     {
-        private delegate GameTreeSimple CreateSolutionTree(GameStatus game);
+        private delegate GameTreeNode CreateSolutionTree(GameStatus game);
 
         private CreateSolutionTree OnCreateSolution;
         private CreateSolutionTree ProcRecursive;
@@ -24,7 +24,7 @@ namespace BPSolver
         }
 
         // Invoke solving procedure via stored delegate.
-        private GameTreeSimple FireCreateSolution(GameStatus game)
+        private GameTreeNode FireCreateSolution(GameStatus game)
         {
             return OnCreateSolution?.Invoke(game);
         }

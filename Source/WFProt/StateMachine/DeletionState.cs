@@ -6,7 +6,7 @@ namespace WFProt
     class DeletionState : BaseState, IGuiState
     {
        
-        public DeletionState(StContext context, CommandAction action) : base(context, action)
+        public DeletionState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("DeletionState created");
         }

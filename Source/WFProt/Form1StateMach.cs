@@ -9,41 +9,44 @@ namespace WFProt
 {
     public partial class Form1 : Form
     {
-        #region "State Machine Context"
+        #region State Machine Context
 
-        private StContext context;
+        private StMachContext _stMContext;
 
         void CreateStateMachine()
         {
-            context = new StContext();
+            _stMContext = new StMachContext();
 
             // creando todos los estados
-            context.CreateStates();
+            _stMContext.CreateStates();
 
             // asignando procedimientos de salida a delegates
-            context.GridCellDeletionState.Out_DeleteGridCell = StmOut_DeleteGridCell;
-            context.NextPieceDeletionState.Out_DeleteNextPiece = StmOut_DeleteNextPiece;
+            _stMContext.GridCellDeletionState.Out_DeleteGridCell = StmOut_DeleteGridCell;
+            _stMContext.NextPieceDeletionState.Out_DeleteNextPiece = StmOut_DeleteNextPiece;
 
-            context.NextPieceDrawingState.Out_DrawNextPiece = StmOut_DrawNextPiece;
-            context.GridCellDrawingState.Out_DrawGrid = StmOut_DrawPiece;
-            context.NextPiecePlayState.Out_DrawGridPlay = StmOut_DrawGridPlay;
+            _stMContext.NextPieceDrawingState.Out_DrawNextPiece = StmOut_DrawNextPiece;
+            _stMContext.GridCellDrawingState.Out_DrawGrid = StmOut_DrawPiece;
+            _stMContext.NextPiecePlayState.Out_DrawGridPlay = StmOut_DrawGridPlay;
 
-            context.Out_ShowCurrentPiece = ShowCurrentPiece;
-            context.ShowCurrentAction = ShowCurrentAction;
+            _stMContext.Out_ShowCurrentPiece = ShowCurrentPiece;
+            _stMContext.Out_ShowCurrentAction = ShowCurrentAction;
+
+            _stMContext.PieceSettingState.Out_DrawPreview = StmOut_DrawPreview;
+            _stMContext.PieceSettingState.Out_DeletePreview = StmOut_DeletePreview;
         }
 
         #endregion
 
-        #region "Entradas"
+        #region Inputs
         private void TsbArrow_Click(object sender, EventArgs e)
         {
             // Modo Seleccion
-            context.ActionSelectClicked();
+            _stMContext.ActionSelectClicked();
         }
         private void TsbDelete_Click(object sender, EventArgs e)
         {
             // Modo Borrar
-            context.ActionDeleteClicked();
+            _stMContext.ActionDeleteClicked();
         }
 
         // Ejecutar Accion de secuencia
@@ -77,7 +80,7 @@ namespace WFProt
             ToolStripItem itm = (ToolStripItem)sender;
             PieceName piece = (PieceName)itm.Tag;
 
-            context.PieceButtonClicked(piece);
+            _stMContext.PieceButtonClicked(piece);
         }
 
         private void PbNextPiece_Click(object sender, MouseEventArgs e)
@@ -97,7 +100,7 @@ namespace WFProt
             // get Piece on Control
             PieceName piece = (PieceName) pbx.Tag;
 
-            context.NextPieceImageClicked(index, piece);
+            _stMContext.NextPieceImageClicked(index, piece);
 
         }
 
@@ -105,7 +108,7 @@ namespace WFProt
 
         #endregion
 
-        #region "Salidas"
+        #region Outputs
         void StmOut_DrawPiece(Coord pos, PieceName piece)
         {
             Console.WriteLine(string.Format("OUTPUT. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
@@ -151,13 +154,21 @@ namespace WFProt
             }
         }
 
+        //void StmOut_DrawPreview()
+        //{
 
+        //}
+
+        //void StmOut_DeletePreview()
+        //{
+
+        //}
         #endregion
 
 
-        
 
-         
-       
+
+
+
     }
 }

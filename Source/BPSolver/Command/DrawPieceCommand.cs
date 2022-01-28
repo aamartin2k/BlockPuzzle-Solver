@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace BPSolver.Command
 {
     /// <summary>
-    /// Draw cells based on its location (Coord list) and PieceColor
+    /// Draw cells based on its location (Coord list) and PieceColor.
     /// </summary>
     internal class DrawCommand : BaseCommand
     {

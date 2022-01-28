@@ -2,7 +2,7 @@
 namespace BPSolver.Command
 {
     /// <summary>
-    /// Defines behavior of commands
+    /// Defines behavior of commands.
     /// </summary>
     interface ICommand
     {

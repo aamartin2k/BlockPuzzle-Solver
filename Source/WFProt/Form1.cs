@@ -162,19 +162,22 @@ namespace WFProt
             vBackColor = new Views.Cell();
             vBackColor.BackColor = Color.DarkSlateBlue;
 
-            vSelectColor = new Views.Cell();
-            vSelectColor.BackColor = Color.AntiqueWhite;
+            vTransColor = new Views.Cell();
+            vTransColor.BackColor = Color.FromArgb(75, Color.DarkSlateBlue); ;
              
 
             // Grid Config
             int dim = (sgBoard.Width / 10);
 
+
+            sgBoard.Selection.EnableMultiSelection = false;
             sgBoard.BorderStyle = BorderStyle.None;
+            
             sgBoard.Redim(Constants.BoardSize, Constants.BoardSize);
 
             // Grid Controller
             // Local handler passed as argument on the constructor
-            ClickController cellController = new ClickController(ClickOnCell, MouseEnterCell);
+            ClickController cellController = new ClickController(ClickOnCell, MouseEnterCell, MouseLeaveCell);
             Cells.Cell xCell;
 
             for (int row = 0; row < Constants.BoardSize; row++)

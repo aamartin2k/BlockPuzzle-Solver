@@ -8,7 +8,7 @@ namespace WFProt
     {
         public Action<Coord, PieceName> Out_DrawGrid;
        
-        public GridCellDrawingState(StContext context, CommandAction action) : base(context, action)
+        public GridCellDrawingState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("GridCellDrawingState created");
         }

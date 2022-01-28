@@ -8,7 +8,7 @@ namespace WFProt
     {
         
 
-        public SelectionState(StContext context, CommandAction action) : base(context, action)
+        public SelectionState(StMachContext context, CommandAction action) : base(context, action)
         {
             //Console.WriteLine("SelectionState created");
         }

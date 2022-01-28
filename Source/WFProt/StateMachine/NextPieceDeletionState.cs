@@ -10,7 +10,7 @@ namespace WFProt
 
         public Action<int> Out_DeleteNextPiece { get; set; }
 
-        public NextPieceDeletionState(StContext context, CommandAction action) : base(context, action)
+        public NextPieceDeletionState(StMachContext context, CommandAction action) : base(context, action)
         { 
             //Console.WriteLine("NextPieceDeletionState created");
         }

@@ -42,19 +42,14 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="TreeCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Deps\TreeCollections\TreeCollections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryFormatter.cs" />
+    <Compile Include="DocHandler\BinaryFormatter.cs" />
     <Compile Include="Command\BaseCommand.cs" />
     <Compile Include="Command\CommandStack.cs" />
     <Compile Include="Command\DeleteCellCommand.cs" />
@@ -100,7 +95,6 @@
     <Compile Include="Interface\ITree.cs" />
     <Compile Include="IOHandler\ClientDocument.cs" />
     <Compile Include="IOHandler\IOHandler.cs" />
-    <Compile Include="IOHandler\IOHandlerAux.cs" />
     <Compile Include="IOHandler\IOHandlerDocument.cs" />
     <Compile Include="IOHandler\IOHandlerOutput.cs" />
     <Compile Include="Objects\Eval.cs" />

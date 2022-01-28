@@ -5,12 +5,12 @@ using BPSolver.Objects;
 
 namespace WFProt
 {
-    class StContext
+    class StMachContext
     {
         public Action<PieceName> Out_ShowCurrentPiece;
-        public Action<CommandAction> ShowCurrentAction;
+        public Action<CommandAction> Out_ShowCurrentAction;
 
-        // For DEbug
+        // For Debug
         private IGuiState _currentSt;
         public IGuiState CurrentState
         {
@@ -35,7 +35,7 @@ namespace WFProt
         private void ShowStateChange(IGuiState currentState)
         {
             //    ShowCurrentAction?.Invoke(action);
-            ShowCurrentAction?.Invoke((currentState as BaseState).Action);
+            Out_ShowCurrentAction?.Invoke((currentState as BaseState).Action);
         }
 
         //public PieceName CurrentPiece
@@ -94,6 +94,16 @@ namespace WFProt
             CurrentState.GridCellClicked(position);
         }
 
+        public void MouseEnterGameCell(Coord pos)
+        {
+            CurrentState.MouseEnterGameCell(pos);
+        }
+
+        public void MouseLeaveGameCell(Coord position)
+        {
+            CurrentState.MouseLeaveGameCell(position);
+        }
+
 
         // Factory
         public void CreateStates()
@@ -112,7 +122,6 @@ namespace WFProt
             CurrentState = SelectionState;
         }
 
-        //public InitialState InitialState { get; private set; }
         public DeletionState DeletionState { get; private set; }
         public SelectionState SelectionState { get; private set; }
         public PieceSettingState PieceSettingState { get; private set; }

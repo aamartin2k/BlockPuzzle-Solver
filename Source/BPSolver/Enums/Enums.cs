@@ -10,9 +10,6 @@ namespace BPSolver.Enums
     public enum SequenceAction
     { First, Previous, Next, Last }
 
-    public enum PieceAttitude
-    { None, Horizontal, Vertical, Both }
-
     public enum PieceColor
     { None, One, Two, Three, Four, Five, Six, Seven, Eight, Nine }
 

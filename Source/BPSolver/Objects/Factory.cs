@@ -1,13 +1,12 @@
 ﻿using BPSolver.Enums;
 using BPSolver.Objects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPSolver
 {
+    /// <summary>
+    /// Implement creation and cloning of GameStatus.
+    /// </summary>
     public class Factory
     {
         #region  GameStatus Factory
@@ -24,15 +23,15 @@ namespace BPSolver
             GameStatus onew = new GameStatus(id);
 
             onew.Nombre = name;
-            onew.NextPieces = new Dictionary<int, PieceName>();
-            
-            // llenar con nada
-            onew.NextPieces.Add(0, PieceName.None);
-            onew.NextPieces.Add(1, PieceName.None);
-            onew.NextPieces.Add(2, PieceName.None);
+            onew.NextPieces = new Dictionary<int, PieceName>
+            {
+                { 0, PieceName.None },
+                { 1, PieceName.None },
+                { 2, PieceName.None }
+            };
 
             Cell newCell;
-            CellCollection _Cells = new CellCollection();
+            Board _Cells = new Board();
             
             for (int i = 0; i < Constants.BoardSize; i++)
             {
@@ -68,7 +67,7 @@ namespace BPSolver
                 onew.NextPieces.Add(dkv.Key, dkv.Value);
             }
 
-            CellCollection _Cells = new CellCollection();
+            Board _Cells = new Board();
             Cell newCell;
 
             foreach (var cell in game.Cells)

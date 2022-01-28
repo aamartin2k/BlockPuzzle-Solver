@@ -14,14 +14,14 @@ namespace ManTest
             IController server = CreateController();
 
             // uncomment to create test documents
-            //TestDocumentFactory docf = CreateTestDocument(server);
-            //Console.WriteLine("Controller created and wired to TestDocumentFactory client.");
-            //docf.Start();
+            TestDocumentFactory docf = CreateTestDocument(server);
+            Console.WriteLine("Controller created and wired to TestDocumentFactory client.");
+            docf.Start();
 
 
-            MultiSolTest client = CreateMultiSol(server);
-            Console.WriteLine("Controller created and wired to MultiSolTest client.");
-            client.Start();
+            //MultiSolTest client = CreateMultiSol(server);
+            //Console.WriteLine("Controller created and wired to MultiSolTest client.");
+            //client.Start();
 
 
             // commented to save test output to file via pipe

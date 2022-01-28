@@ -22,7 +22,7 @@ namespace BPSolver
         }
 
         private static int NameCount = 1;
-        private static string NuevoNombre()
+        private static string NewName()
         {
          
             string fileName = string.Format("{0}{1}{2}", Constants.NewDocumentName, NameCount, Constants.DocumentExtension);
