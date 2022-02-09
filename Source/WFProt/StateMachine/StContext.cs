@@ -26,22 +26,12 @@ namespace WFProt
 
                 _currentSt = value;
 
-                // reflejando cambios de estado
-                ShowStateChange(_currentSt);
+                // reflejando cambios de accion
+                Out_ShowCurrentAction?.Invoke((_currentSt as BaseState).Action);
             }
         }
 
 
-        private void ShowStateChange(IGuiState currentState)
-        {
-            //    ShowCurrentAction?.Invoke(action);
-            Out_ShowCurrentAction?.Invoke((currentState as BaseState).Action);
-        }
-
-        //public PieceName CurrentPiece
-        //{ get;  set; }
-
-        // For DEbug
         private PieceName _currentPiece;
         public PieceName CurrentPiece
         {
@@ -52,10 +42,7 @@ namespace WFProt
 
             set
             {
-                //string name;
-                //name = (null == _currentPiece) ? "Null" : _currentPiece.ToString();
                 Console.WriteLine(string.Format("Current Piece changed from: {0} to {1}", _currentPiece, value));
-
                 _currentPiece = value;
 
                 // reflejando cambios de pieza
@@ -99,9 +86,9 @@ namespace WFProt
             CurrentState.MouseEnterGameCell(pos);
         }
 
-        public void MouseLeaveGameCell(Coord position)
+        public void MouseLeaveGameCell( )
         {
-            CurrentState.MouseLeaveGameCell(position);
+            CurrentState.MouseLeaveGameCell();
         }
 
 

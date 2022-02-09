@@ -12,7 +12,6 @@ namespace WFProt
     {
         private Board _previewCells;
         private List<Coord> _drawList;
-        //private Color _cellColor, _cellTrasnparent;
 
         private void MouseEnterGameCell(Position pos)
         {
@@ -22,8 +21,7 @@ namespace WFProt
 
         private void MouseLeaveGameCell(Position pos)
         {
-            Coord coord = new Coord(pos.Row, pos.Column);
-            _stMContext.MouseLeaveGameCell(coord);
+            _stMContext.MouseLeaveGameCell();
         }
 
         private void StmOut_DrawPreview(Coord coord)

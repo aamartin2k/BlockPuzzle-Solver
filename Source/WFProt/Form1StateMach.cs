@@ -33,6 +33,13 @@ namespace WFProt
 
             _stMContext.PieceSettingState.Out_DrawPreview = StmOut_DrawPreview;
             _stMContext.PieceSettingState.Out_DeletePreview = StmOut_DeletePreview;
+
+            _stMContext.GridCellDrawingState.Out_DrawPreview = StmOut_DrawPreview;
+            _stMContext.GridCellDrawingState.Out_DeletePreview = StmOut_DeletePreview;
+
+            _stMContext.NextPiecePlayState.Out_DrawPreview = StmOut_DrawPreview;
+            _stMContext.NextPiecePlayState.Out_DeletePreview = StmOut_DeletePreview;
+
         }
 
         #endregion

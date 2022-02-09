@@ -40,7 +40,7 @@ Revisar GUI state Machine
  --Al terminar, revisar/implementar GameStatus Id - private set
 
  --Revisar Error null reference al abrir Nuevo1.bmd
-   Se creo como nuevo y salvar, revisar conmtenido de fiel y compara con otros, 
+   Se creo como nuevo y salvar, revisar contenido de file y compara con otros, 
     tiene poco tamaño, no se ha salvado el estado
 
  --Implementar filtrado de soluciones en Form, solo mostrar  las que 

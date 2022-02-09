@@ -14,6 +14,6 @@ namespace WFProt
         void GridCellClicked(Coord position);
 
         void MouseEnterGameCell(Coord position);
-        void MouseLeaveGameCell(Coord position);
+        void MouseLeaveGameCell();
     }
 }

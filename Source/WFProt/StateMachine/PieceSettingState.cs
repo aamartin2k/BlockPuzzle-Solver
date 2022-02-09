@@ -53,7 +53,7 @@ namespace WFProt
             Out_DrawPreview(position);
         }
 
-        public override void MouseLeaveGameCell(Coord position)
+        public override void MouseLeaveGameCell()
         {
             //base.MouseLeaveGameCell(position);
             Out_DeletePreview();

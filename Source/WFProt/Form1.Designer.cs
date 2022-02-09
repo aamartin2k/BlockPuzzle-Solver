@@ -662,6 +662,7 @@
             // 
             // sgBoard
             // 
+            this.sgBoard.EnableSort = true;
             this.sgBoard.Location = new System.Drawing.Point(8, 29);
             this.sgBoard.Name = "sgBoard";
             this.sgBoard.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
@@ -682,9 +683,9 @@
             this.tslbCoordText,
             this.tlsbModel,
             this.tlsbModelText});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 506);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(654, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(744, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -754,7 +755,7 @@
             this.saveAsToolStripButton});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(654, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(744, 25);
             this.toolStripMain.TabIndex = 7;
             this.toolStripMain.Text = "toolStrip2";
             // 
@@ -830,7 +831,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lbColComp, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbRowComp, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(265, 275);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(265, 278);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1070,7 +1071,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 85);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(653, 418);
+            this.tabControl1.Size = new System.Drawing.Size(743, 421);
             this.tabControl1.TabIndex = 12;
             // 
             // tbpGame
@@ -1088,7 +1089,7 @@
             this.tbpGame.Location = new System.Drawing.Point(4, 22);
             this.tbpGame.Name = "tbpGame";
             this.tbpGame.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpGame.Size = new System.Drawing.Size(645, 392);
+            this.tbpGame.Size = new System.Drawing.Size(735, 395);
             this.tbpGame.TabIndex = 0;
             this.tbpGame.Text = "Game";
             this.tbpGame.UseVisualStyleBackColor = true;
@@ -1131,7 +1132,7 @@
             this.cTreeStatus.DrawStyle = ControlTreeView.CTreeViewDrawStyle.HorizontalDiagram;
             this.cTreeStatus.Location = new System.Drawing.Point(260, 6);
             this.cTreeStatus.Name = "cTreeStatus";
-            this.cTreeStatus.Size = new System.Drawing.Size(372, 263);
+            this.cTreeStatus.Size = new System.Drawing.Size(462, 266);
             this.cTreeStatus.TabIndex = 1;
             // 
             // tbpSolution
@@ -1267,6 +1268,7 @@
             // 
             // sgSolution
             // 
+            this.sgSolution.EnableSort = true;
             this.sgSolution.Location = new System.Drawing.Point(8, 29);
             this.sgSolution.Name = "sgSolution";
             this.sgSolution.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
@@ -1314,7 +1316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 528);
+            this.ClientSize = new System.Drawing.Size(744, 531);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStripControls);
             this.Controls.Add(this.toolStripMain);

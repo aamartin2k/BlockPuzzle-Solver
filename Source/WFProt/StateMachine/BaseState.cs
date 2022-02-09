@@ -34,27 +34,27 @@ namespace WFProt
         // Virtual Members
         public virtual void PieceButtonClicked(PieceName piece)
         {
-            Console.WriteLine(string.Format("PieceButton Clicked: {0}", piece));
+            //Console.WriteLine(string.Format("PieceButton Clicked: {0}", piece));
         }
 
         public virtual void NextPieceImageClicked(int index, PieceName piece = PieceName.None)
         {
-            Console.WriteLine(string.Format("NextPieceImage index {0} Clicked. Piece Arg: {1} Current Piece: {2}", index, piece, Context.CurrentPiece));
+            //Console.WriteLine(string.Format("NextPieceImage index {0} Clicked. Piece Arg: {1} Current Piece: {2}", index, piece, Context.CurrentPiece));
         }
 
         public virtual void GridCellClicked(Coord position)
         {
-            Console.WriteLine(string.Format("Play: Piece: {0} on NPImage {1} move to Cell R: {2} C: {3}", Context.CurrentPiece, Context.NextPieceIndex, position.Row, position.Col));
+            //Console.WriteLine(string.Format("Play: Piece: {0} on NPImage {1} move to Cell R: {2} C: {3}", Context.CurrentPiece, Context.NextPieceIndex, position.Row, position.Col));
         }
 
         public virtual void MouseEnterGameCell(Coord position)
         {
-            Console.WriteLine(string.Format("Mouse Enter Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
+            //Console.WriteLine(string.Format("Mouse Enter Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
         }
 
-        public virtual void MouseLeaveGameCell(Coord position)
+        public virtual void MouseLeaveGameCell()
         {
-            Console.WriteLine(string.Format("Mouse Leave Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
+            //Console.WriteLine(string.Format("Mouse Leave Game Cell. Row: {0} Column: {1}", position.Row, position.Col));
         }
     }
 
