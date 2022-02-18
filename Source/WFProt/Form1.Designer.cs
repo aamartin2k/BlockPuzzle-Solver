@@ -91,8 +91,6 @@
             this.tlsbActionImage = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbPiece = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbPieceImage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslbCoord = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslbCoordText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tlsbModel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tlsbModelText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
@@ -679,8 +677,6 @@
             this.tlsbActionImage,
             this.tslbPiece,
             this.tslbPieceImage,
-            this.tslbCoord,
-            this.tslbCoordText,
             this.tlsbModel,
             this.tlsbModelText});
             this.statusStrip1.Location = new System.Drawing.Point(0, 509);
@@ -716,20 +712,6 @@
             this.tslbPieceImage.Name = "tslbPieceImage";
             this.tslbPieceImage.Size = new System.Drawing.Size(0, 17);
             this.tslbPieceImage.Text = "Pieza actual";
-            // 
-            // tslbCoord
-            // 
-            this.tslbCoord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tslbCoord.Name = "tslbCoord";
-            this.tslbCoord.Size = new System.Drawing.Size(46, 17);
-            this.tslbCoord.Text = "Coord: ";
-            // 
-            // tslbCoordText
-            // 
-            this.tslbCoordText.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tslbCoordText.Name = "tslbCoordText";
-            this.tslbCoordText.Size = new System.Drawing.Size(24, 17);
-            this.tslbCoordText.Text = "x  y";
             // 
             // tlsbModel
             // 
@@ -1154,7 +1136,7 @@
             this.tbpSolution.Location = new System.Drawing.Point(4, 22);
             this.tbpSolution.Name = "tbpSolution";
             this.tbpSolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpSolution.Size = new System.Drawing.Size(645, 392);
+            this.tbpSolution.Size = new System.Drawing.Size(735, 395);
             this.tbpSolution.TabIndex = 1;
             this.tbpSolution.Text = "Solutions";
             this.tbpSolution.UseVisualStyleBackColor = true;
@@ -1389,9 +1371,7 @@
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripStatusLabel tslbCoord;
         private System.Windows.Forms.ToolStripStatusLabel tslbPieceImage;
-        private System.Windows.Forms.ToolStripStatusLabel tslbCoordText;
         private System.Windows.Forms.ToolStripButton tsbArrow;
         private System.Windows.Forms.ToolStripButton tsbUndo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;

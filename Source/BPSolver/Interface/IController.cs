@@ -104,5 +104,14 @@ namespace BPSolver
         Action<SolutionMetaStatus> Out_UpdateSolutionBoard { get; set; }
         #endregion
         #endregion
+
+        #region DrawPreview
+        // Requires sync behaviour
+        bool InOut_TestPiece(Coord insertCoord, PieceName name, Board cells);
+        PieceColor InOut_GetPieceColor(PieceName name);
+        List<Coord> InOut_GetRealCoords(PieceName name, Coord point);
+
+
+        #endregion
     }
 }

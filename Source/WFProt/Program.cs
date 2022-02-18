@@ -24,15 +24,15 @@ namespace WFProt
 
             Form1 form = new Form1();
 
-            // Conexion
-            // salidas de Form
-            //IO
+            // Wiring up form and controller.
+            // Actions.
+            // IO.
             form.Out_NewFile = server.In_NewFile;
             form.Out_CloseFile = server.In_CloseFile;
             form.Out_LoadFile = server.In_LoadFile;
             form.Out_SaveFile = server.In_SaveFile;
             form.Out_SaveFileAs = server.In_SaveFileAs;
-            //Actions
+            // Command actions.
             form.Out_Solution = server.In_Solution;
             form.Out_Undo = server.In_Undo;
        
@@ -44,7 +44,7 @@ namespace WFProt
             form.Out_DrawGridPlay = server.In_DrawGridPlay;
 
             // control de secuencia
-            // Browsing
+            // Browsing.
             form.Out_MoveFirst = server.In_MoveFirst;
             form.Out_MovePrevious = server.In_MovePrevious;
             form.Out_MoveNext = server.In_MoveNext;
@@ -55,7 +55,6 @@ namespace WFProt
             // Entradas desde de Controller
             server.Out_UpdateGameBoard = form.In_UpdateBoard;
             server.Out_UpdateSolutionBoard = form.In_UpdateSolutionBoard;
-
             server.Out_UserEnable = form.In_UserEnable;
 
             server.Out_NewFileResult = form.In_NewFileResult;
@@ -69,6 +68,11 @@ namespace WFProt
             server.Out_MoveNext_Result = form.In_MoveNext_Result;
             server.Out_MoveLast_Result = form.In_MoveLast_Result;
             server.Out_MoveToChild_Result = form.In_MoveToChild_Result;
+
+            // Functions
+            form.InOut_TestPiece = server.InOut_TestPiece;
+            form.InOut_GetPieceColor = server.InOut_GetPieceColor;
+            form.InOut_GetRealCoords = server.InOut_GetRealCoords;
 
             //// Manual Test con resultados en GUI
             ////string file = "solver.bmd";

@@ -288,7 +288,7 @@ namespace WFProt
             CreateStateMachine();
         }
 
-       private bool UserEnable
+        private bool UserEnable
         {
             set
             {
@@ -298,11 +298,18 @@ namespace WFProt
                 sgSolution.Enabled = value;
             }
         }
-       
 
+        private bool MissingNextPieces()
+        {
+            bool ret = false;
 
-       
+            // Check if all three next pieces are present.
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece1.Tag);
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece2.Tag);
+            ret = ret | (PieceName.None == (PieceName)pbNextPiece3.Tag);
 
+            return ret;
+        }
        
         private void TsbShowAction_Click(object sender, EventArgs e)
         {
@@ -314,66 +321,28 @@ namespace WFProt
             ShowCurrentAction((CommandAction)itm.Tag);
         }
 
-       
-
-        // private methods
-
-        //private Color ColorAdapter(PieceColor color)
-        //{
-        //    Color result;
-
-        //    switch (color)
-        //    {
-        //        case PieceColor.None:
-        //            result = Color.DarkSlateBlue;
-        //            break;
-        //        case PieceColor.One:
-        //            result = Color.Green;
-        //            break;
-        //        case PieceColor.Two:
-        //            result = Color.AliceBlue;
-        //            break;
-        //        case PieceColor.Three:
-        //            result = Color.DarkRed;
-        //            break;
-        //        case PieceColor.Four:
-        //            result = Color.LightBlue;
-        //            break;
-        //        case PieceColor.Five:
-        //            result = Color.Orange;
-        //            break;
-        //        case PieceColor.Six:
-        //            result = Color.PaleVioletRed;
-        //            break;
-        //        case PieceColor.Seven:
-        //            result = Color.LightGoldenrodYellow;
-        //            break;
-        //        case PieceColor.Eight:
-        //            result = Color.LawnGreen;
-        //            break;
-        //        case PieceColor.Nine:
-        //            result = Color.SteelBlue;
-        //            break;
-        //        default:
-        //            result = Color.DarkSlateBlue;
-        //            break;
-        //    }
-        //    return result;
-        //}
-
-    
         private void tsbUndo_Click(object sender, EventArgs e)
         {
-            // ExecuteCommandUndo();
-            Undo();
+            OnUndo();
         }
 
         private void tsbSoluciones_Click(object sender, EventArgs e)
         {
-            Solution();
+            // All three next pieces must be present to make find solutions.
+            bool ret = MissingNextPieces();
+
+            if (ret)
+            {
+                string text = "All three next pieces must be present to find solutions";
+
+                MessageBox.Show(this, text, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                OnSolution();
+            }
         }
 
-        //newToolStripButton_Click
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             NewFile();

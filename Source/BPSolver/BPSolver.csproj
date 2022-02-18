@@ -65,6 +65,7 @@
     <Compile Include="Document\DocData.cs" />
     <Compile Include="Document\GameData.cs" />
     <Compile Include="Document\GameDocument.cs" />
+    <Compile Include="IOHandler\ClientPreview.cs" />
     <Compile Include="Objects\CellCollection.cs" />
     <Compile Include="Objects\Factory.cs" />
     <Compile Include="GameHandler\GameHandler.cs" />

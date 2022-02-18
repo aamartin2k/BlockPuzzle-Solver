@@ -119,35 +119,32 @@ namespace WFProt
         void StmOut_DrawPiece(Coord pos, PieceName piece)
         {
             Console.WriteLine(string.Format("OUTPUT. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
-            Out_DrawPiece(pos, piece);
+            OnOut_DrawPiece(pos, piece);
         }
 
         void StmOut_DrawNextPiece(int index, PieceName piece)
         {
             Console.WriteLine(string.Format("OUTPUT. Dibujar NextPiece index: {0} Image: {1} ", index, piece));
-            Out_DrawNextPiece(index, piece);
+            OnOut_DrawNextPiece(index, piece);
         }
 
         void StmOut_DeleteGridCell(Coord pos)
         {
             Console.WriteLine(string.Format("OUTPUT. Borrar Grid Cell Row: {0} Col: {1}", pos.Row, pos.Col));
-            Out_DeleteGridCell(pos);
+            OnOut_DeleteGridCell(pos);
         }
 
         void StmOut_DeleteNextPiece(int index)
         {
             Console.WriteLine(string.Format("OUTPUT. Borrar NextPieceImage index {0}", index));
-            Out_DeleteNextPiece(index);
+            OnOut_DeleteNextPiece(index);
         }
 
         void StmOut_DrawGridPlay(Coord pos, PieceName piece, int index)
         {
             // All three next pieces must be present to make a play
-            bool ret = false;
-            ret = ret | (PieceName.None == (PieceName)pbNextPiece1.Tag);
-            ret = ret | (PieceName.None == (PieceName)pbNextPiece2.Tag);
-            ret = ret | (PieceName.None == (PieceName)pbNextPiece3.Tag);
-
+            bool ret = MissingNextPieces();
+           
             if (ret)
             {
                 string text = "All three next pieces must be present to make a play";
@@ -157,24 +154,12 @@ namespace WFProt
             else
             {
                 Console.WriteLine(string.Format("OUTPUT. PLAY. Dibujar Grid Row: {0} Col: {1} Image: {2}", pos.Row, pos.Col, piece));
-                Out_DrawGridPlay(pos, piece, index);
+                OnOut_DrawGridPlay(pos, piece, index);
             }
         }
 
-        //void StmOut_DrawPreview()
-        //{
-
-        //}
-
-        //void StmOut_DeletePreview()
-        //{
-
-        //}
+      
         #endregion
-
-
-
-
 
 
     }

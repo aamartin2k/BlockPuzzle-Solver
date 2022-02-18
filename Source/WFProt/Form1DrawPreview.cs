@@ -2,6 +2,7 @@
 using BPSolver.Enums;
 using BPSolver.Objects;
 using SourceGrid;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,6 +11,16 @@ namespace WFProt
 {
     public partial class Form1 : Form
     {
+        // Functions
+        public delegate bool TestPieceDelegate(Coord insertCoord, PieceName name, Board cells);
+        public TestPieceDelegate InOut_TestPiece;
+
+        public delegate PieceColor GetPieceColorDelegate(PieceName name);
+        public GetPieceColorDelegate InOut_GetPieceColor;
+
+        public delegate List<Coord> GetRealCoordsDelegate(PieceName name, Coord point);
+        public GetRealCoordsDelegate InOut_GetRealCoords;
+
         private Board _previewCells;
         private List<Coord> _drawList;
 
@@ -31,15 +42,12 @@ namespace WFProt
 
             if (ret)
             {
-                ret = Utils.TestPiece(coord, _stMContext.CurrentPiece, _previewCells);
+                ret = (bool) InOut_TestPiece?.Invoke(coord, _stMContext.CurrentPiece, _previewCells);
 
                 if (ret)
                 {
-                   
-                    Piece instance = PieceSet.GetPiece(_stMContext.CurrentPiece);
-                    List<Coord> drawList = Piece.GetRealCoords(instance, coord);
-
-                    PieceColor color = instance.Color;
+                    List<Coord> drawList = InOut_GetRealCoords(_stMContext.CurrentPiece, coord);
+                    PieceColor color = InOut_GetPieceColor(_stMContext.CurrentPiece);
                     Bitmap bitmap = GetBlockImage(color);
 
                     foreach (var item in drawList)
