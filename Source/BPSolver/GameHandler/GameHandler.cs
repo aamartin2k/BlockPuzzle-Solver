@@ -1,6 +1,5 @@
 ﻿using BPSolver.Command;
 using BPSolver.Objects;
-using System.Collections.Generic;
 
 namespace BPSolver.Game
 {
